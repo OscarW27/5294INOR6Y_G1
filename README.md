@@ -10,6 +10,8 @@ pip install -r requirements.txt
 
 ## Website
 
+URL: https://oscarw27.github.io/5294INOR6Y_G1/
+
 The website lives in [site/](site/) and is plain HTML/CSS/JS (charts with [Observable Plot](https://observablehq.com/plot/)). It reads small CSV files from [site/data/](site/data/), which are generated from the parquet files:
 
 ```bash
