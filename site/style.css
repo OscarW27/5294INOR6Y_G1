@@ -1,0 +1,109 @@
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+  --series-1: #2a78d6; /* RECOVERY */
+  --series-2: #eb6834; /* STEADY */
+  --series-3: #1baf7a; /* INTENSIVE */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255, 255, 255, 0.10);
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text-primary);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+a { color: inherit; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+header { padding-top: 48px; padding-bottom: 24px; }
+.eyebrow { margin: 0 0 8px; color: var(--text-muted); font-size: 14px; letter-spacing: .02em; }
+h1 { margin: 0 0 12px; font-size: clamp(28px, 5vw, 40px); line-height: 1.15; letter-spacing: -.01em; }
+.lede { margin: 0; max-width: 60ch; color: var(--text-secondary); font-size: 18px; }
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.kpi-label { color: var(--text-secondary); font-size: 14px; }
+.kpi-value { font-size: 28px; font-weight: 600; margin-top: 4px; }
+
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 16px; }
+.filters.inline { margin: 8px 0; }
+.filters-label { color: var(--text-secondary); font-size: 14px; }
+#type-filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px;
+  background: var(--surface); cursor: pointer; font-size: 14px; user-select: none;
+}
+.chip input { margin: 0; accent-color: var(--text-primary); }
+.swatch { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+
+select, button {
+  font: inherit; font-size: 14px; color: var(--text-primary);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px;
+}
+select { max-width: 100%; }
+button { cursor: pointer; }
+button:hover, .chip:hover { border-color: var(--axis); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px; margin-bottom: 20px;
+}
+.card h2 { margin: 0 0 4px; font-size: 18px; }
+.sub { margin: 0 0 12px; color: var(--text-secondary); font-size: 14px; }
+.meta { margin: 0 0 8px; color: var(--text-secondary); font-size: 14px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+.chart { width: 100%; overflow: hidden; }
+.chart svg { display: block; max-width: 100%; height: auto; color: var(--text-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.chart [aria-label="tip"] { color: var(--text-primary); }
+
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--text-secondary); font-weight: 500; }
+
+footer { padding-top: 8px; padding-bottom: 48px; color: var(--text-muted); font-size: 14px; }

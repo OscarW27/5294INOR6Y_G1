@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Running Heart Rates</title>
+  <meta name="description" content="Exploring 40,186 Endomondo running workouts: heart rate, speed and altitude.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="wrap">
+    <p class="eyebrow">5294INOR6Y · Group 1</p>
+    <h1>How hard do runners' hearts work?</h1>
+    <p class="lede">
+      40,186 running workouts from 761 Endomondo athletes, each with heart rate, speed and
+      altitude recorded over time. This is a demo of what the dataset can show.
+    </p>
+  </header>
+
+  <main class="wrap">
+    <section class="kpis" id="kpis" aria-label="Key numbers"></section>
+
+    <div class="filters" role="group" aria-label="Filter by workout type">
+      <span class="filters-label">Workout type</span>
+      <div id="type-filter"></div>
+    </div>
+
+    <section class="card">
+      <h2>Average heart rate per workout</h2>
+      <p class="sub">Share of workouts in each 2 BPM band. Lines are normalized per type so the small INTENSIVE group stays visible.</p>
+      <div id="legend-hist" class="legend"></div>
+      <div id="chart-hist" class="chart"></div>
+    </section>
+
+    <section class="card">
+      <h2>Faster runs, higher heart rate?</h2>
+      <p class="sub">Average speed vs. average heart rate. Random sample of 2,500 workouts.</p>
+      <div id="legend-scatter" class="legend"></div>
+      <div id="chart-scatter" class="chart"></div>
+    </section>
+
+    <section class="card">
+      <h2>Workouts recorded per month</h2>
+      <p class="sub">2011 to 2015, the years that hold almost all workouts.</p>
+      <div id="chart-time" class="chart"></div>
+    </section>
+
+    <section class="card">
+      <h2>Inside one workout</h2>
+      <p class="sub">Pick an example workout to see how heart rate follows speed and terrain.</p>
+      <div class="filters inline">
+        <label for="workout-select" class="filters-label">Workout</label>
+        <select id="workout-select"></select>
+        <button id="random-workout" type="button">Random</button>
+      </div>
+      <p id="workout-meta" class="meta"></p>
+      <div id="chart-hr" class="chart"></div>
+      <div id="chart-speed" class="chart"></div>
+      <div id="chart-alt" class="chart"></div>
+    </section>
+
+    <section class="card">
+      <h2>Most active athletes</h2>
+      <p class="sub">Top 10 by number of workouts.</p>
+      <div class="table-scroll">
+        <table id="users-table"></table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    Data: <a href="https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2">Endomondo Heart Rate Prediction Dataset V2</a> (MIT).
+    Download the CSVs: <a href="data/workouts.csv">workouts</a> · <a href="data/users.csv">users</a> · <a href="data/timeseries.csv">time series sample</a>.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.16/dist/plot.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

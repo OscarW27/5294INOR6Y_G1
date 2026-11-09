@@ -1,0 +1,5 @@
+huggingface_hub>=0.23
+datasets>=2.19
+pandas
+numpy
+pyarrow

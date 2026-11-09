@@ -1,0 +1,5 @@
+# Large dataset files (download from https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2)
+data/**/*.parquet
+data/**/.cache/
+__pycache__/
+.venv/
