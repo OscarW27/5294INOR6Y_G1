@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endomondo Data Dictionary</title>
+<style>
+  body { font-family: system-ui, -apple-system, Segoe UI, sans-serif; margin: 2rem auto; max-width: 1200px; padding: 0 16px; color: #222; background: #fff; line-height: 1.45; }
+  h1 { margin-bottom: .2rem; }
+  h2 { margin-top: 2.5rem; border-bottom: 2px solid #222; padding-bottom: .2rem; }
+  h3 { margin-top: 1.8rem; }
+  .sub { color: #555; margin-top: 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; margin: .8rem 0; }
+  th, td { border: 1px solid #bbb; padding: .4rem .5rem; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  td:first-child { font-family: ui-monospace, Consolas, monospace; white-space: nowrap; }
+  code { font-family: ui-monospace, Consolas, monospace; background: #f3f3f3; padding: 0 .2em; }
+  dl.meta { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; }
+  dl.meta dt { font-weight: 600; }
+  dl.meta dd { margin: 0; }
+  .wrap { overflow-x: auto; }
+  svg { max-width: 100%; height: auto; }
+  @media print { body { margin: 0; max-width: none; } h2 { break-after: avoid; } tr { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<h1>Data Dictionary: Endomondo Heart Rate Prediction Dataset V2</h1>
+<p class="sub">Course 5294INOR6Y, Group G1. Structured following the OSF guidance on data dictionaries.</p>
+
+<h2>1. Dataset overview</h2>
+<dl class="meta">
+  <dt>Title</dt><dd>Endomondo Heart Rate Prediction Dataset V2</dd>
+  <dt>Source</dt><dd>Hugging Face: <code>rricc22/endomondo-hr-prediction-v2</code> (https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2)</dd>
+  <dt>License</dt><dd>MIT</dd>
+  <dt>Content</dt><dd>40,186 running workouts from 761 anonymous athletes, with heart rate, speed and altitude time series (500 timesteps per workout, 20,093,000 measurements in total).</dd>
+  <dt>Time span</dt><dd>2007-02-07 to 2016-01-01 (workout start times)</dd>
+  <dt>Preprocessing (by source)</dt><dd>Workouts filtered for quality, series smoothed with a 7-point moving average, and kept only if HR mean &ge; 120 BPM, HR max &le; 200 BPM, HR std &ge; 5 BPM and speed&ndash;HR correlation &ge; &minus;0.3. 6,064 workouts were removed.</dd>
+  <dt>Original files</dt><dd><code>dataset.parquet</code> (all rows), <code>train.parquet</code>, <code>validation.parquet</code>, <code>test.parquet</code>. One row per workout, with time series stored as list columns.</dd>
+  <dt>Derived files</dt><dd><code>data/csv/workouts.csv</code> and <code>data/csv/measurements.csv</code>, produced by <code>scripts/export_csv.py</code>. This dictionary describes these two files.</dd>
+  <dt>Missing values</dt><dd>Empty cell. The only column with missing values is <code>offset_applied</code>.</dd>
+  <dt>Delimiter / encoding</dt><dd>Comma-separated, UTF-8, header row, <code>.</code> as decimal separator.</dd>
+</dl>
+
+<h2>2. Entity relationship diagram</h2>
+<p>Each athlete (user) has one or more workouts. Each workout has exactly 500 measurements. USER has no file of its own; its only attribute is <code>user_id</code> in <code>workouts.csv</code>.</p>
+<div class="wrap">
+<svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif" font-size="13" role="img" aria-label="ERD: USER one-to-many WORKOUT one-to-many MEASUREMENT">
+  <g fill="#fff" stroke="#222" stroke-width="1.5">
+    <rect x="10" y="40" width="170" height="70"/>
+    <rect x="300" y="40" width="220" height="240"/>
+    <rect x="640" y="40" width="170" height="170"/>
+  </g>
+  <g fill="#eee" stroke="#222" stroke-width="1.5">
+    <rect x="10" y="40" width="170" height="28"/>
+    <rect x="300" y="40" width="220" height="28"/>
+    <rect x="640" y="40" width="170" height="28"/>
+  </g>
+  <g font-weight="700" text-anchor="middle">
+    <text x="95" y="59">USER</text>
+    <text x="410" y="59">WORKOUT</text>
+    <text x="725" y="59">MEASUREMENT</text>
+  </g>
+  <g font-family="ui-monospace, Consolas, monospace" font-size="12">
+    <text x="20" y="90">PK user_id</text>
+    <text x="310" y="88">PK workout_id</text>
+    <text x="310" y="106">FK user_id</text>
+    <text x="310" y="124">   start_time</text>
+    <text x="310" y="142">   sport, workout_type</text>
+    <text x="310" y="160">   duration_min, data_points</text>
+    <text x="310" y="178">   corrected, offset_applied</text>
+    <text x="310" y="196">   hr_mean, hr_std,</text>
+    <text x="310" y="214">   hr_min, hr_max</text>
+    <text x="310" y="232">   speed_mean, speed_max</text>
+    <text x="310" y="250">   altitude_gain</text>
+    <text x="310" y="268">   split</text>
+    <text x="650" y="88">PK,FK workout_id</text>
+    <text x="650" y="106">PK    step</text>
+    <text x="650" y="124">      timestamp</text>
+    <text x="650" y="142">      t_sec</text>
+    <text x="650" y="160">      heart_rate</text>
+    <text x="650" y="178">      speed</text>
+    <text x="650" y="196">      altitude</text>
+  </g>
+  <g stroke="#222" stroke-width="1.5" fill="none">
+    <!-- USER 1 to many WORKOUT -->
+    <line x1="180" y1="85" x2="300" y2="85"/>
+    <line x1="192" y1="77" x2="192" y2="93"/><line x1="198" y1="77" x2="198" y2="93"/>
+    <line x1="286" y1="85" x2="300" y2="76"/><line x1="286" y1="85" x2="300" y2="94"/><line x1="280" y1="77" x2="280" y2="93"/>
+    <!-- WORKOUT 1 to many MEASUREMENT -->
+    <line x1="520" y1="85" x2="640" y2="85"/>
+    <line x1="532" y1="77" x2="532" y2="93"/><line x1="538" y1="77" x2="538" y2="93"/>
+    <line x1="626" y1="85" x2="640" y2="76"/><line x1="626" y1="85" x2="640" y2="94"/><line x1="620" y1="77" x2="620" y2="93"/>
+  </g>
+  <g font-size="12" fill="#444" text-anchor="middle">
+    <text x="240" y="72">does</text>
+    <text x="240" y="112">1 to 1..N</text>
+    <text x="580" y="72">has</text>
+    <text x="580" y="112">1 to 500</text>
+  </g>
+</svg>
+</div>
+
+<h2>3. Variables</h2>
+<p>Columns follow the OSF data dictionary elements: variable name, readable name, data type, measurement unit, allowed values, definition, synonyms, and description. Allowed values give the range actually observed in the data.</p>
+
+<h3>3.1 <code>workouts.csv</code>: one row per workout (40,186 rows)</h3>
+<p>Primary key: <code>workout_id</code>. Foreign key: <code>user_id</code> (athlete).</p>
+<div class="wrap">
+<table>
+<thead><tr><th>Variable name</th><th>Readable name</th><th>Type</th><th>Unit</th><th>Allowed values</th><th>Definition</th><th>Synonyms</th><th>Description / notes</th></tr></thead>
+<tbody>
+<tr><td>workout_id</td><td>Workout ID</td><td>integer</td><td>none</td><td>1,704,139 to 662,935,377; unique</td><td>Identifier of a single workout.</td><td>session id</td><td>Primary key. Joins to <code>measurements.workout_id</code>.</td></tr>
+<tr><td>user_id</td><td>Athlete ID</td><td>integer</td><td>none</td><td>69 to 15,481,421; 761 distinct values</td><td>Anonymous identifier of the athlete who recorded the workout.</td><td>athlete, user</td><td>Foreign key to the USER entity. Athletes appear in more than one split (see <code>split</code>).</td></tr>
+<tr><td>start_time</td><td>Workout start time</td><td>datetime (text)</td><td>UTC, <code>YYYY-MM-DD HH:MM:SS</code></td><td>2007-02-07 00:32:39 to 2016-01-01 13:00:09</td><td>Time of the first measurement of the workout.</td><td>start date</td><td>Derived: first value of the <code>timestamp</code> series, converted from Unix seconds. Not in the original parquet.</td></tr>
+<tr><td>sport</td><td>Sport</td><td>text</td><td>none</td><td><code>run</code></td><td>Type of sport recorded.</td><td>activity</td><td>Constant. Every workout is a run.</td></tr>
+<tr><td>workout_type</td><td>Workout intensity class</td><td>categorical</td><td>none</td><td><code>RECOVERY</code> (15,095), <code>STEADY</code> (22,991), <code>INTENSIVE</code> (2,100)</td><td>Intensity category of the workout.</td><td>intensity, run type</td><td>Assigned by the dataset creator. RECOVERY = easy, low-intensity run; STEADY = moderate pace; INTENSIVE = high intensity. Classes are imbalanced.</td></tr>
+<tr><td>duration_min</td><td>Workout duration</td><td>decimal</td><td>minutes</td><td>8.533 to 299.783</td><td>Total length of the workout.</td><td>length, elapsed time</td><td>Rounded to 3 decimals.</td></tr>
+<tr><td>data_points</td><td>Number of timesteps</td><td>integer</td><td>count</td><td><code>500</code></td><td>Number of measurements stored for the workout.</td><td>series length</td><td>Constant. Every workout was resampled to 500 timesteps, even though the source card says "max 500".</td></tr>
+<tr><td>corrected</td><td>HR offset corrected</td><td>boolean</td><td>none</td><td><code>True</code> (6), <code>False</code> (40,180)</td><td>Whether the source applied a correction to this workout's heart rate data.</td><td>&ndash;</td><td>Not described in the source dataset card. When True, <code>offset_applied</code> is filled in.</td></tr>
+<tr><td>offset_applied</td><td>HR offset applied</td><td>decimal</td><td>not documented (likely BPM)</td><td><code>20.0</code>, <code>25.0</code>, or empty</td><td>Size of the correction applied when <code>corrected</code> is True.</td><td>&ndash;</td><td>Missing (empty) for the 40,180 uncorrected workouts. Not described in the source dataset card.</td></tr>
+<tr><td>hr_mean</td><td>Mean heart rate</td><td>decimal</td><td>beats per minute (BPM)</td><td>120.01 to 191.214</td><td>Average of the workout's heart rate series.</td><td>average HR</td><td>Pre-computed by the source. Lower bound of 120 comes from the quality filter.</td></tr>
+<tr><td>hr_std</td><td>Heart rate standard deviation</td><td>decimal</td><td>BPM</td><td>5.0 to 45.056</td><td>Standard deviation of the heart rate series.</td><td>HR variability</td><td>Lower bound of 5 comes from the quality filter.</td></tr>
+<tr><td>hr_min</td><td>Minimum heart rate</td><td>decimal</td><td>BPM</td><td>30.75 to 173.857</td><td>Lowest value of the heart rate series.</td><td>&ndash;</td><td>Values are smoothed averages, so they can be non-integer.</td></tr>
+<tr><td>hr_max</td><td>Maximum heart rate</td><td>decimal</td><td>BPM</td><td>126.143 to 200.0</td><td>Highest value of the heart rate series.</td><td>peak HR</td><td>Upper bound of 200 comes from the quality filter.</td></tr>
+<tr><td>speed_mean</td><td>Mean speed</td><td>decimal</td><td>km/h</td><td>2.098 to 23.37</td><td>Average of the workout's speed series.</td><td>average pace</td><td>&ndash;</td></tr>
+<tr><td>speed_max</td><td>Maximum speed</td><td>decimal</td><td>km/h</td><td>3.657 to 80.716</td><td>Highest value of the speed series.</td><td>top speed</td><td>Values above about 25 km/h are not realistic for running and are likely GPS errors.</td></tr>
+<tr><td>altitude_gain</td><td>Elevation gain</td><td>decimal</td><td>metres</td><td>0.0 to 3,200.471</td><td>Cumulative positive change in altitude over the workout.</td><td>total ascent, climb</td><td>&ndash;</td></tr>
+<tr><td>split</td><td>Data split</td><td>categorical</td><td>none</td><td><code>train</code> (28,130), <code>validation</code> (6,027), <code>test</code> (6,029)</td><td>Partition the workout belongs to for model training and evaluation.</td><td>partition, fold</td><td>Assigned by the source, 70/15/15 by workout. Splits share athletes (750, 629 and 621 athletes respectively), so they are not independent per athlete.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>3.2 <code>measurements.csv</code>: one row per workout per timestep (20,093,000 rows)</h3>
+<p>Primary key: <code>workout_id</code> + <code>step</code>. Foreign key: <code>workout_id</code>. Derived from the list columns <code>heart_rate</code>, <code>speed</code>, <code>altitude</code> and <code>timestamp</code> in the original parquet.</p>
+<div class="wrap">
+<table>
+<thead><tr><th>Variable name</th><th>Readable name</th><th>Type</th><th>Unit</th><th>Allowed values</th><th>Definition</th><th>Synonyms</th><th>Description / notes</th></tr></thead>
+<tbody>
+<tr><td>workout_id</td><td>Workout ID</td><td>integer</td><td>none</td><td>Any <code>workout_id</code> in <code>workouts.csv</code></td><td>Workout the measurement belongs to.</td><td>session id</td><td>Foreign key to <code>workouts.workout_id</code>.</td></tr>
+<tr><td>step</td><td>Timestep index</td><td>integer</td><td>count</td><td>0 to 499</td><td>Position of the measurement within the workout's series.</td><td>index, sample number</td><td>Derived: position in the original list.</td></tr>
+<tr><td>timestamp</td><td>Measurement time</td><td>integer</td><td>Unix time, seconds (UTC)</td><td>1,170,808,359 to 1,451,656,830</td><td>Absolute time the measurement was recorded.</td><td>epoch time</td><td>Gaps between steps are not constant.</td></tr>
+<tr><td>t_sec</td><td>Elapsed time</td><td>integer</td><td>seconds</td><td>0 to 17,987</td><td>Time since the start of the workout.</td><td>time offset</td><td>Derived: <code>timestamp</code> minus the workout's first <code>timestamp</code>.</td></tr>
+<tr><td>heart_rate</td><td>Heart rate</td><td>decimal</td><td>BPM</td><td>30.75 to 200.0</td><td>Athlete's heart rate at this timestep.</td><td>HR, pulse</td><td>Prediction target in the source dataset. Smoothed with a 7-point moving average; rounded to 2 decimals.</td></tr>
+<tr><td>speed</td><td>Speed</td><td>decimal</td><td>km/h</td><td>0.0 to 80.716</td><td>Athlete's speed at this timestep.</td><td>velocity, pace</td><td>Smoothed; rounded to 3 decimals. High values are likely GPS errors.</td></tr>
+<tr><td>altitude</td><td>Altitude</td><td>decimal</td><td>metres</td><td>&minus;500.0 to 5,942.5</td><td>Altitude at this timestep.</td><td>elevation</td><td>Smoothed; rounded to 2 decimals. Extreme values at both ends are likely GPS or device errors.</td></tr>
+</tbody>
+</table>
+</div>
+
+</body>
+</html>
