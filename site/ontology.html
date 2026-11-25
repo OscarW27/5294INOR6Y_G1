@@ -3,32 +3,401 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ontology (Turtle)</title>
+<title>Ontology</title>
 <link rel="alternate" type="text/turtle" href="ontology.ttl">
 <style>
-  :root { --bg:#fff; --fg:#1d2330; --muted:#5b6475; --card:#f6f7fa; --line:#d9dde6; --accent:#1f6feb; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#14171f; --fg:#e6e9f0; --muted:#9aa3b5; --card:#1c212c; --line:#2d3442; --accent:#6aa6ff; } }
-  body { font-family: system-ui, sans-serif; margin: 0; background: var(--bg); color: var(--fg); }
+  :root {
+    --bg: #ffffff; --fg: #1d2330; --muted: #5b6475; --card: #f6f7fa; --line: #d9dde6;
+    --accent: #1f6feb; --class: #2f7d4f; --obj: #b4601a; --data: #7a3fb0; --obs: #0e7490; --ind: #8a6d00; --ext: #7b8494;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171f; --fg: #e6e9f0; --muted: #9aa3b5; --card: #1c212c; --line: #2d3442;
+      --accent: #6aa6ff; --class: #5fc08a; --obj: #e59a5a; --data: #c49af0; --obs: #4cc3dc; --ind: #e0c05a; --ext: #8d96a8;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, sans-serif; margin: 0; background: var(--bg); color: var(--fg); line-height: 1.5; }
+  a { color: var(--accent); }
+  .mono { font-family: ui-monospace, Consolas, monospace; }
+
+  /* ---- raw mode (default): looks like a plain text file with a small link bar ---- */
+  #rawbar { padding: 8px 16px; border-bottom: 1px solid var(--line); background: var(--card); font-size: .9rem; display: flex; gap: 16px; flex-wrap: wrap; }
+  #raw { margin: 0; padding: 12px 16px; font: .85rem/1.5 ui-monospace, Consolas, monospace; white-space: pre; overflow: auto; }
+
+  /* ---- viewer mode (?viewer) ---- */
   header, main { max-width: 64rem; margin: 0 auto; padding: 0 16px; }
   header { padding-top: 24px; }
-  h1 { margin: 0 0 4px; font-size: 1.5rem; }
-  p { color: var(--muted); margin: 4px 0 12px; }
-  a { color: var(--accent); margin-right: 16px; }
-  pre { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; overflow: auto; font: .85rem/1.5 ui-monospace, Consolas, monospace; white-space: pre; }
+  h1 { margin: 0 0 4px; font-size: 1.6rem; }
+  .sub { color: var(--muted); margin: 0 0 12px; }
+  .meta { font-size: .9rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 14px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0 8px; position: sticky; top: 0; background: var(--bg); padding: 8px 0; z-index: 2; border-bottom: 1px solid var(--line); }
+  input[type=search] { flex: 1 1 14rem; padding: 8px 10px; font: inherit; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--fg); }
+  .chip { font: inherit; font-size: .85rem; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--fg); cursor: pointer; }
+  .chip[aria-pressed=true] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  h2 { font-size: 1.15rem; margin: 28px 0 8px; }
+  h2 small { color: var(--muted); font-weight: normal; }
+  #graphbox { border: 1px solid var(--line); border-radius: 8px; background: var(--card); margin-top: 16px; }
+  #graphtools { display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 8px 12px; font-size: .85rem; border-bottom: 1px solid var(--line); align-items: center; }
+  #graphtools label { cursor: pointer; white-space: nowrap; }
+  .dot { display: inline-block; width: .7em; height: .7em; border-radius: 50%; margin-right: 4px; background: var(--c); }
+  #graph { height: 640px; }
+  #graphnote { padding: 6px 12px; font-size: .8rem; color: var(--muted); border-top: 1px solid var(--line); }
+  .term { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--kc, var(--line)); border-radius: 6px; padding: 10px 14px; margin: 8px 0; scroll-margin-top: 70px; }
+  .term:target, .term.hit { outline: 2px solid var(--accent); }
+  .term h3 { margin: 0; font-size: 1rem; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+  .term .iri { font: .8rem ui-monospace, Consolas, monospace; color: var(--muted); }
+  .term p { margin: 4px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .88rem; margin-top: 6px; }
+  td { padding: 2px 8px 2px 0; vertical-align: top; }
+  td:first-child { color: var(--muted); white-space: nowrap; width: 1%; }
+  #status { color: var(--muted); margin: 16px 0; }
+  .err { color: #c0392b; }
+  details > summary { cursor: pointer; color: var(--muted); font-size: .85rem; margin-top: 6px; }
+  footer { max-width: 64rem; margin: 32px auto; padding: 0 16px; color: var(--muted); font-size: .85rem; }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
-<header>
-  <h1>Endomondo Running Telemetry Ontology</h1>
-  <p>Turtle source of <span id="iri">this ontology</span>.</p>
-  <a href="ontologyviewer/">Open the viewer</a><a href="ontology.ttl" download="ontology.ttl">Download .ttl</a>
-</header>
-<main><pre id="src">Loading…</pre></main>
+
+<!-- Raw mode: /ontology -->
+<div id="rawview">
+  <div id="rawbar">
+    <a href="?viewer">Open viewer (?viewer)</a>
+    <a href="ontology.ttl" download="ontology.ttl">Download .ttl</a>
+  </div>
+  <pre id="raw">Loading…</pre>
+</div>
+
+<!-- Viewer mode: /ontology?viewer -->
+<div id="viewerview" hidden>
+  <header>
+    <h1 id="title">Ontology Viewer</h1>
+    <p class="sub" id="desc">Loading ontology…</p>
+    <div class="meta" id="meta"></div>
+  </header>
+  <main>
+    <div id="graphbox">
+      <div id="graphtools">
+        <strong>Graph</strong>
+        <label><input type="checkbox" id="g-data" checked> <span class="dot" style="--c:var(--data)"></span>datatype properties</label>
+        <label><input type="checkbox" id="g-ind"> <span class="dot" style="--c:var(--ind)"></span>individuals &amp; example data</label>
+        <label><input type="checkbox" id="g-ext" checked> <span class="dot" style="--c:var(--ext)"></span>external terms</label>
+        <span><span class="dot" style="--c:var(--class)"></span>class</span>
+        <span><span class="dot" style="--c:var(--obs)"></span>observable property</span>
+        <span class="mono">&rarr; labelled edges = object properties</span>
+      </div>
+      <div id="graph"></div>
+      <div id="graphnote">Drag nodes, scroll to zoom, click a node to jump to its card below.</div>
+    </div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search terms, labels, comments…" aria-label="Search terms">
+      <span id="chips"></span>
+    </div>
+    <div id="status"></div>
+    <div id="out"></div>
+  </main>
+  <footer>
+    Parsed in your browser from <a href="ontology.ttl">ontology.ttl</a>.
+    Namespace: <span class="mono" id="ns"></span> &middot; <a href="ontology">raw Turtle</a>
+  </footer>
+</div>
+
 <script>
-document.getElementById("iri").textContent = location.origin + location.pathname.replace(/\/ontology(\.html)?$/, "") + "/ontology";
-fetch("ontology.ttl").then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
-  .then(t => { document.getElementById("src").textContent = t; })
-  .catch(e => { document.getElementById("src").textContent = "Could not load ontology.ttl: " + e.message; });
+const VIEWER = new URLSearchParams(location.search).has("viewer");
+const TTL_URL = "ontology.ttl";   // page lives at /ontology, so this is /ontology.ttl
+const $ = id => document.getElementById(id);
+
+if (!VIEWER) {
+  fetch(TTL_URL).then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+    .then(t => { $("raw").textContent = t; })
+    .catch(e => { $("raw").textContent = "Could not load " + TTL_URL + ": " + e.message; });
+} else {
+  $("rawview").hidden = true;
+  $("viewerview").hidden = false;
+  const loadScript = src => new Promise((res, rej) => {
+    const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = () => rej(new Error("failed to load " + src));
+    document.head.append(s);
+  });
+  Promise.all([
+    loadScript("https://cdn.jsdelivr.net/npm/n3@1.17.2/browser/n3.min.js"),
+    loadScript("https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.9/standalone/umd/vis-network.min.js").catch(() => null)
+  ]).then(startViewer).catch(e => { $("desc").textContent = ""; $("status").className = "err"; $("status").textContent = e.message; });
+}
+
+function startViewer() {
+const RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+const RDFS = "http://www.w3.org/2000/01/rdf-schema#";
+const OWL = "http://www.w3.org/2002/07/owl#";
+const DCT = "http://purl.org/dc/terms/";
+const SOSA = "http://www.w3.org/ns/sosa/";
+const XSD = "http://www.w3.org/2001/XMLSchema#";
+
+const KINDS = [
+  { id: "class",  label: "Classes",               css: "--class", test: t => t.has(OWL + "Class") },
+  { id: "object", label: "Object properties",     css: "--obj",   test: t => t.has(OWL + "ObjectProperty") },
+  { id: "data",   label: "Datatype properties",   css: "--data",  test: t => t.has(OWL + "DatatypeProperty") },
+  { id: "obs",    label: "Observable properties", css: "--obs",   test: t => t.has(SOSA + "ObservableProperty") },
+  { id: "ind",    label: "Individuals & example data", css: "--ind", test: () => true }
+];
+
+const el = (tag, props, ...kids) => {
+  const e = Object.assign(document.createElement(tag), props || {});
+  kids.flat().forEach(k => e.append(k));
+  return e;
+};
+
+let model = null;
+let network = null;
+const active = new Set(KINDS.map(k => k.id));
+
+// N3's callback API is asynchronous: once per quad, then (null, null, prefixes) at the end.
+function parse(text) {
+  return new Promise((resolve, reject) => {
+    const quads = [];
+    new N3.Parser().parse(text, (err, q, pfx) => {
+      if (err) return reject(err);
+      if (q) quads.push(q); else resolve({ quads, prefixes: pfx || {} });
+    });
+  });
+}
+
+function buildModel({ quads, prefixes }) {
+  const ns = prefixes[""] || "";
+  const ont = quads.find(q => q.predicate.value === RDF + "type" && q.object.value === OWL + "Ontology");
+  const terms = new Map();
+  for (const q of quads) {
+    if (q.subject.termType !== "NamedNode" || !q.subject.value.startsWith(ns) || q.subject.value === ns) continue;
+    let t = terms.get(q.subject.value);
+    if (!t) terms.set(q.subject.value, t = { iri: q.subject.value, types: new Set(), props: [] });
+    if (q.predicate.value === RDF + "type") t.types.add(q.object.value);
+    t.props.push(q);
+  }
+  const m = { ns, prefixes, quads, terms, ontologyIri: ont ? ont.subject.value : "",
+              ontologyQuads: quads.filter(q => ont && q.subject.value === ont.subject.value) };
+  model = m;
+  for (const t of terms.values()) {
+    t.kind = KINDS.find(k => k.test(t.types));
+    t.label = first(t, RDFS + "label") || local(t.iri);
+    t.comment = first(t, RDFS + "comment") || "";
+  }
+  return m;
+}
+
+function first(t, pred) { const q = t.props.find(p => p.predicate.value === pred); return q ? q.object.value : ""; }
+function local(iri) { return iri.slice(model.ns.length); }
+function short(iri) {
+  if (model.ns && iri.startsWith(model.ns)) return ":" + iri.slice(model.ns.length);
+  for (const [p, base] of Object.entries(model.prefixes)) if (p && iri.startsWith(base)) return p + ":" + iri.slice(base.length);
+  return iri;
+}
+
+/* ---------------- graph ---------------- */
+
+// Pure: turns the model into { nodes: [...], edges: [...] } for the given toggles.
+function buildGraph(opts) {
+  const { terms } = model;
+  const SKIP_PRED = new Set([RDFS + "label", RDFS + "comment", RDFS + "domain", RDFS + "range", OWL + "inverseOf",
+                             OWL + "versionInfo", RDFS + "seeAlso", RDF + "type", RDFS + "subClassOf"]);
+  const OWL_TYPES = new Set([OWL + "Class", OWL + "ObjectProperty", OWL + "DatatypeProperty", OWL + "NamedIndividual"]);
+  const nodes = new Map(), edges = [];
+  const termVisible = t => t.kind.id !== "object" && (t.kind.id !== "data" || opts.data) && (t.kind.id !== "ind" || opts.ind);
+  const node = iri => {
+    if (nodes.has(iri)) return nodes.get(iri);
+    const t = terms.get(iri);
+    const n = t ? { id: iri, label: t.label, group: t.kind.id, title: (t.comment || short(iri)), local: true }
+                : { id: iri, label: short(iri), group: "ext", title: iri, local: false };
+    nodes.set(iri, n); return n;
+  };
+  const addEdge = (from, to, label, kind) => edges.push({ from, to, label, kind });
+
+  for (const t of terms.values()) {
+    const k = t.kind.id;
+    if (k === "object") {
+      const dom = t.props.find(q => q.predicate.value === RDFS + "domain");
+      const ran = t.props.find(q => q.predicate.value === RDFS + "range");
+      if (dom && ran && ran.object.termType === "NamedNode") addEdge(dom.object.value, ran.object.value, t.label, "prop");
+      continue;
+    }
+    if (!termVisible(t)) continue;
+    node(t.iri);
+    for (const q of t.props) {
+      const p = q.predicate.value, o = q.object;
+      if (k === "data" && p === RDFS + "domain") { addEdge(o.value, t.iri, "", "data"); continue; }
+      if (o.termType !== "NamedNode") continue;
+      if (p === RDFS + "subClassOf") addEdge(t.iri, o.value, "subClassOf", "sub");
+      else if (p === RDF + "type" && !OWL_TYPES.has(o.value)) addEdge(t.iri, o.value, "a", "type");
+      else if (!SKIP_PRED.has(p) && terms.has(o.value)) addEdge(t.iri, o.value, short(p), "link");
+    }
+  }
+  // keep an edge only if both ends are visible nodes; create external nodes lazily
+  const out = [];
+  for (const e of edges) {
+    const ends = [e.from, e.to];
+    const ok = ends.every(id => {
+      const t = terms.get(id);
+      if (t) return termVisible(t);
+      return opts.ext && id.indexOf(XSD) !== 0;
+    });
+    if (!ok) continue;
+    ends.forEach(node);
+    out.push(e);
+  }
+  const used = new Set(); out.forEach(e => { used.add(e.from); used.add(e.to); });
+  const list = [...nodes.values()].filter(n => n.local ? true : used.has(n.id));
+  return { nodes: list, edges: out };
+}
+
+function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+function drawGraph() {
+  const box = $("graph");
+  if (!window.vis) { box.textContent = "Graph library could not be loaded (offline?)."; box.style.padding = "16px"; return; }
+  const g = buildGraph({ data: $("g-data").checked, ind: $("g-ind").checked, ext: $("g-ext").checked });
+  const fg = cssVar("--fg"), bg = cssVar("--card");
+  const col = (v, f) => ({ background: cssVar(v), border: cssVar(v), highlight: { background: cssVar(v), border: fg }, hover: { background: cssVar(v), border: fg } });
+  const nodes = g.nodes.map(n => Object.assign({
+    id: n.id, label: n.label, title: n.title, group: n.group,
+    shape: { class: "ellipse", data: "box", obs: "ellipse", ind: "box", ext: "box" }[n.group],
+    color: col({ class: "--class", data: "--data", obs: "--obs", ind: "--ind", ext: "--ext" }[n.group]),
+    font: { color: n.group === "ind" || n.group === "ext" ? "#111" : "#fff", size: n.group === "data" ? 14 : 18, face: "system-ui, sans-serif" },
+    margin: n.group === "data" ? 4 : 8
+  }, n.group === "ext" ? { shapeProperties: { borderDashes: [4, 3] } } : {}));
+  const edges = g.edges.map(e => ({
+    from: e.from, to: e.to, label: e.label,
+    arrows: e.kind === "data" ? "" : "to",
+    dashes: e.kind === "sub" || e.kind === "type",
+    color: { color: e.kind === "prop" ? cssVar("--obj") : cssVar("--muted"), highlight: fg },
+    width: e.kind === "prop" ? 2 : 1,
+    font: { size: 13, color: fg, strokeWidth: 3, strokeColor: bg, align: "middle" },
+    smooth: { type: "dynamic" }
+  }));
+  const data = { nodes: new vis.DataSet(nodes), edges: new vis.DataSet(edges) };
+  const options = {
+    physics: { solver: "forceAtlas2Based", forceAtlas2Based: { gravitationalConstant: -60, springLength: 70, springConstant: 0.06, avoidOverlap: 0.6 }, stabilization: { iterations: 250 } },
+    interaction: { hover: true, tooltipDelay: 150 }, layout: { improvedLayout: true }
+  };
+  if (network) network.destroy();
+  network = new vis.Network(box, data, options);
+  network.once("stabilizationIterationsDone", () => network.setOptions({ physics: false }));
+  network.on("click", p => {
+    if (!p.nodes.length) return;
+    const id = p.nodes[0];
+    if (model.terms.has(id)) { location.hash = local(id); }
+  });
+}
+
+/* ---------------- term cards ---------------- */
+
+function valueNode(o) {
+  if (o.termType === "NamedNode") {
+    if (model.terms.has(o.value)) return el("a", { href: "#" + local(o.value), textContent: short(o.value) });
+    if (/^https?:/.test(o.value)) return el("a", { href: o.value, textContent: short(o.value), target: "_blank", rel: "noopener" });
+    return short(o.value);
+  }
+  const s = el("span", { textContent: o.value });
+  if (o.language) s.append(el("small", { className: "mono", textContent: " @" + o.language }));
+  else if (o.datatype && o.datatype.value !== XSD + "string") s.append(el("small", { className: "mono", textContent: " ^^" + short(o.datatype.value) }));
+  return s;
+}
+
+function termCard(t) {
+  const card = el("div", { className: "term", id: local(t.iri) });
+  card.style.setProperty("--kc", `var(${t.kind.css})`);
+  card.dataset.kind = t.kind.id;
+  card.dataset.search = (local(t.iri) + " " + t.label + " " + t.comment).toLowerCase();
+  card.append(el("h3", {}, t.label, el("span", { className: "iri", textContent: short(t.iri) })));
+  if (t.comment) card.append(el("p", { textContent: t.comment }));
+  const skip = new Set([RDFS + "label", RDFS + "comment"]);
+  const rows = t.props.filter(q => !skip.has(q.predicate.value));
+  if (rows.length) {
+    const tbl = el("table");
+    for (const q of rows) tbl.append(el("tr", {}, el("td", { textContent: short(q.predicate.value) }), el("td", {}, valueNode(q.object))));
+    if (t.kind.id === "ind" && rows.length > 6) card.append(el("details", {}, el("summary", { textContent: rows.length + " statements" }), tbl));
+    else card.append(tbl);
+  }
+  return card;
+}
+
+function render() {
+  const out = $("out"); out.textContent = "";
+  for (const k of KINDS) {
+    const list = [...model.terms.values()].filter(t => t.kind === k).sort((a, b) => a.label.localeCompare(b.label));
+    if (!list.length) continue;
+    const sec = el("section", {}, el("h2", {}, k.label + " ", el("small", { textContent: "(" + list.length + ")" })), list.map(termCard));
+    sec.dataset.kind = k.id;
+    out.append(sec);
+  }
+  applyFilter();
+}
+
+function applyFilter() {
+  const q = $("q").value.trim().toLowerCase();
+  let shown = 0;
+  document.querySelectorAll("section[data-kind]").forEach(sec => {
+    let n = 0;
+    sec.querySelectorAll(".term").forEach(c => {
+      const ok = active.has(c.dataset.kind) && (!q || q.split(/\s+/).every(w => c.dataset.search.includes(w)));
+      c.hidden = !ok; if (ok) n++;
+    });
+    sec.hidden = n === 0; shown += n;
+  });
+  $("status").textContent = shown ? "" : "No terms match.";
+}
+
+function focusTerm(id) {
+  const c = document.getElementById(id);
+  if (!c || !c.classList.contains("term")) return;
+  if (c.hidden) { $("q").value = ""; active.clear(); KINDS.forEach(k => active.add(k.id)); drawChips(); applyFilter(); }
+  c.scrollIntoView({ block: "start" });
+  c.classList.add("hit"); setTimeout(() => c.classList.remove("hit"), 2000);
+}
+
+function drawChips() {
+  const box = $("chips"); box.textContent = "";
+  for (const k of KINDS) {
+    const n = [...model.terms.values()].filter(t => t.kind === k).length;
+    if (!n) continue;
+    const b = el("button", { className: "chip", type: "button", textContent: k.label + " " + n,
+      onclick: () => { active.has(k.id) ? active.delete(k.id) : active.add(k.id); drawChips(); applyFilter(); } });
+    b.setAttribute("aria-pressed", active.has(k.id));
+    box.append(b, " ");
+  }
+}
+
+function drawHeader() {
+  const get = p => { const q = model.ontologyQuads.find(x => x.predicate.value === p); return q ? q.object.value : ""; };
+  $("title").textContent = get(DCT + "title") || "Ontology";
+  document.title = $("title").textContent + " – Ontology Viewer";
+  $("desc").textContent = get(DCT + "description");
+  const meta = $("meta");
+  meta.append(el("span", { textContent: "IRI: " + model.ontologyIri }));
+  const v = get(OWL + "versionInfo"); if (v) meta.append(el("span", { textContent: "Version " + v }));
+  meta.append(el("a", { href: "ontology", textContent: "Raw Turtle" }));
+  $("ns").textContent = model.ns;
+}
+
+async function main() {
+  try {
+    const res = await fetch(TTL_URL);
+    if (!res.ok) throw new Error("HTTP " + res.status + " loading " + TTL_URL);
+    buildModel(await parse(await res.text()));
+  } catch (e) {
+    $("desc").textContent = "";
+    $("status").className = "err";
+    $("status").textContent = "Could not load the ontology: " + e.message + " (serve the site over http, not file://)";
+    return;
+  }
+  drawHeader(); drawChips(); render(); drawGraph();
+  ["g-data", "g-ind", "g-ext"].forEach(id => $(id).addEventListener("change", drawGraph));
+  $("q").addEventListener("input", applyFilter);
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (id) focusTerm(id);
+  window.addEventListener("hashchange", () => focusTerm(decodeURIComponent(location.hash.slice(1))));
+  window.__ontology = { buildGraph, model };   // handy for debugging in the console
+}
+main();
+}
 </script>
 </body>
 </html>
