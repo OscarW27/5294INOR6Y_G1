@@ -8,11 +8,14 @@
 @prefix qudt:   <http://qudt.org/schema/qudt/> .
 @prefix unit:   <http://qudt.org/vocab/unit/> .
 @prefix paco:   <http://purl.bioontology.org/ontology/PACO/> .
-@prefix endo:   <http://example.org/endomondo-ontology#> .
 
-<http://example.org/endomondo-ontology> a owl:Ontology ;
+@prefix endo:   <https://oscarw27.github.io/5294INOR6Y_G1/ontology.ttl#> .
+
+<https://oscarw27.github.io/5294INOR6Y_G1/ontology.ttl> a owl:Ontology ;
     dcterms:title "Endomondo Running Telemetry Ontology"@en ;
     dcterms:description "A domain ontology modeling running workouts, intensity categories, summary metrics, and time-series sensor observations from the Endomondo Heart Rate Prediction V2 dataset."@en ;
+    owl:versionInfo "1.0"^^xsd:string ;
+    rdfs:seeAlso <https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2> ;
     owl:imports <http://www.w3.org/ns/sosa/> .
 
 # Classes
@@ -41,6 +44,22 @@ endo:IntensiveRun a owl:Class ;
     rdfs:subClassOf endo:RunningWorkout ;
     rdfs:label "Intensive Run"@en ;
     rdfs:comment "A high-effort running session categorized as INTENSIVE."@en .
+
+endo:RunFocus a owl:Class ;
+    rdfs:label "Run Focus"@en ;
+    rdfs:comment "The main character of a single run, used to describe it in plain language."@en .
+
+endo:IntervalFocused a endo:RunFocus ;
+    rdfs:label "Interval focused"@en ;
+    rdfs:comment "A hard session, like interval training that mixes fast and slow parts (workout type INTENSIVE)."@en .
+
+endo:EfficientFocused a endo:RunFocus ;
+    rdfs:label "Efficient focused"@en ;
+    rdfs:comment "A run with high efficiency: 100 x mean speed / mean heart rate is at least 7.1."@en .
+
+endo:FastStartFocused a endo:RunFocus ;
+    rdfs:label "Fast start focused"@en ;
+    rdfs:comment "A less economical, non-interval run (efficiency below 7.1), typical of going out too fast at the start."@en .
 
 endo:TelemetryPoint a owl:Class ;
     rdfs:subClassOf sosa:ObservationCollection ;
@@ -72,6 +91,12 @@ endo:performedBy a owl:ObjectProperty ;
     rdfs:domain endo:RunningWorkout ;
     rdfs:range endo:Athlete ;
     rdfs:label "performed by"@en .
+
+endo:runFocus a owl:ObjectProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range endo:RunFocus ;
+    rdfs:label "run focus"@en ;
+    rdfs:comment "Links a workout to its main focus (interval, efficient or fast start)."@en .
 
 endo:hasWorkout a owl:ObjectProperty ;
     owl:inverseOf endo:performedBy ;
@@ -143,6 +168,80 @@ endo:sequenceIndex a owl:DatatypeProperty ;
     rdfs:range xsd:nonNegativeInteger ;
     rdfs:label "sequence index"@en ;
     rdfs:comment "Zero-based position (0 to 499) of the observation within the resampled workout array."@en .
+
+# =====================================================================
+# Dashboard KPI terms (derived per-run metrics; added for the running dashboard)
+# =====================================================================
+
+endo:ZoneSource a owl:Class ;
+    rdfs:label "Zone Source"@en ;
+    rdfs:comment "Where the heart rate zone shares of a run came from."@en .
+
+endo:TimeSeriesZones a endo:ZoneSource ;
+    rdfs:label "Time-series zones"@en ;
+    rdfs:comment "Zone shares measured from the heart rate time series (time-weighted samples)."@en .
+
+endo:SummaryEstimatedZones a endo:ZoneSource ;
+    rdfs:label "Summary-estimated zones"@en ;
+    rdfs:comment "Zone shares estimated from the run summary (hr_mean, hr_std, hr_min, hr_max) because no time series exists for the run."@en .
+
+endo:zoneSource a owl:ObjectProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range endo:ZoneSource ;
+    rdfs:label "zone source"@en .
+
+endo:startDate a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:date ;
+    rdfs:label "start date"@en ;
+    rdfs:comment "Calendar day the workout started (workouts.csv start_date)."@en .
+
+endo:distanceKm a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:float ;
+    rdfs:label "distance (km)"@en .
+
+endo:paceMinPerKm a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:float ;
+    rdfs:label "average pace (min/km)"@en ;
+    rdfs:comment "60 / mean speed in km/h."@en .
+
+endo:lowZoneShare a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:float ;
+    rdfs:label "low zone share"@en ;
+    rdfs:comment "Fraction (0-1) of the run below 80 percent of the reference maximum heart rate."@en .
+
+endo:moderateZoneShare a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:float ;
+    rdfs:label "moderate zone share"@en ;
+    rdfs:comment "Fraction (0-1) of the run from 80 up to 90 percent of the reference maximum heart rate."@en .
+
+endo:highZoneShare a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:float ;
+    rdfs:label "high zone share"@en ;
+    rdfs:comment "Fraction (0-1) of the run at or above 90 percent of the reference maximum heart rate."@en .
+
+endo:trainingLoad a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:float ;
+    rdfs:label "training load (points)"@en ;
+    rdfs:comment "Edwards-style training impulse: minutes x (1 x low share + 2 x moderate share + 3 x high share)."@en .
+
+endo:beatsPerKm a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:float ;
+    rdfs:label "heartbeats per km"@en ;
+    rdfs:comment "Mean heart rate x pace in min/km: the cardiac cost of each kilometre."@en .
+
+endo:hrDriftPct a owl:DatatypeProperty ;
+    rdfs:domain endo:RunningWorkout ;
+    rdfs:range xsd:float ;
+    rdfs:label "heart rate drift (%)"@en ;
+    rdfs:comment "Change of the heart-rate-to-speed ratio from the first to the second half of the run (time series only)."@en .
 
 # Example Instance Data (Mapped from One Dataset Row)
 
