@@ -79,7 +79,7 @@ if (!VIEWER) {
   Promise.all([
     loadScript("https://cdn.jsdelivr.net/npm/n3@1.17.2/browser/n3.min.js"),
     loadScript("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.7.0/lib/viz-standalone.js"),
-    loadScript("https://cdnjs.cloudflare.com/ajax/libs/svg-pan-zoom/3.6.1/svg-pan-zoom.min.js")
+    loadScript("https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js")
   ]).then(startViewer).catch(e => { $("msg").className = "err"; $("msg").textContent = e.message; });
 }
 
