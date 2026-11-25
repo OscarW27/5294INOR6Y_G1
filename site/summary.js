@@ -25,39 +25,48 @@
     distance_km:   "distanceKm"
   };
 
-  // Run focus (ported from analysis/athlete_profiles, which labels ATHLETES as
-  // "Interval-focused" / "Efficient & consistent" / "Fast starter / developing").
-  // The notebook has no per-run thresholds, and the CSV has no time series, so the rules
-  // below use the closest per-run values available in workouts.csv:
-  //  - interval:  notebook names that cluster by share_intensive (37% INTENSIVE runs vs ~3%
-  //               for the others) -> a run is interval focused when workout_type is INTENSIVE.
-  //  - efficient: notebook feature efficiency = 100 * speed_mean / hr_mean; cluster means are
-  //               7.70 (efficient) vs 6.48 / 6.57 (others), midpoint 7.1 -> efficiency >= 7.1.
-  //  - fast start: notebook uses opening_pace_ratio (first 15% of the run), not in the CSV;
-  //               fast starters are the low-efficiency, non-interval group -> everything else.
-  // Rules are checked in this order, so each run gets exactly one focus.
-  var FOCUS_EFFICIENCY_MIN = 7.1;
+  // Run focus: per-run labels from the k-means clustering of run shapes
+  // (analysis/run_types, k=5; clustering output served as data/run_types.csv).
+  // The label is ML-found data keyed by workout_id, not computed from summary
+  // metrics; runs without a label (727 of 40,186) get no focus sentence.
+  var RUN_TYPE_TO_KEY = {
+    "Easy / short":       "EasyShort",
+    "Long & steady":      "LongSteady",
+    "Tempo / hard":       "TempoHard",
+    "Fartlek / variable": "FartlekVariable",
+    "Stop-and-go":        "StopAndGo"
+  };
+  var RUN_TYPE_BY_ID = {};
+  function setRunTypes(rows) {
+    RUN_TYPE_BY_ID = {};
+    (rows || []).forEach(function (row) {
+      var key = RUN_TYPE_TO_KEY[row.run_type];
+      if (key) RUN_TYPE_BY_ID[Number(row.workout_id)] = key;
+    });
+  }
+
   var FOCUS_TEXT = {
-    IntervalFocused: {
-      short: "interval", term: "INTENSIVE",
-      plain: "Overall it was interval focused: a tough session, like training that mixes fast and slow parts."
+    EasyShort: {
+      short: "easy / short",
+      plain: "Overall it was an easy, short run: a relaxed pace and a modest distance, the kind of session that keeps you moving between harder days."
     },
-    EfficientFocused: {
-      short: "efficient",
-      plain: "Overall it was efficient focused: you got good speed for the effort your heart put in, so your body worked economically."
+    LongSteady: {
+      short: "long & steady",
+      plain: "Overall it was a long, steady run: you settled into an even rhythm and covered a good distance."
     },
-    FastStartFocused: {
-      short: "fast start",
-      plain: "Overall it was fast start focused: it looks like you went out quickly, which costs more energy than an even pace."
+    TempoHard: {
+      short: "tempo / hard",
+      plain: "Overall it was a tempo run: you pushed harder than your usual pace and kept it going, which really asks of the heart."
+    },
+    FartlekVariable: {
+      short: "fartlek / variable",
+      plain: "Overall it was a varied run: your speed went up and down a lot, like a fartlek mixing fast and easy stretches."
+    },
+    StopAndGo: {
+      short: "stop-and-go",
+      plain: "Overall it was a stop-and-go run: a low average speed with plenty of slow stretches, like walk breaks or a wandering route."
     }
   };
-
-  // Returns "IntervalFocused" | "EfficientFocused" | "FastStartFocused", or null if values are missing.
-  function runFocus(workoutType, speedMean, hrMean) {
-    if (workoutType === "INTENSIVE") return "IntervalFocused";
-    if (isNaN(speedMean) || isNaN(hrMean) || hrMean <= 0) return null;
-    return 100 * speedMean / hrMean >= FOCUS_EFFICIENCY_MIN ? "EfficientFocused" : "FastStartFocused";
-  }
 
   // Parse workouts.csv (no quoted fields) into an array of row objects.
   function parseCsv(text) {
@@ -88,8 +97,6 @@
       var v = parseFloat(row[col]);
       if (!isNaN(v)) triples.push({ s: s, p: COLUMN_TO_PREDICATE[col], o: v });
     });
-    var focus = runFocus(row.workout_type, parseFloat(row.speed_mean), parseFloat(row.hr_mean));
-    if (focus) triples.push({ s: s, p: "runFocus", o: "endo:" + focus });
     return triples;
   }
 
@@ -115,7 +122,8 @@
     var hrStd = obj(triples, "hrStd");
     var spd = obj(triples, "speedMean");
     var up = obj(triples, "altitudeGain");
-    var focus = FOCUS_TEXT[String(obj(triples, "runFocus")).replace("endo:", "")];
+    var focusName = RUN_TYPE_BY_ID[obj(triples, "workoutId")];
+    var focus = focusName ? FOCUS_TEXT[focusName] : undefined;
 
     if (mode === "Expert") {
       var parts = [];
@@ -124,11 +132,7 @@
       }
       if (spd !== undefined) parts.push("speed mean " + round(spd, 1) + " km/h");
       if (up !== undefined) parts.push("ascent " + Math.round(up) + " m");
-      if (focus) {
-        var eff = hrMean && spd !== undefined ? 100 * spd / hrMean : null;
-        parts.push("focus: " + focus.short +
-          (focus.term ? " (" + focus.term + ")" : eff !== null ? " (speed/HR " + round(eff, 1) + ")" : ""));
-      }
+      if (focus) parts.push("focus: " + focus.short);
       var head = info.cls + (dist !== undefined ? " " + round(dist, 1) + " km" : "") +
         (dur !== undefined ? " / " + Math.round(dur) + " min" : "");
       return head + (parts.length ? "; " + parts.join(", ") : "") + ".";
@@ -733,7 +737,7 @@
     buildExpertRunLine: buildExpertRunLine, kpiCards: kpiCards,
     parseCsv: parseCsv,
     rowToTriples: rowToTriples,
-    runFocus: runFocus,
+    setRunTypes: setRunTypes,
     buildSummary: buildSummary,
     runInfo: runInfo,
     formatRun: formatRun,

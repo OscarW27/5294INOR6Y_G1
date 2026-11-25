@@ -15,8 +15,9 @@
   [hidden] { display: none !important; }
 
   /* raw mode (/ontology) */
+  #rawview { height: 100%; display: flex; flex-direction: column; }
   #rawbar { padding: 8px 16px; border-bottom: 1px solid var(--line); background: var(--card); font-size: .9rem; display: flex; gap: 16px; flex-wrap: wrap; }
-  #raw { margin: 0; padding: 12px 16px; font: .85rem/1.5 ui-monospace, Consolas, monospace; white-space: pre; overflow: auto; }
+  #raw { flex: 1; min-height: 0; margin: 0; padding: 12px 16px; font: .85rem/1.5 ui-monospace, Consolas, monospace; white-space: pre; overflow: auto; }
 
   /* viewer mode (/ontology?viewer): toolbar + full-window graph */
   #viewerview { height: 100%; display: flex; flex-direction: column; }
@@ -29,6 +30,8 @@
   #stage svg { width: 100%; height: 100%; display: block; }
   #msg { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); padding: 16px; text-align: center; }
   .err { color: #c0392b !important; }
+  .foot { font-size: .72rem; color: var(--muted); padding: 1px 8px; border-top: 1px solid var(--line); }
+  .foot a { color: var(--muted); }
 </style>
 </head>
 <body>
@@ -40,6 +43,7 @@
     <a href="ontology.ttl" download="ontology.ttl">Download .ttl</a>
   </div>
   <pre id="raw">Loading…</pre>
+  <div class="foot"><a href="?viewer">Viewer</a> · <a href="ontology.ttl">Ontology (.ttl)</a> · <a href="https://github.com/OscarW27/5294INOR6Y_G1">GitHub</a></div>
 </div>
 
 <!-- Viewer mode: /ontology?viewer -->
@@ -58,6 +62,7 @@
     <a href="ontology">Raw Turtle</a>
   </div>
   <div id="stage"><div id="msg">Loading ontology…</div></div>
+  <div class="foot"><a href="ontology">Raw Turtle</a> · <a href="ontology.ttl">Ontology (.ttl)</a> · <a href="https://github.com/OscarW27/5294INOR6Y_G1">GitHub</a></div>
 </div>
 
 <script>

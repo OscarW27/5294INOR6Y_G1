@@ -23,7 +23,7 @@
 
 <https://oscarw27.github.io/5294INOR6Y_G1/ontology> a owl:Ontology ;
     dcterms:title "Running workout ontology"@en ;
-    dcterms:description "A domain ontology modeling running workouts, intensity categories, summary metrics, and time-series sensor observations from the Endomondo Heart Rate Prediction V2 dataset. Workout types are aligned with the Physical Activity Ontology (PACO, BioPortal) to support interoperability with clinical physical activity data."@en ;
+    dcterms:description "A domain ontology modeling running workouts, intensity categories, summary metrics, athlete running patterns derived by k-means clustering, and time-series sensor observations from the Endomondo Heart Rate Prediction V2 dataset. Workout types are aligned with the Physical Activity Ontology (PACO, BioPortal) to support interoperability with clinical physical activity data."@en ;
     owl:versionInfo "1.0"^^xsd:string ;
     rdfs:seeAlso <https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2> ;
     owl:imports <http://www.w3.org/ns/sosa/> .
@@ -57,21 +57,53 @@
     rdfs:label "Intensive Run"@en ;
     rdfs:comment "A high-effort running session categorized as INTENSIVE."@en .
 
+# Run focus: per-run types from k-means clustering (ML-derived)
 :RunFocus a owl:Class ;
     rdfs:label "Run Focus"@en ;
-    rdfs:comment "The main character of a single run, used to describe it in plain language."@en .
+    rdfs:comment "The type of a single run as assigned by k-means clustering (k=5) of run shapes: relative heart rate, relative speed, relative distance, number of speed surges, slow-time fraction, heart-rate range and climb per km, all relative to the athlete's own baseline (analysis/run_types in the dataset repository). Values are asserted from the clustering output (analysis/run_types/output/run_labels.csv), not derived from the summary metrics."@en .
 
-:IntervalFocused a :RunFocus ;
-    rdfs:label "Interval focused"@en ;
-    rdfs:comment "A hard session, like interval training that mixes fast and slow parts (workout type INTENSIVE)."@en .
+:EasyShort a :RunFocus ;
+    rdfs:label "Easy / short"@en ;
+    rdfs:comment "Short sessions at a slightly relaxed pace relative to the athlete's own average, with few speed surges (7,972 of 39,459 labeled runs)."@en .
 
-:EfficientFocused a :RunFocus ;
-    rdfs:label "Efficient focused"@en ;
-    rdfs:comment "A run with high efficiency: 100 x mean speed / mean heart rate is at least 7.1."@en .
+:LongSteady a :RunFocus ;
+    rdfs:label "Long & steady"@en ;
+    rdfs:comment "The longest runs relative to the athlete's own typical distance, at an even pace with few surges (11,861 of 39,459 labeled runs)."@en .
 
-:FastStartFocused a :RunFocus ;
-    rdfs:label "Fast start focused"@en ;
-    rdfs:comment "A less economical, non-interval run (efficiency below 7.1), typical of going out too fast at the start."@en .
+:TempoHard a :RunFocus ;
+    rdfs:label "Tempo / hard"@en ;
+    rdfs:comment "Sustained hard running: highest relative heart rate (cluster mean 1.09 of the athlete's own baseline) and highest relative speed (1.14) (5,301 of 39,459 labeled runs)."@en .
+
+:FartlekVariable a :RunFocus ;
+    rdfs:label "Fartlek / variable"@en ;
+    rdfs:comment "Runs with many speed surges (cluster mean 5.7) at otherwise average speed and heart rate, mixing fast and easy stretches (10,412 of 39,459 labeled runs)."@en .
+
+:StopAndGo a :RunFocus ;
+    rdfs:label "Stop-and-go"@en ;
+    rdfs:comment "Runs with the most surges (cluster mean 8.0), the highest slow-time fraction (0.21) and the lowest relative speed (3,913 of 39,459 labeled runs)."@en .
+
+# Athlete running patterns (derived, k-means clustering)
+:RunningPattern a owl:Class ;
+    rdfs:label "Running Pattern"@en ;
+    rdfs:comment "An athlete-level running pattern found by k-means clustering of per-athlete aggregates (running frequency, typical distance and pace, speed-per-heartbeat efficiency, relative intensity, within-run speed variation, opening-pace ratio, cardiac drift, climb per km); see analysis/athlete_profiles/output in the dataset repository. A running pattern summarizes an athlete across all their workouts, unlike the workout-type classes above (recorded per session) and the per-run :RunFocus labels, which characterize a single session each."@en .
+
+:EfficientConsistent a :RunningPattern ;
+    rdfs:label "Efficient & consistent"@en ;
+    rdfs:comment "Athlete with above-average efficiency (typical cluster mean 8.0 km/h per 100 bpm), longer regular runs, low within-run speed variability and mild cardiac drift. Largest pattern (306 of 569 labelled athletes)."@en .
+
+:FastStarterDeveloping a :RunningPattern ;
+    rdfs:label "Fast starter / developing"@en ;
+    rdfs:comment "Athlete with shorter, slower runs, pronounced heart-rate drift and an opening-pace ratio approaching or exceeding 1 (starts no slower than the rest of the run), at lower aerobic efficiency (216 of 569 labelled athletes)."@en .
+
+:IntervalHeavy a :RunningPattern ;
+    rdfs:label "Interval-heavy"@en ;
+    rdfs:comment "Athlete whose workouts include a large share of intensive sessions (cluster mean 0.35), at high relative intensity and low efficiency; smallest pattern (47 of 569 labelled athletes). Corresponds to the 'Interval-focused' cluster label in the analysis."@en .
+
+:hasRunningPattern a owl:ObjectProperty ;
+    rdfs:domain :Athlete ;
+    rdfs:range :RunningPattern ;
+    rdfs:label "has running pattern"@en ;
+    rdfs:comment "Links an athlete to the running pattern assigned by the k-means clustering. Athletes with fewer than ten recorded runs are left unassigned in the analysis (see analysis/athlete_profiles/output/final_labels.csv)."@en .
 
 :TelemetryPoint a owl:Class ;
     rdfs:subClassOf sosa:ObservationCollection ;
@@ -102,7 +134,7 @@
     rdfs:domain :RunningWorkout ;
     rdfs:range :RunFocus ;
     rdfs:label "run focus"@en ;
-    rdfs:comment "Links a workout to its main focus (interval, efficient or fast start)."@en .
+    rdfs:comment "Links a workout to its k-means run type from the clustering of run shapes. Runs without a time-series-derived label (727 of 40,186) are left unassigned."@en .
 
 :hasWorkout a owl:ObjectProperty ;
     owl:inverseOf :performedBy ;
@@ -120,10 +152,7 @@
     rdfs:label "PACO intensity"@en ;
     rdfs:comment "Intensity of the session expressed on PACO's three-level scale (Low, Moderate, Vigorous), bridging the dataset's workout_type values to PACO."@en .
 
-# =====================================================================
-# Datatype Properties (Identifiers & Workout Summary Metrics)
-# =====================================================================
-
+#Datatype properties
 :userId a owl:DatatypeProperty ;
     rdfs:domain :Athlete ;
     rdfs:range xsd:integer ;

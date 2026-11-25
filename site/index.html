@@ -21,6 +21,8 @@
   .runner-mode button { border: none; background: none; padding: 0.35rem 0.9rem; cursor: pointer; }
   .runner-mode button + button { border-left: 1px solid #888; }
   .runner-mode button.active { background: #333; color: #fff; }
+  footer { font-size: 0.75rem; color: #555; margin-top: 1rem; }
+  footer a { color: inherit; }
   #login-screen { text-align: center; }
   #login-screen .cards {
     justify-content: center;
@@ -165,6 +167,10 @@
   <div id="log" aria-live="polite"></div>
 </div>
 
+<footer>
+  <a href="ontology">Ontology</a> · <a href="ontology?viewer">Ontology viewer</a> · <a href="https://github.com/OscarW27/5294INOR6Y_G1">GitHub</a>
+</footer>
+
 <script src="summary.js"></script>
 <script>
 // ---------- fake auth (no real backend) ----------
@@ -280,7 +286,12 @@ function loadWorkouts() {
     .then(function (text) {
       workoutRows = RunSummary.parseCsv(text);
       if (!workoutRows.length) throw new Error("no rows in file");
-      return workoutRows;
+      // Per-run k-means labels (analysis/run_types) for the focus sentence.
+      // Optional: the dashboard still works without them (no focus shown).
+      var labels = fetch("data/run_types.csv")
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+        .then(function (t) { RunSummary.setRunTypes(RunSummary.parseCsv(t)); });
+      return labels.catch(function () {}).then(function () { return workoutRows; });
     });
 }
 
