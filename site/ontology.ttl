@@ -5,11 +5,10 @@
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms:<http://purl.org/dc/terms/> .
-@prefix schema: <https://schema.org/> .
 @prefix sosa:   <http://www.w3.org/ns/sosa/> .
 @prefix qudt:   <http://qudt.org/schema/qudt/> .
 @prefix unit:   <http://qudt.org/vocab/unit/> .
-@prefix paco:   <http://purl.bioontology.org/ontology/PACO/> .
+@prefix paco:   <http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#> .
 
 <https://oscarw27.github.io/5294INOR6Y_G1/ontology> a owl:Ontology ;
     dcterms:title "Endomondo Running Telemetry Ontology"@en ;
@@ -18,15 +17,12 @@
     rdfs:seeAlso <https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2> ;
     owl:imports <http://www.w3.org/ns/sosa/> .
 
-# Classes
-
 :Athlete a owl:Class ;
-    rdfs:subClassOf schema:Person ;
     rdfs:label "Athlete"@en ;
     rdfs:comment "A runner identified by a unique user_id in the Endomondo dataset."@en .
 
 :RunningWorkout a owl:Class ;
-    rdfs:subClassOf schema:ExerciseAction ;
+    rdfs:subClassOf paco:Running ;
     rdfs:label "Running Workout"@en ;
     rdfs:comment "A recorded running session containing aggregate metrics and sequential telemetry points."@en .
 
@@ -66,10 +62,6 @@
     rdfs:label "Telemetry Point"@en ;
     rdfs:comment "A single timestamped sample in a workout time series grouping heart rate, speed, and altitude readings."@en .
 
-# =====================================================================
-# Observable Properties (Sensor Channels)
-# =====================================================================
-
 :HeartRate a sosa:ObservableProperty ;
     rdfs:label "Heart Rate"@en ;
     rdfs:comment "Instantaneous heart rate measured in beats per minute (BPM)."@en .
@@ -82,12 +74,7 @@
     rdfs:label "Altitude"@en ;
     rdfs:comment "Elevation above sea level measured in meters (m)."@en .
 
-# =====================================================================
-# Object Properties
-# =====================================================================
-
 :performedBy a owl:ObjectProperty ;
-    rdfs:subPropertyOf schema:agent ;
     rdfs:domain :RunningWorkout ;
     rdfs:range :Athlete ;
     rdfs:label "performed by"@en .
@@ -108,10 +95,6 @@
     rdfs:domain :RunningWorkout ;
     rdfs:range :TelemetryPoint ;
     rdfs:label "has telemetry point"@en .
-
-# =====================================================================
-# Datatype Properties (Identifiers & Workout Summary Metrics)
-# =====================================================================
 
 :userId a owl:DatatypeProperty ;
     rdfs:domain :Athlete ;
@@ -168,10 +151,6 @@
     rdfs:range xsd:nonNegativeInteger ;
     rdfs:label "sequence index"@en ;
     rdfs:comment "Zero-based position (0 to 499) of the observation within the resampled workout array."@en .
-
-# =====================================================================
-# Dashboard KPI terms (derived per-run metrics; added for the running dashboard)
-# =====================================================================
 
 :ZoneSource a owl:Class ;
     rdfs:label "Zone Source"@en ;
@@ -242,8 +221,6 @@
     rdfs:range xsd:float ;
     rdfs:label "heart rate drift (%)"@en ;
     rdfs:comment "Change of the heart-rate-to-speed ratio from the first to the second half of the run (time series only)."@en .
-
-# Example Instance Data (Mapped from One Dataset Row)
 
 :Athlete_104 a :Athlete ;
     :userId 104 .

@@ -5,11 +5,10 @@
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms:<http://purl.org/dc/terms/> .
-@prefix schema: <https://schema.org/> .
 @prefix sosa:   <http://www.w3.org/ns/sosa/> .
 @prefix qudt:   <http://qudt.org/schema/qudt/> .
 @prefix unit:   <http://qudt.org/vocab/unit/> .
-@prefix paco:   <http://purl.bioontology.org/ontology/PACO/> .
+@prefix paco:   <http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#> .
 
 <https://oscarw27.github.io/5294INOR6Y_G1/ontology> a owl:Ontology ;
     dcterms:title "Endomondo Running Telemetry Ontology"@en ;
@@ -19,12 +18,11 @@
     owl:imports <http://www.w3.org/ns/sosa/> .
 
 :Athlete a owl:Class ;
-    rdfs:subClassOf schema:Person ;
     rdfs:label "Athlete"@en ;
     rdfs:comment "A runner identified by a unique user_id in the Endomondo dataset."@en .
 
 :RunningWorkout a owl:Class ;
-    rdfs:subClassOf schema:ExerciseAction ;
+    rdfs:subClassOf paco:Running ;
     rdfs:label "Running Workout"@en ;
     rdfs:comment "A recorded running session containing aggregate metrics and sequential telemetry points."@en .
 
@@ -77,7 +75,6 @@
     rdfs:comment "Elevation above sea level measured in meters (m)."@en .
 
 :performedBy a owl:ObjectProperty ;
-    rdfs:subPropertyOf schema:agent ;
     rdfs:domain :RunningWorkout ;
     rdfs:range :Athlete ;
     rdfs:label "performed by"@en .
