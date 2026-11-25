@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endomondo Data Model</title>
+<style>
+:root {
+  --bg: #f7f7f5; --surface: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d9d4;
+  --head: #1f4e79; --head-ink: #ffffff; --derived: #6a4c93; --lookup: #4b7f52;
+  --pk: #b8860b; --fk: #2a6fb0; --rel: #555550; --zebra: #f3f3ef; --note-bg: #fff8e6; --note-line: #e6c36a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161615; --surface: #20201f; --ink: #ecece8; --muted: #a3a39c; --line: #3a3a37;
+    --head: #2f6aa3; --derived: #8a6cc0; --lookup: #5e9a66;
+    --pk: #e0b44a; --fk: #6aa8e6; --rel: #b0b0a8; --zebra: #262625; --note-bg: #2c2717; --note-line: #7a6630;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161615; --surface: #20201f; --ink: #ecece8; --muted: #a3a39c; --line: #3a3a37;
+  --head: #2f6aa3; --derived: #8a6cc0; --lookup: #5e9a66;
+  --pk: #e0b44a; --fk: #6aa8e6; --rel: #b0b0a8; --zebra: #262625; --note-bg: #2c2717; --note-line: #7a6630;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1080px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 26px; margin: 0 0 4px; }
+h2 { font-size: 19px; margin: 40px 0 12px; }
+h3 { font-size: 16px; margin: 0 0 6px; }
+p.lead { color: var(--muted); margin: 0 0 24px; max-width: 760px; }
+code { font: 13px ui-monospace, Consolas, monospace; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+.diagram { overflow-x: auto; }
+.diagram svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 12px; color: var(--muted); font-size: 13px; }
+.legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+  margin-right: 6px; vertical-align: -1px; background: var(--c); }
+.badge { display: inline-block; font: 600 11px ui-monospace, Consolas, monospace; padding: 1px 5px;
+  border-radius: 4px; border: 1px solid currentColor; }
+.badge.pk { color: var(--pk); } .badge.fk { color: var(--fk); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+td:first-child { white-space: nowrap; }
+td.t { color: var(--muted); white-space: nowrap; font: 13px ui-monospace, Consolas, monospace; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.entity h3 { display: flex; align-items: center; gap: 8px; }
+.entity h3 i { width: 10px; height: 10px; border-radius: 2px; background: var(--c); }
+.entity p { color: var(--muted); margin: 0 0 10px; font-size: 14px; }
+.note { background: var(--note-bg); border: 1px solid var(--note-line); border-radius: 10px; padding: 14px 16px; }
+.note ul { margin: 0; padding-left: 20px; } .note li { margin: 6px 0; }
+.files td:nth-child(2) { white-space: nowrap; }
+
+/* SVG */
+.e-box { fill: var(--surface); stroke: var(--line); }
+.e-zebra { fill: var(--zebra); }
+.e-title { fill: var(--head-ink); font: 600 14px system-ui, sans-serif; }
+.e-sub { fill: var(--head-ink); opacity: .8; font: 11px system-ui, sans-serif; }
+.e-col { fill: var(--ink); font: 13px ui-monospace, Consolas, monospace; }
+.e-type { fill: var(--muted); font: 12px ui-monospace, Consolas, monospace; }
+.e-pk { fill: var(--pk); font: 700 10px ui-monospace, Consolas, monospace; }
+.e-fk { fill: var(--fk); font: 700 10px ui-monospace, Consolas, monospace; }
+.rel { fill: none; stroke: var(--rel); stroke-width: 1.6; }
+.rel-label { fill: var(--muted); font: italic 12px system-ui, sans-serif; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Endomondo HR dataset: data model</h1>
+  <p class="lead">
+    40,186 running workouts from 761 athletes. The source parquet has <b>one row per workout</b>, with the
+    time series stored as list columns. Logically that is three entities: an <b>athlete</b> does many
+    <b>workouts</b>, and each workout has 500 <b>timesteps</b>. The workout type is a fourth, small lookup.
+  </p>
+
+  <div class="card diagram">
+    <svg id="erd" viewBox="0 0 1000 450" role="img" aria-label="Entity relationship diagram of the dataset"></svg>
+    <div class="legend">
+      <span style="--c: var(--head)">Stored in the dataset</span>
+      <span style="--c: var(--derived)">Derived (computed from workouts)</span>
+      <span style="--c: var(--lookup)">Lookup / label</span>
+      <span><b class="badge pk">PK</b> primary key</span>
+      <span><b class="badge fk">FK</b> foreign key</span>
+      <span>Line ends: <b>||</b> exactly one, crow's foot = many</span>
+    </div>
+  </div>
+
+  <h2>Entities and columns</h2>
+  <div class="grid">
+    <div class="card entity">
+      <h3><i style="--c: var(--head)"></i>WORKOUT</h3>
+      <p>One running session. The main table: 40,186 rows. Summary stats are pre-computed from the series.</p>
+      <table>
+        <tr><th>Column</th><th>Type</th><th>Meaning</th></tr>
+        <tr><td><b class="badge pk">PK</b> workout_id</td><td class="t">int</td><td>Unique workout id</td></tr>
+        <tr><td><b class="badge fk">FK</b> user_id</td><td class="t">int</td><td>Athlete who ran it</td></tr>
+        <tr><td><b class="badge fk">FK</b> workout_type</td><td class="t">str</td><td>RECOVERY / STEADY / INTENSIVE</td></tr>
+        <tr><td>split</td><td class="t">str</td><td>train / validation / test (70/15/15)</td></tr>
+        <tr><td>start_date</td><td class="t">date</td><td>First timestamp; 2007-02 to 2016-01</td></tr>
+        <tr><td>duration_min</td><td class="t">float</td><td>Length of the workout in minutes</td></tr>
+        <tr><td>data_points</td><td class="t">int</td><td>Number of timesteps (always 500)</td></tr>
+        <tr><td>hr_mean / hr_std / hr_min / hr_max</td><td class="t">float</td><td>Heart-rate stats, BPM</td></tr>
+        <tr><td>speed_mean / speed_max</td><td class="t">float</td><td>Speed stats, km/h</td></tr>
+        <tr><td>altitude_gain</td><td class="t">float</td><td>Total climb, metres</td></tr>
+        <tr><td>distance_km</td><td class="t">float</td><td>Derived: speed_mean × duration ÷ 60 (CSV only)</td></tr>
+      </table>
+    </div>
+
+    <div class="card entity">
+      <h3><i style="--c: var(--head)"></i>TIMESTEP</h3>
+      <p>One measurement inside a workout. In the parquet these are four parallel lists of 500 values per
+        workout (≈ 20 million timesteps in total). The CSV unpacks them for 120 sample workouts.</p>
+      <table>
+        <tr><th>Column</th><th>Type</th><th>Meaning</th></tr>
+        <tr><td><b class="badge pk">PK</b><b class="badge fk">FK</b> workout_id</td><td class="t">int</td><td>Parent workout</td></tr>
+        <tr><td><b class="badge pk">PK</b> step</td><td class="t">int</td><td>Position 0–499 in the list (implicit)</td></tr>
+        <tr><td>timestamp</td><td class="t">float</td><td>Unix time, seconds</td></tr>
+        <tr><td>t_min</td><td class="t">float</td><td>Minutes since start (CSV only)</td></tr>
+        <tr><td>heart_rate</td><td class="t">float</td><td>BPM, the usual prediction target</td></tr>
+        <tr><td>speed</td><td class="t">float</td><td>km/h</td></tr>
+        <tr><td>altitude</td><td class="t">float</td><td>metres</td></tr>
+      </table>
+    </div>
+
+    <div class="card entity">
+      <h3><i style="--c: var(--derived)"></i>USER (athlete)</h3>
+      <p>Not a table in the source: only <code>user_id</code> exists. <code>users.csv</code> aggregates the
+        workouts per athlete. 761 rows.</p>
+      <table>
+        <tr><th>Column</th><th>Type</th><th>Meaning</th></tr>
+        <tr><td><b class="badge pk">PK</b> user_id</td><td class="t">int</td><td>Anonymous athlete id</td></tr>
+        <tr><td>workouts</td><td class="t">int</td><td>Count of workouts</td></tr>
+        <tr><td>total_km / total_hours</td><td class="t">float</td><td>Sum of distance / duration</td></tr>
+        <tr><td>hr_mean</td><td class="t">float</td><td>Average of workout hr_mean</td></tr>
+        <tr><td>hr_max</td><td class="t">float</td><td>Highest hr_max ever</td></tr>
+        <tr><td>speed_mean</td><td class="t">float</td><td>Average of workout speed_mean</td></tr>
+        <tr><td>first_date / last_date</td><td class="t">date</td><td>Activity window</td></tr>
+      </table>
+    </div>
+
+    <div class="card entity">
+      <h3><i style="--c: var(--lookup)"></i>WORKOUT_TYPE</h3>
+      <p>The label. It is a plain string in the data; shown as a lookup to make the categories visible.
+        The ranges below are what the data shows.</p>
+      <table>
+        <tr><th>Type</th><th>Workouts</th><th>hr_mean range</th><th>Avg speed</th></tr>
+        <tr><td>RECOVERY</td><td>15,095</td><td>120–150</td><td>10.4 km/h</td></tr>
+        <tr><td>STEADY</td><td>22,991</td><td>143–170</td><td>11.3 km/h</td></tr>
+        <tr><td>INTENSIVE</td><td>2,100</td><td>165–191</td><td>12.2 km/h</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Where each entity lives</h2>
+  <div class="card">
+    <table class="files">
+      <tr><th>File</th><th>Grain</th><th>Contains</th></tr>
+      <tr><td><code>data/…/train|validation|test.parquet</code></td><td>1 row / workout</td><td>WORKOUT columns + the TIMESTEP lists (<code>heart_rate</code>, <code>speed</code>, <code>altitude</code>, <code>timestamp</code>)</td></tr>
+      <tr><td><code>data/…/dataset.parquet</code></td><td>1 row / workout</td><td>All three splits combined, with the <code>split</code> column</td></tr>
+      <tr><td><code>site/data/workouts.csv</code></td><td>1 row / workout</td><td>WORKOUT without the lists, plus <code>start_date</code> and <code>distance_km</code></td></tr>
+      <tr><td><code>site/data/users.csv</code></td><td>1 row / athlete</td><td>USER aggregates</td></tr>
+      <tr><td><code>site/data/timeseries.csv</code></td><td>1 row / timestep</td><td>TIMESTEP for 120 sample workouts (40 per type) = 60,000 rows</td></tr>
+    </table>
+  </div>
+
+  <h2>Things to know before modelling</h2>
+  <div class="note">
+    <ul>
+      <li><b>The label is HR-based.</b> <code>workout_type</code> lines up with <code>hr_mean</code> ranges, so
+        predicting it from HR features is trivial. Leave HR out, or create your own labels.</li>
+      <li><b>Splits are by workout, not by athlete.</b> 673 of the 761 athletes appear in more than one split.
+        A model can learn athletes instead of patterns. Re-split on <code>user_id</code> if you want honest scores.</li>
+      <li><b>Fixed length.</b> Every workout has exactly 500 timesteps, so a 60-minute and a 120-minute run have
+        different time gaps between points. Use <code>timestamp</code>, not the step index, for time.</li>
+      <li><b>Pre-cleaned.</b> Series are smoothed (7-point moving average) and filtered: hr_mean ≥ 120,
+        hr_max ≤ 200, hr_std ≥ 5. Very easy runs and walks were removed.</li>
+      <li><b>Imbalanced classes.</b> INTENSIVE is only 5% of workouts.</li>
+    </ul>
+  </div>
+</main>
+
+<script>
+(function () {
+  var svg = document.getElementById("erd");
+  var NS = "http://www.w3.org/2000/svg";
+  var W = 290, HEAD = 40, ROW = 24;
+
+  function el(tag, attrs, text) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    svg.appendChild(n);
+    return n;
+  }
+
+  // keys: "pk", "fk", "pkfk"
+  var entities = {
+    user: { x: 20, y: 20, title: "USER", sub: "derived · users.csv · 761", color: "var(--derived)", cols: [
+      ["user_id", "int", "pk"], ["workouts", "int"], ["total_km", "float"], ["total_hours", "float"],
+      ["hr_mean", "float"], ["hr_max", "float"], ["speed_mean", "float"],
+      ["first_date", "date"], ["last_date", "date"]] },
+    type: { x: 20, y: 318, title: "WORKOUT_TYPE", sub: "label · 3 values", color: "var(--lookup)", cols: [
+      ["workout_type", "str", "pk"], ["RECOVERY", "15,095"], ["STEADY", "22,991"], ["INTENSIVE", "2,100"]] },
+    workout: { x: 355, y: 20, title: "WORKOUT", sub: "parquet / workouts.csv · 40,186", color: "var(--head)", cols: [
+      ["workout_id", "int", "pk"], ["user_id", "int", "fk"], ["workout_type", "str", "fk"],
+      ["split", "str"], ["start_date", "date"], ["duration_min", "float"], ["data_points", "int"],
+      ["hr_mean", "float"], ["hr_std", "float"], ["hr_min", "float"], ["hr_max", "float"],
+      ["speed_mean", "float"], ["speed_max", "float"], ["altitude_gain", "float"], ["distance_km", "float"]] },
+    step: { x: 690, y: 20, title: "TIMESTEP", sub: "list columns · 500 per workout", color: "var(--head)", cols: [
+      ["workout_id", "int", "pkfk"], ["step", "0–499", "pk"], ["timestamp", "float"], ["t_min", "float"],
+      ["heart_rate", "float"], ["speed", "float"], ["altitude", "float"]] }
+  };
+
+  function rowY(e, i) { return e.y + HEAD + i * ROW + ROW / 2; }
+
+  function drawEntity(e) {
+    var h = HEAD + e.cols.length * ROW;
+    el("rect", { x: e.x, y: e.y, width: W, height: h, rx: 8, class: "e-box" });
+    e.cols.forEach(function (c, i) {
+      if (i % 2 === 1) el("rect", { x: e.x + 1, y: e.y + HEAD + i * ROW, width: W - 2, height: ROW, class: "e-zebra" });
+    });
+    el("path", { d: "M" + e.x + "," + (e.y + HEAD) + " v-" + (HEAD - 8) + " a8,8 0 0 1 8,-8 h" + (W - 16) +
+      " a8,8 0 0 1 8,8 v" + (HEAD - 8) + " z", fill: e.color });
+    el("text", { x: e.x + 12, y: e.y + 18, class: "e-title" }, e.title);
+    el("text", { x: e.x + 12, y: e.y + 33, class: "e-sub" }, e.sub);
+    e.cols.forEach(function (c, i) {
+      var y = rowY(e, i) + 4, key = c[2] || "";
+      if (key.indexOf("pk") === 0) el("text", { x: e.x + 10, y: y, class: "e-pk" }, "PK");
+      if (key === "fk") el("text", { x: e.x + 10, y: y, class: "e-fk" }, "FK");
+      if (key === "pkfk") el("text", { x: e.x + 28, y: y - 0.5, class: "e-fk", "font-size": "9" }, "FK");
+      el("text", { x: e.x + 50, y: y, class: "e-col", "font-weight": key ? "700" : "400" }, c[0]);
+      el("text", { x: e.x + W - 12, y: y, class: "e-type", "text-anchor": "end" }, c[1]);
+    });
+  }
+
+  // One side: two short bars (exactly one). Many side: crow's foot + bar (one or more).
+  function one(x, y, dir) {
+    el("path", { d: "M" + (x + dir * 8) + "," + (y - 7) + " v14 M" + (x + dir * 13) + "," + (y - 7) + " v14", class: "rel" });
+  }
+  function many(x, y, dir) {
+    var b = x + dir * 13;
+    el("path", { d: "M" + b + "," + y + " L" + x + "," + (y - 7) + " M" + b + "," + y + " L" + x + "," + (y + 7) +
+      " M" + b + "," + y + " L" + x + "," + y + " M" + (x + dir * 17) + "," + (y - 7) + " v14", class: "rel" });
+  }
+
+  Object.keys(entities).forEach(function (k) { drawEntity(entities[k]); });
+
+  var u = entities.user, t = entities.type, w = entities.workout, s = entities.step;
+
+  // USER 1 — N WORKOUT (user_id)
+  var y1 = rowY(u, 0), y2 = rowY(w, 1), xa = u.x + W, xb = w.x, mid = 326;
+  el("path", { d: "M" + xa + "," + y1 + " H" + mid + " V" + y2 + " H" + xb, class: "rel" });
+  one(xa, y1, 1); many(xb, y2, -1);
+  el("text", { x: mid + 4, y: y1 - 6, class: "rel-label" }, "runs");
+
+  // WORKOUT_TYPE 1 — N WORKOUT (workout_type)
+  var y3 = rowY(t, 0), y4 = rowY(w, 2), mid2 = 340;
+  el("path", { d: "M" + xa + "," + y3 + " H" + mid2 + " V" + y4 + " H" + xb, class: "rel" });
+  one(xa, y3, 1); many(xb, y4, -1);
+  var ly = (y3 + y4) / 2;
+  el("text", { x: mid2 - 5, y: ly, class: "rel-label", "text-anchor": "middle",
+    transform: "rotate(-90 " + (mid2 - 5) + " " + ly + ")" }, "labels");
+
+  // WORKOUT 1 — N TIMESTEP (workout_id)
+  var y5 = rowY(w, 0), xc = w.x + W, xd = s.x;
+  el("path", { d: "M" + xc + "," + y5 + " H" + xd, class: "rel" });
+  one(xc, y5, 1); many(xd, y5, -1);
+  el("text", { x: (xc + xd) / 2, y: y5 - 10, class: "rel-label", "text-anchor": "middle" }, "has 500");
+})();
+</script>
+</body>
+</html>

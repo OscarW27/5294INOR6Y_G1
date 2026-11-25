@@ -1,80 +1,216 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Running Heart Rates</title>
-  <meta name="description" content="Exploring 40,186 Endomondo running workouts: heart rate, speed and altitude.">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<title>Running Heart Rates</title>
 </head>
 <body>
-  <header class="wrap">
-    <p class="eyebrow">5294INOR6Y · Group 1</p>
-    <h1>How hard do runners' hearts work?</h1>
-    <p class="lede">
-      40,186 running workouts from 761 Endomondo athletes, each with heart rate, speed and
-      altitude recorded over time. This is a demo of what the dataset can show.
-    </p>
-  </header>
+<h1>Running Heart Rates</h1>
+<p>Data: <a href="https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2">Endomondo Heart Rate Prediction Dataset V2</a>.
+Files: <a href="data/workouts.csv">workouts.csv</a>, <a href="data/users.csv">users.csv</a>, <a href="data/timeseries.csv">timeseries.csv</a>.</p>
 
-  <main class="wrap">
-    <section class="kpis" id="kpis" aria-label="Key numbers"></section>
+<p>Workout: <select id="pick"></select></p>
+<div id="out">Loading...</div>
 
-    <div class="filters" role="group" aria-label="Filter by workout type">
-      <span class="filters-label">Workout type</span>
-      <div id="type-filter"></div>
-    </div>
+<script>
+// ---------- helpers ----------
+async function csv(url) {
+  const lines = (await (await fetch(url)).text()).trim().split(/\r?\n/);
+  const head = lines[0].split(",");
+  return lines.slice(1).map(l => {
+    const v = l.split(","), o = {};
+    head.forEach((h, i) => o[h] = isNaN(v[i]) || v[i] === "" ? v[i] : +v[i]);
+    return o;
+  });
+}
+const mean = a => a.length ? a.reduce((s, x) => s + x, 0) / a.length : NaN;
+const sd = a => { const m = mean(a); return Math.sqrt(mean(a.map(x => (x - m) ** 2))); };
+const quant = (a, q) => { const s = [...a].sort((x, y) => x - y); return s[Math.min(s.length - 1, Math.floor(q * s.length))]; };
+const f = (x, d = 1) => Number.isFinite(x) ? x.toFixed(d) : "n/a";
+const table = (head, rows) =>
+  "<table border=1><tr>" + head.map(h => "<th>" + h + "</th>").join("") + "</tr>" +
+  rows.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("") + "</table>";
 
-    <section class="card">
-      <h2>Average heart rate per workout</h2>
-      <p class="sub">Share of workouts in each 2 BPM band. Lines are normalized per type so the small INTENSIVE group stays visible.</p>
-      <div id="legend-hist" class="legend"></div>
-      <div id="chart-hist" class="chart"></div>
-    </section>
+// Interpolate y at time t (seconds) on series s with fields sec + key
+function at(s, key, t) {
+  if (t < s[0].sec || t > s[s.length - 1].sec) return NaN;
+  let i = s.findIndex(p => p.sec >= t);
+  if (s[i].sec === t || i === 0) return s[i][key];
+  const a = s[i - 1], b = s[i];
+  return a[key] + (b[key] - a[key]) * (t - a.sec) / (b.sec - a.sec);
+}
 
-    <section class="card">
-      <h2>Faster runs, higher heart rate?</h2>
-      <p class="sub">Average speed vs. average heart rate. Random sample of 2,500 workouts.</p>
-      <div id="legend-scatter" class="legend"></div>
-      <div id="chart-scatter" class="chart"></div>
-    </section>
+// Add derived columns: sec, rolling_speed_1m, rolling_speed_3m, altitude_derivative (m/s)
+function derive(rows) {
+  const s = rows.map(r => ({ ...r, sec: r.t_min * 60 }));
+  for (let i = 0; i < s.length; i++) {
+    for (const [k, w] of [["rs1", 60], ["rs3", 180]]) {
+      const win = s.filter(p => p.sec <= s[i].sec && p.sec > s[i].sec - w).map(p => p.speed);
+      s[i][k] = mean(win);
+    }
+    const dt = i ? s[i].sec - s[i - 1].sec : 0;
+    s[i].alt_d = dt > 0 ? (s[i].altitude - s[i - 1].altitude) / dt : 0;
+  }
+  return s;
+}
 
-    <section class="card">
-      <h2>Workouts recorded per month</h2>
-      <p class="sub">2011 to 2015, the years that hold almost all workouts.</p>
-      <div id="chart-time" class="chart"></div>
-    </section>
+// ---------- measures ----------
+function M01(s) { // Opening pace ratio
+  const k = Math.max(1, Math.floor(s.length * 0.15));
+  const r = mean(s.slice(0, k).map(p => p.rs1)) / mean(s.slice(k).map(p => p.rs1));
+  const label = r > 1.10 ? "Started Too Fast" : r >= 0.95 ? "Steady Start" : "Negative Split (Strong Finish)";
+  return `Ratio = ${f(r, 2)} &rarr; ${label}`;
+}
 
-    <section class="card">
-      <h2>Inside one workout</h2>
-      <p class="sub">Pick an example workout to see how heart rate follows speed and terrain.</p>
-      <div class="filters inline">
-        <label for="workout-select" class="filters-label">Workout</label>
-        <select id="workout-select"></select>
-        <button id="random-workout" type="button">Random</button>
-      </div>
-      <p id="workout-meta" class="meta"></p>
-      <div id="chart-hr" class="chart"></div>
-      <div id="chart-speed" class="chart"></div>
-      <div id="chart-alt" class="chart"></div>
-    </section>
+function M02(s, userHr) { // Relative effort distribution
+  const p75 = quant(userHr, 0.75), p90 = quant(userHr, 0.90), n = s.length;
+  const easy = s.filter(p => p.heart_rate < p75).length / n * 100;
+  const hard = s.filter(p => p.heart_rate > p90).length / n * 100;
+  const mod = 100 - easy - hard;
+  const tag = easy > 70 ? "Aerobic Base Run" : hard > 40 ? "High Intensity Session" : "Mixed Session";
+  return `Bands from this user's HR (75th pct = ${f(p75)}, 90th pct = ${f(p90)} BPM)<br>
+    Easy ${f(easy)}% | Moderate ${f(mod)}% | Hard ${f(hard)}% &rarr; ${tag}`;
+}
 
-    <section class="card">
-      <h2>Most active athletes</h2>
-      <p class="sub">Top 10 by number of workouts.</p>
-      <div class="table-scroll">
-        <table id="users-table"></table>
-      </div>
-    </section>
-  </main>
+function M03(s) { // Terrain-linked HR spikes
+  const hr = s.map(p => p.heart_rate), thr = mean(hr) + sd(hr);
+  const hits = s.filter(p => p.heart_rate > thr && p.alt_d > 0);
+  if (!hits.length) return `No HR spikes (> ${f(thr)} BPM) during climbs.`;
+  return `${hits.length} points with HR > ${f(thr)} BPM while climbing. HR rose due to climb, not overexertion.<br>` +
+    table(["minute", "HR", "climb (m/s)"], hits.slice(0, 10).map(p => [f(p.t_min, 2), f(p.heart_rate), f(p.alt_d, 2)])) +
+    (hits.length > 10 ? `(first 10 of ${hits.length})` : "");
+}
 
-  <footer class="wrap">
-    Data: <a href="https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2">Endomondo Heart Rate Prediction Dataset V2</a> (MIT).
-    Download the CSVs: <a href="data/workouts.csv">workouts</a> · <a href="data/users.csv">users</a> · <a href="data/timeseries.csv">time series sample</a>.
-  </footer>
+function M04(s) { // Cardiac drift & split asymmetry
+  const h = Math.floor(s.length / 2);
+  const ef = a => mean(a.filter(p => p.heart_rate > 0).map(p => p.rs1 / p.heart_rate));
+  const e1 = ef(s.slice(0, h)), e2 = ef(s.slice(h));
+  const drift = (e1 - e2) / e1 * 100;
+  const sp1 = mean(s.slice(0, h).map(p => p.speed)), sp2 = mean(s.slice(h).map(p => p.speed));
+  const label = drift < 3 ? "Strong Durability" : drift <= 6 ? "Moderate Drift" : "Significant Fatigue";
+  return `EF 1st half = ${f(e1, 4)}, EF 2nd half = ${f(e2, 4)}<br>
+    Drift = ${f(drift)}% &rarr; ${label}<br>
+    Split speed: 1st half ${f(sp1, 2)} km/h, 2nd half ${f(sp2, 2)} km/h (asymmetry ${f((sp2 - sp1) / sp1 * 100)}%)`;
+}
 
-  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.16/dist/plot.umd.min.js"></script>
-  <script src="app.js"></script>
+function M05(s) { // Physiological lag: lag tau maximising corr(d speed(t), d HR(t+tau))
+  const g = [];
+  for (let t = s[0].sec; t <= s[s.length - 1].sec; t++) g.push({ v: at(s, "speed", t), hr: at(s, "heart_rate", t) });
+  const dv = g.slice(1).map((p, i) => p.v - g[i].v), dh = g.slice(1).map((p, i) => p.hr - g[i].hr);
+  let best = { tau: NaN, r: -Infinity };
+  for (let tau = 0; tau <= 60; tau++) {
+    const a = dv.slice(0, dv.length - tau), b = dh.slice(tau);
+    const ma = mean(a), mb = mean(b);
+    let num = 0, da = 0, db = 0;
+    for (let i = 0; i < a.length; i++) { num += (a[i] - ma) * (b[i] - mb); da += (a[i] - ma) ** 2; db += (b[i] - mb) ** 2; }
+    const r = num / Math.sqrt(da * db);
+    if (r > best.r) best = { tau, r };
+  }
+  const ok = best.tau >= 12 && best.tau <= 30 ? "inside" : "outside";
+  return `Peak lag = ${best.tau} s (r = ${f(best.r, 2)}), ${ok} the typical 12-30 s window.`;
+}
+
+function M06(user, all) { // HRex per session for this user
+  const rows = all.filter(w => w.user_id === user).map(w => {
+    const v = w.s.filter(p => Math.abs(p.alt_d) < 0.05 && p.rs1 >= 11 && p.rs1 <= 13).map(p => p.heart_rate);
+    return [w.start_date, w.workout_id, v.length ? f(mean(v)) : "n/a (no flat 11-13 km/h segments)", v.length];
+  }).sort((a, b) => a[0] < b[0] ? -1 : 1);
+  const vals = rows.map(r => parseFloat(r[2])).filter(Number.isFinite);
+  let trend = "Need 2+ sessions with HRex to show a trend.";
+  if (vals.length > 1) {
+    const d = vals[vals.length - 1] - vals[0];
+    trend = d >= 4 ? `Rising HRex (+${f(d)} BPM): Accumulated Fatigue` : d < 0 ? `Decreasing HRex (${f(d)} BPM): Positive Fitness Adaptation` : `Stable (${f(d)} BPM)`;
+  }
+  return table(["date", "workout", "HRex (BPM)", "points used"], rows) + trend;
+}
+
+function archetype(s) { // M-07 classifier
+  const v = s.map(p => p.speed), cv = sd(v) / mean(v);
+  let gain = 0;
+  for (let i = 1; i < s.length; i++) gain += Math.max(0, s[i].altitude - s[i - 1].altitude);
+  const type = gain > 150 ? "Hilly" : cv >= 0.12 ? "Intervals" : "Steady";
+  return { cv, gain, type };
+}
+
+function M07(all) {
+  return table(["workout", "user", "date", "dataset type", "speed CV", "climb (m)", "archetype"],
+    all.map(w => { const a = archetype(w.s); return [w.workout_id, w.user_id, w.start_date, w.workout_type, f(a.cv, 2), f(a.gain, 0), a.type]; }));
+}
+
+function M08(s) { // HRR after a peak followed by a sharp speed drop
+  let best = null;
+  for (let i = 0; i < s.length; i++) {
+    const p = s[i];
+    if (p.sec + 120 > s[s.length - 1].sec) break;
+    const v60 = at(s, "speed", p.sec + 30);
+    if (v60 < 0.6 * p.speed || at(s, "alt_d", p.sec + 30) < -0.05) {
+      if (!best || p.heart_rate > best.heart_rate) best = p;
+    }
+  }
+  if (!best) return "No recovery event (HR peak followed by sharp speed/grade drop) found.";
+  const h60 = best.heart_rate - at(s, "heart_rate", best.sec + 60);
+  const h120 = best.heart_rate - at(s, "heart_rate", best.sec + 120);
+  const label = h60 <= 12 ? "Attenuated Recovery Flag" : h60 > 18 ? "Normal Autonomic Drop" : "Borderline";
+  return `Peak ${f(best.heart_rate)} BPM at minute ${f(best.t_min, 2)}<br>
+    HRR_60 = ${f(h60)} BPM, HRR_120 = ${f(h120)} BPM &rarr; ${label}`;
+}
+
+function M09(s) { // 5-min windows + signal confidence
+  const buckets = {};
+  s.forEach(p => (buckets[Math.floor(p.t_min / 5)] ??= []).push(p.heart_rate));
+  const rows = Object.entries(buckets).map(([k, v]) => [`${k * 5}-${k * 5 + 5}`, f(Math.min(...v)), f(quant(v, 0.5)), f(Math.max(...v)), v.length]);
+  let gapSec = 0, unlinked = 0;
+  for (let i = 1; i < s.length; i++) {
+    const dt = s[i].sec - s[i - 1].sec;
+    if (dt > 30) gapSec += dt;
+    if (s[i].heart_rate - s[i - 1].heart_rate > 15 && s[i].speed - s[i - 1].speed <= 0 && s[i].altitude - s[i - 1].altitude <= 0) unlinked++;
+  }
+  const dropout = gapSec / (s[s.length - 1].sec - s[0].sec) * 100;
+  const low = dropout > 5 || unlinked > 0;
+  return table(["minutes", "min BPM", "median BPM", "max BPM", "points"], rows) +
+    `Dropout (gaps > 30 s) = ${f(dropout)}% | Unlinked HR jumps > 15 BPM = ${unlinked} &rarr; ${low ? "Low Signal Confidence" : "OK"}`;
+}
+
+// ---------- page ----------
+(async () => {
+  const [ts, workouts] = await Promise.all([csv("data/timeseries.csv"), csv("data/workouts.csv")]);
+  const meta = Object.fromEntries(workouts.map(w => [w.workout_id, w]));
+  const groups = {};
+  ts.forEach(r => (groups[r.workout_id] ??= []).push(r));
+  const all = Object.entries(groups).map(([id, rows]) => ({ ...meta[id], s: derive(rows) }));
+
+  const pick = document.getElementById("pick");
+  pick.innerHTML = all.map((w, i) => `<option value="${i}">${w.workout_id} (user ${w.user_id}, ${w.workout_type}, ${w.start_date})</option>`).join("");
+
+  const render = () => {
+    const w = all[pick.value], s = w.s;
+    const userHr = all.filter(x => x.user_id === w.user_id).flatMap(x => x.s.map(p => p.heart_rate));
+    const a = archetype(s);
+    document.getElementById("out").innerHTML = `
+      <p>${f(w.duration_min, 0)} min, ${f(w.distance_km, 2)} km, mean HR ${f(w.hr_mean)} BPM, ${s.length} points.</p>
+
+      <h2>Beginner Runners</h2>
+      <h3>M-01 Opening Pace Ratio</h3><p>${M01(s)}</p>
+      <h3>M-02 Relative Effort Distribution</h3><p>${M02(s, userHr)}</p>
+      <h3>M-03 Terrain-Linked HR Spike Tag</h3><p>${M03(s)}</p>
+
+      <h2>Expert Runners</h2>
+      <h3>M-04 Cardiac Drift Index &amp; Split Asymmetry</h3><p>${M04(s)}</p>
+      <h3>M-05 Physiological Lag</h3><p>${M05(s)}</p>
+
+      <h2>Running Coaches</h2>
+      <h3>M-06 Standardized Effort Index (HRex), all sampled sessions of user ${w.user_id}</h3><p>${M06(w.user_id, all)}</p>
+      <h3>M-07 Workout Archetype &amp; Elevation Load</h3>
+      <p>This workout: speed CV ${f(a.cv, 2)}, climb ${f(a.gain, 0)} m &rarr; ${a.type}</p>
+      <details><summary>All ${all.length} sampled workouts</summary>${M07(all)}</details>
+
+      <h2>Medical Professionals</h2>
+      <h3>M-08 60s &amp; 120s Post-Peak HRR</h3><p>${M08(s)}</p>
+      <h3>M-09 Windowed Summary &amp; Signal Confidence</h3><p>${M09(s)}</p>`;
+  };
+  pick.onchange = render;
+  render();
+})();
+</script>
 </body>
 </html>
