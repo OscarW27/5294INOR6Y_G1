@@ -1,43 +1,59 @@
 @prefix : <https://oscarw27.github.io/5294INOR6Y_G1/ontology#> .
 
+#Core onotology prefixes
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
-@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+
+# Metadata & broad entities
 @prefix dcterms:<http://purl.org/dc/terms/> .
-@prefix sosa:   <http://www.w3.org/ns/sosa/> .
+@prefix schema: <https://schema.org/> .
+
+# Data type and unit prefixes
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix qudt:   <http://qudt.org/schema/qudt/> .
 @prefix unit:   <http://qudt.org/vocab/unit/> .
-@prefix paco:   <http://www.semanticweb.org/hyk038/ontologies/2018/7/untitled-ontology-17#> .
+
+# For sensor measurements
+@prefix sosa:   <http://www.w3.org/ns/sosa/> .
+
+# Physical Activity Ontology
+@prefix paco:   <http://purl.bioontology.org/ontology/PACO/> .
 
 <https://oscarw27.github.io/5294INOR6Y_G1/ontology> a owl:Ontology ;
-    dcterms:title "Endomondo Running Telemetry Ontology"@en ;
-    dcterms:description "A domain ontology modeling running workouts, intensity categories, summary metrics, and time-series sensor observations from the Endomondo Heart Rate Prediction V2 dataset."@en ;
+    dcterms:title "Running workout ontology"@en ;
+    dcterms:description "A domain ontology modeling running workouts, intensity categories, summary metrics, and time-series sensor observations from the Endomondo Heart Rate Prediction V2 dataset. Workout types are aligned with the Physical Activity Ontology (PACO, BioPortal) to support interoperability with clinical physical activity data."@en ;
     owl:versionInfo "1.0"^^xsd:string ;
     rdfs:seeAlso <https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2> ;
     owl:imports <http://www.w3.org/ns/sosa/> .
 
+#Classes
 :Athlete a owl:Class ;
+    rdfs:subClassOf schema:Person ;
     rdfs:label "Athlete"@en ;
     rdfs:comment "A runner identified by a unique user_id in the Endomondo dataset."@en .
 
 :RunningWorkout a owl:Class ;
-    rdfs:subClassOf paco:Running ;
+    rdfs:subClassOf schema:ExerciseAction ;
     rdfs:label "Running Workout"@en ;
     rdfs:comment "A recorded running session containing aggregate metrics and sequential telemetry points."@en .
 
 :RecoveryRun a owl:Class ;
     rdfs:subClassOf :RunningWorkout ;
+    skos:closeMatch paco:Low ;
     rdfs:label "Recovery Run"@en ;
     rdfs:comment "A low-intensity running session categorized as RECOVERY."@en .
 
 :SteadyRun a owl:Class ;
     rdfs:subClassOf :RunningWorkout ;
+    skos:closeMatch paco:Moderate ;
     rdfs:label "Steady Run"@en ;
     rdfs:comment "A moderate, consistent-pace running session categorized as STEADY."@en .
 
 :IntensiveRun a owl:Class ;
     rdfs:subClassOf :RunningWorkout ;
+    skos:closeMatch paco:Vigorous ;
     rdfs:label "Intensive Run"@en ;
     rdfs:comment "A high-effort running session categorized as INTENSIVE."@en .
 
@@ -62,6 +78,7 @@
     rdfs:label "Telemetry Point"@en ;
     rdfs:comment "A single timestamped sample in a workout time series grouping heart rate, speed, and altitude readings."@en .
 
+# Sensor properties
 :HeartRate a sosa:ObservableProperty ;
     rdfs:label "Heart Rate"@en ;
     rdfs:comment "Instantaneous heart rate measured in beats per minute (BPM)."@en .
@@ -74,7 +91,9 @@
     rdfs:label "Altitude"@en ;
     rdfs:comment "Elevation above sea level measured in meters (m)."@en .
 
+#Object properties
 :performedBy a owl:ObjectProperty ;
+    rdfs:subPropertyOf schema:agent ;
     rdfs:domain :RunningWorkout ;
     rdfs:range :Athlete ;
     rdfs:label "performed by"@en .
@@ -96,6 +115,15 @@
     rdfs:range :TelemetryPoint ;
     rdfs:label "has telemetry point"@en .
 
+:pacoIntensity a owl:ObjectProperty ;
+    rdfs:domain :RunningWorkout ;
+    rdfs:label "PACO intensity"@en ;
+    rdfs:comment "Intensity of the session expressed on PACO's three-level scale (Low, Moderate, Vigorous), bridging the dataset's workout_type values to PACO."@en .
+
+# =====================================================================
+# Datatype Properties (Identifiers & Workout Summary Metrics)
+# =====================================================================
+
 :userId a owl:DatatypeProperty ;
     rdfs:domain :Athlete ;
     rdfs:range xsd:integer ;
@@ -109,7 +137,8 @@
 :durationMinutes a owl:DatatypeProperty ;
     rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
-    rdfs:label "duration in minutes"@en .
+    rdfs:label "duration in minutes"@en ;
+    rdfs:seeAlso paco:By_duration .
 
 :hrMean a owl:DatatypeProperty ;
     rdfs:domain :RunningWorkout ;
@@ -152,6 +181,7 @@
     rdfs:label "sequence index"@en ;
     rdfs:comment "Zero-based position (0 to 499) of the observation within the resampled workout array."@en .
 
+#Dashboard KPI's
 :ZoneSource a owl:Class ;
     rdfs:label "Zone Source"@en ;
     rdfs:comment "Where the heart rate zone shares of a run came from."@en .
@@ -178,7 +208,8 @@
 :distanceKm a owl:DatatypeProperty ;
     rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
-    rdfs:label "distance (km)"@en .
+    rdfs:label "distance (km)"@en ;
+    rdfs:seeAlso paco:By_distance .
 
 :paceMinPerKm a owl:DatatypeProperty ;
     rdfs:domain :RunningWorkout ;
@@ -222,12 +253,16 @@
     rdfs:label "heart rate drift (%)"@en ;
     rdfs:comment "Change of the heart-rate-to-speed ratio from the first to the second half of the run (time series only)."@en .
 
+# Example Instance Data (Mapped from One Dataset Row)
+
 :Athlete_104 a :Athlete ;
     :userId 104 .
 
 :Workout_58291 a :SteadyRun ;
     :workoutId 58291 ;
     :performedBy :Athlete_104 ;
+    :pacoIntensity paco:Moderate ;
+    :distanceKm "8.6"^^xsd:float ;
     :durationMinutes "45.5"^^xsd:float ;
     :hrMean "154.2"^^xsd:float ;
     :hrStd "8.6"^^xsd:float ;
