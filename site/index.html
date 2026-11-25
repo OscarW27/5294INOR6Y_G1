@@ -2,214 +2,619 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Running Heart Rates</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RunTracker (Prototype)</title>
+<style>
+  body { font-family: sans-serif; margin: 1rem; }
+  .row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .cards { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+  nav { margin-top: 1rem; }
+  nav a { margin-right: 1rem; }
+  nav a.active { font-weight: bold; }
+  section { margin-top: 1rem; }
+  #log { border-top: 1px solid #ccc; margin-top: 2rem; padding-top: 0.5rem; color: #555; }
+  .role-card { font-size: 1rem; }
+  .role-large { padding: 2rem; min-width: 12rem; }
+  .role-small { padding: 0.75rem 1.5rem; }
+  .runner-mode { display: inline-flex; border: 1px solid #888; }
+  .runner-mode[hidden] { display: none; }
+  .runner-mode button { border: none; background: none; padding: 0.35rem 0.9rem; cursor: pointer; }
+  .runner-mode button + button { border-left: 1px solid #888; }
+  .runner-mode button.active { background: #333; color: #fff; }
+  #login-screen { text-align: center; }
+  #login-screen .cards {
+    justify-content: center;
+    width: 24rem;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #login-screen .role-card { flex: 1; }
+
+  /* ===== Persona dashboard themes ===== */
+  #app { --accent: #333; --accent-soft: #eee; }
+  #app[data-theme="Beginner runner"] { --accent: #2e7d32; --accent-soft: #e8f5e9; }
+  #app[data-theme="Advanced runner"] { --accent: #1565c0; --accent-soft: #e3f2fd; }
+  #app[data-theme="Coach"] { --accent: #ef6c00; --accent-soft: #fff3e0; }
+  #app[data-theme="Medical professional"] { --accent: #c62828; --accent-soft: #ffebee; }
+
+  #app[data-theme] > .row > strong { color: var(--accent); }
+  #random-run-summary[hidden] { display: none; }
+  #random-run-summary { margin-top: 1rem; }
+  #run-history[hidden], #run-search[hidden], #run-history-view[hidden] { display: none; }
+  #run-history { margin-top: 1rem; }
+  .run-list { list-style: none; margin: 0; padding: 0; }
+  .run-list li { padding: 0.35rem 0; border-bottom: 1px solid #ddd; }
+  .run-list .when { color: #555; margin-right: 0.5rem; }
+  .run-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .run-head h3 { margin: 0; }
+  #run-search-input { width: 100%; box-sizing: border-box; padding: 0.4rem; margin: 0.5rem 0; }
+  #kpi-panel[hidden] { display: none; }
+  #kpi-panel { margin-top: 1rem; }
+  #kpi-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1rem; }
+  .kpi-card { background: #fff; border: 1px solid #ddd; border-top: 4px solid var(--accent); border-radius: 6px; padding: 0.75rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .kpi-card h4 { margin: 0 0 0.5rem; color: var(--accent); }
+  .kpi-card ul { margin: 0.5rem 0 0; padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.4; }
+  .kpi-card details { margin-top: 0.5rem; font-size: 0.9rem; }
+  .kpi-card summary { cursor: pointer; color: var(--accent); }
+  .kpi-card.placeholder { background: #f6f6f6; border-style: dashed; color: #666; font-style: italic; box-shadow: none; }
+  .kpi-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .kpi-stat { flex: 1; min-width: 5.5rem; background: var(--accent-soft); border-radius: 6px; padding: 0.4rem 0.6rem; }
+  .kpi-stat b { display: block; font-size: 1.5rem; line-height: 1.2; color: var(--accent); }
+  .kpi-stat span { font-size: 0.75rem; color: #555; }
+  .kpi-sub { margin: 0.75rem 0 0.25rem; font-size: 0.8rem; color: #555; }
+  .zone-row { display: grid; grid-template-columns: 9rem 1fr; gap: 0.5rem; align-items: center; margin: 0.25rem 0; font-size: 0.8rem; }
+  .zonebar { display: flex; height: 1.4rem; border-radius: 4px; overflow: hidden; background: #eee; }
+  .zonebar i { display: block; font-style: normal; font-size: 0.7rem; line-height: 1.4rem; text-align: center; overflow: hidden; color: #fff; }
+  .zonebar .z-low { background: #2e7d32; }
+  .zonebar .z-mod { background: #f9a825; color: #222; }
+  .zonebar .z-high { background: #c62828; }
+  .zone-legend { font-size: 0.75rem; color: #555; margin-top: 0.25rem; }
+  .bar-row { display: grid; grid-template-columns: 3rem 1fr 7.5rem; gap: 0.5rem; align-items: center; margin: 0.2rem 0; font-size: 0.8rem; }
+  .bar-track { background: #eee; border-radius: 4px; height: 0.9rem; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; background: var(--accent); }
+  .bar-fill.good { background: #2e7d32; }
+  .bar-fill.warn { background: #f9a825; }
+  .bar-fill.bad { background: #c62828; }
+  .bar-fill.mute { background: #bbb; }
+  .badge { background: #c62828; color: #fff; border-radius: 3px; padding: 0 0.3rem; font-size: 0.7rem; font-weight: bold; font-style: normal; }
+  #kpi-runner-input { width: 8rem; padding: 0.25rem; }
+  .dash-box { border: 1px solid var(--accent); border-top: 4px solid var(--accent); padding: 0.75rem 1rem; }
+  .dash-box h3 { margin: 0 0 0.5rem; color: var(--accent); font-size: 1rem; }
+  .dash-action {
+    margin-top: 0.75rem;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
-<h1>Running Heart Rates</h1>
-<p>Data: <a href="https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2">Endomondo Heart Rate Prediction Dataset V2</a>.
-Files: <a href="data/workouts.csv">workouts.csv</a>, <a href="data/users.csv">users.csv</a>, <a href="data/timeseries.csv">timeseries.csv</a>.</p>
 
-<p>Workout: <select id="pick"></select></p>
-<div id="out">Loading...</div>
+<!-- ===== Login screen ===== -->
+<div id="login-screen">
+  <h1>Log in</h1>
+  <div class="cards">
+    <button type="button" class="role-card role-large" data-role="Beginner runner">Beginner runner</button>
+    <button type="button" class="role-card role-large" data-role="Advanced runner">Advanced runner</button>
+  </div>
+  <div class="cards">
+    <button type="button" class="role-card role-small" data-role="Coach">Coach</button>
+    <button type="button" class="role-card role-small" data-role="Medical professional">Medical professional</button>
+  </div>
+</div>
 
+<!-- ===== Dashboard ===== -->
+<div id="app" hidden>
+  <div class="row">
+    <strong>RunTracker</strong>
+    <span id="whoami"></span>
+    <div id="runner-mode-toggle" class="runner-mode" hidden aria-label="Runner mode" style="margin-left:auto">
+      <button type="button" data-mode="Beginner">Beginner</button>
+      <button type="button" data-mode="Expert">Expert</button>
+    </div>
+    <span><a href="#" id="logout-link">Log out</a></span>
+  </div>
+
+  <nav class="row" id="main-nav">
+    <a href="#" data-section="dashboard" class="active">Dashboard</a>
+  </nav>
+
+  <!-- Random run summary: runner roles only -->
+  <section id="random-run-summary" class="dash-box" hidden>
+    <h3>Last run</h3>
+    <p id="random-run-text" aria-live="polite">Loading your last run…</p>
+  </section>
+
+  <!-- Run history + search: runner roles only -->
+  <section id="run-history" class="dash-box" hidden>
+    <div id="run-history-view">
+      <div class="run-head">
+        <h3>Run history</h3>
+        <button type="button" id="run-search-open" class="dash-action" style="margin-top:0">Search runs</button>
+      </div>
+      <ul id="run-history-list" class="run-list" aria-live="polite"><li>Loading runs…</li></ul>
+    </div>
+    <div id="run-search" hidden>
+      <div class="run-head">
+        <h3>Search runs</h3>
+        <button type="button" id="run-search-close" class="dash-action" style="margin-top:0">Close</button>
+      </div>
+      <input type="search" id="run-search-input" placeholder="Runner id, type (intense/steady/recovery) or value (e.g. 45 min, 8.2 km)" aria-label="Search runs">
+      <div id="run-search-count"></div>
+      <ul id="run-search-list" class="run-list"></ul>
+    </div>
+  </section>
+
+  <!-- KPIs for one runner (real workouts.csv data): runners only; cards depend on Beginner/Expert mode -->
+  <section id="kpi-panel" class="dash-box" hidden>
+    <div class="run-head">
+      <h3>My training KPIs</h3>
+      <span>
+        <label for="kpi-runner-input">Runner ID</label>
+        <input type="text" id="kpi-runner-input" inputmode="numeric" aria-label="Runner ID">
+        <button type="button" id="kpi-runner-show" class="dash-action" style="margin-top:0">Show</button>
+      </span>
+    </div>
+    <p id="kpi-meta" aria-live="polite">Loading KPIs…</p>
+    <div id="kpi-cards"></div>
+  </section>
+
+  <div id="log" aria-live="polite"></div>
+</div>
+
+<script src="summary.js"></script>
 <script>
-// ---------- helpers ----------
-async function csv(url) {
-  const lines = (await (await fetch(url)).text()).trim().split(/\r?\n/);
-  const head = lines[0].split(",");
-  return lines.slice(1).map(l => {
-    const v = l.split(","), o = {};
-    head.forEach((h, i) => o[h] = isNaN(v[i]) || v[i] === "" ? v[i] : +v[i]);
-    return o;
+// ---------- fake auth (no real backend) ----------
+var SESSION_KEY = "runtracker_session";
+var RUNNER_MODE_KEY = "runtracker_runner_mode";
+var RUNNER_ROLES = ["Beginner runner", "Advanced runner"];
+var ROLE_TO_MODE = { "Beginner runner": "Beginner", "Advanced runner": "Expert" };
+
+function getSession() {
+  try { return JSON.parse(localStorage.getItem(SESSION_KEY)); } catch (e) { return null; }
+}
+
+function isRunner(session) {
+  return !!session && RUNNER_ROLES.indexOf(session.role) !== -1;
+}
+
+// Last toggled value first, then the login-page role, then "Beginner".
+function getRunnerMode(session) {
+  var stored = localStorage.getItem(RUNNER_MODE_KEY);
+  if (stored === "Beginner" || stored === "Expert") return stored;
+  return ROLE_TO_MODE[session.role] || "Beginner";
+}
+
+function setRunnerModeButtons(mode) {
+  document.querySelectorAll("#runner-mode-toggle button").forEach(function (btn) {
+    btn.classList.toggle("active", btn.dataset.mode === mode);
   });
 }
-const mean = a => a.length ? a.reduce((s, x) => s + x, 0) / a.length : NaN;
-const sd = a => { const m = mean(a); return Math.sqrt(mean(a.map(x => (x - m) ** 2))); };
-const quant = (a, q) => { const s = [...a].sort((x, y) => x - y); return s[Math.min(s.length - 1, Math.floor(q * s.length))]; };
-const f = (x, d = 1) => Number.isFinite(x) ? x.toFixed(d) : "n/a";
-const table = (head, rows) =>
-  "<table border=1><tr>" + head.map(h => "<th>" + h + "</th>").join("") + "</tr>" +
-  rows.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("") + "</table>";
 
-// Interpolate y at time t (seconds) on series s with fields sec + key
-function at(s, key, t) {
-  if (t < s[0].sec || t > s[s.length - 1].sec) return NaN;
-  let i = s.findIndex(p => p.sec >= t);
-  if (s[i].sec === t || i === 0) return s[i][key];
-  const a = s[i - 1], b = s[i];
-  return a[key] + (b[key] - a[key]) * (t - a.sec) / (b.sec - a.sec);
+function showLogin() {
+  document.getElementById("app").hidden = true;
+  document.getElementById("login-screen").hidden = false;
+  // Forget any remembered UI state from the previous user.
+  document.querySelectorAll("#runner-mode-toggle button").forEach(function (btn) {
+    btn.classList.remove("active");
+  });
 }
 
-// Add derived columns: sec, rolling_speed_1m, rolling_speed_3m, altitude_derivative (m/s)
-function derive(rows) {
-  const s = rows.map(r => ({ ...r, sec: r.t_min * 60 }));
-  for (let i = 0; i < s.length; i++) {
-    for (const [k, w] of [["rs1", 60], ["rs3", 180]]) {
-      const win = s.filter(p => p.sec <= s[i].sec && p.sec > s[i].sec - w).map(p => p.speed);
-      s[i][k] = mean(win);
+function showDashboard() {
+  document.querySelectorAll("#main-nav a").forEach(function (a) {
+    a.classList.toggle("active", a.dataset.section === "dashboard");
+  });
+}
+
+function showApp(session) {
+  document.getElementById("login-screen").hidden = true;
+  var app = document.getElementById("app");
+  app.hidden = false;
+  app.dataset.theme = session.role; // persona accent colors
+  document.getElementById("whoami").textContent = "Logged in as: " + (isRunner(session) ? "Runner" : session.role);
+  document.getElementById("runner-mode-toggle").hidden = !isRunner(session);
+  if (isRunner(session)) setRunnerModeButtons(getRunnerMode(session));
+  document.getElementById("random-run-summary").hidden = !isRunner(session);
+  document.getElementById("run-history").hidden = !isRunner(session);
+  document.getElementById("kpi-panel").hidden = !isRunner(session);
+  kpiRunner = null;
+  document.getElementById("kpi-runner-input").value = "";
+  closeSearch();
+  showDashboard();
+  logClick("Dashboard loaded for " + session.role);
+  if (isRunner(session)) {
+    showLastRun(session); // also builds/shows the run history (once per page load)
+    renderKpis(session);
+  }
+}
+
+document.querySelectorAll(".role-card").forEach(function (card) {
+  card.addEventListener("click", function () {
+    var session = { role: card.dataset.role, loggedInAt: new Date().toISOString() };
+    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    showApp(session);
+  });
+});
+
+document.getElementById("logout-link").addEventListener("click", function (e) {
+  e.preventDefault();
+  localStorage.removeItem(SESSION_KEY);
+  localStorage.removeItem(RUNNER_MODE_KEY); // forget the logged-out user's settings
+  showLogin();
+  closeSearch();
+  document.getElementById("run-history").hidden = true;
+  document.getElementById("kpi-panel").hidden = true;
+  logClick("Logged out — remembered user and settings cleared");
+});
+
+// ---------- runner mode toggle (Beginner / Expert) ----------
+document.getElementById("runner-mode-toggle").addEventListener("click", function (e) {
+  var btn = e.target.closest("button[data-mode]");
+  if (!btn || btn.classList.contains("active")) return;
+  var mode = btn.dataset.mode;
+  localStorage.setItem(RUNNER_MODE_KEY, mode);
+  setRunnerModeButtons(mode);
+  // Re-write the shown run summary in the newly chosen mode.
+  if (currentTriples) {
+    document.getElementById("random-run-text").textContent = RunSummary.buildSummary(currentTriples, mode);
+  }
+  logClick("Runner mode set to " + mode);
+  var session = getSession();
+  if (isRunner(session)) renderKpis(session); // Beginner and Expert show different KPI cards
+});
+
+// ---------- last run (runners only; logic in summary.js) (runners only; logic in summary.js) ----------
+var workoutRows = null;
+var currentTriples = null; // triples of the run currently shown
+
+function loadWorkouts() {
+  if (workoutRows) return Promise.resolve(workoutRows);
+  return fetch("data/workouts.csv")
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.text();
+    })
+    .then(function (text) {
+      workoutRows = RunSummary.parseCsv(text);
+      if (!workoutRows.length) throw new Error("no rows in file");
+      return workoutRows;
+    });
+}
+
+// Shows the newest run of the history (same single runner); called when the dashboard is shown.
+function showLastRun(session) {
+  var out = document.getElementById("random-run-text");
+  currentTriples = null;
+  out.textContent = "Loading your last run…";
+  ensureRunHistory().then(function (runs) {
+    document.getElementById("whoami").textContent = "Logged in as: Runner (ID " + runs[0].athlete + ")";
+    var triples = runs[0].triples; // history is sorted newest first
+    currentTriples = triples;
+    var mode = getRunnerMode(session);
+    out.textContent = RunSummary.buildSummary(triples, mode);
+    logClick("Last run shown for " + mode + " (runner " + runs[0].athlete + ", workout " + runs[0].id + ")");
+  }).catch(function (err) {
+    out.textContent = "Could not load run data (data/workouts.csv): " + err.message +
+      ". If you opened this page as a local file, serve the folder with a static web server instead.";
+    logClick("Last run failed: " + err.message);
+  });
+}
+
+// ---------- KPI cards (runners only; maths in summary.js, real workouts.csv data of ONE runner) ----------
+var tsMap = null, tsPromise = null;   // timeseries.csv, loaded lazily (Expert mode only)
+var kpiRunner = null;                 // runner typed in the box; null = the run-history runner
+var kpiToken = 0;                     // ignore results of superseded renders
+
+function loadTimeseries() {
+  if (tsMap) return Promise.resolve(tsMap);
+  if (!tsPromise) {
+    tsPromise = fetch("data/timeseries.csv")
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.text();
+      })
+      .then(function (text) { tsMap = RunSummary.parseTimeseries(text); return tsMap; })
+      .catch(function (err) { tsPromise = null; throw err; });
+  }
+  return tsPromise;
+}
+
+function drawKpiCards(cards) {
+  var box = document.getElementById("kpi-cards");
+  box.textContent = "";
+  cards.forEach(function (c) {
+    var div = document.createElement("div");
+    div.className = "kpi-card" + (c.placeholder ? " placeholder" : "");
+    div.dataset.kpi = c.id;
+    var h = document.createElement("h4");
+    h.textContent = c.title;
+    div.appendChild(h);
+    if (c.stats) div.appendChild(statsEl(c.stats));
+    if (c.zones) div.appendChild(zonesEl(c.zones));
+    if (c.bars) div.appendChild(barsEl(c.bars));
+    // Lines after the first `collapse` ones go under a "Details" toggle.
+    var cut = c.collapse || c.lines.length;
+    div.appendChild(linesEl(c.lines.slice(0, cut)));
+    if (c.lines.length > cut) {
+      var det = document.createElement("details");
+      var sum = document.createElement("summary");
+      sum.textContent = "Details";
+      det.appendChild(sum);
+      det.appendChild(linesEl(c.lines.slice(cut)));
+      div.appendChild(det);
     }
-    const dt = i ? s[i].sec - s[i - 1].sec : 0;
-    s[i].alt_d = dt > 0 ? (s[i].altitude - s[i - 1].altitude) / dt : 0;
-  }
-  return s;
+    box.appendChild(div);
+  });
 }
 
-// ---------- measures ----------
-function M01(s) { // Opening pace ratio
-  const k = Math.max(1, Math.floor(s.length * 0.15));
-  const r = mean(s.slice(0, k).map(p => p.rs1)) / mean(s.slice(k).map(p => p.rs1));
-  const label = r > 1.10 ? "Started Too Fast" : r >= 0.95 ? "Steady Start" : "Negative Split (Strong Finish)";
-  return `Ratio = ${f(r, 2)} &rarr; ${label}`;
+function el(tag, cls, text) {
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
+  return e;
 }
 
-function M02(s, userHr) { // Relative effort distribution
-  const p75 = quant(userHr, 0.75), p90 = quant(userHr, 0.90), n = s.length;
-  const easy = s.filter(p => p.heart_rate < p75).length / n * 100;
-  const hard = s.filter(p => p.heart_rate > p90).length / n * 100;
-  const mod = 100 - easy - hard;
-  const tag = easy > 70 ? "Aerobic Base Run" : hard > 40 ? "High Intensity Session" : "Mixed Session";
-  return `Bands from this user's HR (75th pct = ${f(p75)}, 90th pct = ${f(p90)} BPM)<br>
-    Easy ${f(easy)}% | Moderate ${f(mod)}% | Hard ${f(hard)}% &rarr; ${tag}`;
+function statsEl(stats) {
+  var wrap = el("div", "kpi-stats");
+  stats.forEach(function (s) {
+    var d = el("div", "kpi-stat");
+    d.appendChild(el("b", "", s.value));
+    d.appendChild(el("span", "", s.label));
+    wrap.appendChild(d);
+  });
+  return wrap;
 }
 
-function M03(s) { // Terrain-linked HR spikes
-  const hr = s.map(p => p.heart_rate), thr = mean(hr) + sd(hr);
-  const hits = s.filter(p => p.heart_rate > thr && p.alt_d > 0);
-  if (!hits.length) return `No HR spikes (> ${f(thr)} BPM) during climbs.`;
-  return `${hits.length} points with HR > ${f(thr)} BPM while climbing. HR rose due to climb, not overexertion.<br>` +
-    table(["minute", "HR", "climb (m/s)"], hits.slice(0, 10).map(p => [f(p.t_min, 2), f(p.heart_rate), f(p.alt_d, 2)])) +
-    (hits.length > 10 ? `(first 10 of ${hits.length})` : "");
+// Stacked low/moderate/high bar per row (percent text inside the segment when wide enough).
+function zonesEl(zones) {
+  var wrap = el("div", "kpi-zones");
+  wrap.appendChild(el("div", "kpi-sub", "Time in heart rate zones"));
+  zones.forEach(function (z) {
+    var row = el("div", "zone-row");
+    row.appendChild(el("span", "", z.label));
+    var bar = el("div", "zonebar");
+    [["low", "z-low"], ["mod", "z-mod"], ["high", "z-high"]].forEach(function (k) {
+      var seg = el("i", k[1], z[k[0]] >= 0.1 ? Math.round(z[k[0]] * 100) + "%" : "");
+      seg.style.width = (z[k[0]] * 100) + "%";
+      seg.title = k[0] + " " + Math.round(z[k[0]] * 100) + " %";
+      bar.appendChild(seg);
+    });
+    row.appendChild(bar);
+    wrap.appendChild(row);
+  });
+  wrap.appendChild(el("div", "zone-legend", "green = low, yellow = moderate, red = high"));
+  return wrap;
 }
 
-function M04(s) { // Cardiac drift & split asymmetry
-  const h = Math.floor(s.length / 2);
-  const ef = a => mean(a.filter(p => p.heart_rate > 0).map(p => p.rs1 / p.heart_rate));
-  const e1 = ef(s.slice(0, h)), e2 = ef(s.slice(h));
-  const drift = (e1 - e2) / e1 * 100;
-  const sp1 = mean(s.slice(0, h).map(p => p.speed)), sp2 = mean(s.slice(h).map(p => p.speed));
-  const label = drift < 3 ? "Strong Durability" : drift <= 6 ? "Moderate Drift" : "Significant Fatigue";
-  return `EF 1st half = ${f(e1, 4)}, EF 2nd half = ${f(e2, 4)}<br>
-    Drift = ${f(drift)}% &rarr; ${label}<br>
-    Split speed: 1st half ${f(sp1, 2)} km/h, 2nd half ${f(sp2, 2)} km/h (asymmetry ${f((sp2 - sp1) / sp1 * 100)}%)`;
+function barsEl(bars) {
+  var wrap = el("div", "kpi-bars"), max = 0;
+  bars.items.forEach(function (it) { if (it.value > max) max = it.value; });
+  wrap.appendChild(el("div", "kpi-sub", bars.title));
+  bars.items.forEach(function (it) {
+    var row = el("div", "bar-row");
+    row.appendChild(el("span", "", it.label));
+    var track = el("div", "bar-track"), fill = el("div", "bar-fill " + (it.cls || ""));
+    fill.style.width = (max > 0 ? Math.max(it.value / max * 100, it.value > 0 ? 2 : 0) : 0) + "%";
+    track.appendChild(fill);
+    row.appendChild(track);
+    row.appendChild(el("span", "", it.text));
+    wrap.appendChild(row);
+  });
+  return wrap;
 }
 
-function M05(s) { // Physiological lag: lag tau maximising corr(d speed(t), d HR(t+tau))
-  const g = [];
-  for (let t = s[0].sec; t <= s[s.length - 1].sec; t++) g.push({ v: at(s, "speed", t), hr: at(s, "heart_rate", t) });
-  const dv = g.slice(1).map((p, i) => p.v - g[i].v), dh = g.slice(1).map((p, i) => p.hr - g[i].hr);
-  let best = { tau: NaN, r: -Infinity };
-  for (let tau = 0; tau <= 60; tau++) {
-    const a = dv.slice(0, dv.length - tau), b = dh.slice(tau);
-    const ma = mean(a), mb = mean(b);
-    let num = 0, da = 0, db = 0;
-    for (let i = 0; i < a.length; i++) { num += (a[i] - ma) * (b[i] - mb); da += (a[i] - ma) ** 2; db += (b[i] - mb) ** 2; }
-    const r = num / Math.sqrt(da * db);
-    if (r > best.r) best = { tau, r };
-  }
-  const ok = best.tau >= 12 && best.tau <= 30 ? "inside" : "outside";
-  return `Peak lag = ${best.tau} s (r = ${f(best.r, 2)}), ${ok} the typical 12-30 s window.`;
-}
-
-function M06(user, all) { // HRex per session for this user
-  const rows = all.filter(w => w.user_id === user).map(w => {
-    const v = w.s.filter(p => Math.abs(p.alt_d) < 0.05 && p.rs1 >= 11 && p.rs1 <= 13).map(p => p.heart_rate);
-    return [w.start_date, w.workout_id, v.length ? f(mean(v)) : "n/a (no flat 11-13 km/h segments)", v.length];
-  }).sort((a, b) => a[0] < b[0] ? -1 : 1);
-  const vals = rows.map(r => parseFloat(r[2])).filter(Number.isFinite);
-  let trend = "Need 2+ sessions with HRex to show a trend.";
-  if (vals.length > 1) {
-    const d = vals[vals.length - 1] - vals[0];
-    trend = d >= 4 ? `Rising HRex (+${f(d)} BPM): Accumulated Fatigue` : d < 0 ? `Decreasing HRex (${f(d)} BPM): Positive Fitness Adaptation` : `Stable (${f(d)} BPM)`;
-  }
-  return table(["date", "workout", "HRex (BPM)", "points used"], rows) + trend;
-}
-
-function archetype(s) { // M-07 classifier
-  const v = s.map(p => p.speed), cv = sd(v) / mean(v);
-  let gain = 0;
-  for (let i = 1; i < s.length; i++) gain += Math.max(0, s[i].altitude - s[i - 1].altitude);
-  const type = gain > 150 ? "Hilly" : cv >= 0.12 ? "Intervals" : "Steady";
-  return { cv, gain, type };
-}
-
-function M07(all) {
-  return table(["workout", "user", "date", "dataset type", "speed CV", "climb (m)", "archetype"],
-    all.map(w => { const a = archetype(w.s); return [w.workout_id, w.user_id, w.start_date, w.workout_type, f(a.cv, 2), f(a.gain, 0), a.type]; }));
-}
-
-function M08(s) { // HRR after a peak followed by a sharp speed drop
-  let best = null;
-  for (let i = 0; i < s.length; i++) {
-    const p = s[i];
-    if (p.sec + 120 > s[s.length - 1].sec) break;
-    const v60 = at(s, "speed", p.sec + 30);
-    if (v60 < 0.6 * p.speed || at(s, "alt_d", p.sec + 30) < -0.05) {
-      if (!best || p.heart_rate > best.heart_rate) best = p;
+// A trailing " FLAG" in a line becomes a red badge.
+function linesEl(lines) {
+  var ul = document.createElement("ul");
+  lines.forEach(function (line) {
+    var li = document.createElement("li"), i = line.indexOf(" FLAG");
+    if (i < 0) li.textContent = line;
+    else {
+      li.appendChild(document.createTextNode(line.slice(0, i) + " "));
+      li.appendChild(el("em", "badge", "FLAG"));
+      li.appendChild(document.createTextNode(line.slice(i + 5)));
     }
-  }
-  if (!best) return "No recovery event (HR peak followed by sharp speed/grade drop) found.";
-  const h60 = best.heart_rate - at(s, "heart_rate", best.sec + 60);
-  const h120 = best.heart_rate - at(s, "heart_rate", best.sec + 120);
-  const label = h60 <= 12 ? "Attenuated Recovery Flag" : h60 > 18 ? "Normal Autonomic Drop" : "Borderline";
-  return `Peak ${f(best.heart_rate)} BPM at minute ${f(best.t_min, 2)}<br>
-    HRR_60 = ${f(h60)} BPM, HRR_120 = ${f(h120)} BPM &rarr; ${label}`;
+    ul.appendChild(li);
+  });
+  return ul;
 }
 
-function M09(s) { // 5-min windows + signal confidence
-  const buckets = {};
-  s.forEach(p => (buckets[Math.floor(p.t_min / 5)] ??= []).push(p.heart_rate));
-  const rows = Object.entries(buckets).map(([k, v]) => [`${k * 5}-${k * 5 + 5}`, f(Math.min(...v)), f(quant(v, 0.5)), f(Math.max(...v)), v.length]);
-  let gapSec = 0, unlinked = 0;
-  for (let i = 1; i < s.length; i++) {
-    const dt = s[i].sec - s[i - 1].sec;
-    if (dt > 30) gapSec += dt;
-    if (s[i].heart_rate - s[i - 1].heart_rate > 15 && s[i].speed - s[i - 1].speed <= 0 && s[i].altitude - s[i - 1].altitude <= 0) unlinked++;
-  }
-  const dropout = gapSec / (s[s.length - 1].sec - s[0].sec) * 100;
-  const low = dropout > 5 || unlinked > 0;
-  return table(["minutes", "min BPM", "median BPM", "max BPM", "points"], rows) +
-    `Dropout (gaps > 30 s) = ${f(dropout)}% | Unlinked HR jumps > 15 BPM = ${unlinked} &rarr; ${low ? "Low Signal Confidence" : "OK"}`;
+function renderKpis(session) {
+  var mode = getRunnerMode(session), token = ++kpiToken;
+  var meta = document.getElementById("kpi-meta");
+  meta.textContent = "Loading KPIs…";
+  document.getElementById("kpi-cards").textContent = "";
+  var tsNote = "";
+  ensureRunHistory().then(function (runs) {
+    var uid = kpiRunner || runs[0].athlete;
+    return Promise.all([
+      loadWorkouts(),
+      mode === "Expert"
+        ? loadTimeseries().catch(function (err) { tsNote = " Time-series file not loaded (" + err.message + "): all zones are estimated."; return null; })
+        : Promise.resolve(null)
+    ]).then(function (res) { return { uid: uid, rows: res[0], ts: res[1] }; });
+  }).then(function (d) {
+    if (token !== kpiToken) return;
+    var ctx = RunSummary.buildKpiContext(d.rows, d.uid, d.ts);
+    if (!ctx) {
+      meta.textContent = "No usable runs found for runner " + d.uid + ".";
+      logClick("KPIs: no runs for runner " + d.uid);
+      return;
+    }
+    var first = ctx.runs[0].date, last = ctx.runs[ctx.runs.length - 1].date;
+    meta.textContent = "Runner " + ctx.athlete + ": " + ctx.runs.length + " runs from " + first + " to " + last +
+      " (real start dates from workouts.csv)." + tsNote;
+    drawKpiCards(RunSummary.kpiCards(ctx, mode));
+    logClick("KPIs shown for " + mode + " (runner " + ctx.athlete + ", " + ctx.runs.length + " runs)");
+  }).catch(function (err) {
+    if (token !== kpiToken) return;
+    meta.textContent = "Could not load KPI data: " + err.message;
+    logClick("KPIs failed: " + err.message);
+  });
 }
 
-// ---------- page ----------
-(async () => {
-  const [ts, workouts] = await Promise.all([csv("data/timeseries.csv"), csv("data/workouts.csv")]);
-  const meta = Object.fromEntries(workouts.map(w => [w.workout_id, w]));
-  const groups = {};
-  ts.forEach(r => (groups[r.workout_id] ??= []).push(r));
-  const all = Object.entries(groups).map(([id, rows]) => ({ ...meta[id], s: derive(rows) }));
+document.getElementById("kpi-runner-show").addEventListener("click", function () {
+  var v = document.getElementById("kpi-runner-input").value.trim();
+  var session = getSession();
+  if (!v || !isRunner(session)) return;
+  kpiRunner = v;
+  renderKpis(session);
+});
 
-  const pick = document.getElementById("pick");
-  pick.innerHTML = all.map((w, i) => `<option value="${i}">${w.workout_id} (user ${w.user_id}, ${w.workout_type}, ${w.start_date})</option>`).join("");
+// ---------- run history + search (runners only; mapping in summary.js) ----------
+var HISTORY_SIZE = 10;
+var WEEK_MS = 7 * 24 * 3600 * 1000;
+var historyRuns = null;   // generated once per page load, newest first
+var runIndex = null;      // triples-mapped index of the full CSV, built lazily
 
-  const render = () => {
-    const w = all[pick.value], s = w.s;
-    const userHr = all.filter(x => x.user_id === w.user_id).flatMap(x => x.s.map(p => p.heart_rate));
-    const a = archetype(s);
-    document.getElementById("out").innerHTML = `
-      <p>${f(w.duration_min, 0)} min, ${f(w.distance_km, 2)} km, mean HR ${f(w.hr_mean)} BPM, ${s.length} points.</p>
+function pad2(n) { return n < 10 ? "0" + n : "" + n; }
+function fmtWhen(d) {
+  return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()) + " " +
+    pad2(d.getHours()) + ":" + pad2(d.getMinutes());
+}
 
-      <h2>Beginner Runners</h2>
-      <h3>M-01 Opening Pace Ratio</h3><p>${M01(s)}</p>
-      <h3>M-02 Relative Effort Distribution</h3><p>${M02(s, userHr)}</p>
-      <h3>M-03 Terrain-Linked HR Spike Tag</h3><p>${M03(s)}</p>
+function renderRunItems(ul, runs, withTime) {
+  ul.textContent = "";
+  runs.forEach(function (r) {
+    var li = document.createElement("li");
+    if (withTime) {
+      var w = document.createElement("span");
+      w.className = "when";
+      w.textContent = fmtWhen(r.when);
+      li.appendChild(w);
+    }
+    li.appendChild(document.createTextNode(RunSummary.formatRun(r) + (withTime ? "" : " — runner " + r.athlete)));
+    ul.appendChild(li);
+  });
+}
 
-      <h2>Expert Runners</h2>
-      <h3>M-04 Cardiac Drift Index &amp; Split Asymmetry</h3><p>${M04(s)}</p>
-      <h3>M-05 Physiological Lag</h3><p>${M05(s)}</p>
+function setListMessage(ul, msg) {
+  ul.textContent = "";
+  var li = document.createElement("li");
+  li.textContent = msg;
+  ul.appendChild(li);
+}
 
-      <h2>Running Coaches</h2>
-      <h3>M-06 Standardized Effort Index (HRex), all sampled sessions of user ${w.user_id}</h3><p>${M06(w.user_id, all)}</p>
-      <h3>M-07 Workout Archetype &amp; Elevation Load</h3>
-      <p>This workout: speed CV ${f(a.cv, 2)}, climb ${f(a.gain, 0)} m &rarr; ${a.type}</p>
-      <details><summary>All ${all.length} sampled workouts</summary>${M07(all)}</details>
+// Generated once per page load: ONE random runner's runs, timestamps within the last 7 days.
+// Returns a promise of the runs (newest first); the first one is the "Last run".
+var historyPromise = null;
+function ensureRunHistory() {
+  var ul = document.getElementById("run-history-list");
+  if (historyRuns) { renderRunItems(ul, historyRuns, true); return Promise.resolve(historyRuns); }
+  if (historyPromise) return historyPromise;
+  setListMessage(ul, "Loading runs…");
+  historyPromise = loadWorkouts().then(function (rows) {
+    var uid = null, own = [];
+    for (var tries = 0; tries < 50; tries++) {
+      uid = rows[Math.floor(Math.random() * rows.length)].user_id;
+      own = rows.filter(function (r) { return r.user_id === uid; });
+      if (own.length >= HISTORY_SIZE) break;
+    }
+    var now = Date.now(), runs = [];
+    for (var guard = 0; runs.length < HISTORY_SIZE && guard < 1000; guard++) {
+      var t = RunSummary.rowToTriples(own[Math.floor(Math.random() * own.length)]);
+      if (!t) continue;
+      var info = RunSummary.runInfo(t);
+      info.triples = t;
+      info.when = new Date(now - Math.random() * WEEK_MS);
+      runs.push(info);
+    }
+    if (!runs.length) throw new Error("no usable runs found");
+    runs.sort(function (a, b) { return b.when - a.when; });
+    historyRuns = runs;
+    renderRunItems(ul, runs, true);
+    logClick("Run history shown (runner " + runs[0].athlete + ", " + runs.length + " runs)");
+    return runs;
+  }).catch(function (err) {
+    historyPromise = null;
+    setListMessage(ul, "Could not load run data: " + err.message);
+    throw err;
+  });
+  return historyPromise;
+}
 
-      <h2>Medical Professionals</h2>
-      <h3>M-08 60s &amp; 120s Post-Peak HRR</h3><p>${M08(s)}</p>
-      <h3>M-09 Windowed Summary &amp; Signal Confidence</h3><p>${M09(s)}</p>`;
-  };
-  pick.onchange = render;
-  render();
+var searchTimer = null;
+function runSearch() {
+  var q = document.getElementById("run-search-input").value;
+  var list = document.getElementById("run-search-list");
+  var count = document.getElementById("run-search-count");
+  if (!runIndex) return;
+  if (!q.trim()) {
+    list.textContent = "";
+    count.textContent = "Type to search all " + runIndex.length + " runs.";
+    return;
+  }
+  var res = RunSummary.searchIndex(runIndex, q, 50);
+  renderRunItems(list, res.hits, false);
+  count.textContent = res.total + " match" + (res.total === 1 ? "" : "es") +
+    (res.total > res.hits.length ? " (showing first " + res.hits.length + ")" : "");
+}
+
+function openSearch() {
+  document.getElementById("run-history-view").hidden = true;
+  document.getElementById("run-search").hidden = false;
+  document.getElementById("run-search-input").focus();
+  if (runIndex) { runSearch(); return; }
+  document.getElementById("run-search-count").textContent = "Loading runs…";
+  loadWorkouts().then(function (rows) {
+    if (!runIndex) runIndex = RunSummary.buildIndex(rows);
+    runSearch();
+  }).catch(function (err) {
+    document.getElementById("run-search-count").textContent = "Could not load run data: " + err.message;
+  });
+}
+
+function closeSearch() {
+  clearTimeout(searchTimer);
+  document.getElementById("run-search").hidden = true;
+  document.getElementById("run-history-view").hidden = false;
+  document.getElementById("run-search-input").value = "";
+  document.getElementById("run-search-list").textContent = "";
+  document.getElementById("run-search-count").textContent = "";
+}
+
+document.getElementById("run-search-open").addEventListener("click", function () {
+  openSearch();
+  logClick("Search runs opened");
+});
+document.getElementById("run-search-close").addEventListener("click", function () {
+  closeSearch();
+  logClick("Search runs closed");
+});
+document.getElementById("run-search-input").addEventListener("input", function () {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(runSearch, 120);
+});
+
+// ---------- navigation / visible feedback ----------
+var logBox = document.getElementById("log");
+
+function logClick(message) {
+  var line = new Date().toLocaleTimeString() + " — " + message;
+  var p = document.createElement("div");
+  p.textContent = line;
+  logBox.prepend(p);
+}
+
+function showSection(name) {
+  if (name === "dashboard") showDashboard();
+}
+
+document.getElementById("main-nav").addEventListener("click", function (e) {
+  var a = e.target.closest("a[data-section]");
+  if (!a) return;
+  e.preventDefault();
+  showSection(a.dataset.section);
+  logClick("Navigated to " + a.dataset.section);
+});
+
+// ---------- restore session on refresh ----------
+(function init() {
+  var session = getSession();
+  if (session && session.role) showApp(session); else showLogin();
 })();
 </script>
 </body>

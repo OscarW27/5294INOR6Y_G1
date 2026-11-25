@@ -1,0 +1,133 @@
+{
+  "title": "Running Dashboard KPIs by Runner Persona",
+  "dataset": "endomondo_hr_v2",
+  "overview": "Beginner and expert runners engage with running dashboards in fundamentally different ways. Beginners prioritize attainable health habits, psychological enjoyment, and simple progress summaries, while experienced runners use longitudinal physiological data to regulate intensity, manage fatigue, and adapt structured training plans.",
+  "personas": {
+    "beginner_runner": {
+      "focus": "Attainable health habits, psychological enjoyment, and simple progress summaries",
+      "kpis": [
+        {
+          "id": "weekly_consistency_and_persistence",
+          "name": "Weekly Consistency and Persistence",
+          "what_it_measures": "Sessions per week, weekly active minutes, and multi-week streaks",
+          "scientific_reasoning": "Running even 5 to 10 minutes per day, 1 to 2 times per week, or at slow paces under 6 mph (roughly 9.7 km/h) lowers all-cause and cardiovascular mortality risk, with persistent runners seeing the largest long-term gains. Framing achievable movement habits also directly targets global physical inactivity risk.",
+          "sources": [
+            "Lee2014",
+            "who2024",
+            "strava2025"
+          ],
+          "computable_from_dataset": true,
+          "data_requirements": "Workout timestamps, duration"
+        },
+        {
+          "id": "simple_session_summaries",
+          "name": "Simple Session Summaries",
+          "what_it_measures": "Total distance, duration, and average pace per run",
+          "scientific_reasoning": "Users without prior self-tracking experience often struggle to interpret dense numerical telemetry, which can obscure self-understanding and cause tool abandonment. Less experienced runners (3 years or less) focus mainly on health goals and basic post-run reviews, using trackers primarily to log effort and maintain accountability.",
+          "sources": [
+            "Rapp2016",
+            "janssen2020",
+            "karahanoglu2021"
+          ],
+          "computable_from_dataset": true,
+          "data_requirements": "Distance, duration, speed or pace"
+        },
+        {
+          "id": "goal_separated_run_views",
+          "name": "Goal-Separated Run Views",
+          "what_it_measures": "Simple tags separating casual or social runs from personal-goal runs",
+          "scientific_reasoning": "Recreational runners balance multiple motivations such as health, enjoyment, and personal milestones. Separating casual runs from goal-driven workouts lets beginners hide live metrics like heart rate when they just want an enjoyable run, avoiding distracting or confrontational feedback.",
+          "sources": [
+            "Pereira2021",
+            "karahanoglu2021"
+          ],
+          "computable_from_dataset": false,
+          "data_requirements": "User-supplied workout tags or session goal metadata"
+        },
+        {
+          "id": "route_environment_and_runnability",
+          "name": "Route Environment and Runnability",
+          "what_it_measures": "Share of runs in parks, trails, or green-space routes versus purely urban streets",
+          "scientific_reasoning": "Outdoor natural environments provide stronger psychological restoration during running than urban settings. Scoping evidence on runnability similarly shows that runners strongly prefer routes with natural surroundings or green-space connections, supporting long-term adherence.",
+          "sources": [
+            "Bodin2003",
+            "tegart2025"
+          ],
+          "computable_from_dataset": false,
+          "data_requirements": "GPS trajectories enriched with external geospatial or green-space land-use data"
+        }
+      ]
+    },
+    "expert_runner": {
+      "focus": "Longitudinal physiological data to regulate intensity, manage fatigue, and adapt structured training plans",
+      "kpis": [
+        {
+          "id": "training_intensity_distribution",
+          "name": "Training Intensity Distribution (TID)",
+          "what_it_measures": "Percentage of training time or sessions spent across low, moderate, and high intensity zones",
+          "scientific_reasoning": "Endurance training literature shows that polarized and pyramidal distributions, typically keeping roughly 80 percent of volume at low intensity and concentrating the remainder at high intensity, outperform heavy moderate-intensity training for middle- and long-distance performance.",
+          "sources": [
+            "seiler2010",
+            "kenneally2018"
+          ],
+          "computable_from_dataset": true,
+          "data_requirements": "Heart rate time-series, speed or pace time-series, workout duration"
+        },
+        {
+          "id": "internal_vs_external_load_coupling",
+          "name": "Internal vs. External Load Coupling",
+          "what_it_measures": "Heart rate response (internal load) paired against pace, distance, and elevation (external load)",
+          "scientific_reasoning": "External output alone cannot show the true physiological cost of a workout. Comparing internal physiological strain against external work completed reveals whether an athlete is adapting positively or experiencing extra stress.",
+          "sources": [
+            "Bourdon2017",
+            "halson2014"
+          ],
+          "computable_from_dataset": true,
+          "data_requirements": "Heart rate time-series, pace, distance, altitude or elevation"
+        },
+        {
+          "id": "periodized_load_progression",
+          "name": "Periodized Load Progression",
+          "what_it_measures": "Multi-week volume and intensity trends across training blocks, including short-term versus long-term load balance",
+          "scientific_reasoning": "Experienced and competitive runners actively monitor longitudinal trends to adapt future training. Tracking structured periodization alongside acute and chronic load changes helps maximize performance gains while limiting injury and illness risk.",
+          "sources": [
+            "janssen2020",
+            "Bourdon2017",
+            "kenneally2018"
+          ],
+          "computable_from_dataset": true,
+          "data_requirements": "Multi-week workout timestamps, distance, duration, heart rate time-series"
+        },
+        {
+          "id": "physiological_strain_and_fatigue_indicators",
+          "name": "Physiological Strain and Fatigue Indicators",
+          "what_it_measures": "Wearable heart rate trends and cardiovascular drift relative to familiar workloads",
+          "scientific_reasoning": "Continuous wearable physiological monitoring helps athletes detect early fatigue or non-functional overreaching when heart rate rises unexpectedly for a given pace, supporting timely recovery adjustments.",
+          "sources": [
+            "halson2014",
+            "Seshadri2019"
+          ],
+          "computable_from_dataset": true,
+          "data_requirements": "Heart rate time-series, pace time-series, workout timestamps"
+        },
+        {
+          "id": "plan_adherence_and_performance_reflection",
+          "name": "Plan Adherence and Performance Reflection",
+          "what_it_measures": "Structured workout tracking separated from recovery or social runs",
+          "scientific_reasoning": "Performance-oriented runners pair trackers with structured training plans and rely on clean goal separation to reflect on serious training sessions and adjust upcoming workouts.",
+          "sources": [
+            "karahanoglu2021",
+            "janssen2020"
+          ],
+          "computable_from_dataset": false,
+          "data_requirements": "User-supplied training plan metadata or workout tags"
+        }
+      ]
+    }
+  },
+  "dataset_notes": {
+    "direct_telemetry_coverage": "Distance, duration, pace, elevation, GPS trajectories, and heart rate time-series can be computed directly from endomondo_hr_v2.",
+    "enrichment_required": "Route environment and runnability require geospatial enrichment, while goal-separated views and plan adherence require user tagging.",
+    "bibtex_housekeeping": "Bourdon2017 and bourdon2017 appear twice in the provided BibTeX file with different capitalization; deduplicating prevents LaTeX citation key conflicts."
+  }
+}
