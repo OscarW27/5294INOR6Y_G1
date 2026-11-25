@@ -1,3 +1,5 @@
+@prefix : <https://oscarw27.github.io/5294INOR6Y_G1/ontology#> .
+
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
@@ -9,276 +11,254 @@
 @prefix unit:   <http://qudt.org/vocab/unit/> .
 @prefix paco:   <http://purl.bioontology.org/ontology/PACO/> .
 
-@prefix endo:   <https://oscarw27.github.io/5294INOR6Y_G1/ontology.ttl#> .
-
-<https://oscarw27.github.io/5294INOR6Y_G1/ontology.ttl> a owl:Ontology ;
+<https://oscarw27.github.io/5294INOR6Y_G1/ontology> a owl:Ontology ;
     dcterms:title "Endomondo Running Telemetry Ontology"@en ;
     dcterms:description "A domain ontology modeling running workouts, intensity categories, summary metrics, and time-series sensor observations from the Endomondo Heart Rate Prediction V2 dataset."@en ;
     owl:versionInfo "1.0"^^xsd:string ;
     rdfs:seeAlso <https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2> ;
     owl:imports <http://www.w3.org/ns/sosa/> .
 
-# Classes
-
-endo:Athlete a owl:Class ;
+:Athlete a owl:Class ;
     rdfs:subClassOf schema:Person ;
     rdfs:label "Athlete"@en ;
     rdfs:comment "A runner identified by a unique user_id in the Endomondo dataset."@en .
 
-endo:RunningWorkout a owl:Class ;
+:RunningWorkout a owl:Class ;
     rdfs:subClassOf schema:ExerciseAction ;
     rdfs:label "Running Workout"@en ;
     rdfs:comment "A recorded running session containing aggregate metrics and sequential telemetry points."@en .
 
-endo:RecoveryRun a owl:Class ;
-    rdfs:subClassOf endo:RunningWorkout ;
+:RecoveryRun a owl:Class ;
+    rdfs:subClassOf :RunningWorkout ;
     rdfs:label "Recovery Run"@en ;
     rdfs:comment "A low-intensity running session categorized as RECOVERY."@en .
 
-endo:SteadyRun a owl:Class ;
-    rdfs:subClassOf endo:RunningWorkout ;
+:SteadyRun a owl:Class ;
+    rdfs:subClassOf :RunningWorkout ;
     rdfs:label "Steady Run"@en ;
     rdfs:comment "A moderate, consistent-pace running session categorized as STEADY."@en .
 
-endo:IntensiveRun a owl:Class ;
-    rdfs:subClassOf endo:RunningWorkout ;
+:IntensiveRun a owl:Class ;
+    rdfs:subClassOf :RunningWorkout ;
     rdfs:label "Intensive Run"@en ;
     rdfs:comment "A high-effort running session categorized as INTENSIVE."@en .
 
-endo:RunFocus a owl:Class ;
+:RunFocus a owl:Class ;
     rdfs:label "Run Focus"@en ;
     rdfs:comment "The main character of a single run, used to describe it in plain language."@en .
 
-endo:IntervalFocused a endo:RunFocus ;
+:IntervalFocused a :RunFocus ;
     rdfs:label "Interval focused"@en ;
     rdfs:comment "A hard session, like interval training that mixes fast and slow parts (workout type INTENSIVE)."@en .
 
-endo:EfficientFocused a endo:RunFocus ;
+:EfficientFocused a :RunFocus ;
     rdfs:label "Efficient focused"@en ;
     rdfs:comment "A run with high efficiency: 100 x mean speed / mean heart rate is at least 7.1."@en .
 
-endo:FastStartFocused a endo:RunFocus ;
+:FastStartFocused a :RunFocus ;
     rdfs:label "Fast start focused"@en ;
     rdfs:comment "A less economical, non-interval run (efficiency below 7.1), typical of going out too fast at the start."@en .
 
-endo:TelemetryPoint a owl:Class ;
+:TelemetryPoint a owl:Class ;
     rdfs:subClassOf sosa:ObservationCollection ;
     rdfs:label "Telemetry Point"@en ;
     rdfs:comment "A single timestamped sample in a workout time series grouping heart rate, speed, and altitude readings."@en .
 
-# =====================================================================
-# Observable Properties (Sensor Channels)
-# =====================================================================
-
-endo:HeartRate a sosa:ObservableProperty ;
+:HeartRate a sosa:ObservableProperty ;
     rdfs:label "Heart Rate"@en ;
     rdfs:comment "Instantaneous heart rate measured in beats per minute (BPM)."@en .
 
-endo:Speed a sosa:ObservableProperty ;
+:Speed a sosa:ObservableProperty ;
     rdfs:label "Speed"@en ;
     rdfs:comment "Instantaneous running speed measured in kilometers per hour (km/h)."@en .
 
-endo:Altitude a sosa:ObservableProperty ;
+:Altitude a sosa:ObservableProperty ;
     rdfs:label "Altitude"@en ;
     rdfs:comment "Elevation above sea level measured in meters (m)."@en .
 
-# =====================================================================
-# Object Properties
-# =====================================================================
-
-endo:performedBy a owl:ObjectProperty ;
+:performedBy a owl:ObjectProperty ;
     rdfs:subPropertyOf schema:agent ;
-    rdfs:domain endo:RunningWorkout ;
-    rdfs:range endo:Athlete ;
+    rdfs:domain :RunningWorkout ;
+    rdfs:range :Athlete ;
     rdfs:label "performed by"@en .
 
-endo:runFocus a owl:ObjectProperty ;
-    rdfs:domain endo:RunningWorkout ;
-    rdfs:range endo:RunFocus ;
+:runFocus a owl:ObjectProperty ;
+    rdfs:domain :RunningWorkout ;
+    rdfs:range :RunFocus ;
     rdfs:label "run focus"@en ;
     rdfs:comment "Links a workout to its main focus (interval, efficient or fast start)."@en .
 
-endo:hasWorkout a owl:ObjectProperty ;
-    owl:inverseOf endo:performedBy ;
-    rdfs:domain endo:Athlete ;
-    rdfs:range endo:RunningWorkout ;
+:hasWorkout a owl:ObjectProperty ;
+    owl:inverseOf :performedBy ;
+    rdfs:domain :Athlete ;
+    rdfs:range :RunningWorkout ;
     rdfs:label "has workout"@en .
 
-endo:hasTelemetryPoint a owl:ObjectProperty ;
-    rdfs:domain endo:RunningWorkout ;
-    rdfs:range endo:TelemetryPoint ;
+:hasTelemetryPoint a owl:ObjectProperty ;
+    rdfs:domain :RunningWorkout ;
+    rdfs:range :TelemetryPoint ;
     rdfs:label "has telemetry point"@en .
 
-# =====================================================================
-# Datatype Properties (Identifiers & Workout Summary Metrics)
-# =====================================================================
-
-endo:userId a owl:DatatypeProperty ;
-    rdfs:domain endo:Athlete ;
+:userId a owl:DatatypeProperty ;
+    rdfs:domain :Athlete ;
     rdfs:range xsd:integer ;
     rdfs:label "user ID"@en .
 
-endo:workoutId a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:workoutId a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:integer ;
     rdfs:label "workout ID"@en .
 
-endo:durationMinutes a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:durationMinutes a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "duration in minutes"@en .
 
-endo:hrMean a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:hrMean a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "mean heart rate (BPM)"@en .
 
-endo:hrStd a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:hrStd a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "heart rate standard deviation (BPM)"@en .
 
-endo:hrMin a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:hrMin a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "minimum heart rate (BPM)"@en .
 
-endo:hrMax a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:hrMax a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "maximum heart rate (BPM)"@en .
 
-endo:speedMean a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:speedMean a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "mean speed (km/h)"@en .
 
-endo:speedMax a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:speedMax a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "maximum speed (km/h)"@en .
 
-endo:altitudeGain a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:altitudeGain a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "total altitude gain (m)"@en .
 
-endo:sequenceIndex a owl:DatatypeProperty ;
-    rdfs:domain endo:TelemetryPoint ;
+:sequenceIndex a owl:DatatypeProperty ;
+    rdfs:domain :TelemetryPoint ;
     rdfs:range xsd:nonNegativeInteger ;
     rdfs:label "sequence index"@en ;
     rdfs:comment "Zero-based position (0 to 499) of the observation within the resampled workout array."@en .
 
-# =====================================================================
-# Dashboard KPI terms (derived per-run metrics; added for the running dashboard)
-# =====================================================================
-
-endo:ZoneSource a owl:Class ;
+:ZoneSource a owl:Class ;
     rdfs:label "Zone Source"@en ;
     rdfs:comment "Where the heart rate zone shares of a run came from."@en .
 
-endo:TimeSeriesZones a endo:ZoneSource ;
+:TimeSeriesZones a :ZoneSource ;
     rdfs:label "Time-series zones"@en ;
     rdfs:comment "Zone shares measured from the heart rate time series (time-weighted samples)."@en .
 
-endo:SummaryEstimatedZones a endo:ZoneSource ;
+:SummaryEstimatedZones a :ZoneSource ;
     rdfs:label "Summary-estimated zones"@en ;
     rdfs:comment "Zone shares estimated from the run summary (hr_mean, hr_std, hr_min, hr_max) because no time series exists for the run."@en .
 
-endo:zoneSource a owl:ObjectProperty ;
-    rdfs:domain endo:RunningWorkout ;
-    rdfs:range endo:ZoneSource ;
+:zoneSource a owl:ObjectProperty ;
+    rdfs:domain :RunningWorkout ;
+    rdfs:range :ZoneSource ;
     rdfs:label "zone source"@en .
 
-endo:startDate a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:startDate a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:date ;
     rdfs:label "start date"@en ;
     rdfs:comment "Calendar day the workout started (workouts.csv start_date)."@en .
 
-endo:distanceKm a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:distanceKm a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "distance (km)"@en .
 
-endo:paceMinPerKm a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:paceMinPerKm a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "average pace (min/km)"@en ;
     rdfs:comment "60 / mean speed in km/h."@en .
 
-endo:lowZoneShare a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:lowZoneShare a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "low zone share"@en ;
     rdfs:comment "Fraction (0-1) of the run below 80 percent of the reference maximum heart rate."@en .
 
-endo:moderateZoneShare a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:moderateZoneShare a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "moderate zone share"@en ;
     rdfs:comment "Fraction (0-1) of the run from 80 up to 90 percent of the reference maximum heart rate."@en .
 
-endo:highZoneShare a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:highZoneShare a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "high zone share"@en ;
     rdfs:comment "Fraction (0-1) of the run at or above 90 percent of the reference maximum heart rate."@en .
 
-endo:trainingLoad a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:trainingLoad a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "training load (points)"@en ;
     rdfs:comment "Edwards-style training impulse: minutes x (1 x low share + 2 x moderate share + 3 x high share)."@en .
 
-endo:beatsPerKm a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:beatsPerKm a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "heartbeats per km"@en ;
     rdfs:comment "Mean heart rate x pace in min/km: the cardiac cost of each kilometre."@en .
 
-endo:hrDriftPct a owl:DatatypeProperty ;
-    rdfs:domain endo:RunningWorkout ;
+:hrDriftPct a owl:DatatypeProperty ;
+    rdfs:domain :RunningWorkout ;
     rdfs:range xsd:float ;
     rdfs:label "heart rate drift (%)"@en ;
     rdfs:comment "Change of the heart-rate-to-speed ratio from the first to the second half of the run (time series only)."@en .
 
-# Example Instance Data (Mapped from One Dataset Row)
+:Athlete_104 a :Athlete ;
+    :userId 104 .
 
-endo:Athlete_104 a endo:Athlete ;
-    endo:userId 104 .
+:Workout_58291 a :SteadyRun ;
+    :workoutId 58291 ;
+    :performedBy :Athlete_104 ;
+    :durationMinutes "45.5"^^xsd:float ;
+    :hrMean "154.2"^^xsd:float ;
+    :hrStd "8.6"^^xsd:float ;
+    :hrMin "118.0"^^xsd:float ;
+    :hrMax "171.0"^^xsd:float ;
+    :speedMean "11.4"^^xsd:float ;
+    :speedMax "13.8"^^xsd:float ;
+    :altitudeGain "92.0"^^xsd:float ;
+    :hasTelemetryPoint :Point_58291_0 .
 
-endo:Workout_58291 a endo:SteadyRun ;
-    endo:workoutId 58291 ;
-    endo:performedBy endo:Athlete_104 ;
-    endo:durationMinutes "45.5"^^xsd:float ;
-    endo:hrMean "154.2"^^xsd:float ;
-    endo:hrStd "8.6"^^xsd:float ;
-    endo:hrMin "118.0"^^xsd:float ;
-    endo:hrMax "171.0"^^xsd:float ;
-    endo:speedMean "11.4"^^xsd:float ;
-    endo:speedMax "13.8"^^xsd:float ;
-    endo:altitudeGain "92.0"^^xsd:float ;
-    endo:hasTelemetryPoint endo:Point_58291_0 .
-
-endo:Point_58291_0 a endo:TelemetryPoint ;
-    endo:sequenceIndex 0 ;
+:Point_58291_0 a :TelemetryPoint ;
+    :sequenceIndex 0 ;
     sosa:phenomenonTime "2019-04-10T07:30:00Z"^^xsd:dateTime ;
-    sosa:hasMember endo:Obs_58291_0_HR ,
-                   endo:Obs_58291_0_Speed ,
-                   endo:Obs_58291_0_Alt .
+    sosa:hasMember :Obs_58291_0_HR ,
+                   :Obs_58291_0_Speed ,
+                   :Obs_58291_0_Alt .
 
-endo:Obs_58291_0_HR a sosa:Observation ;
-    sosa:observedProperty endo:HeartRate ;
+:Obs_58291_0_HR a sosa:Observation ;
+    sosa:observedProperty :HeartRate ;
     sosa:hasSimpleResult "122.0"^^xsd:float ;
     qudt:unit unit:BEAT-PER-MIN .
 
-endo:Obs_58291_0_Speed a sosa:Observation ;
-    sosa:observedProperty endo:Speed ;
+:Obs_58291_0_Speed a sosa:Observation ;
+    sosa:observedProperty :Speed ;
     sosa:hasSimpleResult "10.2"^^xsd:float ;
     qudt:unit unit:KM-PER-HR .
 
-endo:Obs_58291_0_Alt a sosa:Observation ;
-    sosa:observedProperty endo:Altitude ;
+:Obs_58291_0_Alt a sosa:Observation ;
+    sosa:observedProperty :Altitude ;
     sosa:hasSimpleResult "14.5"^^xsd:float ;
     qudt:unit unit:M .
