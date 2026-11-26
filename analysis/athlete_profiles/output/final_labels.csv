@@ -1,0 +1,762 @@
+user_id,workouts,label,confidence,Efficient & consistent,Fast starter / developing,Interval-focused
+69,19,Efficient & consistent,medium,0.431,0.564,0.006
+2358,276,Efficient & consistent,high,0.998,0.002,0.0
+3808,83,Efficient & consistent,high,0.9,0.056,0.044
+4101,23,Fast starter / developing,medium,0.764,0.145,0.091
+5197,50,Efficient & consistent,high,0.99,0.01,0.0
+13653,212,Efficient & consistent,high,0.957,0.032,0.011
+16786,63,Fast starter / developing,high,0.041,0.903,0.056
+34269,96,Efficient & consistent,high,0.917,0.072,0.011
+56291,280,Efficient & consistent,medium,0.267,0.731,0.002
+56331,114,Efficient & consistent,high,0.949,0.004,0.047
+68009,162,Efficient & consistent,high,0.992,0.008,0.001
+68129,84,Efficient & consistent,high,0.968,0.031,0.001
+71988,22,Efficient & consistent,high,0.917,0.071,0.012
+74718,18,Efficient & consistent,high,0.986,0.014,0.0
+80101,100,Fast starter / developing,medium,0.672,0.265,0.064
+80118,31,Fast starter / developing,medium,0.496,0.482,0.022
+80466,59,Efficient & consistent,high,0.979,0.016,0.005
+81753,67,Efficient & consistent,high,0.813,0.003,0.184
+90592,15,Efficient & consistent,high,0.987,0.01,0.003
+104216,17,Fast starter / developing,high,0.0,0.998,0.002
+114073,19,Fast starter / developing,medium,0.484,0.015,0.501
+126898,110,Fast starter / developing,medium,0.283,0.576,0.14
+136171,66,Efficient & consistent,high,0.992,0.007,0.001
+140314,24,Efficient & consistent,high,0.977,0.02,0.003
+147750,11,Interval-focused,high,0.148,0.0,0.852
+150436,56,Fast starter / developing,medium,0.112,0.001,0.888
+171814,38,Fast starter / developing,high,0.002,0.998,0.0
+174288,13,Fast starter / developing,high,0.0,0.997,0.003
+182042,85,Fast starter / developing,high,0.002,0.948,0.05
+196571,47,Fast starter / developing,medium,0.009,0.78,0.211
+196781,42,Interval-focused,high,0.0,0.0,1.0
+200833,21,Fast starter / developing,medium,0.873,0.12,0.006
+203045,155,Efficient & consistent,high,0.947,0.052,0.001
+212295,130,Efficient & consistent,high,0.835,0.165,0.0
+221371,35,Efficient & consistent,high,0.956,0.027,0.017
+229190,66,Efficient & consistent,high,0.901,0.08,0.019
+260784,67,Efficient & consistent,high,0.96,0.024,0.015
+280024,21,Interval-focused,low,0.0,0.0,1.0
+283321,60,Fast starter / developing,medium,0.397,0.591,0.012
+324779,175,Fast starter / developing,high,0.001,0.991,0.008
+331586,237,Efficient & consistent,high,0.999,0.001,0.001
+334217,13,Fast starter / developing,medium,0.831,0.123,0.045
+336611,17,Fast starter / developing,medium,0.423,0.385,0.192
+355088,43,Fast starter / developing,medium,0.254,0.573,0.173
+367324,30,Fast starter / developing,medium,0.658,0.177,0.165
+368603,364,Efficient & consistent,medium,0.584,0.413,0.002
+371523,16,Efficient & consistent,high,0.905,0.087,0.009
+407769,18,Fast starter / developing,low,0.0,1.0,0.0
+431375,114,Efficient & consistent,medium,0.733,0.175,0.091
+432096,138,Efficient & consistent,high,0.879,0.118,0.004
+434265,13,Efficient & consistent,high,0.916,0.068,0.015
+458903,26,Fast starter / developing,high,0.0,0.995,0.005
+478585,232,Efficient & consistent,high,0.99,0.008,0.002
+501555,25,Fast starter / developing,high,0.0,0.886,0.114
+510054,34,Efficient & consistent,high,0.945,0.054,0.001
+517351,14,Fast starter / developing,high,0.001,0.975,0.024
+519009,22,Efficient & consistent,medium,0.128,0.83,0.042
+519257,49,Interval-focused,high,0.0,0.0,1.0
+556109,82,Efficient & consistent,high,0.95,0.043,0.008
+604703,74,Efficient & consistent,high,0.978,0.02,0.002
+653747,32,Efficient & consistent,medium,0.448,0.536,0.017
+659522,38,Fast starter / developing,medium,0.808,0.18,0.012
+681624,42,Fast starter / developing,high,0.0,0.964,0.036
+715469,109,Efficient & consistent,high,0.927,0.052,0.022
+722528,15,Fast starter / developing,high,0.0,1.0,0.0
+732008,80,Fast starter / developing,high,0.0,1.0,0.0
+745030,209,Efficient & consistent,high,0.997,0.001,0.001
+751448,241,Efficient & consistent,high,0.995,0.005,0.0
+753100,42,Efficient & consistent,high,0.997,0.003,0.0
+762872,103,Efficient & consistent,high,0.92,0.003,0.078
+775277,161,Efficient & consistent,high,0.94,0.051,0.009
+776483,101,Fast starter / developing,medium,0.348,0.639,0.012
+777141,130,Efficient & consistent,high,0.994,0.006,0.0
+789985,11,Efficient & consistent,low,0.011,0.94,0.049
+791908,195,Efficient & consistent,high,0.911,0.088,0.001
+804068,86,Fast starter / developing,medium,0.284,0.63,0.086
+804189,13,Fast starter / developing,high,0.0,0.989,0.011
+818925,23,Fast starter / developing,high,0.001,0.895,0.104
+838899,50,Efficient & consistent,medium,0.796,0.171,0.034
+851531,177,Efficient & consistent,high,0.958,0.035,0.006
+854368,20,Efficient & consistent,high,0.97,0.026,0.004
+854633,127,Efficient & consistent,low,0.0,1.0,0.0
+860533,575,Efficient & consistent,high,0.98,0.02,0.0
+875281,29,Efficient & consistent,high,0.989,0.009,0.002
+885462,117,Efficient & consistent,high,0.958,0.03,0.012
+897592,13,Efficient & consistent,high,0.977,0.019,0.005
+903587,21,Efficient & consistent,medium,0.411,0.589,0.0
+907015,23,Efficient & consistent,medium,0.337,0.649,0.014
+947554,18,Fast starter / developing,high,0.108,0.836,0.056
+954504,40,Fast starter / developing,high,0.0,0.94,0.06
+971189,77,Fast starter / developing,medium,0.437,0.52,0.043
+982359,19,Fast starter / developing,high,0.004,0.806,0.19
+983950,228,Efficient & consistent,high,0.948,0.051,0.001
+993057,25,Fast starter / developing,medium,0.212,0.744,0.044
+993718,149,Efficient & consistent,high,0.999,0.001,0.0
+1009668,29,Efficient & consistent,high,0.977,0.005,0.018
+1023513,128,Fast starter / developing,high,0.002,0.872,0.126
+1034368,47,Efficient & consistent,high,0.945,0.045,0.01
+1035156,28,Fast starter / developing,medium,0.486,0.001,0.513
+1038205,18,Fast starter / developing,medium,0.149,0.774,0.077
+1055977,26,Fast starter / developing,medium,0.8,0.134,0.065
+1058434,105,Fast starter / developing,high,0.037,0.803,0.16
+1060751,77,Efficient & consistent,high,0.991,0.007,0.003
+1063624,673,Efficient & consistent,high,1.0,0.0,0.0
+1066105,24,Fast starter / developing,high,0.0,0.977,0.023
+1069797,36,Fast starter / developing,medium,0.335,0.513,0.152
+1086745,147,Efficient & consistent,high,0.901,0.067,0.032
+1290773,15,Fast starter / developing,high,0.024,0.856,0.12
+1295505,262,Efficient & consistent,high,0.996,0.004,0.0
+1295675,33,Efficient & consistent,high,0.913,0.039,0.048
+1342020,59,Fast starter / developing,high,0.0,0.966,0.034
+1356350,27,Fast starter / developing,high,0.027,0.925,0.048
+1367925,13,Interval-focused,low,0.0,0.0,1.0
+1377236,142,Interval-focused,high,0.009,0.0,0.991
+1384698,11,Efficient & consistent,high,0.85,0.136,0.014
+1413935,79,Efficient & consistent,high,0.957,0.041,0.002
+1417260,47,Fast starter / developing,medium,0.003,0.042,0.955
+1470078,51,Efficient & consistent,medium,0.144,0.0,0.856
+1477239,17,Fast starter / developing,medium,0.402,0.557,0.041
+1481127,49,Efficient & consistent,high,0.992,0.008,0.0
+1483178,17,Fast starter / developing,low,0.0,1.0,0.0
+1486987,57,Efficient & consistent,medium,0.746,0.254,0.0
+1520156,189,Efficient & consistent,high,0.969,0.029,0.002
+1530732,13,Fast starter / developing,medium,0.412,0.562,0.026
+1543833,63,Fast starter / developing,medium,0.213,0.505,0.282
+1593295,46,Interval-focused,high,0.0,0.0,1.0
+1598505,125,Efficient & consistent,high,0.986,0.011,0.002
+1601558,92,Fast starter / developing,medium,0.682,0.007,0.311
+1603116,68,Fast starter / developing,medium,0.467,0.322,0.21
+1609501,25,Fast starter / developing,high,0.003,0.976,0.021
+1616449,121,Efficient & consistent,high,0.999,0.001,0.0
+1638160,31,Fast starter / developing,medium,0.384,0.382,0.234
+1655221,150,Fast starter / developing,medium,0.831,0.167,0.002
+1668573,55,Fast starter / developing,high,0.075,0.868,0.057
+1670340,52,Efficient & consistent,high,0.981,0.019,0.001
+1675394,208,Efficient & consistent,medium,0.347,0.653,0.0
+1676051,51,Efficient & consistent,high,0.875,0.108,0.017
+1682336,207,Efficient & consistent,high,0.948,0.052,0.0
+1707239,40,Efficient & consistent,medium,0.491,0.493,0.015
+1708694,37,Fast starter / developing,medium,0.147,0.001,0.852
+1721981,38,Efficient & consistent,high,0.96,0.036,0.004
+1725447,32,Efficient & consistent,medium,0.786,0.002,0.212
+1732973,182,Efficient & consistent,low,0.169,0.831,0.0
+1749538,16,Fast starter / developing,medium,0.005,0.743,0.251
+1812737,39,Efficient & consistent,high,0.923,0.053,0.024
+1816756,39,Fast starter / developing,high,0.001,0.977,0.022
+1818822,38,Fast starter / developing,medium,0.271,0.204,0.524
+1818866,16,Fast starter / developing,medium,0.004,0.797,0.198
+1820027,73,Efficient & consistent,high,0.941,0.051,0.007
+1842744,75,Efficient & consistent,high,0.987,0.01,0.003
+1847703,15,Interval-focused,high,0.0,0.0,1.0
+1853801,15,Efficient & consistent,high,0.984,0.015,0.001
+1878236,12,Efficient & consistent,medium,0.703,0.257,0.04
+1882312,13,Efficient & consistent,high,0.99,0.004,0.007
+1907590,47,Fast starter / developing,medium,0.446,0.473,0.081
+1912029,143,Interval-focused,high,0.0,0.0,1.0
+1956196,155,Efficient & consistent,low,0.0,1.0,0.0
+1958069,21,Efficient & consistent,high,0.938,0.03,0.033
+1986853,80,Efficient & consistent,high,0.985,0.013,0.002
+2016429,16,Interval-focused,high,0.0,0.0,1.0
+2033976,26,Interval-focused,high,0.0,0.0,1.0
+2060912,124,Fast starter / developing,medium,0.115,0.729,0.156
+2071522,42,Fast starter / developing,medium,0.245,0.622,0.133
+2076057,115,Efficient & consistent,high,0.924,0.057,0.019
+2104631,149,Efficient & consistent,high,0.938,0.061,0.001
+2119401,33,Fast starter / developing,high,0.0,0.972,0.028
+2122136,74,Efficient & consistent,high,0.886,0.092,0.022
+2145516,113,Efficient & consistent,high,0.997,0.003,0.0
+2155614,130,Efficient & consistent,medium,0.116,0.884,0.0
+2164708,34,Efficient & consistent,high,0.989,0.011,0.0
+2171721,10,Efficient & consistent,medium,0.606,0.383,0.01
+2174810,61,Fast starter / developing,high,0.001,0.873,0.126
+2175400,72,Efficient & consistent,medium,0.0,0.997,0.003
+2181290,29,Efficient & consistent,low,0.149,0.833,0.018
+2207788,41,Efficient & consistent,high,0.835,0.117,0.048
+2218816,15,Efficient & consistent,high,0.997,0.002,0.001
+2226932,23,Fast starter / developing,high,0.0,0.997,0.003
+2232554,20,Interval-focused,high,0.0,0.0,1.0
+2232580,11,Efficient & consistent,medium,0.292,0.495,0.213
+2237368,22,Efficient & consistent,medium,0.262,0.0,0.738
+2246153,12,Fast starter / developing,medium,0.475,0.443,0.082
+2248203,13,Fast starter / developing,high,0.002,0.956,0.042
+2282039,159,Efficient & consistent,high,0.997,0.003,0.0
+2315790,66,Efficient & consistent,high,0.972,0.021,0.007
+2333172,170,Fast starter / developing,high,0.0,1.0,0.0
+2336853,60,Efficient & consistent,high,0.98,0.017,0.002
+2368480,29,Interval-focused,high,0.004,0.0,0.996
+2369854,88,Fast starter / developing,medium,0.457,0.219,0.323
+2390403,41,Efficient & consistent,medium,0.616,0.0,0.383
+2445737,12,Fast starter / developing,medium,0.067,0.785,0.149
+2461936,301,Efficient & consistent,high,1.0,0.0,0.0
+2474825,70,Fast starter / developing,medium,0.681,0.269,0.051
+2479025,45,Efficient & consistent,high,0.998,0.002,0.0
+2484383,21,Fast starter / developing,medium,0.565,0.392,0.042
+2484395,124,Efficient & consistent,high,0.996,0.001,0.003
+2487889,48,Fast starter / developing,medium,0.266,0.499,0.235
+2535101,94,Efficient & consistent,high,0.995,0.004,0.0
+2568526,155,Efficient & consistent,high,0.967,0.026,0.007
+2582984,12,Efficient & consistent,medium,0.489,0.46,0.051
+2584821,72,Fast starter / developing,medium,0.672,0.187,0.141
+2587574,59,Efficient & consistent,high,0.993,0.006,0.001
+2594030,42,Efficient & consistent,medium,0.434,0.558,0.008
+2595849,12,Fast starter / developing,medium,0.272,0.1,0.628
+2596923,16,Efficient & consistent,high,0.901,0.093,0.006
+2612870,65,Interval-focused,high,0.0,0.0,1.0
+2625706,26,Efficient & consistent,medium,0.016,0.982,0.002
+2636715,67,Efficient & consistent,medium,0.749,0.014,0.238
+2649245,45,Fast starter / developing,medium,0.368,0.563,0.068
+2661450,74,Efficient & consistent,medium,0.731,0.263,0.006
+2692363,238,Efficient & consistent,high,0.955,0.042,0.003
+2717503,75,Interval-focused,high,0.0,0.0,1.0
+2719026,43,Fast starter / developing,medium,0.259,0.72,0.021
+2719148,50,Efficient & consistent,medium,0.075,0.922,0.004
+2748745,13,Efficient & consistent,high,0.978,0.016,0.006
+2774168,16,Efficient & consistent,high,0.953,0.04,0.007
+2795796,18,Efficient & consistent,high,1.0,0.0,0.0
+2831390,18,Efficient & consistent,high,0.988,0.012,0.0
+2844791,95,Efficient & consistent,high,0.99,0.006,0.003
+2849785,135,Fast starter / developing,medium,0.754,0.117,0.129
+2868369,10,Fast starter / developing,high,0.0,0.86,0.139
+2887587,27,Efficient & consistent,high,0.952,0.04,0.008
+2894897,111,Efficient & consistent,high,0.995,0.005,0.0
+2898275,52,Efficient & consistent,high,0.977,0.014,0.009
+2915343,74,Efficient & consistent,high,0.9,0.073,0.027
+2934877,55,Fast starter / developing,medium,0.102,0.489,0.409
+2941284,101,Fast starter / developing,high,0.065,0.86,0.075
+2974312,168,Efficient & consistent,high,0.995,0.004,0.001
+2994297,26,Efficient & consistent,low,0.003,0.995,0.002
+3021311,160,Efficient & consistent,high,0.99,0.009,0.001
+3055418,69,Interval-focused,high,0.0,0.0,1.0
+3060590,216,Efficient & consistent,high,0.999,0.001,0.0
+3082409,40,Efficient & consistent,high,0.981,0.009,0.01
+3083777,17,Interval-focused,high,0.081,0.0,0.919
+3085942,19,Efficient & consistent,medium,0.569,0.422,0.01
+3088466,150,Efficient & consistent,high,0.98,0.0,0.019
+3089500,11,Fast starter / developing,medium,0.658,0.332,0.01
+3091798,115,Efficient & consistent,high,0.977,0.009,0.014
+3122949,18,Fast starter / developing,low,0.0,0.003,0.997
+3167841,22,Fast starter / developing,medium,0.198,0.001,0.801
+3191096,188,Efficient & consistent,high,0.885,0.01,0.105
+3235195,91,Efficient & consistent,low,0.0,1.0,0.0
+3262231,29,Interval-focused,high,0.08,0.0,0.92
+3272464,14,Efficient & consistent,high,0.916,0.08,0.004
+3275003,69,Efficient & consistent,high,0.952,0.003,0.045
+3276737,175,Efficient & consistent,high,0.932,0.058,0.01
+3288898,27,Fast starter / developing,high,0.185,0.808,0.006
+3297710,194,Efficient & consistent,high,0.997,0.002,0.001
+3317373,110,Efficient & consistent,high,0.956,0.003,0.041
+3324472,221,Efficient & consistent,high,0.999,0.001,0.0
+3362051,19,Efficient & consistent,high,0.976,0.024,0.0
+3365457,32,Fast starter / developing,high,0.019,0.929,0.052
+3375182,46,Efficient & consistent,high,0.942,0.05,0.008
+3381703,146,Fast starter / developing,medium,0.757,0.215,0.028
+3411439,232,Efficient & consistent,high,0.989,0.011,0.0
+3432842,244,Efficient & consistent,high,0.985,0.004,0.011
+3438751,87,Efficient & consistent,high,0.99,0.01,0.0
+3439813,132,Efficient & consistent,high,0.995,0.001,0.004
+3445572,14,Efficient & consistent,high,0.994,0.006,0.0
+3469220,142,Efficient & consistent,high,0.982,0.015,0.003
+3471841,45,Interval-focused,high,0.015,0.0,0.985
+3472071,73,Interval-focused,high,0.0,0.0,1.0
+3537163,13,Fast starter / developing,high,0.028,0.956,0.016
+3556695,104,Efficient & consistent,medium,0.0,1.0,0.0
+3558042,108,Fast starter / developing,medium,0.512,0.362,0.127
+3559941,108,Efficient & consistent,high,0.846,0.119,0.035
+3575734,182,Efficient & consistent,medium,0.027,0.959,0.014
+3576105,108,Fast starter / developing,medium,0.548,0.289,0.162
+3655927,34,Fast starter / developing,high,0.001,0.997,0.002
+3664548,29,Fast starter / developing,medium,0.043,0.014,0.943
+3668539,48,Fast starter / developing,high,0.0,0.984,0.016
+3680369,40,Fast starter / developing,high,0.005,0.921,0.074
+3689976,33,Fast starter / developing,medium,0.067,0.0,0.933
+3691161,68,Efficient & consistent,high,0.994,0.003,0.003
+3700284,17,Fast starter / developing,low,0.182,0.175,0.642
+3702346,39,Fast starter / developing,high,0.006,0.96,0.035
+3709276,92,Efficient & consistent,high,0.994,0.006,0.0
+3714939,13,Fast starter / developing,high,0.008,0.992,0.001
+3725029,14,Efficient & consistent,high,0.99,0.008,0.002
+3736342,196,Efficient & consistent,high,0.999,0.001,0.0
+3743021,19,Fast starter / developing,medium,0.0,0.001,0.999
+3820045,141,Efficient & consistent,high,0.969,0.03,0.0
+3867177,10,Efficient & consistent,low,0.123,0.869,0.007
+3905196,96,Efficient & consistent,high,0.991,0.009,0.0
+3908642,162,Efficient & consistent,high,0.999,0.001,0.0
+3918301,39,Interval-focused,high,0.054,0.0,0.946
+3987593,102,Interval-focused,low,0.0,0.0,1.0
+3992841,65,Interval-focused,high,0.0,0.0,1.0
+4003530,18,Fast starter / developing,medium,0.064,0.083,0.853
+4006330,48,Efficient & consistent,high,0.926,0.072,0.002
+4007546,238,Efficient & consistent,medium,0.747,0.252,0.0
+4009109,44,Efficient & consistent,high,0.939,0.044,0.017
+4025656,10,Efficient & consistent,high,0.97,0.02,0.01
+4057523,31,Interval-focused,high,0.001,0.0,0.999
+4124709,81,Efficient & consistent,high,0.995,0.005,0.0
+4131540,70,Fast starter / developing,high,0.0,1.0,0.0
+4133458,36,Fast starter / developing,medium,0.711,0.009,0.28
+4146688,254,Efficient & consistent,high,0.986,0.014,0.0
+4164701,38,Fast starter / developing,medium,0.019,0.007,0.974
+4177391,22,Efficient & consistent,medium,0.259,0.723,0.018
+4198916,64,Efficient & consistent,high,0.922,0.078,0.0
+4203888,47,Efficient & consistent,medium,0.785,0.16,0.055
+4226525,37,Efficient & consistent,high,0.971,0.027,0.003
+4233611,127,Efficient & consistent,high,0.997,0.003,0.0
+4253141,42,Fast starter / developing,high,0.001,0.914,0.085
+4264744,219,Efficient & consistent,high,0.984,0.015,0.002
+4264913,73,Efficient & consistent,high,0.985,0.008,0.007
+4296404,94,Efficient & consistent,high,0.991,0.008,0.001
+4318337,30,Fast starter / developing,medium,0.373,0.294,0.333
+4321971,62,Fast starter / developing,low,0.0,1.0,0.0
+4330976,76,Fast starter / developing,high,0.005,0.894,0.101
+4341373,10,Fast starter / developing,medium,0.014,0.0,0.986
+4357738,22,Fast starter / developing,high,0.0,0.999,0.001
+4362441,91,Efficient & consistent,high,0.956,0.044,0.0
+4363552,14,Efficient & consistent,high,0.863,0.091,0.046
+4419649,12,Fast starter / developing,medium,0.458,0.372,0.17
+4433918,32,Fast starter / developing,high,0.017,0.98,0.003
+4439016,177,Efficient & consistent,high,0.981,0.009,0.01
+4443471,11,Efficient & consistent,high,0.986,0.005,0.008
+4457345,25,Fast starter / developing,medium,0.224,0.632,0.143
+4536750,13,Efficient & consistent,high,0.93,0.035,0.035
+4564626,21,Fast starter / developing,medium,0.474,0.409,0.117
+4572860,95,Fast starter / developing,medium,0.018,0.009,0.972
+4584909,166,Efficient & consistent,high,0.989,0.01,0.0
+4615477,33,Fast starter / developing,medium,0.396,0.562,0.042
+4654918,16,Efficient & consistent,medium,0.231,0.765,0.004
+4668578,17,Efficient & consistent,high,0.832,0.132,0.037
+4675763,84,Efficient & consistent,high,0.962,0.035,0.003
+4752000,48,Fast starter / developing,medium,0.179,0.745,0.077
+4796418,75,Fast starter / developing,medium,0.414,0.56,0.026
+4905815,27,Fast starter / developing,medium,0.773,0.076,0.151
+4938238,21,Fast starter / developing,medium,0.085,0.11,0.805
+4969375,85,Efficient & consistent,high,0.997,0.003,0.0
+4973835,10,Efficient & consistent,medium,0.02,0.961,0.018
+4998101,50,Efficient & consistent,medium,0.696,0.293,0.012
+5063358,32,Efficient & consistent,high,0.994,0.005,0.001
+5072565,42,Fast starter / developing,high,0.111,0.877,0.012
+5095069,59,Fast starter / developing,medium,0.104,0.675,0.222
+5106976,25,Fast starter / developing,medium,0.449,0.531,0.021
+5107134,41,Fast starter / developing,medium,0.234,0.7,0.066
+5164930,13,Efficient & consistent,high,0.842,0.06,0.098
+5180701,23,Fast starter / developing,medium,0.363,0.539,0.097
+5242117,80,Efficient & consistent,high,0.967,0.025,0.008
+5255745,86,Efficient & consistent,medium,0.721,0.0,0.278
+5269471,15,Interval-focused,high,0.0,0.0,1.0
+5298016,24,Interval-focused,high,0.0,0.0,1.0
+5306319,50,Efficient & consistent,low,0.867,0.0,0.133
+5325166,38,Fast starter / developing,medium,0.188,0.579,0.233
+5346596,70,Fast starter / developing,medium,0.619,0.304,0.077
+5386323,47,Efficient & consistent,medium,0.254,0.73,0.016
+5407179,162,Fast starter / developing,medium,0.332,0.65,0.019
+5453063,36,Fast starter / developing,medium,0.726,0.221,0.054
+5486878,210,Efficient & consistent,high,0.966,0.034,0.0
+5507899,63,Efficient & consistent,medium,0.644,0.346,0.009
+5525152,25,Efficient & consistent,high,0.923,0.077,0.0
+5539676,10,Efficient & consistent,high,0.934,0.002,0.064
+5547218,31,Fast starter / developing,medium,0.846,0.103,0.05
+5551642,19,Fast starter / developing,medium,0.0,0.0,1.0
+5607830,64,Fast starter / developing,medium,0.522,0.444,0.034
+5727574,49,Efficient & consistent,medium,0.63,0.369,0.001
+5746423,262,Efficient & consistent,high,0.998,0.002,0.0
+5836671,11,Fast starter / developing,medium,0.691,0.281,0.028
+5839886,29,Fast starter / developing,medium,0.82,0.165,0.014
+5850177,14,Fast starter / developing,high,0.0,0.986,0.014
+5946470,19,Efficient & consistent,medium,0.6,0.373,0.027
+5964610,71,Fast starter / developing,high,0.0,1.0,0.0
+5979382,141,Efficient & consistent,high,0.996,0.003,0.001
+5986686,86,Efficient & consistent,high,0.881,0.092,0.027
+6000431,108,Efficient & consistent,high,0.968,0.012,0.02
+6107778,10,Fast starter / developing,high,0.002,0.93,0.069
+6113340,82,Efficient & consistent,high,0.986,0.012,0.002
+6162923,14,Interval-focused,high,0.0,0.0,1.0
+6176971,10,Fast starter / developing,medium,0.052,0.502,0.446
+6194859,23,Efficient & consistent,high,0.991,0.008,0.001
+6216280,27,Fast starter / developing,medium,0.48,0.085,0.434
+6299290,22,Efficient & consistent,high,1.0,0.0,0.0
+6342136,129,Efficient & consistent,medium,0.657,0.0,0.343
+6361870,19,Fast starter / developing,medium,0.247,0.038,0.715
+6422295,117,Fast starter / developing,medium,0.614,0.349,0.037
+6493363,15,Fast starter / developing,medium,0.31,0.573,0.116
+6532016,49,Interval-focused,high,0.0,0.0,1.0
+6579857,11,Efficient & consistent,medium,0.794,0.038,0.169
+6582710,55,Efficient & consistent,high,0.993,0.005,0.002
+6601602,298,Efficient & consistent,high,0.956,0.044,0.0
+6641862,62,Interval-focused,high,0.0,0.0,1.0
+6670535,86,Efficient & consistent,high,0.979,0.017,0.004
+6676926,40,Fast starter / developing,high,0.0,0.955,0.045
+6716410,13,Interval-focused,low,0.0,0.0,1.0
+6721368,105,Efficient & consistent,medium,0.046,0.936,0.018
+6724449,10,Efficient & consistent,medium,0.725,0.009,0.267
+6766202,13,Efficient & consistent,high,0.942,0.014,0.044
+6793807,12,Fast starter / developing,medium,0.149,0.544,0.307
+6796415,69,Efficient & consistent,high,0.995,0.005,0.001
+6800874,71,Efficient & consistent,high,0.828,0.149,0.023
+6828710,34,Fast starter / developing,medium,0.105,0.644,0.252
+6873187,60,Fast starter / developing,medium,0.522,0.378,0.1
+6883061,33,Efficient & consistent,high,0.963,0.034,0.003
+6946869,156,Efficient & consistent,high,0.991,0.008,0.001
+6961546,35,Fast starter / developing,medium,0.569,0.407,0.024
+6969866,37,Fast starter / developing,high,0.0,0.953,0.047
+7017288,50,Efficient & consistent,high,0.92,0.08,0.0
+7038373,224,Efficient & consistent,high,0.999,0.001,0.0
+7045897,11,Efficient & consistent,medium,0.747,0.078,0.175
+7178673,200,Interval-focused,high,0.0,0.0,1.0
+7181149,23,Efficient & consistent,medium,0.213,0.013,0.775
+7183572,10,Efficient & consistent,high,0.873,0.102,0.025
+7197311,89,Efficient & consistent,high,0.862,0.138,0.0
+7228559,59,Efficient & consistent,medium,0.293,0.0,0.707
+7285980,78,Efficient & consistent,high,0.992,0.008,0.0
+7313790,193,Efficient & consistent,high,0.911,0.088,0.0
+7382493,74,Efficient & consistent,medium,0.001,0.999,0.0
+7404960,159,Efficient & consistent,medium,0.649,0.345,0.006
+7425627,18,Fast starter / developing,medium,0.03,0.698,0.272
+7430612,92,Fast starter / developing,medium,0.314,0.63,0.057
+7516129,16,Efficient & consistent,high,0.993,0.007,0.0
+7654809,104,Efficient & consistent,high,0.982,0.017,0.002
+7710890,12,Fast starter / developing,high,0.001,0.956,0.043
+7716949,17,Interval-focused,high,0.0,0.0,1.0
+7743096,67,Fast starter / developing,high,0.0,0.991,0.009
+7763998,15,Efficient & consistent,medium,0.4,0.583,0.017
+7780362,157,Efficient & consistent,medium,0.651,0.002,0.347
+7795957,22,Efficient & consistent,low,1.0,0.0,0.0
+7822006,214,Efficient & consistent,high,0.94,0.059,0.001
+7839953,11,Fast starter / developing,medium,0.406,0.448,0.146
+7967148,58,Interval-focused,high,0.0,0.0,1.0
+7996903,79,Fast starter / developing,high,0.01,0.889,0.101
+8000584,34,Interval-focused,high,0.003,0.0,0.997
+8070374,20,Fast starter / developing,high,0.003,0.89,0.107
+8107339,178,Efficient & consistent,high,0.995,0.004,0.0
+8170078,69,Efficient & consistent,medium,0.052,0.943,0.005
+8221442,219,Efficient & consistent,high,0.941,0.058,0.001
+8276277,132,Efficient & consistent,medium,0.777,0.194,0.029
+8281868,15,Fast starter / developing,medium,0.009,0.573,0.417
+8294504,65,Efficient & consistent,high,0.91,0.084,0.006
+8349084,126,Efficient & consistent,high,0.993,0.007,0.0
+8353647,68,Efficient & consistent,medium,0.785,0.076,0.139
+8372595,70,Efficient & consistent,high,0.995,0.0,0.005
+8446566,57,Fast starter / developing,medium,0.673,0.3,0.027
+8467445,10,Fast starter / developing,medium,0.561,0.418,0.021
+8484809,87,Efficient & consistent,high,0.954,0.041,0.006
+8535425,45,Efficient & consistent,medium,0.393,0.539,0.069
+8557955,31,Fast starter / developing,high,0.001,0.985,0.014
+8582302,26,Fast starter / developing,medium,0.413,0.367,0.22
+8605838,50,Fast starter / developing,medium,0.605,0.392,0.002
+8621055,77,Efficient & consistent,medium,0.541,0.459,0.0
+8632256,249,Efficient & consistent,high,0.978,0.021,0.001
+8662931,196,Efficient & consistent,high,0.998,0.002,0.0
+8747440,48,Efficient & consistent,high,0.981,0.013,0.006
+8767606,14,Interval-focused,high,0.009,0.0,0.991
+8785331,76,Fast starter / developing,medium,0.045,0.695,0.261
+8875079,216,Efficient & consistent,high,0.999,0.001,0.0
+8888545,42,Efficient & consistent,high,0.945,0.053,0.002
+8923359,14,Fast starter / developing,high,0.002,0.981,0.016
+8993175,33,Fast starter / developing,medium,0.571,0.359,0.07
+8994138,32,Efficient & consistent,high,0.997,0.003,0.0
+8994885,196,Efficient & consistent,high,0.998,0.002,0.0
+9008533,109,Efficient & consistent,high,0.929,0.065,0.006
+9010559,19,Fast starter / developing,low,0.0,1.0,0.0
+9157551,30,Interval-focused,high,0.089,0.0,0.911
+9198615,30,Fast starter / developing,medium,0.006,0.034,0.96
+9221677,80,Efficient & consistent,high,0.976,0.015,0.01
+9232852,266,Efficient & consistent,high,0.992,0.008,0.0
+9275291,18,Fast starter / developing,medium,0.0,0.115,0.884
+9286593,61,Efficient & consistent,high,0.999,0.001,0.0
+9295581,48,Efficient & consistent,high,0.944,0.056,0.0
+9313150,44,Fast starter / developing,low,0.0,1.0,0.0
+9335429,12,Efficient & consistent,high,0.929,0.066,0.005
+9336459,97,Efficient & consistent,high,0.977,0.0,0.023
+9345869,34,Fast starter / developing,medium,0.425,0.527,0.049
+9422215,23,Efficient & consistent,high,0.961,0.036,0.003
+9484057,26,Fast starter / developing,high,0.0,0.953,0.047
+9508545,27,Efficient & consistent,high,0.972,0.021,0.008
+9522694,33,Efficient & consistent,low,0.994,0.002,0.003
+9525377,37,Fast starter / developing,medium,0.239,0.231,0.529
+9622636,29,Fast starter / developing,medium,0.814,0.023,0.164
+9632922,12,Efficient & consistent,high,0.952,0.047,0.0
+9655659,49,Fast starter / developing,medium,0.628,0.263,0.109
+9760872,29,Efficient & consistent,high,0.999,0.001,0.0
+9882712,84,Fast starter / developing,high,0.0,1.0,0.0
+9889560,16,Efficient & consistent,high,0.92,0.071,0.008
+9937628,63,Fast starter / developing,medium,0.717,0.152,0.13
+9985340,39,Interval-focused,high,0.0,0.0,1.0
+10028940,40,Fast starter / developing,medium,0.692,0.21,0.097
+10057948,17,Fast starter / developing,high,0.066,0.859,0.075
+10099521,42,Fast starter / developing,medium,0.118,0.792,0.09
+10122140,56,Efficient & consistent,high,0.983,0.007,0.01
+10177904,36,Interval-focused,high,0.0,0.0,1.0
+10344170,143,Efficient & consistent,high,0.974,0.023,0.003
+10367164,51,Interval-focused,low,0.0,0.0,1.0
+10536623,73,Efficient & consistent,high,0.91,0.081,0.009
+10647023,24,Efficient & consistent,high,0.997,0.003,0.0
+10705287,17,Fast starter / developing,high,0.0,0.975,0.025
+10719156,15,Fast starter / developing,high,0.0,0.999,0.001
+10779611,52,Efficient & consistent,high,0.984,0.01,0.005
+10815918,11,Fast starter / developing,medium,0.511,0.481,0.009
+10841339,116,Efficient & consistent,high,0.964,0.001,0.035
+10917968,32,Efficient & consistent,high,0.828,0.11,0.062
+10927933,24,Fast starter / developing,medium,0.282,0.511,0.207
+10943750,70,Fast starter / developing,high,0.054,0.937,0.008
+11183643,18,Efficient & consistent,medium,0.0,1.0,0.0
+11215534,44,Efficient & consistent,medium,0.06,0.934,0.005
+11258520,64,Efficient & consistent,high,0.939,0.046,0.015
+11258873,21,Efficient & consistent,high,0.999,0.001,0.0
+11314348,11,Interval-focused,high,0.0,0.0,1.0
+11330346,40,Fast starter / developing,medium,0.13,0.002,0.868
+11606634,10,Fast starter / developing,medium,0.387,0.039,0.574
+11737814,180,Efficient & consistent,high,0.995,0.004,0.0
+11782156,10,Fast starter / developing,medium,0.0,0.0,1.0
+11822506,11,Fast starter / developing,medium,0.07,0.653,0.277
+11825035,138,Efficient & consistent,high,0.988,0.011,0.001
+11884453,146,Efficient & consistent,high,0.978,0.018,0.004
+11992223,42,Interval-focused,high,0.0,0.0,1.0
+12080152,89,Fast starter / developing,high,0.09,0.907,0.003
+12087190,78,Efficient & consistent,high,0.956,0.025,0.019
+12092082,18,Efficient & consistent,high,0.956,0.037,0.007
+12175120,219,Efficient & consistent,medium,0.702,0.001,0.297
+12202944,41,Fast starter / developing,high,0.0,0.975,0.025
+12362801,15,Efficient & consistent,high,0.824,0.159,0.017
+12406103,65,Efficient & consistent,high,0.971,0.016,0.013
+12466397,12,Efficient & consistent,high,0.884,0.082,0.034
+12537176,112,Efficient & consistent,high,0.997,0.003,0.0
+12555443,18,Fast starter / developing,high,0.0,0.964,0.036
+12563086,30,Efficient & consistent,high,0.828,0.169,0.003
+12615249,20,Interval-focused,low,0.0,0.0,1.0
+12635957,90,Fast starter / developing,high,0.0,0.875,0.125
+12649708,40,Fast starter / developing,medium,0.0,0.0,1.0
+12726303,58,Efficient & consistent,high,0.981,0.004,0.015
+12747276,62,Fast starter / developing,medium,0.81,0.027,0.164
+12753836,84,Fast starter / developing,medium,0.013,0.265,0.723
+12783742,71,Efficient & consistent,medium,0.501,0.475,0.024
+12830822,21,Fast starter / developing,high,0.0,0.993,0.006
+12854825,25,Interval-focused,high,0.011,0.0,0.989
+12908326,23,Fast starter / developing,medium,0.331,0.492,0.176
+12913419,126,Efficient & consistent,high,0.938,0.061,0.001
+12974391,11,Efficient & consistent,medium,0.001,0.996,0.004
+12988738,28,Fast starter / developing,medium,0.048,0.604,0.348
+13005985,46,Fast starter / developing,medium,0.852,0.092,0.056
+13149722,64,Fast starter / developing,medium,0.047,0.642,0.31
+13165320,102,Efficient & consistent,medium,0.753,0.228,0.019
+13276532,20,Efficient & consistent,medium,0.341,0.0,0.659
+13279851,55,Fast starter / developing,high,0.0,0.997,0.003
+13338915,71,Efficient & consistent,high,0.997,0.0,0.003
+13369299,11,Efficient & consistent,high,0.928,0.046,0.026
+13372869,43,Efficient & consistent,high,0.99,0.008,0.002
+13389154,37,Efficient & consistent,high,1.0,0.0,0.0
+13406764,140,Interval-focused,low,0.0,0.0,1.0
+13469928,69,Efficient & consistent,high,0.988,0.009,0.003
+13560443,107,Fast starter / developing,medium,0.518,0.449,0.033
+13564468,18,Fast starter / developing,high,0.0,0.837,0.163
+13577416,33,Fast starter / developing,medium,0.098,0.437,0.465
+13619220,30,Fast starter / developing,medium,0.345,0.519,0.136
+13657138,129,Efficient & consistent,high,0.973,0.021,0.007
+13693003,50,Efficient & consistent,high,0.989,0.009,0.002
+13859471,70,Fast starter / developing,high,0.027,0.935,0.039
+14018941,20,Fast starter / developing,low,0.0,0.998,0.002
+14066832,17,Fast starter / developing,low,0.0,1.0,0.0
+14083711,11,Fast starter / developing,medium,0.007,0.229,0.763
+14111843,10,Fast starter / developing,medium,0.238,0.608,0.155
+14176671,10,Fast starter / developing,high,0.0,0.958,0.042
+14204020,75,Fast starter / developing,medium,0.444,0.509,0.048
+14215655,25,Efficient & consistent,medium,0.351,0.589,0.06
+14244423,19,Efficient & consistent,high,0.999,0.001,0.0
+14255438,115,Interval-focused,low,0.002,0.0,0.998
+14370069,12,Fast starter / developing,medium,0.16,0.0,0.84
+14544270,132,Efficient & consistent,high,0.965,0.001,0.034
+14671923,69,Interval-focused,high,0.0,0.0,1.0
+14779650,27,Interval-focused,low,0.0,0.0,1.0
+15279967,13,Fast starter / developing,medium,0.39,0.576,0.034
+15326644,19,Efficient & consistent,high,0.818,0.105,0.077
+15481421,29,Fast starter / developing,high,0.0,0.979,0.02
+4434,1,not labelled (< 10 runs),,,,
+5703,9,not labelled (< 10 runs),,,,
+50404,5,not labelled (< 10 runs),,,,
+82119,2,not labelled (< 10 runs),,,,
+96628,8,not labelled (< 10 runs),,,,
+109975,5,not labelled (< 10 runs),,,,
+118377,5,not labelled (< 10 runs),,,,
+139383,1,not labelled (< 10 runs),,,,
+139442,3,not labelled (< 10 runs),,,,
+141794,5,not labelled (< 10 runs),,,,
+185036,2,not labelled (< 10 runs),,,,
+195134,3,not labelled (< 10 runs),,,,
+244128,5,not labelled (< 10 runs),,,,
+279317,5,not labelled (< 10 runs),,,,
+284803,8,not labelled (< 10 runs),,,,
+337104,1,not labelled (< 10 runs),,,,
+429155,4,not labelled (< 10 runs),,,,
+504709,4,not labelled (< 10 runs),,,,
+508935,2,not labelled (< 10 runs),,,,
+738963,4,not labelled (< 10 runs),,,,
+846598,2,not labelled (< 10 runs),,,,
+848177,7,not labelled (< 10 runs),,,,
+848299,2,not labelled (< 10 runs),,,,
+863013,1,not labelled (< 10 runs),,,,
+890789,2,not labelled (< 10 runs),,,,
+1048979,7,not labelled (< 10 runs),,,,
+1052460,7,not labelled (< 10 runs),,,,
+1055288,6,not labelled (< 10 runs),,,,
+1081719,9,not labelled (< 10 runs),,,,
+1320822,1,not labelled (< 10 runs),,,,
+1329120,4,not labelled (< 10 runs),,,,
+1343759,2,not labelled (< 10 runs),,,,
+1367691,1,not labelled (< 10 runs),,,,
+1458980,3,not labelled (< 10 runs),,,,
+1493217,1,not labelled (< 10 runs),,,,
+1534965,3,not labelled (< 10 runs),,,,
+1582750,2,not labelled (< 10 runs),,,,
+1586927,2,not labelled (< 10 runs),,,,
+1609921,1,not labelled (< 10 runs),,,,
+1737182,2,not labelled (< 10 runs),,,,
+1737346,2,not labelled (< 10 runs),,,,
+1771619,1,not labelled (< 10 runs),,,,
+1779490,9,not labelled (< 10 runs),,,,
+1860957,1,not labelled (< 10 runs),,,,
+1939033,1,not labelled (< 10 runs),,,,
+1957863,4,not labelled (< 10 runs),,,,
+1998312,8,not labelled (< 10 runs),,,,
+2083091,1,not labelled (< 10 runs),,,,
+2115539,1,not labelled (< 10 runs),,,,
+2149070,6,not labelled (< 10 runs),,,,
+2155974,8,not labelled (< 10 runs),,,,
+2159610,2,not labelled (< 10 runs),,,,
+2209215,3,not labelled (< 10 runs),,,,
+2255761,2,not labelled (< 10 runs),,,,
+2359422,3,not labelled (< 10 runs),,,,
+2404531,5,not labelled (< 10 runs),,,,
+2419254,8,not labelled (< 10 runs),,,,
+2435099,3,not labelled (< 10 runs),,,,
+2482049,4,not labelled (< 10 runs),,,,
+2497422,1,not labelled (< 10 runs),,,,
+2576672,4,not labelled (< 10 runs),,,,
+2587134,6,not labelled (< 10 runs),,,,
+2600099,4,not labelled (< 10 runs),,,,
+2669847,2,not labelled (< 10 runs),,,,
+2675116,9,not labelled (< 10 runs),,,,
+2692384,1,not labelled (< 10 runs),,,,
+2699896,4,not labelled (< 10 runs),,,,
+2738159,3,not labelled (< 10 runs),,,,
+2794662,9,not labelled (< 10 runs),,,,
+2805418,9,not labelled (< 10 runs),,,,
+2853238,4,not labelled (< 10 runs),,,,
+2998566,7,not labelled (< 10 runs),,,,
+3041144,4,not labelled (< 10 runs),,,,
+3069074,1,not labelled (< 10 runs),,,,
+3268225,7,not labelled (< 10 runs),,,,
+3303712,2,not labelled (< 10 runs),,,,
+3320904,1,not labelled (< 10 runs),,,,
+3325031,6,not labelled (< 10 runs),,,,
+3377565,3,not labelled (< 10 runs),,,,
+3417701,4,not labelled (< 10 runs),,,,
+3509206,2,not labelled (< 10 runs),,,,
+3545637,4,not labelled (< 10 runs),,,,
+3701695,1,not labelled (< 10 runs),,,,
+3704065,1,not labelled (< 10 runs),,,,
+3799875,7,not labelled (< 10 runs),,,,
+3824420,5,not labelled (< 10 runs),,,,
+3832297,3,not labelled (< 10 runs),,,,
+3916526,2,not labelled (< 10 runs),,,,
+3951504,2,not labelled (< 10 runs),,,,
+4045488,1,not labelled (< 10 runs),,,,
+4059417,6,not labelled (< 10 runs),,,,
+4176041,7,not labelled (< 10 runs),,,,
+4313124,6,not labelled (< 10 runs),,,,
+4325326,4,not labelled (< 10 runs),,,,
+4399772,8,not labelled (< 10 runs),,,,
+4634912,8,not labelled (< 10 runs),,,,
+4693937,1,not labelled (< 10 runs),,,,
+4727641,1,not labelled (< 10 runs),,,,
+4836713,9,not labelled (< 10 runs),,,,
+4852170,8,not labelled (< 10 runs),,,,
+4979907,8,not labelled (< 10 runs),,,,
+5086939,3,not labelled (< 10 runs),,,,
+5273972,1,not labelled (< 10 runs),,,,
+5278840,5,not labelled (< 10 runs),,,,
+5337796,2,not labelled (< 10 runs),,,,
+5346265,2,not labelled (< 10 runs),,,,
+5554061,2,not labelled (< 10 runs),,,,
+5605316,1,not labelled (< 10 runs),,,,
+5929760,2,not labelled (< 10 runs),,,,
+6044358,4,not labelled (< 10 runs),,,,
+6055485,2,not labelled (< 10 runs),,,,
+6064655,1,not labelled (< 10 runs),,,,
+6069440,1,not labelled (< 10 runs),,,,
+6125990,1,not labelled (< 10 runs),,,,
+6242372,4,not labelled (< 10 runs),,,,
+6272219,4,not labelled (< 10 runs),,,,
+6286628,2,not labelled (< 10 runs),,,,
+6307695,1,not labelled (< 10 runs),,,,
+6479229,1,not labelled (< 10 runs),,,,
+6539051,2,not labelled (< 10 runs),,,,
+6572322,5,not labelled (< 10 runs),,,,
+6591189,7,not labelled (< 10 runs),,,,
+7099226,2,not labelled (< 10 runs),,,,
+7122167,1,not labelled (< 10 runs),,,,
+7123482,8,not labelled (< 10 runs),,,,
+7231044,2,not labelled (< 10 runs),,,,
+7470676,5,not labelled (< 10 runs),,,,
+7470845,3,not labelled (< 10 runs),,,,
+7555928,3,not labelled (< 10 runs),,,,
+7629457,1,not labelled (< 10 runs),,,,
+7748686,2,not labelled (< 10 runs),,,,
+7833767,5,not labelled (< 10 runs),,,,
+7892240,2,not labelled (< 10 runs),,,,
+7898832,3,not labelled (< 10 runs),,,,
+7965241,7,not labelled (< 10 runs),,,,
+7998342,1,not labelled (< 10 runs),,,,
+8280412,5,not labelled (< 10 runs),,,,
+8299100,1,not labelled (< 10 runs),,,,
+8366159,3,not labelled (< 10 runs),,,,
+8438734,7,not labelled (< 10 runs),,,,
+8453120,6,not labelled (< 10 runs),,,,
+8549297,2,not labelled (< 10 runs),,,,
+8588224,5,not labelled (< 10 runs),,,,
+8615989,2,not labelled (< 10 runs),,,,
+8765371,5,not labelled (< 10 runs),,,,
+8899244,7,not labelled (< 10 runs),,,,
+8936532,1,not labelled (< 10 runs),,,,
+8974660,1,not labelled (< 10 runs),,,,
+9051351,5,not labelled (< 10 runs),,,,
+9107441,1,not labelled (< 10 runs),,,,
+9338715,9,not labelled (< 10 runs),,,,
+9356728,1,not labelled (< 10 runs),,,,
+9359950,1,not labelled (< 10 runs),,,,
+9378990,4,not labelled (< 10 runs),,,,
+9481945,6,not labelled (< 10 runs),,,,
+9571309,4,not labelled (< 10 runs),,,,
+9613679,5,not labelled (< 10 runs),,,,
+9656255,5,not labelled (< 10 runs),,,,
+9732499,9,not labelled (< 10 runs),,,,
+9918949,1,not labelled (< 10 runs),,,,
+9956787,2,not labelled (< 10 runs),,,,
+9959962,7,not labelled (< 10 runs),,,,
+9991401,4,not labelled (< 10 runs),,,,
+10099726,2,not labelled (< 10 runs),,,,
+10183747,1,not labelled (< 10 runs),,,,
+10198429,2,not labelled (< 10 runs),,,,
+10503628,2,not labelled (< 10 runs),,,,
+10562495,4,not labelled (< 10 runs),,,,
+10726030,1,not labelled (< 10 runs),,,,
+10808479,1,not labelled (< 10 runs),,,,
+10982349,4,not labelled (< 10 runs),,,,
+11394885,9,not labelled (< 10 runs),,,,
+11917849,5,not labelled (< 10 runs),,,,
+11954853,9,not labelled (< 10 runs),,,,
+12049619,5,not labelled (< 10 runs),,,,
+12420980,5,not labelled (< 10 runs),,,,
+12428041,2,not labelled (< 10 runs),,,,
+12694193,2,not labelled (< 10 runs),,,,
+12751232,2,not labelled (< 10 runs),,,,
+13088747,2,not labelled (< 10 runs),,,,
+13099479,4,not labelled (< 10 runs),,,,
+13305991,8,not labelled (< 10 runs),,,,
+13668730,8,not labelled (< 10 runs),,,,
+13681949,9,not labelled (< 10 runs),,,,
+13702299,2,not labelled (< 10 runs),,,,
+13705737,2,not labelled (< 10 runs),,,,
+13779308,5,not labelled (< 10 runs),,,,
+13831483,3,not labelled (< 10 runs),,,,
+13840816,5,not labelled (< 10 runs),,,,
+14039377,8,not labelled (< 10 runs),,,,
+14052192,1,not labelled (< 10 runs),,,,
+14122572,3,not labelled (< 10 runs),,,,

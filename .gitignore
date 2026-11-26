@@ -4,6 +4,3 @@ data/csv/
 data/**/.cache/
 __pycache__/
 .venv/
-
-# Local experiments (not committed)
-analysis/

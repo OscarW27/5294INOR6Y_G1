@@ -1,0 +1,762 @@
+user_id,group,workouts,runs_per_week,distance_km,efficiency,rel_intensity,share_intensive,speed_cv,opening_pace_ratio,cardiac_drift_pct,climb_m_per_km,kmeans_profile,km_margin,gmm_profile,Efficient & consistent,Fast starter / developing,Interval-focused,certainty,typicality,status
+69,core,19,0.0975,15.9064,6.7397,0.7923,0.0,0.134,0.9867,0.7096,6.6409,Efficient & consistent,0.1419,Fast starter / developing,0.4309,0.5635,0.0056,0.5635,0.3392,between profiles
+2358,core,276,2.0021,10.3204,8.475,0.7914,0.0471,0.1082,0.9356,5.0239,6.4076,Efficient & consistent,0.3904,Efficient & consistent,0.9976,0.0024,0.0,0.9976,0.6081,confident
+3808,core,83,0.5083,13.8914,7.772,0.8696,0.0,0.0962,0.9931,7.6977,3.6154,Efficient & consistent,0.1068,Efficient & consistent,0.8998,0.0558,0.0443,0.8998,0.652,confident
+4101,core,23,0.3114,8.0858,7.8736,0.8586,0.0,0.0986,0.9842,5.5527,8.496,Fast starter / developing,0.196,Efficient & consistent,0.7641,0.145,0.0909,0.7641,0.8295,between profiles
+5197,core,50,0.3876,11.8867,9.1544,0.7378,0.0,0.1158,0.9892,2.1044,6.6736,Efficient & consistent,0.3014,Efficient & consistent,0.9899,0.0101,0.0,0.9899,0.4323,confident
+13653,core,212,1.5236,10.9846,6.897,0.8774,0.0425,0.0991,0.9813,6.1384,9.9677,Efficient & consistent,0.0778,Efficient & consistent,0.9572,0.0318,0.0111,0.9572,0.7575,confident
+16786,core,63,0.7437,9.519,7.9211,0.8253,0.0317,0.1633,1.0224,6.1486,6.0662,Fast starter / developing,0.2451,Fast starter / developing,0.0411,0.9031,0.0558,0.9031,0.5993,confident
+34269,core,96,0.6892,9.2369,7.8739,0.8501,0.0,0.097,0.937,3.224,10.1817,Efficient & consistent,0.3889,Efficient & consistent,0.9166,0.0721,0.0113,0.9166,0.8822,confident
+56291,core,280,1.2484,9.9588,7.8982,0.7683,0.0036,0.1607,1.0032,5.0176,7.2138,Efficient & consistent,0.1186,Fast starter / developing,0.2666,0.7315,0.002,0.7315,0.3497,between profiles
+56331,core,114,0.5432,15.3171,7.785,0.8312,0.1053,0.1177,0.9881,3.7932,6.6159,Efficient & consistent,0.4056,Efficient & consistent,0.9493,0.004,0.0467,0.9493,0.7698,confident
+68009,core,162,0.751,9.8757,8.6618,0.7642,0.0741,0.0811,0.9753,6.8762,15.1754,Efficient & consistent,0.2454,Efficient & consistent,0.9915,0.0076,0.0008,0.9915,0.5888,confident
+68129,core,84,0.8212,12.8136,7.8394,0.7838,0.0238,0.1085,1.0071,2.5936,7.4544,Efficient & consistent,0.4629,Efficient & consistent,0.968,0.0313,0.0007,0.968,0.9385,confident
+71988,core,22,0.216,11.1088,7.6191,0.8183,0.0,0.1081,0.9648,5.1046,7.2227,Efficient & consistent,0.2222,Efficient & consistent,0.9172,0.0711,0.0117,0.9172,0.9736,confident
+74718,core,18,1.008,14.2661,7.979,0.7298,0.0,0.102,0.9963,1.1122,10.205,Efficient & consistent,0.329,Efficient & consistent,0.9864,0.0136,0.0,0.9864,0.4499,confident
+80101,core,100,0.5208,8.4043,7.3286,0.8062,0.05,0.1115,0.9955,6.4434,9.4201,Fast starter / developing,0.3933,Efficient & consistent,0.6715,0.2648,0.0636,0.6715,0.8664,between profiles
+80118,core,31,0.9004,9.883,7.3503,0.8018,0.0,0.1228,1.0271,5.716,8.9866,Fast starter / developing,0.2072,Efficient & consistent,0.4956,0.4825,0.022,0.4956,0.7838,between profiles
+80466,core,59,0.5994,19.0925,8.2371,0.8546,0.0,0.071,0.9174,3.1678,7.8428,Efficient & consistent,0.4181,Efficient & consistent,0.9787,0.0164,0.0048,0.9787,0.3304,confident
+81753,core,67,0.5403,12.8372,6.4707,0.8188,0.1194,0.0752,0.9967,5.5756,7.6637,Efficient & consistent,0.0576,Efficient & consistent,0.813,0.0035,0.1835,0.813,0.7557,confident
+90592,core,15,0.1659,17.4462,8.1362,0.8282,0.0,0.0585,0.9685,2.3476,5.2787,Efficient & consistent,0.3675,Efficient & consistent,0.987,0.0105,0.0025,0.987,0.5255,confident
+104216,core,17,0.216,9.9247,5.8269,0.8701,0.0,0.211,0.9855,0.1284,18.0655,Fast starter / developing,0.1973,Fast starter / developing,0.0,0.9982,0.0018,0.9982,0.2285,confident
+114073,core,19,0.1263,11.5239,8.7301,0.8644,0.1053,0.0723,1.0387,9.6604,8.7623,Fast starter / developing,0.1119,Interval-focused,0.4837,0.0151,0.5012,0.5012,0.1406,between profiles
+126898,core,110,0.7306,7.5322,6.2391,0.8304,0.0,0.1006,0.9947,6.7837,6.1993,Fast starter / developing,0.443,Fast starter / developing,0.2832,0.5765,0.1403,0.5765,0.7135,between profiles
+136171,core,66,0.7586,10.0848,8.8656,0.844,0.0152,0.0807,0.9709,2.1468,9.0152,Efficient & consistent,0.4988,Efficient & consistent,0.9923,0.0066,0.0011,0.9923,0.9438,confident
+140314,core,24,0.2333,14.1081,7.5922,0.8181,0.0,0.07,0.9497,2.7695,7.5956,Efficient & consistent,0.4625,Efficient & consistent,0.9773,0.0201,0.0026,0.9773,0.8981,confident
+147750,core,11,0.0624,11.0831,7.2142,0.8561,0.1818,0.0969,0.9949,1.9884,3.7012,Interval-focused,0.0436,Interval-focused,0.1476,0.0,0.8524,0.8524,0.2074,confident
+150436,core,56,0.2679,12.5908,7.5544,0.8529,0.1429,0.0975,1.0474,6.8238,5.5278,Fast starter / developing,0.1901,Interval-focused,0.1115,0.0008,0.8877,0.8877,0.4341,confident
+171814,core,38,0.226,10.6777,6.8824,0.7325,0.0263,0.1763,0.986,1.795,17.5431,Fast starter / developing,0.0352,Fast starter / developing,0.0021,0.9978,0.0001,0.9978,0.1705,confident
+174288,core,13,0.1599,9.8041,5.6838,0.8256,0.0,0.2072,1.0584,8.4422,16.0894,Fast starter / developing,0.4059,Fast starter / developing,0.0,0.9965,0.0035,0.9965,0.3234,confident
+182042,core,85,0.3884,6.7352,4.6375,0.8149,0.0,0.1398,0.9659,5.6891,11.4111,Fast starter / developing,0.3698,Fast starter / developing,0.0019,0.9483,0.0498,0.9483,0.3726,confident
+196571,core,47,0.4608,8.7624,6.4767,0.8684,0.0,0.1225,1.0493,8.5101,9.0098,Fast starter / developing,0.5716,Fast starter / developing,0.0088,0.7799,0.2113,0.7799,0.6063,between profiles
+196781,core,42,0.3134,9.9336,6.1939,0.8717,0.5714,0.113,1.0116,6.503,14.7468,Interval-focused,0.5171,Interval-focused,0.0,0.0,1.0,1.0,0.2127,confident
+200833,core,21,0.3459,9.0471,7.0253,0.7192,0.0952,0.1175,0.9788,8.0127,10.1197,Fast starter / developing,0.0985,Efficient & consistent,0.8734,0.1204,0.0062,0.8734,0.1845,confident
+203045,core,155,0.9004,10.4214,7.1463,0.8025,0.0,0.0935,0.9619,2.2149,3.1875,Efficient & consistent,0.3743,Efficient & consistent,0.9466,0.0521,0.0013,0.9466,0.819,confident
+212295,core,130,0.4356,13.1923,7.6427,0.745,0.0231,0.1069,0.9564,-0.6319,15.944,Efficient & consistent,0.288,Efficient & consistent,0.8353,0.1646,0.0001,0.8353,0.2777,confident
+221371,core,35,0.2271,8.0093,9.2228,0.8685,0.0,0.0685,0.9896,3.4137,10.2273,Efficient & consistent,0.1146,Efficient & consistent,0.9565,0.0267,0.0168,0.9565,0.4376,confident
+229190,core,66,0.536,11.5661,7.3151,0.8382,0.0,0.0769,0.9662,4.3605,15.4331,Efficient & consistent,0.2799,Efficient & consistent,0.9007,0.0802,0.0191,0.9007,0.9209,confident
+260784,core,67,0.4319,11.8582,7.9254,0.8466,0.0149,0.0795,0.989,6.4578,4.2944,Efficient & consistent,0.2296,Efficient & consistent,0.9603,0.0242,0.0155,0.9603,0.9455,confident
+280024,core,21,0.4362,5.4567,7.7425,0.9105,0.6667,0.0903,1.032,7.8395,8.8908,Interval-focused,0.384,Interval-focused,0.0,0.0,1.0,1.0,0.0457,atypical
+283321,core,60,0.2703,10.7656,6.9432,0.782,0.0167,0.1346,0.9557,5.7002,9.9814,Fast starter / developing,0.0356,Fast starter / developing,0.3974,0.5906,0.012,0.5906,0.7452,between profiles
+324779,core,175,1.7038,12.2512,5.9872,0.8432,0.0057,0.175,1.0036,9.3607,13.9633,Fast starter / developing,0.1837,Fast starter / developing,0.0011,0.991,0.0079,0.991,0.181,confident
+331586,core,237,1.5621,10.5235,8.1494,0.8166,0.1097,0.1061,0.9613,1.607,5.4456,Efficient & consistent,0.4539,Efficient & consistent,0.9988,0.0005,0.0006,0.9988,0.6608,confident
+334217,core,13,0.384,10.3922,7.6668,0.8262,0.0,0.0675,1.0191,7.0924,4.499,Fast starter / developing,0.0482,Efficient & consistent,0.8313,0.1233,0.0454,0.8313,0.7645,confident
+336611,core,17,0.1935,9.8571,6.4817,0.8646,0.0,0.0998,1.0161,4.652,6.4719,Fast starter / developing,0.4368,Efficient & consistent,0.4231,0.3851,0.1917,0.4231,0.7276,between profiles
+355088,core,43,0.4186,7.9079,7.7763,0.8518,0.0,0.1318,0.9792,6.8438,9.1461,Fast starter / developing,0.3386,Fast starter / developing,0.2541,0.573,0.173,0.573,0.703,between profiles
+367324,core,30,0.2679,10.084,7.8483,0.8831,0.0,0.0858,1.0056,8.8704,8.5336,Fast starter / developing,0.234,Efficient & consistent,0.6579,0.1772,0.1648,0.6579,0.5712,between profiles
+368603,core,364,1.3013,13.479,7.1905,0.7941,0.0,0.1335,0.9936,2.405,17.7397,Efficient & consistent,0.2291,Efficient & consistent,0.5842,0.4135,0.0023,0.5842,0.4148,between profiles
+371523,core,16,0.1236,9.974,7.481,0.8085,0.0,0.091,0.9934,3.2737,8.4956,Efficient & consistent,0.0255,Efficient & consistent,0.9047,0.0868,0.0085,0.9047,0.9367,confident
+407769,core,18,0.1166,6.8412,5.6688,0.7818,0.0,0.3157,1.1263,9.0457,18.8633,Fast starter / developing,0.2695,Fast starter / developing,0.0,1.0,0.0,1.0,0.0193,atypical
+431375,core,114,0.5112,8.8279,8.8682,0.8638,0.0,0.0611,0.9838,8.9991,17.4103,Efficient & consistent,0.0163,Efficient & consistent,0.7334,0.1752,0.0913,0.7334,0.2214,between profiles
+432096,core,138,0.6722,10.7412,6.6179,0.7882,0.0145,0.0957,0.9909,3.1098,8.9006,Efficient & consistent,0.1996,Efficient & consistent,0.8788,0.1176,0.0037,0.8788,0.9613,confident
+434265,core,13,0.2059,11.9683,7.7391,0.8236,0.0,0.0689,0.974,5.1931,15.8547,Efficient & consistent,0.1833,Efficient & consistent,0.9165,0.0682,0.0154,0.9165,0.8137,confident
+458903,core,26,0.2106,8.9605,5.9275,0.7949,0.0,0.1917,1.0338,6.9908,9.2425,Fast starter / developing,0.4627,Fast starter / developing,0.0,0.9948,0.0052,0.9948,0.5413,confident
+478585,core,232,1.4899,11.3203,7.2417,0.8814,0.0086,0.062,0.9612,3.8171,5.9401,Efficient & consistent,0.3101,Efficient & consistent,0.9898,0.0085,0.0017,0.9898,0.7487,confident
+501555,core,25,0.1915,9.8819,4.9069,0.8249,0.08,0.1694,1.0821,6.6886,8.9186,Fast starter / developing,0.3852,Fast starter / developing,0.0,0.8857,0.1143,0.8857,0.1248,confident
+510054,core,34,0.1749,10.1812,8.6508,0.7685,0.0,0.1191,0.971,6.3843,6.8924,Efficient & consistent,0.164,Efficient & consistent,0.9453,0.0536,0.0011,0.9453,0.6415,confident
+517351,core,14,0.1801,9.1354,7.9884,0.8408,0.0,0.163,0.9753,16.5963,8.3585,Fast starter / developing,0.2667,Fast starter / developing,0.0013,0.9748,0.0239,0.9748,0.304,confident
+519009,core,22,0.2956,12.0976,7.8524,0.8252,0.0,0.1583,0.9528,5.3261,12.289,Efficient & consistent,0.0948,Fast starter / developing,0.1283,0.8301,0.0416,0.8301,0.5764,confident
+519257,core,49,0.3988,5.5077,6.5504,0.8865,0.6735,0.0923,1.0147,8.2917,12.8807,Interval-focused,0.4056,Interval-focused,0.0,0.0,1.0,1.0,0.0791,confident
+556109,core,82,0.6949,9.3703,7.2845,0.784,0.061,0.08,0.9694,7.787,7.8174,Efficient & consistent,0.1219,Efficient & consistent,0.9497,0.0425,0.0078,0.9497,0.8858,confident
+604703,core,74,0.6101,7.4012,9.0883,0.8002,0.0,0.0755,0.9802,4.3111,7.872,Efficient & consistent,0.2557,Efficient & consistent,0.9778,0.0199,0.0023,0.9778,0.6591,confident
+653747,core,32,0.0868,13.5902,8.4888,0.8145,0.0312,0.1562,0.9349,3.5638,8.4303,Efficient & consistent,0.2487,Fast starter / developing,0.4478,0.5355,0.0167,0.5355,0.2759,between profiles
+659522,core,38,0.3533,12.8239,6.6036,0.7834,0.0263,0.0997,0.9831,7.552,8.5871,Fast starter / developing,0.0619,Efficient & consistent,0.8078,0.1804,0.0118,0.8078,0.8383,confident
+681624,core,42,0.5589,10.4081,5.1293,0.8449,0.0,0.1583,1.0103,10.648,2.8444,Fast starter / developing,0.3208,Fast starter / developing,0.0002,0.9637,0.0361,0.9637,0.2021,confident
+715469,core,109,1.1388,17.5612,6.5612,0.8484,0.0092,0.0672,0.9969,6.0334,9.7295,Efficient & consistent,0.2123,Efficient & consistent,0.9266,0.0519,0.0215,0.9266,0.529,confident
+722528,core,15,0.5932,12.1025,6.3321,0.8232,0.0,0.2381,0.9463,2.3979,14.7829,Fast starter / developing,0.0681,Fast starter / developing,0.0,0.9996,0.0004,0.9996,0.3251,confident
+732008,core,80,0.362,10.9146,5.7371,0.8132,0.05,0.2366,1.0899,2.3315,22.6433,Fast starter / developing,0.2415,Fast starter / developing,0.0,0.9998,0.0002,0.9998,0.1037,confident
+745030,core,209,1.2171,10.0215,8.7255,0.8322,0.067,0.0726,0.9668,5.9348,7.5775,Efficient & consistent,0.452,Efficient & consistent,0.9973,0.0014,0.0012,0.9973,0.9315,confident
+751448,core,241,1.6904,14.4769,7.0868,0.795,0.0083,0.0533,0.9631,4.4326,7.2907,Efficient & consistent,0.424,Efficient & consistent,0.9945,0.0054,0.0001,0.9945,0.7083,confident
+753100,core,42,0.3252,13.8267,9.0687,0.7626,0.0,0.0809,0.9627,1.6356,6.8257,Efficient & consistent,0.4235,Efficient & consistent,0.9973,0.0026,0.0,0.9973,0.6485,confident
+762872,core,103,0.5983,12.0139,7.2547,0.8491,0.1068,0.0913,0.9727,5.249,4.4293,Efficient & consistent,0.2764,Efficient & consistent,0.9198,0.0027,0.0776,0.9198,0.8735,confident
+775277,core,161,1.1281,10.3553,6.7216,0.8765,0.0,0.0684,0.947,2.819,8.8982,Efficient & consistent,0.264,Efficient & consistent,0.9403,0.0507,0.0091,0.9403,0.7223,confident
+776483,core,101,0.8099,9.6504,6.9845,0.7779,0.0,0.1278,1.0143,7.3203,6.856,Fast starter / developing,0.2429,Fast starter / developing,0.3485,0.6394,0.0121,0.6394,0.6872,between profiles
+777141,core,130,1.4241,18.755,8.4765,0.8106,0.0077,0.0589,0.9661,2.1937,16.7903,Efficient & consistent,0.3868,Efficient & consistent,0.9936,0.0062,0.0002,0.9936,0.2039,confident
+789985,core,11,0.1949,12.0261,8.2191,0.8038,0.0909,0.1742,0.8661,5.5678,3.865,Efficient & consistent,0.1799,Fast starter / developing,0.0106,0.94,0.0494,0.94,0.0316,atypical
+791908,core,195,0.8957,11.9701,8.2863,0.7737,0.0308,0.1318,0.9457,4.5417,13.0063,Efficient & consistent,0.4023,Efficient & consistent,0.9113,0.0879,0.0008,0.9113,0.6274,confident
+804068,core,86,0.6344,5.182,7.4584,0.7964,0.0,0.045,0.979,4.8308,5.9168,Fast starter / developing,0.026,Fast starter / developing,0.284,0.6299,0.086,0.6299,0.1617,between profiles
+804189,core,13,0.0678,7.2251,5.0843,0.8482,0.0,0.1384,1.0599,0.526,16.9927,Fast starter / developing,0.3158,Fast starter / developing,0.0,0.9887,0.0112,0.9887,0.1441,confident
+818925,core,23,0.1547,9.979,6.3199,0.8535,0.0,0.0758,1.1042,9.0572,7.5844,Fast starter / developing,0.3609,Fast starter / developing,0.0005,0.8951,0.1044,0.8951,0.2056,confident
+838899,core,50,0.4937,8.6979,7.6636,0.8323,0.0,0.106,0.9605,4.9146,11.1553,Efficient & consistent,0.0911,Efficient & consistent,0.7956,0.1706,0.0338,0.7956,0.9227,between profiles
+851531,core,177,0.8056,11.8786,7.8083,0.8191,0.0,0.1006,0.9817,6.9395,8.6769,Efficient & consistent,0.4163,Efficient & consistent,0.9582,0.0355,0.0063,0.9582,0.993,confident
+854368,core,20,0.1578,15.0366,7.0621,0.8067,0.05,0.0528,0.9521,2.2781,4.9569,Efficient & consistent,0.3367,Efficient & consistent,0.9703,0.0256,0.0041,0.9703,0.5852,confident
+854633,core,127,1.2922,7.216,7.597,0.7449,0.0,0.2442,0.8933,-3.7916,16.2631,Efficient & consistent,0.0886,Fast starter / developing,0.0,1.0,0.0,1.0,0.0053,atypical
+860533,core,575,3.4431,9.8244,7.2964,0.8158,0.0348,0.108,0.9611,0.3327,11.6875,Efficient & consistent,0.2798,Efficient & consistent,0.9803,0.0197,0.0,0.9803,0.3779,confident
+875281,core,29,0.7689,12.719,7.4495,0.7893,0.069,0.1,0.951,5.6864,6.4866,Efficient & consistent,0.5394,Efficient & consistent,0.9887,0.0092,0.0021,0.9887,0.9719,confident
+885462,core,117,0.834,8.606,8.3424,0.8653,0.0171,0.0893,0.9657,4.3629,11.1357,Efficient & consistent,0.2479,Efficient & consistent,0.9579,0.0304,0.0117,0.9579,0.8629,confident
+897592,core,13,0.6741,15.7928,7.3702,0.8368,0.0,0.0755,0.9891,2.5678,7.3074,Efficient & consistent,0.4749,Efficient & consistent,0.9767,0.0188,0.0046,0.9767,0.9262,confident
+903587,core,21,0.6743,12.0037,7.4451,0.8055,0.0,0.0962,0.9745,-3.846,15.3467,Efficient & consistent,0.287,Fast starter / developing,0.4106,0.589,0.0004,0.589,0.2443,between profiles
+907015,core,23,0.2701,8.3259,8.3251,0.7918,0.0,0.1426,0.93,5.4975,6.4714,Efficient & consistent,0.1336,Fast starter / developing,0.3371,0.6494,0.0135,0.6494,0.3989,between profiles
+947554,core,18,0.2405,9.0966,6.6039,0.8216,0.0556,0.144,0.9842,1.8955,2.8927,Fast starter / developing,0.11,Fast starter / developing,0.1076,0.8365,0.056,0.8365,0.4095,confident
+954504,core,40,0.3386,8.3513,6.0831,0.8514,0.0,0.1685,1.0242,9.5834,6.4266,Fast starter / developing,0.5401,Fast starter / developing,0.0001,0.9401,0.0598,0.9401,0.5641,confident
+971189,core,77,0.4444,10.5319,6.4249,0.8282,0.0,0.1176,0.9988,2.4832,9.7166,Fast starter / developing,0.2403,Fast starter / developing,0.4367,0.5202,0.0431,0.5202,0.8647,between profiles
+982359,core,19,0.147,5.5952,6.6953,0.8362,0.0526,0.1034,0.9578,12.3175,7.5108,Fast starter / developing,0.2744,Fast starter / developing,0.004,0.8061,0.1898,0.8061,0.1476,confident
+983950,core,228,0.8931,12.4534,8.8742,0.7822,0.0351,0.1152,0.9401,6.8096,18.3606,Efficient & consistent,0.3141,Efficient & consistent,0.948,0.051,0.001,0.948,0.3954,confident
+993057,core,25,0.2747,8.3866,7.7598,0.8004,0.0,0.1192,0.9893,9.6413,11.0038,Fast starter / developing,0.3099,Fast starter / developing,0.2117,0.744,0.0443,0.744,0.5677,between profiles
+993718,core,149,1.4506,11.2143,9.2689,0.8235,0.0268,0.0917,0.9419,1.9536,7.011,Efficient & consistent,0.5003,Efficient & consistent,0.9987,0.0013,0.0,0.9987,0.7346,confident
+1009668,core,29,0.2363,10.1099,8.9146,0.8687,0.069,0.098,0.9804,4.9183,5.9956,Efficient & consistent,0.1686,Efficient & consistent,0.9773,0.0049,0.0178,0.9773,0.7821,confident
+1023513,core,128,0.547,7.6475,5.6532,0.876,0.0,0.1274,0.9658,7.8052,24.4796,Fast starter / developing,0.3018,Fast starter / developing,0.0023,0.8721,0.1256,0.8721,0.2847,confident
+1034368,core,47,0.6985,13.6741,7.6824,0.8385,0.0426,0.0992,0.9738,3.1048,16.6583,Efficient & consistent,0.3732,Efficient & consistent,0.9447,0.0453,0.01,0.9447,0.8576,confident
+1035156,core,28,0.1534,13.3302,7.2373,0.844,0.1429,0.1043,0.9887,5.1861,9.0647,Fast starter / developing,0.021,Interval-focused,0.4864,0.0005,0.513,0.513,0.6134,between profiles
+1038205,core,18,0.2172,8.9622,7.9318,0.8451,0.0,0.1078,0.9268,11.0619,11.5283,Fast starter / developing,0.0896,Fast starter / developing,0.1489,0.774,0.0771,0.774,0.3111,between profiles
+1055977,core,26,0.2945,9.5485,6.5068,0.8254,0.0385,0.0617,0.9806,5.5007,6.1664,Fast starter / developing,0.1348,Efficient & consistent,0.8004,0.1342,0.0654,0.8004,0.8541,confident
+1058434,core,105,1.011,10.7909,7.286,0.8497,0.0571,0.1426,1.0497,9.1533,4.2916,Fast starter / developing,0.2623,Fast starter / developing,0.0373,0.8032,0.1596,0.8032,0.3093,confident
+1060751,core,77,0.545,14.0136,8.4775,0.8408,0.0,0.0776,0.941,5.3939,6.7639,Efficient & consistent,0.5314,Efficient & consistent,0.9908,0.0065,0.0026,0.9908,0.9244,confident
+1063624,core,673,3.692,13.762,8.8109,0.7482,0.0475,0.0957,0.9595,0.6661,10.4227,Efficient & consistent,0.3479,Efficient & consistent,0.9997,0.0003,0.0,0.9997,0.1757,confident
+1066105,core,24,0.2697,17.0021,7.0694,0.8621,0.0417,0.1729,1.0345,1.3753,26.252,Fast starter / developing,0.0623,Fast starter / developing,0.0003,0.977,0.0227,0.977,0.109,confident
+1069797,core,36,0.3663,10.4926,7.667,0.849,0.0,0.1196,1.0298,7.0486,3.4101,Fast starter / developing,0.2262,Fast starter / developing,0.3348,0.513,0.1523,0.513,0.5378,between profiles
+1086745,core,147,0.9372,11.9691,7.6962,0.8593,0.0,0.0704,1.0073,9.0642,5.2247,Efficient & consistent,0.0721,Efficient & consistent,0.9013,0.0668,0.0319,0.9013,0.6626,confident
+1290773,core,15,0.0675,8.7335,7.0484,0.8385,0.0,0.0778,1.0302,11.0855,14.6149,Fast starter / developing,0.3649,Fast starter / developing,0.0243,0.8558,0.1199,0.8558,0.3163,confident
+1295505,core,262,1.7703,9.9573,8.4356,0.8882,0.0382,0.0776,0.9729,1.6922,13.0075,Efficient & consistent,0.2685,Efficient & consistent,0.9957,0.004,0.0003,0.9957,0.4728,confident
+1295675,core,33,0.3338,10.1524,7.09,0.8397,0.0606,0.0501,0.9518,4.8625,5.4726,Efficient & consistent,0.2376,Efficient & consistent,0.9129,0.0388,0.0483,0.9129,0.8067,confident
+1342020,core,59,0.1735,13.0184,6.4791,0.8493,0.0169,0.1753,1.0361,7.5969,20.2906,Fast starter / developing,0.3371,Fast starter / developing,0.0001,0.9662,0.0337,0.9662,0.4042,confident
+1356350,core,27,0.2333,9.1004,6.0994,0.7998,0.0,0.1275,1.02,8.1092,9.5296,Fast starter / developing,0.5905,Fast starter / developing,0.0266,0.9254,0.048,0.9254,0.6854,confident
+1367925,core,13,0.0718,20.8859,8.1202,0.9081,0.6154,0.0722,1.0533,4.8061,6.3589,Interval-focused,0.3218,Interval-focused,0.0,0.0,1.0,1.0,0.0141,atypical
+1377236,core,142,0.6855,11.3655,7.7442,0.8115,0.2465,0.1025,0.9374,4.9779,9.9628,Interval-focused,0.0144,Interval-focused,0.0091,0.0,0.9909,0.9909,0.2812,confident
+1384698,core,11,0.1692,12.3345,8.2049,0.8211,0.0,0.0946,1.0303,2.8641,12.5763,Efficient & consistent,0.0874,Efficient & consistent,0.8496,0.136,0.0144,0.8496,0.6503,confident
+1413935,core,79,0.5364,10.1815,8.1017,0.8286,0.0,0.0637,0.9748,0.1064,10.1504,Efficient & consistent,0.436,Efficient & consistent,0.9575,0.0405,0.002,0.9575,0.8172,confident
+1417260,core,47,0.6798,11.5348,6.3413,0.8572,0.1277,0.1679,1.0019,5.4717,19.1875,Fast starter / developing,0.2162,Interval-focused,0.0032,0.0419,0.955,0.955,0.232,confident
+1470078,core,51,0.3549,12.4966,8.6574,0.8095,0.2353,0.0805,0.9807,2.354,5.5527,Efficient & consistent,0.1823,Interval-focused,0.1443,0.0,0.8557,0.8557,0.1072,confident
+1477239,core,17,0.1417,10.0218,9.0335,0.8176,0.0,0.0707,1.0218,12.7269,8.3721,Fast starter / developing,0.0928,Fast starter / developing,0.4022,0.5572,0.0406,0.5572,0.0879,between profiles
+1481127,core,49,0.3653,16.0606,8.6883,0.7852,0.0,0.0896,0.9341,1.5545,7.1061,Efficient & consistent,0.4696,Efficient & consistent,0.9921,0.0078,0.0001,0.9921,0.5694,confident
+1483178,core,17,0.1574,8.2421,4.0896,0.8336,0.0,0.2727,1.0344,-3.1399,28.9801,Fast starter / developing,0.1685,Fast starter / developing,0.0,1.0,0.0,1.0,0.0158,atypical
+1486987,core,57,0.3088,10.2987,6.4653,0.7304,0.0,0.0791,0.915,0.8114,5.4571,Efficient & consistent,0.2155,Efficient & consistent,0.7457,0.2542,0.0001,0.7457,0.1494,between profiles
+1520156,core,189,0.7741,14.9235,7.9892,0.8026,0.0212,0.0538,1.003,3.3191,1.7424,Efficient & consistent,0.2983,Efficient & consistent,0.9687,0.0295,0.0018,0.9687,0.2601,confident
+1530732,core,13,1.717,7.5714,7.6543,0.8487,0.0,0.1435,0.9769,7.1269,6.0795,Fast starter / developing,0.0263,Fast starter / developing,0.4116,0.5619,0.0265,0.5619,0.2513,between profiles
+1543833,core,63,0.2922,10.5654,6.202,0.8805,0.0,0.0848,0.9974,6.3829,18.3175,Fast starter / developing,0.2941,Fast starter / developing,0.2128,0.5049,0.2823,0.5049,0.4833,between profiles
+1593295,core,46,0.34,9.9907,6.8041,0.8657,0.4348,0.1047,1.0093,3.3652,9.6876,Interval-focused,0.6728,Interval-focused,0.0,0.0,1.0,1.0,0.478,confident
+1598505,core,125,0.7172,12.0287,8.6864,0.8283,0.0,0.1077,0.9887,4.8655,6.5764,Efficient & consistent,0.5251,Efficient & consistent,0.9863,0.0112,0.0025,0.9863,0.9842,confident
+1601558,core,92,0.4529,9.7279,7.2641,0.825,0.1196,0.1104,0.9764,5.9713,9.7294,Fast starter / developing,0.1741,Efficient & consistent,0.6819,0.0074,0.3106,0.6819,0.8049,between profiles
+1603116,core,68,0.5113,7.8888,7.3627,0.8569,0.0147,0.0617,0.9867,9.2822,5.8171,Fast starter / developing,0.1989,Efficient & consistent,0.4673,0.3224,0.2103,0.4673,0.5431,between profiles
+1609501,core,25,0.0701,8.0158,7.9797,0.795,0.04,0.1758,1.0141,6.414,6.3195,Fast starter / developing,0.2961,Fast starter / developing,0.0035,0.9755,0.021,0.9755,0.3743,confident
+1616449,core,121,1.0071,10.4806,9.7154,0.7351,0.0,0.088,0.9436,2.4408,6.8156,Efficient & consistent,0.3692,Efficient & consistent,0.999,0.001,0.0,0.999,0.2988,confident
+1638160,core,31,0.378,14.7949,6.6539,0.8635,0.0323,0.0721,0.9795,9.8869,15.6769,Fast starter / developing,0.0858,Efficient & consistent,0.384,0.382,0.234,0.384,0.3708,between profiles
+1655221,core,150,1.1513,8.9478,6.9763,0.7527,0.0533,0.1074,1.0152,7.3687,5.8338,Fast starter / developing,0.05,Efficient & consistent,0.8306,0.1674,0.002,0.8306,0.4622,confident
+1668573,core,55,0.521,8.5171,7.0135,0.7908,0.0545,0.1481,1.0037,7.3976,4.458,Fast starter / developing,0.3362,Fast starter / developing,0.0749,0.8683,0.0568,0.8683,0.5395,confident
+1670340,core,52,0.8143,10.6956,8.2412,0.7757,0.0192,0.0506,1.0112,5.8685,5.6748,Efficient & consistent,0.3155,Efficient & consistent,0.9806,0.0185,0.0008,0.9806,0.7522,confident
+1675394,core,208,1.3153,11.9219,7.3586,0.7637,0.0288,0.1334,0.8838,0.4591,8.1094,Efficient & consistent,0.3441,Fast starter / developing,0.3469,0.653,0.0001,0.653,0.0984,between profiles
+1676051,core,51,1.1591,9.2439,7.6412,0.84,0.0392,0.1104,0.941,7.9001,3.7956,Efficient & consistent,0.1821,Efficient & consistent,0.8745,0.1082,0.0173,0.8745,0.5905,confident
+1682336,core,207,1.4969,12.9343,6.9827,0.7824,0.0,0.0731,0.9186,-1.1786,5.4925,Efficient & consistent,0.3954,Efficient & consistent,0.9484,0.0515,0.0,0.9484,0.2179,confident
+1707239,core,40,0.7235,11.5468,8.0389,0.7993,0.0,0.1338,1.0139,5.1054,15.5741,Efficient & consistent,0.076,Fast starter / developing,0.4911,0.4934,0.0155,0.4934,0.6116,between profiles
+1708694,core,37,0.586,10.0478,6.2735,0.8971,0.1351,0.07,1.0008,6.601,4.7899,Fast starter / developing,0.0538,Interval-focused,0.147,0.0008,0.8521,0.8521,0.3919,confident
+1721981,core,38,0.794,15.6685,6.4318,0.8116,0.0,0.0665,0.9617,4.0507,4.7499,Efficient & consistent,0.3705,Efficient & consistent,0.9596,0.0359,0.0045,0.9596,0.7381,confident
+1725447,core,32,0.2843,12.1772,7.7298,0.8383,0.125,0.097,0.9654,6.3837,11.8796,Efficient & consistent,0.146,Efficient & consistent,0.7863,0.0017,0.212,0.7863,0.717,between profiles
+1732973,core,182,0.8774,12.4221,6.4908,0.7335,0.0055,0.1185,0.7898,1.5354,4.136,Efficient & consistent,0.2556,Fast starter / developing,0.1692,0.8307,0.0001,0.8307,0.0404,atypical
+1749538,core,16,0.1618,8.9614,6.8536,0.9012,0.0,0.0876,1.0742,9.9268,6.727,Fast starter / developing,0.353,Fast starter / developing,0.0053,0.7433,0.2513,0.7433,0.1582,between profiles
+1812737,core,39,0.2877,10.7864,7.9491,0.8425,0.0256,0.1075,0.988,5.381,6.3047,Efficient & consistent,0.0917,Efficient & consistent,0.9233,0.0527,0.024,0.9233,0.9789,confident
+1816756,core,39,0.4789,9.8414,5.3537,0.8042,0.0,0.1585,1.0344,6.8509,4.6291,Fast starter / developing,0.4302,Fast starter / developing,0.0009,0.9774,0.0217,0.9774,0.4903,confident
+1818822,core,38,0.2745,11.2599,6.2873,0.8816,0.0789,0.1173,1.0031,3.7539,14.7004,Fast starter / developing,0.293,Interval-focused,0.2713,0.2045,0.5243,0.5243,0.4798,between profiles
+1818866,core,16,0.1053,8.9925,6.7439,0.8403,0.0625,0.1631,0.9958,7.5978,13.2886,Fast starter / developing,0.5053,Fast starter / developing,0.0043,0.7973,0.1984,0.7973,0.5202,between profiles
+1820027,core,73,0.7766,11.0953,7.1483,0.8398,0.0274,0.0661,0.9999,1.5069,8.359,Efficient & consistent,0.3678,Efficient & consistent,0.9414,0.0513,0.0072,0.9414,0.942,confident
+1842744,core,75,0.3857,12.1985,8.6186,0.8299,0.0133,0.097,0.9641,5.8287,5.9934,Efficient & consistent,0.4537,Efficient & consistent,0.9867,0.01,0.0033,0.9867,0.9807,confident
+1847703,core,15,0.2253,18.7967,6.9233,0.8503,0.2667,0.1394,1.0348,5.3775,22.5844,Interval-focused,0.13,Interval-focused,0.0,0.0,1.0,1.0,0.0738,confident
+1853801,core,15,0.1623,16.2937,8.547,0.8224,0.0,0.0991,0.9595,0.5275,6.8632,Efficient & consistent,0.3913,Efficient & consistent,0.9839,0.0153,0.0008,0.9839,0.5589,confident
+1878236,core,12,0.1687,13.3209,6.8592,0.8702,0.0,0.0902,1.0173,0.6905,8.934,Efficient & consistent,0.0097,Efficient & consistent,0.7027,0.2573,0.0399,0.7027,0.5167,between profiles
+1882312,core,13,0.136,14.7887,8.1744,0.8125,0.0769,0.0881,0.9852,5.5301,4.6874,Efficient & consistent,0.2743,Efficient & consistent,0.9895,0.0036,0.0068,0.9895,0.7891,confident
+1907590,core,47,0.5712,11.0559,8.2128,0.8445,0.0,0.1345,0.982,7.5833,14.9956,Fast starter / developing,0.0329,Fast starter / developing,0.4457,0.4734,0.0809,0.4734,0.6028,between profiles
+1912029,core,143,0.9117,9.1095,5.0855,0.8553,0.3147,0.0968,0.9945,3.9817,12.3465,Interval-focused,0.3935,Interval-focused,0.0,0.0,1.0,1.0,0.2267,confident
+1956196,core,155,1.1832,10.1054,7.0996,0.7276,0.0,0.2317,0.9497,-1.4689,15.4057,Efficient & consistent,0.0824,Fast starter / developing,0.0,1.0,0.0,1.0,0.0334,atypical
+1958069,core,21,0.4027,13.1894,7.6075,0.8907,0.0,0.0838,0.9933,5.077,8.5462,Efficient & consistent,0.1007,Efficient & consistent,0.9376,0.0296,0.0328,0.9376,0.8366,confident
+1986853,core,80,0.9877,10.1406,6.956,0.7997,0.0625,0.0796,0.9643,3.1698,5.4398,Efficient & consistent,0.4491,Efficient & consistent,0.9846,0.0134,0.0019,0.9846,0.9666,confident
+2016429,core,16,0.2051,8.4207,7.2282,0.8617,0.25,0.1509,0.9458,3.7854,13.4833,Interval-focused,0.3038,Interval-focused,0.0,0.0,1.0,1.0,0.2865,confident
+2033976,core,26,0.1233,9.9799,6.3465,0.8854,0.3462,0.0856,0.9897,10.4588,9.6319,Interval-focused,0.4399,Interval-focused,0.0,0.0,1.0,1.0,0.2636,confident
+2060912,core,124,0.8468,5.084,6.3094,0.8356,0.0,0.0756,0.9501,3.846,6.6802,Fast starter / developing,0.0978,Fast starter / developing,0.1152,0.7285,0.1563,0.7285,0.2109,between profiles
+2071522,core,42,0.4164,12.5629,7.5573,0.8295,0.0476,0.1271,1.0089,6.7269,21.1703,Fast starter / developing,0.1477,Fast starter / developing,0.245,0.6219,0.1332,0.6219,0.5132,between profiles
+2076057,core,115,0.518,12.0553,7.0348,0.8374,0.0,0.0643,0.9704,4.6351,11.1483,Efficient & consistent,0.329,Efficient & consistent,0.924,0.0567,0.0193,0.924,0.9578,confident
+2104631,core,149,1.3545,10.285,6.5154,0.7968,0.0,0.0638,0.977,1.7357,2.7128,Efficient & consistent,0.2574,Efficient & consistent,0.9382,0.0611,0.0007,0.9382,0.4429,confident
+2119401,core,33,0.2258,6.3123,6.2834,0.7976,0.0,0.109,1.0845,5.4061,10.6167,Fast starter / developing,0.3983,Fast starter / developing,0.0004,0.9719,0.0278,0.9719,0.3181,confident
+2122136,core,74,0.7225,10.1066,7.9938,0.8277,0.0,0.0897,1.0286,5.9703,4.7517,Efficient & consistent,0.0544,Efficient & consistent,0.886,0.0918,0.0222,0.886,0.8313,confident
+2145516,core,113,0.6452,23.033,8.5558,0.6936,0.0,0.0797,0.9714,3.788,3.6211,Efficient & consistent,0.3218,Efficient & consistent,0.9973,0.0027,0.0,0.9973,0.1564,confident
+2155614,core,130,1.0706,11.2339,7.7069,0.7529,0.0,0.1355,0.9402,-3.1715,18.3989,Efficient & consistent,0.2546,Fast starter / developing,0.1164,0.8836,0.0,0.8836,0.0633,confident
+2164708,core,34,0.2797,10.3423,8.5926,0.7803,0.0,0.07,0.9903,3.1723,7.5245,Efficient & consistent,0.3521,Efficient & consistent,0.9889,0.0106,0.0004,0.9889,0.877,confident
+2171721,core,10,0.4605,14.9346,6.1653,0.828,0.0,0.087,0.9797,-0.3915,13.8098,Efficient & consistent,0.1951,Efficient & consistent,0.6064,0.3831,0.0105,0.6064,0.4605,between profiles
+2174810,core,61,0.4296,9.5111,4.9177,0.8543,0.0328,0.1421,1.0565,7.1606,7.3653,Fast starter / developing,0.4881,Fast starter / developing,0.0005,0.8731,0.1264,0.8731,0.3937,confident
+2175400,core,72,0.3405,14.1878,6.4105,0.7895,0.0556,0.1812,0.8478,4.8574,7.2904,Efficient & consistent,0.1288,Fast starter / developing,0.0002,0.9968,0.0029,0.9968,0.1301,confident
+2181290,core,29,1.7965,7.2297,7.4082,0.9071,0.0,0.1374,0.8998,4.9328,10.2995,Efficient & consistent,0.079,Fast starter / developing,0.1487,0.8329,0.0184,0.8329,0.0422,atypical
+2207788,core,41,0.2914,10.0176,6.9321,0.8511,0.0,0.0712,0.9706,4.0337,10.7815,Efficient & consistent,0.0131,Efficient & consistent,0.835,0.1172,0.0478,0.835,0.9016,confident
+2218816,core,15,0.1475,12.2967,9.8299,0.8316,0.0,0.0619,0.9738,3.9102,8.4417,Efficient & consistent,0.3278,Efficient & consistent,0.9974,0.002,0.0007,0.9974,0.5518,confident
+2226932,core,23,0.3718,14.9182,5.7817,0.8322,0.0,0.1844,1.1342,10.4353,16.3033,Fast starter / developing,0.2872,Fast starter / developing,0.0,0.997,0.003,0.997,0.1125,confident
+2232554,core,20,0.1297,10.9728,6.4306,0.8239,0.3,0.154,0.9845,8.3522,6.5199,Interval-focused,0.2746,Interval-focused,0.0,0.0,1.0,1.0,0.3216,confident
+2232580,core,11,0.2053,21.0112,7.497,0.8331,0.0,0.0534,1.0316,9.1113,14.3731,Efficient & consistent,0.0196,Fast starter / developing,0.2919,0.4953,0.2128,0.4953,0.0896,between profiles
+2237368,core,22,0.3242,12.1005,7.8594,0.8393,0.1818,0.0792,0.9826,5.7683,8.9501,Efficient & consistent,0.0744,Interval-focused,0.2619,0.0,0.7381,0.7381,0.5571,between profiles
+2246153,core,12,0.1353,10.7791,7.2248,0.8458,0.0,0.1142,1.028,3.2282,7.5076,Fast starter / developing,0.2908,Efficient & consistent,0.4753,0.4427,0.082,0.4753,0.7206,between profiles
+2248203,core,13,0.2871,11.774,7.5276,0.8405,0.0,0.1174,1.1224,4.4793,2.9205,Fast starter / developing,0.1688,Fast starter / developing,0.0024,0.9557,0.0419,0.9557,0.1687,confident
+2282039,core,159,0.8457,11.2393,8.7221,0.7964,0.0314,0.0626,0.9763,4.6369,7.1158,Efficient & consistent,0.574,Efficient & consistent,0.9969,0.0028,0.0003,0.9969,0.9824,confident
+2315790,core,66,0.5841,10.3309,7.8178,0.8043,0.0606,0.1039,0.9743,5.1905,8.4836,Efficient & consistent,0.472,Efficient & consistent,0.9724,0.0207,0.0069,0.9724,0.9965,confident
+2333172,core,170,1.2383,9.9478,6.7507,0.8285,0.0,0.2072,1.0485,-4.1566,35.0114,Fast starter / developing,0.0419,Fast starter / developing,0.0,1.0,0.0,1.0,0.0703,confident
+2336853,core,60,0.3608,16.1096,8.1439,0.84,0.0333,0.0957,0.9456,1.019,8.3573,Efficient & consistent,0.462,Efficient & consistent,0.9802,0.0175,0.0023,0.9802,0.7258,confident
+2368480,core,29,0.4531,9.9641,7.2224,0.8487,0.2069,0.119,0.9776,7.9415,4.301,Interval-focused,0.1106,Interval-focused,0.0039,0.0,0.9961,0.9961,0.536,confident
+2369854,core,88,0.6417,9.1252,6.5526,0.8371,0.0909,0.1298,1.0028,2.4817,7.9238,Fast starter / developing,0.2999,Efficient & consistent,0.4575,0.2194,0.3231,0.4575,0.6204,between profiles
+2390403,core,41,0.256,13.3607,6.6396,0.8709,0.1463,0.0712,0.9519,1.7548,7.4138,Efficient & consistent,0.0998,Efficient & consistent,0.6164,0.0004,0.3832,0.6164,0.3322,between profiles
+2445737,core,12,0.3981,10.0961,7.9569,0.8554,0.0,0.1485,1.0191,7.2738,10.8363,Fast starter / developing,0.3749,Fast starter / developing,0.0666,0.7846,0.1488,0.7846,0.6221,between profiles
+2461936,core,301,1.8258,15.8953,9.416,0.7777,0.0,0.0484,0.9687,4.3066,6.3458,Efficient & consistent,0.4022,Efficient & consistent,0.9998,0.0002,0.0,0.9998,0.2478,confident
+2474825,core,70,0.5645,11.3083,7.7961,0.8375,0.0143,0.1256,0.9971,5.4817,12.7037,Fast starter / developing,0.0129,Efficient & consistent,0.6806,0.2688,0.0506,0.6806,0.8717,between profiles
+2479025,core,45,0.3195,10.1254,9.5138,0.7906,0.0444,0.0811,0.9673,4.4203,5.42,Efficient & consistent,0.3624,Efficient & consistent,0.9977,0.002,0.0003,0.9977,0.7663,confident
+2484383,core,21,0.1029,10.6945,6.7261,0.8061,0.0,0.1074,0.978,7.7256,9.0542,Fast starter / developing,0.3277,Efficient & consistent,0.5653,0.3923,0.0424,0.5653,0.7803,between profiles
+2484395,core,124,0.6586,12.0664,8.8295,0.8472,0.0887,0.078,0.9674,3.7322,5.9009,Efficient & consistent,0.5262,Efficient & consistent,0.9961,0.0005,0.0034,0.9961,0.9332,confident
+2487889,core,48,0.4609,8.5976,7.0131,0.8567,0.0,0.0845,0.9972,9.4056,11.181,Fast starter / developing,0.4053,Fast starter / developing,0.2665,0.4985,0.235,0.4985,0.6696,between profiles
+2535101,core,94,1.0478,12.4612,8.2406,0.777,0.0,0.0506,0.9855,4.7353,6.3152,Efficient & consistent,0.4874,Efficient & consistent,0.9955,0.0044,0.0001,0.9955,0.8506,confident
+2568526,core,155,1.1793,10.268,6.8447,0.8514,0.0387,0.0732,0.9441,4.5651,6.3332,Efficient & consistent,0.3472,Efficient & consistent,0.9672,0.0258,0.007,0.9672,0.9069,confident
+2582984,core,12,0.234,13.8804,7.7638,0.8556,0.0,0.1176,0.9669,3.1684,30.4229,Efficient & consistent,0.1089,Efficient & consistent,0.4889,0.4597,0.0514,0.4889,0.3199,between profiles
+2584821,core,72,0.4315,9.9598,7.3081,0.8614,0.0,0.0777,1.0244,6.3547,6.8027,Fast starter / developing,0.2924,Efficient & consistent,0.6719,0.1869,0.1412,0.6719,0.812,between profiles
+2587574,core,59,0.3775,13.237,8.5966,0.8088,0.0,0.0752,0.9836,5.1315,7.0461,Efficient & consistent,0.4835,Efficient & consistent,0.993,0.0057,0.0013,0.993,0.9772,confident
+2594030,core,42,0.9484,13.2655,6.2448,0.8067,0.0,0.1311,0.9192,3.4076,7.7966,Efficient & consistent,0.3043,Fast starter / developing,0.4335,0.5585,0.008,0.5585,0.5009,between profiles
+2595849,core,12,0.1292,11.745,7.3401,0.8623,0.0833,0.0701,1.0384,9.0625,10.3662,Fast starter / developing,0.274,Interval-focused,0.2717,0.1,0.6283,0.6283,0.355,between profiles
+2596923,core,16,0.4498,9.9624,7.5817,0.8073,0.0,0.0948,0.9215,4.8473,6.4451,Efficient & consistent,0.4116,Efficient & consistent,0.9006,0.0931,0.0063,0.9006,0.8699,confident
+2612870,core,65,0.6149,7.6624,4.7919,0.8747,0.7077,0.0808,1.0025,6.8135,9.2794,Interval-focused,0.4389,Interval-focused,0.0,0.0,1.0,1.0,0.0773,confident
+2625706,core,26,0.1888,11.1077,6.6492,0.7951,0.0,0.1451,0.9316,0.1366,18.7772,Efficient & consistent,0.0884,Fast starter / developing,0.0163,0.982,0.0016,0.982,0.3638,confident
+2636715,core,67,0.7139,10.1564,6.5482,0.8323,0.1194,0.1171,0.9814,2.6393,7.8611,Efficient & consistent,0.0214,Efficient & consistent,0.7487,0.0135,0.2377,0.7487,0.6942,between profiles
+2649245,core,45,0.5385,11.3234,6.8287,0.8745,0.0222,0.1211,0.9933,1.7569,15.8314,Fast starter / developing,0.0589,Fast starter / developing,0.3685,0.5632,0.0684,0.5632,0.6239,between profiles
+2661450,core,74,0.7337,10.1966,6.7568,0.8504,0.027,0.0912,0.936,-0.8658,8.6618,Efficient & consistent,0.3137,Efficient & consistent,0.7314,0.2626,0.006,0.7314,0.6169,between profiles
+2692363,core,238,1.4362,10.1213,6.6787,0.8182,0.0294,0.0918,0.9854,5.2689,3.6708,Efficient & consistent,0.1765,Efficient & consistent,0.9549,0.042,0.003,0.9549,0.7996,confident
+2717503,core,75,0.5303,9.5913,5.3779,0.8611,0.3467,0.1096,0.988,4.3589,8.6426,Interval-focused,0.5739,Interval-focused,0.0,0.0,1.0,1.0,0.4657,confident
+2719026,core,43,0.6093,9.6238,6.5979,0.8125,0.0,0.1251,0.992,2.192,13.6325,Fast starter / developing,0.1262,Fast starter / developing,0.2588,0.7204,0.0208,0.7204,0.7944,between profiles
+2719148,core,50,0.6341,11.3929,6.6105,0.8758,0.04,0.1266,0.9543,-3.3368,13.9805,Efficient & consistent,0.1416,Fast starter / developing,0.0746,0.9216,0.0038,0.9216,0.1968,confident
+2748745,core,13,0.1364,11.1847,8.2522,0.8428,0.0,0.0656,0.9655,4.1471,8.8122,Efficient & consistent,0.3008,Efficient & consistent,0.9779,0.0157,0.0064,0.9779,0.9051,confident
+2774168,core,16,0.1815,12.1092,7.5077,0.8042,0.0,0.0741,0.9918,5.5562,8.4175,Efficient & consistent,0.1664,Efficient & consistent,0.953,0.0399,0.007,0.953,0.9525,confident
+2795796,core,18,0.1315,11.5628,9.7682,0.7617,0.1111,0.0587,0.986,-0.8223,4.5203,Efficient & consistent,0.2799,Efficient & consistent,0.9996,0.0003,0.0001,0.9996,0.058,confident
+2831390,core,18,0.383,10.4965,8.6971,0.762,0.0,0.0764,0.968,0.3262,8.6868,Efficient & consistent,0.3881,Efficient & consistent,0.9883,0.0117,0.0,0.9883,0.6538,confident
+2844791,core,95,0.994,13.3964,8.1311,0.854,0.0316,0.0916,0.9777,5.5193,8.7652,Efficient & consistent,0.4916,Efficient & consistent,0.9903,0.0065,0.0033,0.9903,0.9912,confident
+2849785,core,135,0.6755,9.955,6.8143,0.8816,0.0296,0.0756,0.9962,7.0443,7.4365,Fast starter / developing,0.2187,Efficient & consistent,0.7539,0.1168,0.1293,0.7539,0.8102,between profiles
+2868369,core,10,0.0578,6.2161,6.4796,0.8803,0.0,0.1646,0.9718,6.4846,9.6002,Fast starter / developing,0.3788,Fast starter / developing,0.0004,0.8602,0.1394,0.8602,0.3005,confident
+2887587,core,27,0.4038,11.6701,7.4429,0.7958,0.0741,0.1001,0.9189,4.0159,10.6385,Efficient & consistent,0.4131,Efficient & consistent,0.9517,0.0403,0.008,0.9517,0.7715,confident
+2894897,core,111,0.5139,13.1606,8.6194,0.7639,0.0,0.0905,0.9397,4.1489,5.6572,Efficient & consistent,0.4761,Efficient & consistent,0.995,0.005,0.0001,0.995,0.8014,confident
+2898275,core,52,0.4303,11.0701,8.2163,0.8619,0.0,0.086,0.9602,5.1034,6.3325,Efficient & consistent,0.3682,Efficient & consistent,0.9769,0.0141,0.009,0.9769,0.9754,confident
+2915343,core,74,0.334,12.3446,7.5638,0.8529,0.0,0.0666,1.0085,3.0342,11.9421,Efficient & consistent,0.1679,Efficient & consistent,0.8999,0.073,0.0271,0.8999,0.833,confident
+2934877,core,55,0.5267,7.9143,6.5748,0.8818,0.0,0.0499,1.0188,8.6908,4.1914,Fast starter / developing,0.2475,Fast starter / developing,0.1016,0.4892,0.4092,0.4892,0.2654,between profiles
+2941284,core,101,0.5992,10.0822,6.5741,0.8471,0.0297,0.1476,1.0102,2.9648,9.4484,Fast starter / developing,0.3904,Fast starter / developing,0.0652,0.8596,0.0752,0.8596,0.7979,confident
+2974312,core,168,1.4981,10.7259,7.8152,0.807,0.0655,0.0934,1.0006,5.2745,5.4193,Efficient & consistent,0.3534,Efficient & consistent,0.9951,0.0041,0.0008,0.9951,0.935,confident
+2994297,core,26,0.692,8.1998,6.512,0.8454,0.0769,0.1243,0.881,-6.4442,13.4332,Efficient & consistent,0.1524,Fast starter / developing,0.0032,0.995,0.0017,0.995,0.0492,atypical
+3021311,core,160,1.1256,11.9406,7.7422,0.8288,0.0062,0.0948,0.9652,3.5113,5.6326,Efficient & consistent,0.6453,Efficient & consistent,0.9899,0.0092,0.0009,0.9899,0.9982,confident
+3055418,core,69,0.5005,10.5083,8.1338,0.8569,0.2754,0.08,0.9913,4.1597,7.446,Interval-focused,0.3784,Interval-focused,0.0002,0.0,0.9998,0.9998,0.4745,confident
+3060590,core,216,1.6615,15.9582,8.0188,0.7946,0.037,0.0684,0.9444,5.2859,4.8899,Efficient & consistent,0.4484,Efficient & consistent,0.9986,0.0013,0.0,0.9986,0.645,confident
+3082409,core,40,0.4124,12.1345,8.4875,0.8334,0.05,0.0696,1.006,6.0497,4.3551,Efficient & consistent,0.2745,Efficient & consistent,0.9812,0.009,0.0097,0.9812,0.8612,confident
+3083777,core,17,0.0824,12.7502,7.1433,0.8806,0.1765,0.1174,0.9509,2.9754,11.8735,Interval-focused,0.1315,Interval-focused,0.0809,0.0,0.919,0.919,0.2144,confident
+3085942,core,19,0.2742,11.9893,8.5221,0.8505,0.0,0.1084,0.8594,1.7146,6.8865,Efficient & consistent,0.3347,Efficient & consistent,0.5686,0.4217,0.0097,0.5686,0.1283,between profiles
+3088466,core,150,0.9075,13.7119,7.2316,0.8203,0.14,0.075,0.9568,1.6169,7.7054,Efficient & consistent,0.508,Efficient & consistent,0.9805,0.0002,0.0193,0.9805,0.6309,confident
+3089500,core,11,1.0,9.932,6.1221,0.7862,0.0,0.0921,1.0052,5.7978,11.6595,Fast starter / developing,0.149,Efficient & consistent,0.6577,0.3322,0.0101,0.6577,0.7065,between profiles
+3091798,core,115,0.7325,10.3054,7.5656,0.8052,0.087,0.093,0.9554,6.4051,9.3003,Efficient & consistent,0.4017,Efficient & consistent,0.9771,0.0094,0.0135,0.9771,0.9543,confident
+3122949,core,18,0.253,7.4469,5.9664,0.8955,0.1667,0.2043,1.1338,6.8377,3.3839,Fast starter / developing,0.1526,Interval-focused,0.0,0.0029,0.9971,0.9971,0.0123,atypical
+3167841,core,22,0.3068,10.0521,6.5576,0.8674,0.1364,0.0751,0.9619,7.6946,6.8569,Fast starter / developing,0.0617,Interval-focused,0.1984,0.0009,0.8006,0.8006,0.5782,confident
+3191096,core,188,0.8334,8.1768,7.7096,0.8351,0.0957,0.0715,0.987,7.164,6.3084,Efficient & consistent,0.0332,Efficient & consistent,0.8853,0.0102,0.1045,0.8853,0.7434,confident
+3235195,core,91,0.6294,10.1088,7.6223,0.8261,0.011,0.2734,0.5958,-7.0092,9.3151,Efficient & consistent,0.0931,Fast starter / developing,0.0,1.0,0.0,1.0,0.0246,atypical
+3262231,core,29,1.1534,7.3887,8.2278,0.8833,0.2069,0.0779,0.9698,3.9142,5.8475,Interval-focused,0.0767,Interval-focused,0.0801,0.0,0.9199,0.9199,0.1107,confident
+3272464,core,14,1.5556,12.2247,8.6561,0.8285,0.0,0.1168,1.0345,8.3059,4.2053,Efficient & consistent,0.1326,Efficient & consistent,0.9158,0.0799,0.0043,0.9158,0.246,confident
+3275003,core,69,0.4574,12.812,8.6713,0.7988,0.1159,0.1137,1.003,7.8534,9.1762,Efficient & consistent,0.1698,Efficient & consistent,0.9522,0.0031,0.0447,0.9522,0.5026,confident
+3276737,core,175,0.8294,10.1129,6.9765,0.8437,0.0286,0.0795,0.959,3.082,2.8003,Efficient & consistent,0.2723,Efficient & consistent,0.9321,0.0582,0.0097,0.9321,0.775,confident
+3288898,core,27,0.3728,9.7348,8.0045,0.7594,0.0,0.0991,1.0773,5.5122,6.9934,Fast starter / developing,0.1189,Fast starter / developing,0.1854,0.8085,0.0062,0.8085,0.2355,confident
+3297710,core,194,1.5072,11.5139,9.3002,0.8764,0.0155,0.0817,1.0149,5.585,6.9397,Efficient & consistent,0.2527,Efficient & consistent,0.9973,0.002,0.0006,0.9973,0.5272,confident
+3317373,core,110,0.8891,13.0541,6.8948,0.832,0.1091,0.083,0.9963,3.6506,9.1184,Efficient & consistent,0.3428,Efficient & consistent,0.9564,0.0028,0.0408,0.9564,0.8682,confident
+3324472,core,221,1.4431,11.1768,10.0234,0.8997,0.009,0.0548,0.9504,1.582,7.5521,Efficient & consistent,0.3214,Efficient & consistent,0.9992,0.0007,0.0001,0.9992,0.1634,confident
+3362051,core,19,0.2191,9.8314,7.48,0.7467,0.0526,0.071,0.939,2.3538,5.711,Efficient & consistent,0.2729,Efficient & consistent,0.9761,0.0237,0.0002,0.9761,0.5466,confident
+3365457,core,32,0.1851,12.4067,6.4943,0.824,0.0,0.0905,1.0247,12.4725,13.3528,Fast starter / developing,0.3064,Fast starter / developing,0.0191,0.9289,0.052,0.9289,0.3269,confident
+3375182,core,46,0.4357,13.6316,7.9524,0.8468,0.0,0.095,0.9422,2.945,14.6072,Efficient & consistent,0.4015,Efficient & consistent,0.942,0.05,0.008,0.942,0.7873,confident
+3381703,core,146,1.1206,9.5105,6.5684,0.8218,0.0068,0.0745,1.0121,7.1647,3.7928,Fast starter / developing,0.0727,Efficient & consistent,0.7571,0.2146,0.0283,0.7571,0.6098,between profiles
+3411439,core,232,1.3988,11.3492,8.4822,0.7775,0.0043,0.1225,0.9644,4.5874,7.8372,Efficient & consistent,0.4493,Efficient & consistent,0.9888,0.0111,0.0001,0.9888,0.7909,confident
+3432842,core,244,1.619,10.8005,7.1331,0.8429,0.0943,0.0803,0.9955,6.9751,3.6126,Efficient & consistent,0.1511,Efficient & consistent,0.9851,0.0037,0.0112,0.9851,0.5483,confident
+3438751,core,87,0.4992,11.213,8.2203,0.7439,0.0,0.0991,0.9578,3.8345,5.7787,Efficient & consistent,0.3752,Efficient & consistent,0.9895,0.0104,0.0,0.9895,0.8032,confident
+3439813,core,132,1.1681,13.5286,6.9003,0.7988,0.1136,0.0638,0.9819,2.9134,7.2053,Efficient & consistent,0.4422,Efficient & consistent,0.9955,0.0008,0.0037,0.9955,0.7311,confident
+3445572,core,14,2.3333,11.1111,7.1374,0.8398,0.0,0.09,0.9577,5.4822,3.1628,Efficient & consistent,0.2456,Efficient & consistent,0.9937,0.0062,0.0001,0.9937,0.4552,confident
+3469220,core,142,1.2472,10.3802,7.5968,0.8213,0.0493,0.092,1.0073,3.9843,4.311,Efficient & consistent,0.3133,Efficient & consistent,0.982,0.0155,0.0025,0.982,0.9297,confident
+3471841,core,45,0.7447,12.2714,7.4408,0.8265,0.2222,0.0997,0.9422,7.6611,11.7175,Interval-focused,0.0732,Interval-focused,0.015,0.0,0.985,0.985,0.3515,confident
+3472071,core,73,0.9623,10.9117,7.6381,0.8422,0.4247,0.0893,0.9599,5.2157,18.3043,Interval-focused,0.4713,Interval-focused,0.0,0.0,1.0,1.0,0.167,confident
+3537163,core,13,0.1017,7.7192,7.5489,0.799,0.0,0.1333,1.0405,2.427,11.7961,Fast starter / developing,0.2783,Fast starter / developing,0.0281,0.9559,0.016,0.9559,0.4763,confident
+3556695,core,104,0.6661,11.3656,5.5556,0.7984,0.0,0.1798,0.9117,-0.5545,10.3483,Efficient & consistent,0.081,Fast starter / developing,0.0001,0.9996,0.0003,0.9996,0.2566,confident
+3558042,core,108,0.75,7.1855,7.1553,0.8309,0.0278,0.0865,1.014,5.9873,7.8244,Fast starter / developing,0.3428,Efficient & consistent,0.5117,0.3615,0.1267,0.5117,0.7504,between profiles
+3559941,core,108,0.489,7.5827,8.0675,0.8289,0.0,0.0751,1.0112,4.0307,5.879,Efficient & consistent,0.0086,Efficient & consistent,0.8462,0.1186,0.0352,0.8462,0.7417,confident
+3575734,core,182,1.059,14.6001,7.1144,0.8192,0.0495,0.1678,1.0027,2.3182,18.0541,Efficient & consistent,0.0981,Fast starter / developing,0.0267,0.9588,0.0145,0.9588,0.2917,confident
+3576105,core,108,0.8017,6.5125,6.9709,0.8993,0.0,0.0671,0.9854,3.0385,6.12,Fast starter / developing,0.0787,Efficient & consistent,0.5484,0.2892,0.1624,0.5484,0.2707,between profiles
+3655927,core,34,0.1732,8.7292,6.8141,0.8603,0.0,0.1519,0.976,-2.56,19.5974,Fast starter / developing,0.0594,Fast starter / developing,0.0011,0.9967,0.0021,0.9967,0.2425,confident
+3664548,core,29,0.2307,5.2972,6.0744,0.7864,0.1379,0.0936,0.9702,4.0672,11.3241,Fast starter / developing,0.1709,Interval-focused,0.0428,0.0143,0.9429,0.9429,0.0756,confident
+3668539,core,48,1.1789,5.6294,6.7113,0.8451,0.0208,0.1978,1.0081,7.1439,9.3532,Fast starter / developing,0.3122,Fast starter / developing,0.0,0.984,0.016,0.984,0.2583,confident
+3680369,core,40,0.2193,9.9041,5.445,0.8486,0.0,0.1506,0.9332,7.1441,8.9696,Fast starter / developing,0.2996,Fast starter / developing,0.0052,0.9208,0.0739,0.9208,0.4868,confident
+3689976,core,33,0.4081,7.2856,6.9685,0.8209,0.1515,0.0783,0.9959,8.1838,5.2189,Fast starter / developing,0.2191,Interval-focused,0.0668,0.0005,0.9328,0.9328,0.4534,confident
+3691161,core,68,0.41,16.1816,9.2887,0.8238,0.0735,0.0717,0.9144,4.1297,13.1615,Efficient & consistent,0.3989,Efficient & consistent,0.9942,0.0032,0.0026,0.9942,0.2548,confident
+3700284,core,17,0.2902,10.1587,6.2002,0.8024,0.1176,0.0741,0.958,12.5685,2.2022,Fast starter / developing,0.1031,Interval-focused,0.1825,0.1755,0.642,0.642,0.0281,atypical
+3702346,core,39,0.2302,10.9731,6.776,0.8467,0.0,0.1497,1.0383,2.2848,15.9476,Fast starter / developing,0.3047,Fast starter / developing,0.0055,0.9598,0.0346,0.9598,0.587,confident
+3709276,core,92,0.697,13.2796,8.8779,0.7494,0.0109,0.0911,1.0022,6.1443,9.1817,Efficient & consistent,0.3175,Efficient & consistent,0.9942,0.0057,0.0001,0.9942,0.696,confident
+3714939,core,13,0.1477,11.6138,7.2221,0.782,0.0,0.1224,1.0806,-1.2975,6.9399,Fast starter / developing,0.0497,Fast starter / developing,0.0076,0.9916,0.0008,0.9916,0.1916,confident
+3725029,core,14,0.3657,12.0705,8.5378,0.8302,0.0,0.0806,0.9804,4.218,4.1259,Efficient & consistent,0.4118,Efficient & consistent,0.9898,0.0077,0.0024,0.9898,0.9402,confident
+3736342,core,196,0.9062,14.1757,9.8837,0.7912,0.0,0.0517,0.9408,5.1723,8.593,Efficient & consistent,0.4495,Efficient & consistent,0.9989,0.001,0.0001,0.9989,0.413,confident
+3743021,core,19,0.1042,11.7374,6.5013,0.8408,0.1579,0.1289,1.0675,10.36,12.046,Fast starter / developing,0.2469,Interval-focused,0.0003,0.0011,0.9986,0.9986,0.1529,confident
+3820045,core,141,1.3901,10.1559,7.3726,0.7633,0.0071,0.0673,0.9969,8.1212,6.1889,Efficient & consistent,0.176,Efficient & consistent,0.9692,0.0305,0.0003,0.9692,0.6186,confident
+3867177,core,10,2.3333,16.0412,5.3592,0.8493,0.0,0.1614,0.965,6.2508,4.1667,Efficient & consistent,0.0533,Fast starter / developing,0.1233,0.8694,0.0073,0.8694,0.0211,atypical
+3905196,core,96,0.6499,11.0822,8.5971,0.78,0.0,0.0474,0.9868,4.6834,9.1725,Efficient & consistent,0.44,Efficient & consistent,0.9905,0.009,0.0005,0.9905,0.8278,confident
+3908642,core,162,1.2366,12.4607,9.7039,0.7728,0.0,0.0731,0.9906,5.6559,3.7722,Efficient & consistent,0.3561,Efficient & consistent,0.9993,0.0006,0.0,0.9993,0.4464,confident
+3918301,core,39,0.3266,10.0496,8.3459,0.8295,0.2051,0.0693,0.9748,7.6176,10.1455,Interval-focused,0.0673,Interval-focused,0.0544,0.0,0.9456,0.9456,0.3568,confident
+3987593,core,102,0.7041,8.1769,5.0837,0.8285,0.3627,0.222,1.0196,14.5036,7.2402,Interval-focused,0.0918,Interval-focused,0.0,0.0,1.0,1.0,0.007,atypical
+3992841,core,65,0.5745,5.4897,7.8587,0.8746,0.2462,0.0606,0.9869,4.4305,7.2082,Interval-focused,0.2249,Interval-focused,0.0,0.0,1.0,1.0,0.188,confident
+4003530,core,18,0.117,8.7672,5.7376,0.8129,0.1111,0.1116,1.0202,7.3909,10.2287,Fast starter / developing,0.4801,Interval-focused,0.0635,0.0835,0.853,0.853,0.3427,confident
+4006330,core,48,0.381,11.6969,8.0169,0.7728,0.0,0.1203,0.985,5.9186,6.9046,Efficient & consistent,0.2414,Efficient & consistent,0.9263,0.0717,0.0019,0.9263,0.8524,confident
+4007546,core,238,1.9238,10.2406,7.1449,0.8128,0.0,0.1113,0.9536,-2.0988,14.7529,Efficient & consistent,0.271,Efficient & consistent,0.7474,0.2525,0.0001,0.7474,0.1547,between profiles
+4009109,core,44,0.2355,14.0935,8.6087,0.8335,0.0,0.1006,1.013,6.1629,10.9214,Efficient & consistent,0.1496,Efficient & consistent,0.9389,0.0439,0.0172,0.9389,0.71,confident
+4025656,core,10,0.2326,9.8602,8.5288,0.8648,0.0,0.0599,0.9942,2.6651,6.3304,Efficient & consistent,0.213,Efficient & consistent,0.9699,0.0201,0.01,0.9699,0.7188,confident
+4057523,core,31,0.2486,9.9351,5.9798,0.8597,0.2258,0.0941,0.9602,4.3947,6.9809,Interval-focused,0.3383,Interval-focused,0.0011,0.0,0.9989,0.9989,0.5185,confident
+4124709,core,81,1.4246,11.8007,8.6467,0.8013,0.0,0.0631,1.0123,6.8026,5.7408,Efficient & consistent,0.3373,Efficient & consistent,0.9949,0.0048,0.0003,0.9949,0.7047,confident
+4131540,core,70,0.8703,11.9397,6.2169,0.7998,0.0286,0.247,1.0153,0.7138,21.1615,Fast starter / developing,0.1051,Fast starter / developing,0.0,1.0,0.0,1.0,0.1511,confident
+4133458,core,36,0.3807,9.985,7.1707,0.8377,0.1111,0.0809,0.9698,5.9345,13.7328,Fast starter / developing,0.0509,Efficient & consistent,0.7111,0.0087,0.2802,0.7111,0.7592,between profiles
+4146688,core,254,1.4598,11.9824,8.7412,0.8029,0.0,0.1184,0.9355,2.4614,11.7379,Efficient & consistent,0.4704,Efficient & consistent,0.9862,0.0137,0.0001,0.9862,0.5729,confident
+4164701,core,38,0.4124,6.8399,6.8107,0.826,0.1316,0.1022,1.0111,9.6502,8.7422,Fast starter / developing,0.3681,Interval-focused,0.0189,0.007,0.974,0.974,0.42,confident
+4177391,core,22,0.4,13.7868,7.4135,0.7922,0.0,0.1503,1.0098,4.4371,7.4003,Efficient & consistent,0.0521,Fast starter / developing,0.259,0.7225,0.0184,0.7225,0.6046,between profiles
+4198916,core,64,1.0516,14.5195,8.7437,0.7534,0.0,0.1146,0.965,-0.3736,21.8832,Efficient & consistent,0.3092,Efficient & consistent,0.9219,0.0781,0.0,0.9219,0.0826,confident
+4203888,core,47,0.5197,9.741,7.4826,0.8466,0.0426,0.1174,0.9345,5.7468,5.2045,Efficient & consistent,0.2046,Efficient & consistent,0.7851,0.1601,0.0547,0.7851,0.8225,between profiles
+4226525,core,37,0.4105,9.7783,8.725,0.8084,0.0,0.0934,0.9293,5.9325,4.2134,Efficient & consistent,0.3534,Efficient & consistent,0.9707,0.0266,0.0026,0.9707,0.6977,confident
+4233611,core,127,2.1116,16.0138,8.2168,0.8032,0.0,0.1058,0.9254,2.3627,8.9649,Efficient & consistent,0.4207,Efficient & consistent,0.9967,0.0033,0.0,0.9967,0.3339,confident
+4253141,core,42,0.7033,7.8296,7.3506,0.8521,0.0,0.1241,1.0823,9.2618,5.3071,Fast starter / developing,0.373,Fast starter / developing,0.0014,0.9137,0.0849,0.9137,0.3691,confident
+4264744,core,219,1.8903,9.836,7.4275,0.8473,0.0137,0.0526,0.9903,6.6997,7.7099,Efficient & consistent,0.2046,Efficient & consistent,0.9836,0.0147,0.0017,0.9836,0.6327,confident
+4264913,core,73,0.5198,15.914,8.832,0.8701,0.0,0.0861,0.9753,4.8725,13.4426,Efficient & consistent,0.3182,Efficient & consistent,0.9851,0.0084,0.0065,0.9851,0.6292,confident
+4296404,core,94,1.2163,13.2382,7.8548,0.8262,0.0,0.0917,0.9719,5.7082,3.7652,Efficient & consistent,0.4419,Efficient & consistent,0.9914,0.0076,0.001,0.9914,0.9121,confident
+4318337,core,30,0.3297,9.0284,5.9131,0.8761,0.0333,0.0651,0.9832,6.0302,9.6553,Fast starter / developing,0.3128,Efficient & consistent,0.3728,0.2941,0.3331,0.3728,0.5923,between profiles
+4321971,core,62,0.5106,10.2861,5.7424,0.8181,0.0,0.2485,0.9258,-6.2481,20.0287,Fast starter / developing,0.0139,Fast starter / developing,0.0,1.0,0.0,1.0,0.0475,atypical
+4330976,core,76,0.6667,7.204,5.9402,0.8318,0.0263,0.1363,1.0386,5.9487,7.7715,Fast starter / developing,0.5721,Fast starter / developing,0.0047,0.8942,0.1011,0.8942,0.6555,confident
+4341373,core,10,0.7865,10.0641,6.7078,0.7986,0.2,0.0886,1.0368,7.6919,9.8365,Fast starter / developing,0.1321,Interval-focused,0.014,0.0,0.986,0.986,0.3023,confident
+4357738,core,22,0.274,7.7537,5.5274,0.8311,0.0,0.2335,1.0298,11.1762,10.3012,Fast starter / developing,0.374,Fast starter / developing,0.0,0.9989,0.0011,0.9989,0.1986,confident
+4362441,core,91,0.7962,12.5072,7.8852,0.7882,0.0549,0.1138,0.9407,-0.9031,6.754,Efficient & consistent,0.4884,Efficient & consistent,0.9561,0.0436,0.0003,0.9561,0.594,confident
+4363552,core,14,0.3889,8.7841,8.1378,0.8866,0.0,0.0716,1.0053,2.6399,11.5555,Efficient & consistent,0.0225,Efficient & consistent,0.8631,0.091,0.046,0.8631,0.5624,confident
+4419649,core,12,0.265,10.3851,7.1265,0.8747,0.0,0.1178,1.01,4.6724,9.2967,Fast starter / developing,0.379,Efficient & consistent,0.4576,0.3722,0.1701,0.4576,0.7768,between profiles
+4433918,core,32,0.4341,11.308,5.7392,0.7993,0.0312,0.1443,0.969,-0.1674,16.6085,Fast starter / developing,0.0229,Fast starter / developing,0.0168,0.98,0.0032,0.98,0.464,confident
+4439016,core,177,0.4204,12.6618,8.8466,0.8723,0.0,0.0713,1.0099,5.4567,5.1259,Efficient & consistent,0.2242,Efficient & consistent,0.981,0.009,0.01,0.981,0.7012,confident
+4443471,core,11,0.0958,14.9089,8.0341,0.7851,0.0909,0.0636,1.0184,5.5307,4.0288,Efficient & consistent,0.1693,Efficient & consistent,0.9864,0.0052,0.0085,0.9864,0.3761,confident
+4457345,core,25,0.3646,11.1822,7.1161,0.8386,0.0,0.1269,1.0247,7.2845,4.8744,Fast starter / developing,0.4045,Fast starter / developing,0.2243,0.6323,0.1434,0.6323,0.7118,between profiles
+4536750,core,13,0.6454,9.9948,8.0781,0.8905,0.0,0.0716,0.9665,8.1775,6.2522,Efficient & consistent,0.0888,Efficient & consistent,0.93,0.0355,0.0345,0.93,0.6661,confident
+4564626,core,21,0.1771,6.7546,7.2228,0.8135,0.0476,0.0965,1.0014,3.8827,8.414,Fast starter / developing,0.3066,Efficient & consistent,0.4742,0.4089,0.1169,0.4742,0.6011,between profiles
+4572860,core,95,0.9459,5.7007,6.2799,0.84,0.1263,0.1062,0.9916,8.064,6.8625,Fast starter / developing,0.2431,Interval-focused,0.0185,0.0093,0.9723,0.9723,0.2619,confident
+4584909,core,166,1.3403,13.4335,7.3236,0.8046,0.006,0.0674,0.9664,4.0285,11.5668,Efficient & consistent,0.4906,Efficient & consistent,0.9893,0.0102,0.0004,0.9893,0.9139,confident
+4615477,core,33,0.234,9.9458,7.5089,0.8183,0.0,0.1361,0.9952,3.9246,9.3463,Fast starter / developing,0.2331,Fast starter / developing,0.3959,0.5616,0.0425,0.5616,0.8155,between profiles
+4654918,core,16,1.4359,6.7756,6.733,0.8054,0.0,0.1026,0.9144,2.2048,14.9299,Efficient & consistent,0.1394,Fast starter / developing,0.2313,0.7646,0.0041,0.7646,0.174,between profiles
+4668578,core,17,0.8561,7.4865,8.0919,0.8268,0.0,0.0667,1.0191,5.9359,5.2701,Efficient & consistent,0.0127,Efficient & consistent,0.8315,0.1316,0.0368,0.8315,0.5835,confident
+4675763,core,84,1.3009,12.4899,6.1457,0.8341,0.0,0.0684,0.9694,2.6909,6.3836,Efficient & consistent,0.3153,Efficient & consistent,0.9618,0.0355,0.0027,0.9618,0.7856,confident
+4752000,core,48,1.3281,10.0344,6.6841,0.8652,0.0,0.129,1.0019,9.5214,9.9346,Fast starter / developing,0.2639,Fast starter / developing,0.1787,0.7445,0.0768,0.7445,0.4569,between profiles
+4796418,core,75,1.4915,7.8375,7.6797,0.8587,0.0267,0.1022,1.0335,2.3996,18.5411,Fast starter / developing,0.0287,Fast starter / developing,0.4141,0.5602,0.0257,0.5602,0.2004,between profiles
+4905815,core,27,0.4599,10.6211,7.6252,0.8312,0.0741,0.1022,1.0205,7.2299,8.4495,Fast starter / developing,0.3315,Efficient & consistent,0.7731,0.0762,0.1507,0.7731,0.8453,between profiles
+4938238,core,21,0.3245,6.2642,6.2106,0.8159,0.0952,0.0729,1.0112,6.7776,7.7313,Fast starter / developing,0.3772,Interval-focused,0.085,0.1101,0.8049,0.8049,0.362,confident
+4969375,core,85,0.8586,18.2987,9.0576,0.7539,0.0,0.1109,0.9761,3.8038,5.8112,Efficient & consistent,0.3828,Efficient & consistent,0.9969,0.0031,0.0,0.9969,0.3357,confident
+4973835,core,10,0.3608,11.4685,7.9094,0.8244,0.0,0.1726,0.9299,5.0681,2.7973,Efficient & consistent,0.1467,Fast starter / developing,0.0201,0.9615,0.0184,0.9615,0.2724,confident
+4998101,core,50,1.0448,10.68,7.32,0.8149,0.0,0.1226,1.0033,3.8606,13.6783,Efficient & consistent,0.1252,Efficient & consistent,0.6957,0.2925,0.0117,0.6957,0.8084,between profiles
+5063358,core,32,0.1665,14.3469,8.8604,0.8001,0.0625,0.1049,0.9306,2.9838,4.719,Efficient & consistent,0.3947,Efficient & consistent,0.9939,0.0053,0.0008,0.9939,0.522,confident
+5072565,core,42,0.4975,8.041,7.1755,0.7718,0.0238,0.1365,1.0,6.0377,12.7624,Fast starter / developing,0.2829,Fast starter / developing,0.1106,0.8771,0.0123,0.8771,0.6362,confident
+5095069,core,59,0.7084,8.4153,6.5734,0.8374,0.0678,0.1459,0.9673,4.6902,12.4136,Fast starter / developing,0.312,Fast starter / developing,0.1037,0.6748,0.2215,0.6748,0.6344,between profiles
+5106976,core,25,0.1919,9.7916,6.8305,0.7709,0.04,0.1049,1.0309,6.8808,6.213,Fast starter / developing,0.3159,Fast starter / developing,0.4487,0.5307,0.0205,0.5307,0.5554,between profiles
+5107134,core,41,0.5694,7.164,6.2607,0.8086,0.0,0.1,0.9698,6.0101,2.6564,Fast starter / developing,0.1484,Fast starter / developing,0.2339,0.7003,0.0659,0.7003,0.4077,between profiles
+5164930,core,13,0.1637,12.456,6.9081,0.9171,0.0769,0.088,0.9196,2.5602,11.3885,Efficient & consistent,0.122,Efficient & consistent,0.8417,0.0604,0.098,0.8417,0.2689,confident
+5180701,core,23,0.2993,12.2297,8.2461,0.8213,0.0435,0.1381,1.0079,9.1252,9.59,Fast starter / developing,0.163,Fast starter / developing,0.3635,0.5391,0.0974,0.5391,0.4938,between profiles
+5242117,core,80,0.7311,11.1049,7.1391,0.8146,0.0625,0.0988,0.9436,4.5235,7.1956,Efficient & consistent,0.5682,Efficient & consistent,0.9674,0.0246,0.008,0.9674,0.9895,confident
+5255745,core,86,0.7049,11.9132,8.4833,0.8312,0.1512,0.0438,0.9761,9.6126,4.816,Efficient & consistent,0.22,Efficient & consistent,0.7214,0.0001,0.2784,0.7214,0.1793,between profiles
+5269471,core,15,0.2354,16.0587,6.8503,0.8673,0.3333,0.0994,1.0084,4.051,7.9778,Interval-focused,0.4205,Interval-focused,0.0,0.0,1.0,1.0,0.3374,confident
+5298016,core,24,0.1789,9.4672,6.1368,0.8691,0.5,0.1029,1.0148,8.6772,14.7931,Interval-focused,0.4982,Interval-focused,0.0,0.0,1.0,1.0,0.2197,confident
+5306319,core,50,1.6509,9.0302,7.749,0.8228,0.2,0.0643,0.9457,1.7516,3.7364,Efficient & consistent,0.2147,Efficient & consistent,0.8669,0.0,0.1331,0.8669,0.0387,atypical
+5325166,core,38,0.3923,10.1351,5.8832,0.8315,0.0526,0.1175,1.0232,5.1129,7.7735,Fast starter / developing,0.6274,Fast starter / developing,0.1885,0.5788,0.2328,0.5788,0.7329,between profiles
+5346596,core,70,0.5379,9.5758,6.0144,0.8267,0.0,0.0855,0.9782,6.4645,4.3389,Fast starter / developing,0.2158,Efficient & consistent,0.619,0.3039,0.0771,0.619,0.7627,between profiles
+5386323,core,47,1.2953,15.6859,8.1247,0.8183,0.0,0.1687,1.0025,5.5221,6.7301,Efficient & consistent,0.2255,Fast starter / developing,0.254,0.7299,0.0161,0.7299,0.1933,between profiles
+5407179,core,162,1.3186,6.7606,6.1054,0.796,0.0185,0.107,1.0017,4.8295,7.4343,Fast starter / developing,0.1916,Fast starter / developing,0.3317,0.6497,0.0185,0.6497,0.4411,between profiles
+5453063,core,36,0.9921,10.3112,6.4372,0.8306,0.0278,0.0797,1.0119,7.8441,4.9392,Fast starter / developing,0.1795,Efficient & consistent,0.7256,0.2206,0.0538,0.7256,0.7241,between profiles
+5486878,core,210,2.5043,13.0972,5.7409,0.7991,0.0,0.0938,0.9862,3.8324,12.7536,Efficient & consistent,0.1456,Efficient & consistent,0.9658,0.0341,0.0001,0.9658,0.2162,confident
+5507899,core,63,0.5207,15.3616,6.3212,0.8386,0.0,0.113,0.9634,-0.5497,5.3344,Efficient & consistent,0.2631,Efficient & consistent,0.6442,0.3464,0.0094,0.6442,0.4587,between profiles
+5525152,core,25,0.2193,11.8881,8.2005,0.6886,0.0,0.0619,0.9705,-2.5523,11.4543,Efficient & consistent,0.2628,Efficient & consistent,0.9234,0.0766,0.0,0.9234,0.0861,confident
+5539676,core,10,0.0812,18.8094,8.0148,0.8402,0.1,0.0649,1.0031,4.8522,6.2746,Efficient & consistent,0.207,Efficient & consistent,0.9343,0.0022,0.0636,0.9343,0.2935,confident
+5547218,core,31,0.321,10.1183,7.3041,0.8245,0.0323,0.0587,1.0076,6.2496,7.2534,Fast starter / developing,0.0968,Efficient & consistent,0.8464,0.1033,0.0503,0.8464,0.8893,confident
+5551642,core,19,0.2714,13.5357,6.7063,0.8591,0.2105,0.1685,1.0688,8.3518,11.848,Fast starter / developing,0.0875,Interval-focused,0.0,0.0,1.0,1.0,0.1459,confident
+5607830,core,64,0.3547,10.329,7.2126,0.8075,0.0,0.1285,0.9567,7.2129,5.5445,Fast starter / developing,0.0531,Efficient & consistent,0.522,0.4439,0.0341,0.522,0.7961,between profiles
+5727574,core,49,0.4123,10.6039,8.1375,0.7537,0.0,0.127,0.972,2.2393,19.5676,Efficient & consistent,0.1858,Efficient & consistent,0.6305,0.3689,0.0006,0.6305,0.3076,between profiles
+5746423,core,262,1.8927,17.0756,7.6379,0.8114,0.0344,0.0894,0.984,5.1672,7.0368,Efficient & consistent,0.3821,Efficient & consistent,0.9978,0.0021,0.0001,0.9978,0.6995,confident
+5836671,core,11,0.0885,12.9186,5.6447,0.8173,0.0,0.0718,0.9887,2.5152,8.8689,Fast starter / developing,0.058,Efficient & consistent,0.6909,0.2808,0.0283,0.6909,0.5062,between profiles
+5839886,core,29,0.3192,10.7232,6.915,0.8018,0.0,0.1063,0.9733,4.9133,9.1268,Fast starter / developing,0.0022,Efficient & consistent,0.8203,0.1655,0.0142,0.8203,0.9631,confident
+5850177,core,14,0.2857,11.2094,5.5564,0.8052,0.0,0.1522,1.0728,9.1891,8.5848,Fast starter / developing,0.4404,Fast starter / developing,0.0001,0.9859,0.014,0.9859,0.4306,confident
+5946470,core,19,0.3491,8.2073,7.1769,0.8423,0.0,0.1085,0.9678,0.8118,6.9238,Efficient & consistent,0.0631,Efficient & consistent,0.6004,0.3728,0.0268,0.6004,0.7364,between profiles
+5964610,core,71,0.5752,10.0896,6.2339,0.7828,0.0704,0.2685,0.9287,6.0319,3.9223,Fast starter / developing,0.0889,Fast starter / developing,0.0,0.9998,0.0002,0.9998,0.0562,confident
+5979382,core,141,0.8266,11.3542,9.4559,0.8495,0.0,0.0981,0.9599,5.2569,8.1414,Efficient & consistent,0.4362,Efficient & consistent,0.9959,0.003,0.001,0.9959,0.8401,confident
+5986686,core,86,0.6615,8.3078,7.2264,0.8361,0.0116,0.0668,0.983,4.1111,4.5372,Efficient & consistent,0.1297,Efficient & consistent,0.8814,0.0917,0.0269,0.8814,0.8594,confident
+6000431,core,108,0.6434,10.1768,7.9829,0.8212,0.0741,0.0842,0.9823,7.3591,8.7724,Efficient & consistent,0.2393,Efficient & consistent,0.9675,0.012,0.0204,0.9675,0.9684,confident
+6107778,core,10,0.7955,3.5922,5.3581,0.8061,0.0,0.1104,1.0185,7.4582,2.8645,Fast starter / developing,0.2731,Fast starter / developing,0.0018,0.9296,0.0686,0.9296,0.1002,confident
+6113340,core,82,0.474,12.0586,7.7577,0.8037,0.0366,0.0775,0.9769,4.4009,4.0043,Efficient & consistent,0.4545,Efficient & consistent,0.986,0.0119,0.0021,0.986,0.9877,confident
+6162923,core,14,0.0981,10.445,5.7587,0.8756,0.4286,0.101,1.0757,8.0799,14.217,Interval-focused,0.328,Interval-focused,0.0,0.0,1.0,1.0,0.1054,confident
+6176971,core,10,0.1313,5.7631,7.127,0.8783,0.0,0.1054,0.9813,7.3105,7.9486,Fast starter / developing,0.3371,Fast starter / developing,0.0517,0.5025,0.4458,0.5025,0.3146,between profiles
+6194859,core,23,0.3727,22.8889,9.4184,0.7868,0.0,0.0962,1.0025,6.8373,9.2456,Efficient & consistent,0.2717,Efficient & consistent,0.9905,0.0084,0.0011,0.9905,0.2302,confident
+6216280,core,27,0.3546,10.4036,5.9412,0.8949,0.0741,0.0678,0.9982,4.3594,10.5422,Fast starter / developing,0.2122,Efficient & consistent,0.4804,0.0852,0.4344,0.4804,0.4692,between profiles
+6299290,core,22,2.9615,11.0758,8.9871,0.7893,0.0,0.0742,0.9624,4.1852,4.6076,Efficient & consistent,0.3639,Efficient & consistent,0.9998,0.0002,0.0,0.9998,0.4675,confident
+6342136,core,129,1.1245,13.6815,7.495,0.8348,0.1783,0.0703,0.9921,6.0165,6.0892,Efficient & consistent,0.2644,Efficient & consistent,0.6568,0.0,0.3432,0.6568,0.3831,between profiles
+6361870,core,19,0.7308,10.2698,6.936,0.8439,0.1053,0.0627,1.0542,7.1448,6.557,Fast starter / developing,0.2375,Interval-focused,0.2468,0.0381,0.7151,0.7151,0.4218,between profiles
+6422295,core,117,0.8806,7.6158,6.03,0.8155,0.0342,0.0792,0.9797,3.1848,9.3917,Fast starter / developing,0.1078,Efficient & consistent,0.6135,0.3494,0.0371,0.6135,0.6819,between profiles
+6493363,core,15,0.0983,10.1901,8.7382,0.8537,0.0,0.1266,1.003,10.6786,8.0494,Fast starter / developing,0.1902,Fast starter / developing,0.3103,0.5735,0.1163,0.5735,0.2232,between profiles
+6532016,core,49,0.4336,10.7811,6.1505,0.8827,0.6122,0.1022,1.0248,5.8246,3.7535,Interval-focused,0.4546,Interval-focused,0.0,0.0,1.0,1.0,0.1318,confident
+6579857,core,11,0.1628,9.0307,7.3997,0.8337,0.0909,0.0812,0.9278,6.823,9.0825,Efficient & consistent,0.0427,Efficient & consistent,0.7936,0.0378,0.1686,0.7936,0.58,between profiles
+6582710,core,55,0.6838,12.9717,8.8246,0.8738,0.0364,0.0956,0.934,3.9163,5.5078,Efficient & consistent,0.4329,Efficient & consistent,0.9932,0.0045,0.0023,0.9932,0.7786,confident
+6601602,core,298,1.8092,16.1525,7.3688,0.7624,0.0101,0.1091,0.8982,2.5135,3.2058,Efficient & consistent,0.3358,Efficient & consistent,0.9561,0.0439,0.0,0.9561,0.0615,confident
+6641862,core,62,0.6182,13.3743,5.9862,0.8788,0.3226,0.0982,1.0267,6.5091,11.2708,Interval-focused,0.4316,Interval-focused,0.0,0.0,1.0,1.0,0.4007,confident
+6670535,core,86,1.4402,10.1042,7.0793,0.8147,0.0698,0.0956,0.999,3.6861,10.5212,Efficient & consistent,0.2424,Efficient & consistent,0.9791,0.0174,0.0035,0.9791,0.884,confident
+6676926,core,40,0.2639,5.5049,5.4589,0.8215,0.025,0.143,0.9224,5.2842,11.2308,Fast starter / developing,0.2455,Fast starter / developing,0.0004,0.9547,0.0449,0.9547,0.2373,confident
+6716410,core,13,1.4444,7.4964,6.2151,0.8626,0.5385,0.131,0.9961,9.7059,4.5983,Interval-focused,0.3761,Interval-focused,0.0,0.0,1.0,1.0,0.0369,atypical
+6721368,core,105,1.199,11.0056,6.1396,0.8427,0.0095,0.1453,0.9254,5.9586,1.6683,Efficient & consistent,0.0755,Fast starter / developing,0.0459,0.9357,0.0184,0.9357,0.1178,confident
+6724449,core,10,0.1573,15.704,7.0891,0.8725,0.1,0.042,1.0064,3.6193,9.6813,Efficient & consistent,0.1015,Efficient & consistent,0.7246,0.0089,0.2665,0.7246,0.3058,between profiles
+6766202,core,13,0.2351,12.0682,7.5655,0.8538,0.0769,0.0795,1.0085,3.079,7.5571,Efficient & consistent,0.1224,Efficient & consistent,0.9416,0.0139,0.0445,0.9416,0.8805,confident
+6793807,core,12,0.1306,6.9216,7.1002,0.8636,0.0,0.0959,0.9919,6.1644,13.926,Fast starter / developing,0.3667,Fast starter / developing,0.1486,0.544,0.3074,0.544,0.4921,between profiles
+6796415,core,69,0.7559,13.2821,8.2565,0.8098,0.0435,0.0792,0.9985,3.3455,4.9626,Efficient & consistent,0.5511,Efficient & consistent,0.9946,0.0045,0.0009,0.9946,0.9859,confident
+6800874,core,71,0.6128,10.0815,7.2211,0.8376,0.0,0.1078,0.931,4.8788,6.2297,Efficient & consistent,0.3442,Efficient & consistent,0.8279,0.1494,0.0227,0.8279,0.8963,confident
+6828710,core,34,0.2333,11.4902,7.865,0.8158,0.0882,0.1667,0.9823,4.5084,15.997,Fast starter / developing,0.0715,Fast starter / developing,0.1046,0.6436,0.2517,0.6436,0.2671,between profiles
+6873187,core,60,0.585,11.5269,6.4132,0.8298,0.0,0.0844,1.0041,9.1508,7.1521,Fast starter / developing,0.3174,Efficient & consistent,0.522,0.3777,0.1003,0.522,0.754,between profiles
+6883061,core,33,0.2519,11.2361,8.4587,0.8089,0.0,0.1075,0.9585,3.5909,11.0573,Efficient & consistent,0.3906,Efficient & consistent,0.9633,0.0341,0.0026,0.9633,0.8998,confident
+6946869,core,156,1.4777,12.4694,8.2846,0.8347,0.0385,0.0704,0.9459,7.6859,13.5423,Efficient & consistent,0.3555,Efficient & consistent,0.9909,0.008,0.0011,0.9909,0.6678,confident
+6961546,core,35,0.3051,9.9927,7.153,0.7921,0.0,0.1081,1.0095,5.7386,12.0651,Fast starter / developing,0.307,Efficient & consistent,0.5692,0.4068,0.024,0.5692,0.826,between profiles
+6969866,core,37,0.6475,9.8889,5.5581,0.8704,0.0,0.108,1.065,11.7677,1.0548,Fast starter / developing,0.2455,Fast starter / developing,0.0002,0.9526,0.0472,0.9526,0.051,confident
+7017288,core,50,1.5982,9.3842,7.5771,0.7909,0.0,0.1073,0.9216,-0.0964,4.6123,Efficient & consistent,0.3637,Efficient & consistent,0.9197,0.0802,0.0001,0.9197,0.297,confident
+7038373,core,224,1.9382,10.7851,8.9936,0.7392,0.0045,0.0604,0.9822,2.4134,10.352,Efficient & consistent,0.3311,Efficient & consistent,0.9993,0.0007,0.0,0.9993,0.2794,confident
+7045897,core,11,1.1,14.0468,6.2756,0.8629,0.0909,0.129,1.0059,3.1024,7.0851,Efficient & consistent,0.0426,Efficient & consistent,0.7469,0.0785,0.1746,0.7469,0.4112,between profiles
+7178673,core,200,1.1945,11.0559,7.3378,0.8823,0.57,0.0575,0.9886,6.8709,5.0588,Interval-focused,0.4436,Interval-focused,0.0,0.0,1.0,1.0,0.0598,confident
+7181149,core,23,0.2015,13.5674,7.0332,0.8344,0.1304,0.1441,0.9484,5.3204,10.75,Efficient & consistent,0.0283,Interval-focused,0.2126,0.0127,0.7747,0.7747,0.3603,between profiles
+7183572,core,10,0.1408,11.9513,7.7772,0.816,0.0,0.0596,0.9977,6.8622,13.6575,Efficient & consistent,0.0393,Efficient & consistent,0.8731,0.1021,0.0248,0.8731,0.6924,confident
+7197311,core,89,0.9122,11.2956,7.0006,0.7486,0.0225,0.1187,0.9473,2.955,11.9349,Efficient & consistent,0.2981,Efficient & consistent,0.8622,0.1376,0.0002,0.8622,0.5958,confident
+7228559,core,59,0.5809,12.1177,6.8889,0.8376,0.1695,0.0806,0.9623,5.7546,10.3878,Efficient & consistent,0.0851,Interval-focused,0.2933,0.0,0.7066,0.7066,0.6151,between profiles
+7285980,core,78,0.901,13.9897,8.1249,0.7737,0.0,0.0752,0.9451,1.0632,2.9363,Efficient & consistent,0.4371,Efficient & consistent,0.9917,0.0083,0.0,0.9917,0.4815,confident
+7313790,core,193,1.1861,13.0054,7.9759,0.781,0.0259,0.1317,0.9583,0.356,10.9631,Efficient & consistent,0.44,Efficient & consistent,0.9114,0.0885,0.0002,0.9114,0.5114,confident
+7382493,core,74,0.7265,10.6409,8.1766,0.8291,0.0,0.1649,0.9225,-4.1111,19.755,Efficient & consistent,0.2102,Fast starter / developing,0.0011,0.9987,0.0001,0.9987,0.0914,confident
+7404960,core,159,1.059,12.9791,6.9308,0.8243,0.044,0.1115,0.909,1.4354,15.8584,Efficient & consistent,0.35,Efficient & consistent,0.6493,0.3452,0.0056,0.6493,0.3814,between profiles
+7425627,core,18,0.2303,7.96,5.7887,0.8306,0.0556,0.1084,1.0194,7.3462,2.0038,Fast starter / developing,0.3036,Fast starter / developing,0.0302,0.6982,0.2716,0.6982,0.1951,between profiles
+7430612,core,92,0.7462,10.0001,5.6484,0.8069,0.0217,0.1079,1.0003,7.5633,4.9195,Fast starter / developing,0.3404,Fast starter / developing,0.3136,0.6296,0.0569,0.6296,0.6467,between profiles
+7516129,core,16,0.1139,9.1865,9.889,0.7418,0.0,0.052,0.9833,0.5025,4.1651,Efficient & consistent,0.2318,Efficient & consistent,0.9934,0.0066,0.0,0.9934,0.0545,confident
+7654809,core,104,0.8301,11.6454,7.8306,0.8048,0.0096,0.0705,0.9994,4.3715,3.3322,Efficient & consistent,0.3822,Efficient & consistent,0.9818,0.0167,0.0016,0.9818,0.891,confident
+7710890,core,12,0.1471,14.7249,6.5546,0.8711,0.0,0.1775,0.9689,3.7552,17.0387,Fast starter / developing,0.1157,Fast starter / developing,0.0015,0.9555,0.043,0.9555,0.2882,confident
+7716949,core,17,0.2361,10.3039,7.2901,0.8566,0.4706,0.0907,0.9722,5.8989,11.4287,Interval-focused,0.6576,Interval-focused,0.0,0.0,1.0,1.0,0.4359,confident
+7743096,core,67,0.8866,5.8786,5.8954,0.7753,0.0746,0.1673,1.0892,9.3533,8.8547,Fast starter / developing,0.3294,Fast starter / developing,0.0,0.9909,0.0091,0.9909,0.0668,confident
+7763998,core,15,0.3191,7.9811,7.9055,0.8562,0.0,0.1152,0.9325,-0.3014,10.4199,Efficient & consistent,0.1751,Fast starter / developing,0.4002,0.583,0.0168,0.583,0.3849,between profiles
+7780362,core,157,0.6045,8.0919,7.6751,0.8219,0.1338,0.0825,0.958,7.4173,7.9288,Efficient & consistent,0.0469,Efficient & consistent,0.6512,0.0017,0.3471,0.6512,0.5747,between profiles
+7795957,core,22,6.4167,14.8138,10.9106,0.8742,0.0,0.0605,0.9464,-0.0102,5.8034,Efficient & consistent,0.3341,Efficient & consistent,0.9998,0.0002,0.0,0.9998,0.0439,atypical
+7822006,core,214,2.4045,11.5901,6.6816,0.8836,0.0,0.1194,0.9244,5.4233,9.2501,Efficient & consistent,0.1678,Efficient & consistent,0.9403,0.0585,0.0012,0.9403,0.1424,confident
+7839953,core,11,0.77,11.6753,5.7185,0.8877,0.0,0.109,0.993,4.909,2.4904,Fast starter / developing,0.0998,Fast starter / developing,0.4062,0.4477,0.146,0.4477,0.239,between profiles
+7967148,core,58,0.4028,10.1733,8.6504,0.856,0.3276,0.0861,0.9774,2.0381,14.9546,Interval-focused,0.3275,Interval-focused,0.0,0.0,1.0,1.0,0.1336,confident
+7996903,core,79,0.7833,6.9629,5.4234,0.8312,0.0253,0.119,1.0191,5.3619,14.162,Fast starter / developing,0.4386,Fast starter / developing,0.0101,0.8889,0.1009,0.8889,0.4886,confident
+8000584,core,34,0.6919,12.6541,6.4066,0.8718,0.2353,0.0566,0.9602,4.4507,5.5562,Interval-focused,0.2242,Interval-focused,0.0025,0.0,0.9975,0.9975,0.3128,confident
+8070374,core,20,0.4828,10.1392,5.3033,0.8646,0.0,0.1413,0.9843,7.492,20.2229,Fast starter / developing,0.3621,Fast starter / developing,0.0031,0.8904,0.1065,0.8904,0.4271,confident
+8107339,core,178,1.78,12.8863,7.5803,0.8187,0.0281,0.0809,0.94,4.2589,10.2449,Efficient & consistent,0.4681,Efficient & consistent,0.9955,0.0044,0.0001,0.9955,0.8489,confident
+8170078,core,69,0.5403,12.1284,7.169,0.8778,0.0145,0.1247,0.9863,-2.3611,23.4168,Efficient & consistent,0.0902,Fast starter / developing,0.0515,0.9432,0.0053,0.9432,0.1722,confident
+8221442,core,219,1.1432,10.4279,7.1948,0.8155,0.0,0.0736,1.0027,0.668,9.2018,Efficient & consistent,0.3611,Efficient & consistent,0.9409,0.0578,0.0013,0.9409,0.8418,confident
+8276277,core,132,0.653,9.9554,7.3746,0.8374,0.0303,0.1227,0.9783,3.3553,9.4868,Efficient & consistent,0.1922,Efficient & consistent,0.7767,0.1942,0.0291,0.7767,0.9561,between profiles
+8281868,core,15,0.2011,10.4363,6.3662,0.8547,0.0667,0.1263,1.0708,6.8424,6.0258,Fast starter / developing,0.4824,Fast starter / developing,0.0093,0.5735,0.4172,0.5735,0.4394,between profiles
+8294504,core,65,0.6556,10.9638,6.5622,0.7798,0.0462,0.0866,0.9964,4.818,10.2338,Efficient & consistent,0.0636,Efficient & consistent,0.91,0.0844,0.0056,0.91,0.9279,confident
+8349084,core,126,1.2066,12.036,8.0705,0.7787,0.0556,0.1041,0.9812,1.0174,9.7044,Efficient & consistent,0.4888,Efficient & consistent,0.9929,0.007,0.0001,0.9929,0.8471,confident
+8353647,core,68,0.7147,7.854,6.59,0.853,0.0735,0.0657,0.9473,4.0166,4.3725,Efficient & consistent,0.0829,Efficient & consistent,0.7853,0.0757,0.139,0.7853,0.5308,between profiles
+8372595,core,70,1.769,13.3477,8.713,0.8063,0.1857,0.0583,0.9823,2.9856,8.2187,Efficient & consistent,0.3513,Efficient & consistent,0.9948,0.0,0.0052,0.9948,0.116,confident
+8446566,core,57,0.4534,7.545,6.8464,0.8032,0.0175,0.09,0.9535,4.5087,8.3553,Fast starter / developing,0.037,Efficient & consistent,0.6732,0.2996,0.0272,0.6732,0.8207,between profiles
+8467445,core,10,0.0731,9.1787,6.9817,0.7794,0.0,0.069,1.0256,6.4269,8.7254,Fast starter / developing,0.2474,Efficient & consistent,0.5607,0.4183,0.021,0.5607,0.4991,between profiles
+8484809,core,87,1.015,13.3708,6.658,0.8672,0.0,0.0821,0.9351,2.5974,4.7765,Efficient & consistent,0.3497,Efficient & consistent,0.9535,0.0406,0.0059,0.9535,0.6749,confident
+8535425,core,45,0.7875,6.6216,7.1679,0.85,0.0,0.0734,0.9195,3.2191,11.687,Efficient & consistent,0.1179,Fast starter / developing,0.3929,0.5385,0.0686,0.5385,0.3673,between profiles
+8557955,core,31,0.3056,11.0343,5.7858,0.8225,0.0,0.1285,1.0565,2.4382,26.7174,Fast starter / developing,0.267,Fast starter / developing,0.001,0.9846,0.0144,0.9846,0.3796,confident
+8582302,core,26,0.2116,8.1076,6.0878,0.8847,0.0,0.0811,0.9508,4.5287,6.5276,Fast starter / developing,0.1907,Efficient & consistent,0.4127,0.3668,0.2205,0.4127,0.471,between profiles
+8605838,core,50,0.57,8.8948,6.396,0.7564,0.0,0.0909,0.9977,3.0761,12.9944,Fast starter / developing,0.0431,Efficient & consistent,0.6052,0.3925,0.0023,0.6052,0.5659,between profiles
+8621055,core,77,0.6502,10.7353,6.5038,0.7295,0.0,0.1007,0.9826,-0.9919,14.8666,Efficient & consistent,0.1538,Efficient & consistent,0.5409,0.459,0.0001,0.5409,0.1775,between profiles
+8632256,core,249,1.6632,12.6467,7.1215,0.8381,0.008,0.0954,0.9793,4.4247,13.2096,Efficient & consistent,0.3063,Efficient & consistent,0.9775,0.0212,0.0013,0.9775,0.8348,confident
+8662931,core,196,1.9656,11.9592,8.3285,0.8442,0.0153,0.0536,0.9989,3.5058,5.2058,Efficient & consistent,0.363,Efficient & consistent,0.9983,0.0016,0.0001,0.9983,0.638,confident
+8747440,core,48,0.668,11.3973,7.9042,0.891,0.0208,0.0795,0.9682,2.4814,8.0539,Efficient & consistent,0.3208,Efficient & consistent,0.9813,0.0129,0.0057,0.9813,0.8946,confident
+8767606,core,14,0.3525,11.1381,6.6729,0.884,0.2143,0.0671,0.9618,3.552,7.7522,Interval-focused,0.3113,Interval-focused,0.0093,0.0,0.9907,0.9907,0.4183,confident
+8785331,core,76,0.6251,8.2121,5.3719,0.887,0.0132,0.1122,1.0253,4.7625,4.7185,Fast starter / developing,0.3664,Fast starter / developing,0.0446,0.6948,0.2605,0.6948,0.3533,between profiles
+8875079,core,216,1.2455,14.229,7.8022,0.7808,0.088,0.0882,0.9452,1.7169,6.358,Efficient & consistent,0.531,Efficient & consistent,0.9989,0.0009,0.0001,0.9989,0.7469,confident
+8888545,core,42,0.3863,17.291,7.7393,0.7945,0.0,0.0492,0.9681,1.4098,14.8978,Efficient & consistent,0.362,Efficient & consistent,0.945,0.0532,0.0018,0.945,0.3409,confident
+8923359,core,14,0.2121,19.3003,7.6969,0.7944,0.0,0.1184,1.1038,5.1741,15.1302,Fast starter / developing,0.0546,Fast starter / developing,0.0024,0.9813,0.0162,0.9813,0.0527,confident
+8993175,core,33,0.42,8.7693,6.4887,0.8122,0.0303,0.0998,0.9763,7.2078,5.0245,Fast starter / developing,0.3246,Efficient & consistent,0.5707,0.3592,0.07,0.5707,0.8243,between profiles
+8994138,core,32,0.4817,13.9912,10.0529,0.7923,0.0,0.0682,0.9561,0.4795,11.7902,Efficient & consistent,0.4175,Efficient & consistent,0.9973,0.0027,0.0,0.9973,0.3445,confident
+8994885,core,196,1.8795,14.481,7.4168,0.8313,0.0867,0.0744,0.9164,0.1564,6.992,Efficient & consistent,0.4143,Efficient & consistent,0.9976,0.0022,0.0002,0.9976,0.2496,confident
+9008533,core,109,0.9193,14.5343,6.8485,0.8026,0.0,0.0758,0.9886,7.5911,2.9507,Efficient & consistent,0.2046,Efficient & consistent,0.929,0.0647,0.0063,0.929,0.5606,confident
+9010559,core,19,0.2049,3.1248,4.7519,0.7887,0.0526,0.3207,1.0087,10.6235,23.6777,Fast starter / developing,0.2089,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.0105,atypical
+9157551,core,30,0.4839,13.6542,6.8326,0.8739,0.2,0.0657,0.9542,2.0491,5.8164,Interval-focused,0.0073,Interval-focused,0.0892,0.0,0.9108,0.9108,0.2091,confident
+9198615,core,30,0.2706,6.4512,4.4572,0.9077,0.1,0.0838,0.9828,5.9485,12.9809,Fast starter / developing,0.1321,Interval-focused,0.0062,0.0338,0.96,0.96,0.0931,confident
+9221677,core,80,0.8989,14.1024,7.2875,0.8434,0.0375,0.0583,0.9922,5.5397,5.2071,Efficient & consistent,0.3734,Efficient & consistent,0.9758,0.0146,0.0096,0.9758,0.9033,confident
+9232852,core,266,1.8827,9.4646,7.1544,0.8194,0.0526,0.0892,0.9651,4.2983,3.5773,Efficient & consistent,0.2714,Efficient & consistent,0.9918,0.0078,0.0005,0.9918,0.6784,confident
+9275291,core,18,0.3119,10.7538,6.1007,0.8693,0.1111,0.1111,1.0936,7.2033,22.1439,Fast starter / developing,0.233,Interval-focused,0.0003,0.1154,0.8843,0.8843,0.0967,confident
+9286593,core,61,1.0215,15.385,9.6646,0.7715,0.0,0.0694,0.9473,5.4662,12.4846,Efficient & consistent,0.404,Efficient & consistent,0.9989,0.0011,0.0,0.9989,0.348,confident
+9295581,core,48,0.8984,10.3563,8.0367,0.7755,0.0208,0.1153,0.9575,0.5512,9.495,Efficient & consistent,0.4585,Efficient & consistent,0.944,0.0558,0.0002,0.944,0.768,confident
+9313150,core,44,0.6875,8.798,5.2306,0.7433,0.0,0.3141,0.9733,14.5824,6.3939,Fast starter / developing,0.1892,Fast starter / developing,0.0,1.0,0.0,1.0,0.0228,atypical
+9335429,core,12,0.5455,8.943,6.5353,0.7699,0.0833,0.0925,0.9671,1.3467,9.7647,Efficient & consistent,0.1502,Efficient & consistent,0.9288,0.0664,0.0048,0.9288,0.5975,confident
+9336459,core,97,1.0,14.8959,7.865,0.8283,0.1546,0.0748,0.9579,2.3619,7.144,Efficient & consistent,0.4892,Efficient & consistent,0.977,0.0,0.023,0.977,0.4956,confident
+9345869,core,34,0.1542,10.7709,6.8856,0.8048,0.0,0.0901,1.0421,4.8668,9.3241,Fast starter / developing,0.3285,Fast starter / developing,0.4246,0.5266,0.0487,0.5266,0.6837,between profiles
+9422215,core,23,0.561,12.0415,7.2954,0.799,0.0,0.0827,0.9661,3.9861,10.9924,Efficient & consistent,0.5162,Efficient & consistent,0.9612,0.0362,0.0026,0.9612,0.9947,confident
+9484057,core,26,0.2653,9.8284,6.1113,0.8371,0.0,0.1686,1.0228,9.0465,8.4312,Fast starter / developing,0.573,Fast starter / developing,0.0003,0.9528,0.0469,0.9528,0.6643,confident
+9508545,core,27,0.3656,16.615,7.5837,0.821,0.0,0.0486,0.9656,5.0347,5.093,Efficient & consistent,0.3871,Efficient & consistent,0.9718,0.0206,0.0076,0.9718,0.6573,confident
+9522694,core,33,2.2647,11.4855,8.2357,0.8335,0.1212,0.0755,0.8946,8.7894,0.9476,Efficient & consistent,0.2138,Efficient & consistent,0.9943,0.0024,0.0033,0.9943,0.0088,atypical
+9525377,core,37,0.3463,8.5156,6.2078,0.8972,0.0541,0.095,1.0068,6.2213,7.797,Fast starter / developing,0.3909,Interval-focused,0.2392,0.2313,0.5295,0.5295,0.5237,between profiles
+9622636,core,29,0.2178,10.1921,6.63,0.8081,0.1034,0.0922,1.0045,5.0762,6.4829,Fast starter / developing,0.2972,Efficient & consistent,0.8136,0.0225,0.1639,0.8136,0.7399,confident
+9632922,core,12,0.7179,10.3737,8.3425,0.7961,0.0,0.1111,0.9432,0.1435,5.9836,Efficient & consistent,0.4979,Efficient & consistent,0.9524,0.0473,0.0003,0.9524,0.7153,confident
+9655659,core,49,0.8225,11.3386,6.8821,0.8711,0.0,0.0687,0.9794,7.4534,18.8201,Fast starter / developing,0.0336,Efficient & consistent,0.6276,0.2633,0.1091,0.6276,0.5097,between profiles
+9760872,core,29,0.8286,11.8647,9.5206,0.7806,0.069,0.0827,0.9215,4.8299,6.5381,Efficient & consistent,0.4631,Efficient & consistent,0.9991,0.0008,0.0001,0.9991,0.5501,confident
+9882712,core,84,0.649,12.4472,6.9421,0.7889,0.0119,0.2007,0.9373,12.5829,16.793,Fast starter / developing,0.108,Fast starter / developing,0.0,0.9996,0.0004,0.9996,0.1898,confident
+9889560,core,16,0.2227,12.9714,8.6908,0.7989,0.0,0.0566,0.9939,10.1433,9.9707,Efficient & consistent,0.1232,Efficient & consistent,0.9205,0.0714,0.0081,0.9205,0.3656,confident
+9937628,core,63,0.5087,9.3788,8.0448,0.8927,0.0,0.0693,1.0334,5.6627,3.2475,Fast starter / developing,0.0517,Efficient & consistent,0.7172,0.1523,0.1304,0.7172,0.29,between profiles
+9985340,core,39,0.5833,11.7512,6.584,0.837,0.2308,0.1294,0.9555,4.5425,22.4311,Interval-focused,0.2186,Interval-focused,0.0003,0.0,0.9997,0.9997,0.2531,confident
+10028940,core,40,0.3728,9.9889,6.8513,0.8462,0.0,0.0963,0.9954,5.8494,8.6991,Fast starter / developing,0.469,Efficient & consistent,0.6925,0.2103,0.0973,0.6925,0.9473,between profiles
+10057948,core,17,0.2267,6.2481,6.5271,0.7962,0.0,0.1021,1.021,5.4106,4.8915,Fast starter / developing,0.3568,Fast starter / developing,0.0658,0.8593,0.0749,0.8593,0.4288,confident
+10099521,core,42,1.0769,7.4328,5.7496,0.8278,0.0238,0.1003,1.0189,5.4724,11.8788,Fast starter / developing,0.3703,Fast starter / developing,0.1176,0.7922,0.0902,0.7922,0.5079,between profiles
+10122140,core,56,0.4962,12.9612,7.6473,0.8534,0.0714,0.0912,0.9518,2.5925,6.9666,Efficient & consistent,0.515,Efficient & consistent,0.983,0.0072,0.0098,0.983,0.9596,confident
+10177904,core,36,0.2841,7.9313,7.1893,0.8207,0.3611,0.1214,0.9227,6.4174,4.3491,Interval-focused,0.3916,Interval-focused,0.0,0.0,1.0,1.0,0.1863,confident
+10344170,core,143,0.9158,12.5721,7.5823,0.8607,0.014,0.0975,0.9344,2.9393,6.545,Efficient & consistent,0.5126,Efficient & consistent,0.9737,0.0228,0.0035,0.9737,0.9174,confident
+10367164,core,51,0.5042,7.0535,6.7426,0.7675,0.3333,0.2986,0.9564,-0.5045,14.7058,Interval-focused,0.0691,Interval-focused,0.0,0.0,1.0,1.0,0.0,atypical
+10536623,core,73,1.2403,11.3689,6.2739,0.819,0.0411,0.1041,0.9774,5.9864,3.9404,Efficient & consistent,0.1192,Efficient & consistent,0.9098,0.0807,0.0095,0.9098,0.7733,confident
+10647023,core,24,0.4884,22.3997,8.9988,0.7645,0.0,0.0769,0.9547,3.1946,10.021,Efficient & consistent,0.3969,Efficient & consistent,0.9969,0.003,0.0001,0.9969,0.3286,confident
+10705287,core,17,0.1845,3.2688,4.4672,0.8153,0.0,0.1768,1.0238,7.1112,8.4491,Fast starter / developing,0.3846,Fast starter / developing,0.0,0.9753,0.0247,0.9753,0.1195,confident
+10719156,core,15,0.1795,10.032,5.5474,0.8588,0.0,0.2303,1.1128,8.7748,4.0485,Fast starter / developing,0.3138,Fast starter / developing,0.0,0.9989,0.0011,0.9989,0.0721,confident
+10779611,core,52,0.5769,13.4359,8.4817,0.832,0.0,0.0647,0.9912,6.9391,8.0619,Efficient & consistent,0.3942,Efficient & consistent,0.9842,0.0104,0.0054,0.9842,0.9156,confident
+10815918,core,11,0.1565,8.7583,7.6949,0.7643,0.0,0.1011,1.0055,9.1661,9.3119,Fast starter / developing,0.2095,Efficient & consistent,0.5107,0.4808,0.0085,0.5107,0.4446,between profiles
+10841339,core,116,1.3013,9.9544,8.1911,0.8537,0.1207,0.1057,1.0143,3.7874,6.554,Efficient & consistent,0.2172,Efficient & consistent,0.9644,0.001,0.0345,0.9644,0.5817,confident
+10917968,core,32,0.3979,13.0845,7.2592,0.8755,0.0,0.1124,0.9496,6.2719,6.8831,Efficient & consistent,0.1323,Efficient & consistent,0.8282,0.1102,0.0616,0.8282,0.7926,confident
+10927933,core,24,0.3529,7.3035,6.855,0.8222,0.0417,0.1036,0.9956,7.5544,7.1091,Fast starter / developing,0.5258,Fast starter / developing,0.2822,0.5107,0.2071,0.5107,0.7293,between profiles
+10943750,core,70,0.9057,8.3036,7.113,0.7921,0.0429,0.1561,0.9759,2.654,13.8651,Fast starter / developing,0.0221,Fast starter / developing,0.0543,0.9372,0.0084,0.9372,0.5448,confident
+11183643,core,18,1.125,9.6878,7.4298,0.7938,0.0556,0.2141,0.8785,5.9459,14.1192,Efficient & consistent,0.087,Fast starter / developing,0.0,0.9996,0.0004,0.9996,0.1019,confident
+11215534,core,44,0.3468,12.5496,7.0779,0.7758,0.0227,0.1555,0.9137,6.8314,6.628,Efficient & consistent,0.1454,Fast starter / developing,0.06,0.9345,0.0055,0.9345,0.4025,confident
+11258520,core,64,1.1256,11.3537,7.1305,0.8838,0.0,0.0684,0.963,4.684,14.6962,Efficient & consistent,0.1948,Efficient & consistent,0.9394,0.0461,0.0145,0.9394,0.6714,confident
+11258873,core,21,2.2615,15.3784,7.9824,0.8423,0.0476,0.0675,1.0009,3.3936,6.3658,Efficient & consistent,0.3458,Efficient & consistent,0.9993,0.0007,0.0001,0.9993,0.5343,confident
+11314348,core,11,0.129,15.0269,6.9332,0.8131,0.2727,0.1254,0.9576,2.2756,21.0491,Interval-focused,0.153,Interval-focused,0.0001,0.0,0.9999,0.9999,0.0685,confident
+11330346,core,40,0.3256,12.324,7.3585,0.8151,0.15,0.1464,0.9931,6.5578,5.9118,Fast starter / developing,0.1275,Interval-focused,0.1301,0.0018,0.8681,0.8681,0.406,confident
+11606634,core,10,0.1338,14.772,8.7092,0.87,0.1,0.1302,1.0371,6.2793,11.9905,Fast starter / developing,0.0518,Interval-focused,0.387,0.0391,0.5739,0.5739,0.123,between profiles
+11737814,core,180,1.6514,10.474,7.9733,0.8333,0.0,0.0782,0.9686,5.3122,7.8288,Efficient & consistent,0.4276,Efficient & consistent,0.9954,0.0042,0.0004,0.9954,0.949,confident
+11782156,core,10,0.3241,11.112,5.9727,0.8637,0.2,0.1156,1.0643,6.4389,2.1716,Fast starter / developing,0.0686,Interval-focused,0.0001,0.0,0.9999,0.9999,0.1213,confident
+11822506,core,11,0.3407,8.7484,6.9774,0.8899,0.0,0.139,0.9907,7.6924,6.3631,Fast starter / developing,0.4144,Fast starter / developing,0.0699,0.6526,0.2774,0.6526,0.5536,between profiles
+11825035,core,138,1.2778,11.4833,7.3229,0.8148,0.0217,0.0521,0.9704,3.1429,4.3993,Efficient & consistent,0.4656,Efficient & consistent,0.9883,0.011,0.0007,0.9883,0.8559,confident
+11884453,core,146,1.1747,10.0949,8.11,0.8333,0.0,0.0889,0.9812,7.6149,5.0083,Efficient & consistent,0.2784,Efficient & consistent,0.9783,0.0182,0.0035,0.9783,0.8928,confident
+11992223,core,42,0.6377,11.2045,7.6645,0.8795,0.3571,0.1137,1.0057,5.3936,12.8521,Interval-focused,0.5923,Interval-focused,0.0,0.0,1.0,1.0,0.4482,confident
+12080152,core,89,1.246,8.3497,6.5963,0.7625,0.0,0.1412,1.0065,7.3987,10.0112,Fast starter / developing,0.1862,Fast starter / developing,0.0903,0.9066,0.003,0.9066,0.3902,confident
+12087190,core,78,0.8018,12.0314,6.9603,0.8195,0.0641,0.0831,0.9736,7.7237,6.3496,Efficient & consistent,0.2249,Efficient & consistent,0.9557,0.0248,0.0195,0.9557,0.9508,confident
+12092082,core,18,0.7778,13.2276,7.3316,0.8414,0.0,0.0534,1.001,2.3771,3.4983,Efficient & consistent,0.3414,Efficient & consistent,0.9565,0.0367,0.0068,0.9565,0.6907,confident
+12175120,core,219,0.9569,11.3475,7.5528,0.8184,0.1416,0.0667,1.0283,6.1457,12.3714,Efficient & consistent,0.0878,Efficient & consistent,0.7019,0.001,0.2971,0.7019,0.4236,between profiles
+12202944,core,41,0.419,9.9923,5.917,0.879,0.0,0.1496,1.1728,8.3619,1.7049,Fast starter / developing,0.2656,Fast starter / developing,0.0,0.9747,0.0253,0.9747,0.065,confident
+12362801,core,15,0.1974,10.47,7.5703,0.8539,0.0,0.1044,0.9494,1.5655,11.4624,Efficient & consistent,0.205,Efficient & consistent,0.8241,0.159,0.0168,0.8241,0.761,confident
+12406103,core,65,1.1818,12.208,6.6104,0.8642,0.0615,0.0941,0.9817,3.8687,5.8478,Efficient & consistent,0.2293,Efficient & consistent,0.9709,0.0163,0.0128,0.9709,0.8875,confident
+12466397,core,12,0.7568,17.2328,7.2512,0.8438,0.0,0.0835,1.0146,4.9643,12.5075,Efficient & consistent,0.2138,Efficient & consistent,0.8839,0.0819,0.0342,0.8839,0.6397,confident
+12537176,core,112,1.7578,12.861,8.3747,0.8299,0.0089,0.0967,0.9959,4.8232,9.4238,Efficient & consistent,0.4022,Efficient & consistent,0.9967,0.0031,0.0002,0.9967,0.8752,confident
+12555443,core,18,0.2505,15.2458,6.3475,0.8455,0.0556,0.1883,0.9883,12.0496,11.4028,Fast starter / developing,0.2475,Fast starter / developing,0.0,0.9639,0.0361,0.9639,0.1828,confident
+12563086,core,30,0.8714,10.4409,7.914,0.7737,0.0,0.1126,0.9935,8.8799,9.9314,Efficient & consistent,0.0689,Efficient & consistent,0.8283,0.1687,0.003,0.8283,0.6766,confident
+12615249,core,20,0.1697,11.2326,7.7115,0.8017,0.35,0.1677,0.8743,2.1168,24.8278,Interval-focused,0.15,Interval-focused,0.0,0.0,1.0,1.0,0.0035,atypical
+12635957,core,90,0.8654,5.675,5.503,0.8595,0.0,0.1332,1.024,6.885,16.5934,Fast starter / developing,0.3828,Fast starter / developing,0.0003,0.8748,0.1248,0.8748,0.225,confident
+12649708,core,40,0.5545,7.3549,4.8325,0.8661,0.2,0.1419,1.0098,9.0041,11.3642,Fast starter / developing,0.0792,Interval-focused,0.0,0.0,1.0,1.0,0.1652,confident
+12726303,core,58,0.6767,13.9462,7.868,0.8725,0.069,0.0666,0.9948,4.17,6.0956,Efficient & consistent,0.3479,Efficient & consistent,0.9813,0.0038,0.0149,0.9813,0.8787,confident
+12747276,core,62,0.6771,10.2377,6.7656,0.856,0.0806,0.0624,0.9986,5.9151,7.3958,Fast starter / developing,0.0903,Efficient & consistent,0.8099,0.0265,0.1636,0.8099,0.8436,confident
+12753836,core,84,1.1243,5.6329,5.5953,0.8803,0.0714,0.0719,1.0263,8.264,7.6688,Fast starter / developing,0.2314,Interval-focused,0.0128,0.2646,0.7226,0.7226,0.0844,between profiles
+12783742,core,71,0.4774,8.9842,7.3818,0.816,0.0,0.1109,0.908,4.9666,9.4249,Efficient & consistent,0.2454,Efficient & consistent,0.5014,0.4747,0.0239,0.5014,0.6731,between profiles
+12830822,core,21,0.1828,11.2092,6.4991,0.791,0.0476,0.1854,1.0542,7.5315,16.6069,Fast starter / developing,0.3601,Fast starter / developing,0.0,0.9935,0.0065,0.9935,0.3866,confident
+12854825,core,25,0.5503,6.5268,7.2349,0.8311,0.2,0.0715,0.9636,3.6034,9.373,Interval-focused,0.1444,Interval-focused,0.0111,0.0,0.9889,0.9889,0.3585,confident
+12908326,core,23,0.3299,9.3822,6.1101,0.8935,0.0,0.0853,0.9531,4.8383,0.8658,Fast starter / developing,0.0484,Fast starter / developing,0.3314,0.4923,0.1764,0.4923,0.1142,between profiles
+12913419,core,126,1.0401,7.586,7.3244,0.7561,0.0079,0.0718,0.9799,4.4065,7.7095,Efficient & consistent,0.1734,Efficient & consistent,0.9385,0.061,0.0005,0.9385,0.6432,confident
+12974391,core,11,1.1,13.268,7.6334,0.8073,0.0,0.2062,0.9775,5.52,5.6356,Efficient & consistent,0.0954,Fast starter / developing,0.0006,0.9959,0.0035,0.9959,0.2953,confident
+12988738,core,28,0.6622,11.3154,6.4552,0.8953,0.0357,0.0659,1.0626,9.4774,4.0252,Fast starter / developing,0.224,Fast starter / developing,0.0483,0.6038,0.3479,0.6038,0.1353,between profiles
+13005985,core,46,0.5219,10.3363,7.4109,0.8452,0.0,0.0649,0.9976,6.9811,9.0647,Fast starter / developing,0.0479,Efficient & consistent,0.8517,0.0925,0.0558,0.8517,0.9192,confident
+13149722,core,64,0.6727,7.1725,6.5098,0.8663,0.0,0.0988,1.0384,7.3351,6.0327,Fast starter / developing,0.4558,Fast starter / developing,0.0474,0.6424,0.3101,0.6424,0.5149,between profiles
+13165320,core,102,0.3293,11.8408,8.8314,0.8124,0.0196,0.1204,0.9721,7.8023,19.0596,Efficient & consistent,0.1104,Efficient & consistent,0.7531,0.2276,0.0193,0.7531,0.4165,between profiles
+13276532,core,20,0.7407,13.221,9.1811,0.8397,0.2,0.1105,0.9257,6.7459,8.0801,Efficient & consistent,0.2176,Interval-focused,0.3413,0.0,0.6587,0.6587,0.0808,between profiles
+13279851,core,55,0.3522,7.7249,6.3398,0.7863,0.0545,0.1952,1.0729,3.8486,10.2312,Fast starter / developing,0.3609,Fast starter / developing,0.0,0.9969,0.0031,0.9969,0.3462,confident
+13338915,core,71,1.2181,12.4882,7.868,0.8255,0.1127,0.0876,0.9709,3.6054,5.7324,Efficient & consistent,0.5695,Efficient & consistent,0.9967,0.0003,0.003,0.9967,0.9086,confident
+13369299,core,11,0.2721,12.8229,7.7342,0.7863,0.0909,0.1329,0.9429,6.4257,6.1842,Efficient & consistent,0.243,Efficient & consistent,0.9278,0.0464,0.0258,0.9278,0.5044,confident
+13372869,core,43,1.1712,12.7694,7.8147,0.8847,0.0,0.0467,0.9538,3.6034,4.0888,Efficient & consistent,0.3529,Efficient & consistent,0.9899,0.0077,0.0024,0.9899,0.5325,confident
+13389154,core,37,0.887,15.8503,9.4008,0.7888,0.1351,0.051,0.9613,1.2439,7.2771,Efficient & consistent,0.4405,Efficient & consistent,0.9995,0.0,0.0005,0.9995,0.1599,confident
+13406764,core,140,2.2685,5.1384,5.8198,0.8644,0.3429,0.0635,0.9096,8.0092,4.6639,Interval-focused,0.2002,Interval-focused,0.0,0.0,1.0,1.0,0.0018,atypical
+13469928,core,69,0.6598,12.7265,8.0513,0.8051,0.0435,0.0708,0.9992,6.1172,4.991,Efficient & consistent,0.4202,Efficient & consistent,0.9884,0.0088,0.0027,0.9884,0.9701,confident
+13560443,core,107,1.2339,11.3458,6.813,0.8367,0.0187,0.119,1.0374,4.3948,8.8702,Fast starter / developing,0.1179,Efficient & consistent,0.5177,0.4491,0.0331,0.5177,0.6801,between profiles
+13564468,core,18,0.2242,5.1023,6.344,0.8391,0.0,0.0761,1.0709,6.7101,17.9876,Fast starter / developing,0.3382,Fast starter / developing,0.0001,0.8372,0.1626,0.8372,0.1265,confident
+13577416,core,33,0.2783,5.3697,7.1987,0.892,0.0,0.0908,0.9681,5.4025,3.8635,Fast starter / developing,0.1747,Interval-focused,0.0984,0.4366,0.465,0.465,0.1388,between profiles
+13619220,core,30,0.9589,7.6574,5.9436,0.8191,0.0667,0.1041,1.0104,3.9983,2.5242,Fast starter / developing,0.152,Fast starter / developing,0.345,0.5185,0.1365,0.5185,0.2337,between profiles
+13657138,core,129,0.9869,12.2497,7.4277,0.8363,0.0,0.0587,0.9856,6.6123,5.0335,Efficient & consistent,0.3553,Efficient & consistent,0.9725,0.0206,0.0069,0.9725,0.9104,confident
+13693003,core,50,0.4698,14.0792,8.1256,0.8241,0.0,0.0712,0.9542,3.1491,8.8681,Efficient & consistent,0.604,Efficient & consistent,0.9894,0.009,0.0016,0.9894,0.9649,confident
+13859471,core,70,0.6796,12.4437,6.764,0.8162,0.0143,0.1288,1.0619,5.2244,13.8452,Fast starter / developing,0.2881,Fast starter / developing,0.0266,0.9347,0.0387,0.9347,0.6257,confident
+14018941,core,20,2.4138,6.7242,5.6522,0.8406,0.0,0.1603,1.0332,11.6475,9.6012,Fast starter / developing,0.2291,Fast starter / developing,0.0001,0.9978,0.002,0.9978,0.0264,atypical
+14066832,core,17,0.1243,7.6129,5.111,0.8168,0.0,0.2416,0.7705,11.3826,10.7811,Fast starter / developing,0.1688,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.0351,atypical
+14083711,core,11,0.122,10.0005,6.0131,0.8644,0.0909,0.1136,1.0395,10.5082,12.6126,Fast starter / developing,0.3694,Interval-focused,0.0073,0.2295,0.7633,0.7633,0.2408,between profiles
+14111843,core,10,0.3382,12.7348,7.0584,0.8504,0.0,0.1304,1.032,5.3214,5.8285,Fast starter / developing,0.2964,Fast starter / developing,0.2376,0.6077,0.1547,0.6077,0.6889,between profiles
+14176671,core,10,0.172,9.6873,6.2776,0.8469,0.0,0.1441,1.048,10.1621,0.7332,Fast starter / developing,0.2859,Fast starter / developing,0.0002,0.9582,0.0415,0.9582,0.1371,confident
+14204020,core,75,0.6637,9.9641,6.0174,0.8128,0.04,0.0909,1.0059,4.2266,1.5517,Fast starter / developing,0.0424,Fast starter / developing,0.4436,0.5086,0.0478,0.5086,0.283,between profiles
+14215655,core,25,0.276,10.6414,5.7421,0.8637,0.0,0.0667,0.9491,1.7618,1.5176,Efficient & consistent,0.0548,Fast starter / developing,0.3512,0.5889,0.0599,0.5889,0.0949,between profiles
+14244423,core,19,0.2243,12.1074,8.4996,0.73,0.1053,0.0821,0.992,3.0477,10.2063,Efficient & consistent,0.2411,Efficient & consistent,0.9992,0.0007,0.0001,0.9992,0.3884,confident
+14255438,core,115,1.2697,7.8778,5.8143,0.8909,0.2174,0.0583,0.9641,4.4907,2.2201,Interval-focused,0.1393,Interval-focused,0.0024,0.0,0.9976,0.9976,0.0299,atypical
+14370069,core,12,0.3182,10.7928,6.8995,0.7857,0.1667,0.0948,1.0276,8.419,7.1785,Fast starter / developing,0.2616,Interval-focused,0.1599,0.0003,0.8398,0.8398,0.2742,confident
+14544270,core,132,1.1923,10.6671,7.2053,0.8773,0.1136,0.0674,0.9793,3.3702,3.5183,Efficient & consistent,0.2274,Efficient & consistent,0.965,0.0011,0.0339,0.965,0.4851,confident
+14671923,core,69,0.5616,9.4455,6.5525,0.8304,0.3188,0.15,1.0014,4.8123,7.1154,Interval-focused,0.47,Interval-focused,0.0,0.0,1.0,1.0,0.4974,confident
+14779650,core,27,0.3333,5.2906,5.9536,0.8427,0.5926,0.0689,1.0173,14.0443,9.9073,Interval-focused,0.3125,Interval-focused,0.0,0.0,1.0,1.0,0.0176,atypical
+15279967,core,13,0.6691,14.8562,7.1382,0.7943,0.0,0.0919,1.0621,6.8951,7.7061,Fast starter / developing,0.0472,Fast starter / developing,0.3897,0.5758,0.0345,0.5758,0.4253,between profiles
+15326644,core,19,0.2788,13.835,7.6246,0.8871,0.0,0.0785,0.9677,6.1666,18.6343,Efficient & consistent,0.0699,Efficient & consistent,0.8179,0.1052,0.0768,0.8179,0.4517,confident
+15481421,core,29,0.4134,5.8979,6.9293,0.8202,0.0345,0.1889,0.9697,7.8169,15.6278,Fast starter / developing,0.3254,Fast starter / developing,0.0,0.9795,0.0205,0.9795,0.3972,confident
+4434,low-data,1,1.0,4.3468,7.0147,0.7888,0.0,0.1795,1.2369,7.7767,4.7391,Fast starter / developing,0.2624,Fast starter / developing,0.0,0.9986,0.0014,0.9986,0.0685,confident
+5703,low-data,9,0.1403,9.6056,6.4205,0.8536,0.1111,0.2755,1.0473,4.9068,10.0783,Fast starter / developing,0.2255,Fast starter / developing,0.0,0.9659,0.0341,0.9659,0.0264,atypical
+50404,low-data,5,0.049,2.982,5.1342,0.8193,0.0,0.2346,1.2312,13.1234,19.151,Fast starter / developing,0.254,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.0141,atypical
+82119,low-data,2,1.2727,7.0281,6.3003,0.8659,0.0,0.2003,1.0326,9.9206,4.3031,Fast starter / developing,0.302,Fast starter / developing,0.0,0.9915,0.0085,0.9915,0.1353,confident
+96628,low-data,8,0.0944,11.787,8.7367,0.8228,0.0,0.1057,1.0008,6.1416,2.5156,Efficient & consistent,0.1047,Efficient & consistent,0.9385,0.0517,0.0098,0.9385,0.3989,confident
+109975,low-data,5,0.0704,12.0571,7.7415,0.8249,0.0,0.1736,0.9489,3.2442,5.5183,Efficient & consistent,0.0821,Fast starter / developing,0.0332,0.9487,0.0181,0.9487,0.3902,confident
+118377,low-data,5,0.0315,11.9339,6.2678,0.836,0.0,0.0888,1.0664,9.202,10.2229,Fast starter / developing,0.3894,Fast starter / developing,0.0145,0.8592,0.1262,0.8592,0.3743,confident
+139383,low-data,1,1.0,12.4481,7.6222,0.9437,0.0,0.1577,1.0522,6.7354,11.5281,Fast starter / developing,0.1839,Fast starter / developing,0.0128,0.8951,0.0921,0.8951,0.1898,confident
+139442,low-data,3,1.9091,4.9799,6.6199,0.8252,0.0,0.0963,0.8995,3.2375,13.6465,Efficient & consistent,0.0653,Fast starter / developing,0.0549,0.9381,0.007,0.9381,0.0351,atypical
+141794,low-data,5,0.102,16.7668,7.9593,0.9281,0.6,0.0768,0.9856,4.5628,7.7794,Interval-focused,0.3945,Interval-focused,0.0,0.0,1.0,1.0,0.0351,atypical
+185036,low-data,2,0.35,8.5139,6.0245,0.8932,0.0,0.0934,1.0916,11.0447,18.4763,Fast starter / developing,0.3103,Fast starter / developing,0.0,0.9261,0.0739,0.9261,0.1037,confident
+195134,low-data,3,0.75,21.3012,8.6722,0.807,0.0,0.0818,0.9336,1.9183,11.8946,Efficient & consistent,0.4505,Efficient & consistent,0.9902,0.0094,0.0004,0.9902,0.355,confident
+244128,low-data,5,1.0,11.719,7.2518,0.8456,0.0,0.0679,1.0021,7.3593,10.4313,Efficient & consistent,0.1108,Efficient & consistent,0.9083,0.0674,0.0243,0.9083,0.8576,confident
+279317,low-data,5,0.0521,12.0585,8.0389,0.8845,0.0,0.0993,1.124,6.4522,24.1349,Fast starter / developing,0.1874,Fast starter / developing,0.0008,0.9234,0.0758,0.9234,0.0439,atypical
+284803,low-data,8,0.224,9.5322,4.4723,0.8283,0.0,0.1254,0.9906,7.2942,20.9958,Fast starter / developing,0.3687,Fast starter / developing,0.0035,0.9294,0.067,0.9294,0.3058,confident
+337104,low-data,1,1.0,2.0956,5.7509,0.822,0.0,0.8739,0.0,0.2865,51.7748,Fast starter / developing,0.0578,Fast starter / developing,0.0,1.0,0.0,1.0,0.007,atypical
+429155,low-data,4,0.0851,10.1414,7.0849,0.9079,0.75,0.0823,1.0232,12.101,3.7736,Interval-focused,0.355,Interval-focused,0.0,0.0,1.0,1.0,0.0176,atypical
+504709,low-data,4,4.0,12.5099,7.6646,0.8614,0.0,0.2036,0.8795,3.4306,8.2258,Efficient & consistent,0.1829,Fast starter / developing,0.0003,0.9994,0.0002,0.9994,0.0158,atypical
+508935,low-data,2,2.0,10.2063,8.8924,0.8675,0.0,0.1039,0.9638,6.0188,4.0201,Efficient & consistent,0.2663,Efficient & consistent,0.9976,0.0022,0.0002,0.9976,0.4341,confident
+738963,low-data,4,0.8,6.4159,4.881,0.8912,0.0,0.1607,1.0504,5.9268,10.3759,Fast starter / developing,0.3545,Fast starter / developing,0.0,0.9209,0.0791,0.9209,0.1195,confident
+846598,low-data,2,0.2545,22.8421,11.2237,0.78,0.0,0.236,0.9911,4.1504,0.3934,Efficient & consistent,0.1096,Fast starter / developing,0.0,0.9996,0.0004,0.9996,0.0018,atypical
+848177,low-data,7,0.3062,5.6333,5.2461,0.871,0.0,0.1634,1.1172,12.1211,5.4815,Fast starter / developing,0.3051,Fast starter / developing,0.0,0.9894,0.0106,0.9894,0.0387,atypical
+848299,low-data,2,0.1772,14.9763,7.1438,0.864,0.0,0.1485,0.9429,3.7973,9.495,Efficient & consistent,0.1074,Fast starter / developing,0.2219,0.6892,0.089,0.6892,0.4112,between profiles
+863013,low-data,1,1.0,6.3097,4.3229,0.8031,0.0,0.2751,1.1621,1.2082,15.2502,Fast starter / developing,0.2162,Fast starter / developing,0.0,1.0,0.0,1.0,0.0158,atypical
+890789,low-data,2,2.0,5.3228,6.2349,0.9037,0.0,0.2399,0.6885,-3.3125,19.9882,Efficient & consistent,0.0038,Fast starter / developing,0.0,1.0,0.0,1.0,0.0018,atypical
+1048979,low-data,7,0.073,12.5026,7.0113,0.8761,0.0,0.1083,1.0086,1.4346,5.1921,Fast starter / developing,0.0432,Efficient & consistent,0.713,0.2419,0.0451,0.713,0.4868,between profiles
+1052460,low-data,7,0.0992,12.0739,8.3955,0.9172,0.8571,0.0477,1.0273,2.9362,3.7878,Interval-focused,0.3579,Interval-focused,0.0,0.0,1.0,1.0,0.0158,atypical
+1055288,low-data,6,0.0648,7.7022,7.0445,0.8982,0.0,0.171,0.9927,3.3561,11.2383,Fast starter / developing,0.305,Fast starter / developing,0.0015,0.9227,0.0758,0.9227,0.2882,confident
+1081719,low-data,9,0.3559,14.6623,7.8112,0.7951,0.0,0.0716,1.0111,3.9358,7.4704,Efficient & consistent,0.3521,Efficient & consistent,0.9745,0.023,0.0025,0.9745,0.8787,confident
+1320822,low-data,1,1.0,11.0593,7.7976,0.8649,0.0,0.1461,1.0358,3.2788,3.6952,Efficient & consistent,0.0084,Fast starter / developing,0.2121,0.736,0.0518,0.736,0.3286,between profiles
+1329120,low-data,4,0.0763,10.8242,5.3139,0.8363,0.0,0.1901,1.089,5.854,19.8375,Fast starter / developing,0.3494,Fast starter / developing,0.0,0.9959,0.0041,0.9959,0.1634,confident
+1343759,low-data,2,2.0,12.1265,6.943,0.8691,0.0,0.1445,0.9919,-2.1486,10.5127,Efficient & consistent,0.1717,Fast starter / developing,0.304,0.6953,0.0007,0.6953,0.0756,between profiles
+1367691,low-data,1,1.0,8.5684,5.9953,0.8639,0.0,0.222,1.0779,9.2505,4.8584,Fast starter / developing,0.3223,Fast starter / developing,0.0,0.9977,0.0023,0.9977,0.1424,confident
+1458980,low-data,3,0.061,9.9961,5.7884,0.8514,0.3333,0.0585,1.0251,7.9625,11.8123,Interval-focused,0.3602,Interval-focused,0.0,0.0,1.0,1.0,0.2724,confident
+1493217,low-data,1,1.0,4.2982,5.3785,0.953,1.0,0.0969,0.9828,4.8342,6.0025,Interval-focused,0.3686,Interval-focused,0.0,0.0,1.0,1.0,0.0176,atypical
+1534965,low-data,3,0.5526,10.2273,7.0075,0.8246,0.3333,0.0784,0.9817,3.0945,7.6638,Interval-focused,0.5433,Interval-focused,0.0,0.0,1.0,1.0,0.4675,confident
+1582750,low-data,2,0.1772,13.1695,7.0326,0.8961,0.5,0.1149,1.0865,12.2695,5.6678,Interval-focused,0.2751,Interval-focused,0.0,0.0,1.0,1.0,0.0176,atypical
+1586927,low-data,2,2.0,12.7435,8.7405,0.8504,0.0,0.1619,0.9718,3.4194,18.9822,Efficient & consistent,0.2138,Efficient & consistent,0.5585,0.4386,0.0029,0.5585,0.0457,atypical
+1609921,low-data,1,1.0,10.0081,5.2857,0.8026,0.0,0.0987,1.0788,11.1258,25.4059,Fast starter / developing,0.2687,Fast starter / developing,0.0001,0.9952,0.0048,0.9952,0.0984,confident
+1737182,low-data,2,2.0,13.5574,6.6161,0.9146,0.0,0.116,1.0663,7.2527,4.6651,Fast starter / developing,0.0714,Fast starter / developing,0.2852,0.6771,0.0378,0.6771,0.0369,atypical
+1737346,low-data,2,1.1667,9.3332,8.4518,0.8333,0.0,0.1694,0.8563,-1.4049,20.1715,Efficient & consistent,0.2119,Fast starter / developing,0.0003,0.9996,0.0001,0.9996,0.0369,atypical
+1771619,low-data,1,1.0,11.4413,4.9342,0.9111,0.0,0.1243,1.1253,10.3989,1.4009,Fast starter / developing,0.206,Fast starter / developing,0.0,0.9817,0.0183,0.9817,0.0141,atypical
+1779490,low-data,9,0.1848,12.4606,8.9775,0.7689,0.0,0.1039,0.919,1.8914,8.3734,Efficient & consistent,0.3762,Efficient & consistent,0.9799,0.02,0.0001,0.9799,0.3972,confident
+1860957,low-data,1,1.0,3.4944,4.6836,0.8239,0.0,0.4865,1.2013,5.135,8.1109,Fast starter / developing,0.2478,Fast starter / developing,0.0,1.0,0.0,1.0,0.0158,atypical
+1939033,low-data,1,1.0,9.4293,5.8274,0.8943,0.0,0.0845,1.0025,-1.829,12.7233,Fast starter / developing,0.0084,Fast starter / developing,0.2032,0.7837,0.013,0.7837,0.1353,between profiles
+1957863,low-data,4,0.0565,13.1634,7.176,0.8807,0.0,0.0687,0.9621,5.1735,9.4054,Efficient & consistent,0.0669,Efficient & consistent,0.9115,0.0479,0.0406,0.9115,0.6678,confident
+1998312,low-data,8,0.0737,6.321,6.0298,0.8102,0.0,0.1805,1.0251,7.7814,14.5533,Fast starter / developing,0.4359,Fast starter / developing,0.0,0.9874,0.0126,0.9874,0.3339,confident
+2083091,low-data,1,1.0,9.1513,6.7411,0.9344,0.0,0.0873,0.9361,6.5444,7.7522,Efficient & consistent,0.0237,Efficient & consistent,0.7919,0.1486,0.0595,0.7919,0.4815,between profiles
+2115539,low-data,1,1.0,6.5596,5.2977,0.8647,0.0,0.1734,1.0842,-4.2508,6.397,Fast starter / developing,0.1628,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.0387,atypical
+2149070,low-data,6,0.1094,16.3749,4.8872,0.847,0.0,0.1901,0.9971,6.1647,6.8302,Fast starter / developing,0.2313,Fast starter / developing,0.0,0.9622,0.0377,0.9622,0.123,confident
+2155974,low-data,8,0.0903,10.0987,9.2519,0.7795,0.0,0.1509,0.918,8.1716,6.4944,Efficient & consistent,0.1335,Fast starter / developing,0.3046,0.6902,0.0052,0.6902,0.0721,between profiles
+2159610,low-data,2,0.0419,8.079,7.4259,0.7966,0.0,0.24,0.8993,11.8419,5.3924,Fast starter / developing,0.1241,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.058,confident
+2209215,low-data,3,0.02,9.7722,6.4022,0.9085,0.0,0.0729,0.9707,5.3064,16.0697,Fast starter / developing,0.1908,Efficient & consistent,0.4116,0.3653,0.223,0.4116,0.2917,between profiles
+2255761,low-data,2,0.2857,9.9213,6.1255,0.9339,0.0,0.2953,1.1332,19.7861,14.5822,Fast starter / developing,0.2301,Fast starter / developing,0.0,1.0,0.0,1.0,0.0176,atypical
+2359422,low-data,3,0.3043,20.7949,9.724,0.869,0.0,0.0541,1.0043,2.8785,7.732,Efficient & consistent,0.2787,Efficient & consistent,0.9934,0.0033,0.0033,0.9934,0.1072,confident
+2404531,low-data,5,0.0549,9.9935,5.5634,0.9296,1.0,0.0501,1.0057,10.3974,8.407,Interval-focused,0.3991,Interval-focused,0.0,0.0,1.0,1.0,0.0299,atypical
+2419254,low-data,8,0.1618,7.289,6.9988,0.7886,0.0,0.1404,0.9019,4.888,2.2808,Efficient & consistent,0.0195,Fast starter / developing,0.0095,0.9846,0.0059,0.9846,0.1301,confident
+2435099,low-data,3,0.1654,8.3236,6.7235,0.7975,0.0,0.1326,1.0332,6.0508,20.1581,Fast starter / developing,0.3947,Fast starter / developing,0.0054,0.9714,0.0232,0.9714,0.5132,confident
+2482049,low-data,4,1.0,7.6189,5.0517,0.9129,1.0,0.1932,1.0821,13.0881,2.8587,Interval-focused,0.195,Interval-focused,0.0,0.0,1.0,1.0,0.0018,atypical
+2497422,low-data,1,1.0,30.5476,15.2112,0.9207,0.0,0.1994,1.0344,-16.0774,4.2686,Efficient & consistent,0.143,Fast starter / developing,0.0002,0.9995,0.0003,0.9995,0.0018,atypical
+2576672,low-data,4,0.0933,6.3555,6.8713,0.8575,0.5,0.2823,0.9945,8.9603,12.9689,Interval-focused,0.2029,Interval-focused,0.0,0.0,1.0,1.0,0.0035,atypical
+2587134,low-data,6,0.0634,9.1108,6.0309,0.8802,0.0,0.0992,1.0294,6.2048,7.9001,Fast starter / developing,0.4713,Fast starter / developing,0.0926,0.5712,0.3362,0.5712,0.478,between profiles
+2600099,low-data,4,0.1514,6.1088,6.4249,0.7512,0.0,0.3025,0.9857,1.937,20.1013,Fast starter / developing,0.1616,Fast starter / developing,0.0,1.0,0.0,1.0,0.0299,atypical
+2669847,low-data,2,0.1772,11.7154,7.4196,0.8434,0.0,0.1371,0.9983,9.1369,7.1892,Fast starter / developing,0.3508,Fast starter / developing,0.1621,0.7027,0.1352,0.7027,0.6204,between profiles
+2675116,low-data,9,0.1927,10.5876,8.3542,0.8397,0.0,0.1028,1.0193,5.3013,7.4472,Fast starter / developing,0.0641,Efficient & consistent,0.8831,0.0851,0.0318,0.8831,0.8172,confident
+2692384,low-data,1,1.0,5.5129,5.5073,0.8661,0.0,0.2824,0.6764,14.9544,2.2311,Fast starter / developing,0.1151,Fast starter / developing,0.0,1.0,0.0,1.0,0.0035,atypical
+2699896,low-data,4,0.0333,17.0826,7.8756,0.8901,0.25,0.1257,0.9753,4.3252,19.2488,Interval-focused,0.1829,Interval-focused,0.0001,0.0,0.9999,0.9999,0.0598,confident
+2738159,low-data,3,0.7241,8.3191,6.168,0.8806,1.0,0.135,0.9607,7.2459,5.6415,Interval-focused,0.49,Interval-focused,0.0,0.0,1.0,1.0,0.1301,confident
+2794662,low-data,9,0.1002,12.0783,7.2422,0.7426,0.0,0.1469,1.0748,6.6569,1.9807,Fast starter / developing,0.1138,Fast starter / developing,0.002,0.9973,0.0007,0.9973,0.0439,atypical
+2805418,low-data,9,0.0938,7.5515,7.5084,0.8782,0.0,0.1335,1.0252,15.2731,7.8183,Fast starter / developing,0.3692,Fast starter / developing,0.0015,0.9071,0.0914,0.9071,0.1863,confident
+2853238,low-data,4,0.5185,9.1103,6.3723,0.8383,0.0,0.1385,0.9288,6.4235,12.445,Fast starter / developing,0.1859,Fast starter / developing,0.0381,0.8959,0.066,0.8959,0.696,confident
+2998566,low-data,7,0.1328,20.9896,7.5349,0.8659,0.0,0.0546,0.9834,4.2527,6.5896,Efficient & consistent,0.2172,Efficient & consistent,0.9372,0.0287,0.0341,0.9372,0.3286,confident
+3041144,low-data,4,0.0819,9.1983,7.0608,0.8578,0.0,0.1812,0.9326,1.2712,4.9861,Fast starter / developing,0.0416,Fast starter / developing,0.001,0.9891,0.0099,0.9891,0.3111,confident
+3069074,low-data,1,1.0,5.8493,6.9647,0.8769,0.0,0.1748,1.0606,28.0184,11.5715,Fast starter / developing,0.3167,Fast starter / developing,0.0,0.9889,0.0111,0.9889,0.0931,confident
+3268225,low-data,7,0.0347,14.4979,7.8817,0.8599,0.0,0.1031,0.9303,0.6205,8.5575,Efficient & consistent,0.2922,Efficient & consistent,0.9153,0.0791,0.0056,0.9153,0.4517,confident
+3303712,low-data,2,0.5,7.8086,6.0293,0.8187,0.0,0.1644,0.9583,10.7258,20.3639,Fast starter / developing,0.3157,Fast starter / developing,0.0,0.9899,0.01,0.9899,0.4165,confident
+3320904,low-data,1,1.0,2.0817,6.8299,0.9417,0.0,0.0968,0.984,16.394,34.1297,Fast starter / developing,0.1873,Fast starter / developing,0.0003,0.9237,0.076,0.9237,0.0264,atypical
+3325031,low-data,6,0.0669,12.9927,9.1479,0.8349,0.0,0.0971,1.0405,3.8562,7.7028,Efficient & consistent,0.1077,Efficient & consistent,0.9438,0.0457,0.0105,0.9438,0.3937,confident
+3377565,low-data,3,0.0502,9.7118,6.4772,0.779,0.0,0.1325,1.1847,18.0786,7.4446,Fast starter / developing,0.3224,Fast starter / developing,0.0,0.9989,0.0011,0.9989,0.1178,confident
+3417701,low-data,4,0.1505,15.3628,6.9676,0.8974,0.0,0.1045,0.9696,3.2016,14.794,Efficient & consistent,0.0403,Efficient & consistent,0.739,0.1858,0.0752,0.739,0.3286,between profiles
+3509206,low-data,2,0.2593,10.1676,7.7931,0.9178,0.0,0.0851,1.01,6.1606,8.7603,Fast starter / developing,0.1731,Efficient & consistent,0.8023,0.0909,0.1067,0.8023,0.6046,confident
+3545637,low-data,4,0.0305,11.5264,5.4742,0.8557,0.5,0.1522,1.1023,15.6257,7.2435,Interval-focused,0.2033,Interval-focused,0.0,0.0,1.0,1.0,0.0105,atypical
+3701695,low-data,1,1.0,9.5625,7.9665,0.8786,0.0,0.0515,1.0155,10.4486,11.9141,Fast starter / developing,0.0748,Efficient & consistent,0.4997,0.371,0.1293,0.4997,0.1898,between profiles
+3704065,low-data,1,1.0,4.6706,6.5622,0.8819,0.0,0.2607,0.9171,-0.2959,25.2932,Fast starter / developing,0.0817,Fast starter / developing,0.0,1.0,0.0,1.0,0.0158,atypical
+3799875,low-data,7,0.0282,10.9766,8.541,0.7787,0.0,0.2301,0.9855,8.9252,9.1042,Fast starter / developing,0.1233,Fast starter / developing,0.0,0.9995,0.0005,0.9995,0.1072,confident
+3824420,low-data,5,0.1097,6.1446,5.0578,0.7754,0.4,0.2697,0.8555,12.2184,10.0438,Interval-focused,0.0827,Interval-focused,0.0,0.0,1.0,1.0,0.0,atypical
+3832297,low-data,3,0.0473,4.9497,4.6626,0.8542,0.0,0.1892,1.124,14.7074,12.2836,Fast starter / developing,0.276,Fast starter / developing,0.0,0.9981,0.0019,0.9981,0.0158,atypical
+3916526,low-data,2,2.0,25.0456,11.3746,0.862,0.0,0.2579,0.8856,-11.3924,4.4795,Efficient & consistent,0.1827,Fast starter / developing,0.0,1.0,0.0,1.0,0.0,atypical
+3951504,low-data,2,0.0711,6.2024,5.999,0.8305,0.0,0.2789,1.0256,5.7862,6.019,Fast starter / developing,0.3006,Fast starter / developing,0.0,0.9997,0.0003,0.9997,0.0844,confident
+4045488,low-data,1,1.0,11.1017,7.5599,0.9071,0.0,0.0895,1.0351,7.5683,6.2294,Fast starter / developing,0.1109,Efficient & consistent,0.758,0.1536,0.0884,0.758,0.4165,between profiles
+4059417,low-data,6,0.057,13.5611,5.7943,0.7999,0.0,0.2504,0.8704,-0.8471,26.3568,Efficient & consistent,0.0116,Fast starter / developing,0.0,1.0,0.0,1.0,0.0176,atypical
+4176041,low-data,7,0.1373,10.0443,7.3015,0.9188,0.7143,0.1075,0.9976,1.156,10.4158,Interval-focused,0.4762,Interval-focused,0.0,0.0,1.0,1.0,0.051,confident
+4313124,low-data,6,0.1239,9.0273,7.5845,0.8995,0.3333,0.0559,1.0058,7.2351,4.8207,Interval-focused,0.3897,Interval-focused,0.0,0.0,1.0,1.0,0.174,confident
+4325326,low-data,4,0.3636,12.8114,6.6813,0.9171,1.0,0.1251,1.0125,7.0095,16.8872,Interval-focused,0.4597,Interval-focused,0.0,0.0,1.0,1.0,0.0931,confident
+4399772,low-data,8,0.0566,8.9062,8.3342,0.7792,0.0,0.1219,0.9572,12.893,7.4778,Fast starter / developing,0.1046,Fast starter / developing,0.1146,0.8794,0.006,0.8794,0.1301,confident
+4634912,low-data,8,0.7778,12.0643,7.364,0.8161,0.0,0.105,0.9164,2.297,6.4862,Efficient & consistent,0.5452,Efficient & consistent,0.9071,0.0904,0.0025,0.9071,0.8084,confident
+4693937,low-data,1,1.0,4.7712,5.3343,0.9162,0.0,0.2301,1.1908,13.4528,15.4737,Fast starter / developing,0.2197,Fast starter / developing,0.0,0.9997,0.0003,0.9997,0.0053,atypical
+4727641,low-data,1,1.0,10.4103,5.6158,0.7242,0.0,0.5472,0.95,17.3656,11.0845,Fast starter / developing,0.1263,Fast starter / developing,0.0,1.0,0.0,1.0,0.0158,atypical
+4836713,low-data,9,0.6117,10.9682,5.1559,0.89,0.0,0.1032,1.0625,13.6102,14.3306,Fast starter / developing,0.307,Fast starter / developing,0.0002,0.9391,0.0607,0.9391,0.0931,confident
+4852170,low-data,8,1.8065,12.5478,6.8086,0.8073,0.0,0.144,0.8409,-9.7092,8.9933,Efficient & consistent,0.2621,Fast starter / developing,0.0058,0.9942,0.0,0.9942,0.0264,atypical
+4979907,low-data,8,0.3436,9.8461,5.4339,0.7464,0.0,0.1894,1.0547,9.3919,5.8001,Fast starter / developing,0.3053,Fast starter / developing,0.0,0.9997,0.0003,0.9997,0.1424,confident
+5086939,low-data,3,0.047,10.1723,8.0193,0.8362,0.0,0.119,0.8952,3.6486,8.5995,Efficient & consistent,0.2185,Efficient & consistent,0.4968,0.4817,0.0215,0.4968,0.348,between profiles
+5273972,low-data,1,1.0,5.6175,5.2115,0.8944,0.0,0.1189,0.9553,5.7586,5.0505,Fast starter / developing,0.216,Fast starter / developing,0.012,0.7594,0.2286,0.7594,0.0808,between profiles
+5278840,low-data,5,0.6364,4.65,6.0675,0.7503,0.0,0.0706,1.023,8.5683,1.6323,Fast starter / developing,0.1398,Fast starter / developing,0.0036,0.99,0.0064,0.99,0.0176,atypical
+5337796,low-data,2,0.1228,10.9866,6.3311,0.8906,0.0,0.1309,0.998,3.5136,9.809,Fast starter / developing,0.3107,Fast starter / developing,0.1719,0.6533,0.1748,0.6533,0.4868,between profiles
+5346265,low-data,2,0.1061,6.6964,5.6731,0.92,0.0,0.1921,0.9482,0.7114,14.3865,Fast starter / developing,0.203,Fast starter / developing,0.0,0.9931,0.0069,0.9931,0.0826,confident
+5554061,low-data,2,0.1333,4.3682,6.1235,0.8645,0.0,0.2248,1.0831,12.0421,19.9837,Fast starter / developing,0.2654,Fast starter / developing,0.0,0.9991,0.0009,0.9991,0.0264,atypical
+5605316,low-data,1,1.0,9.0144,6.3104,0.9245,0.0,0.0804,0.9629,5.1107,6.5181,Fast starter / developing,0.0493,Efficient & consistent,0.8177,0.1217,0.0606,0.8177,0.522,confident
+5929760,low-data,2,0.0191,10.3115,6.2769,0.8814,0.0,0.1322,1.0101,1.3784,12.5498,Fast starter / developing,0.2697,Fast starter / developing,0.0534,0.8731,0.0734,0.8731,0.4042,confident
+6044358,low-data,4,1.5556,5.4187,6.1503,0.9168,0.25,0.1273,0.9983,9.9544,3.055,Interval-focused,0.0749,Interval-focused,0.0,0.0,1.0,1.0,0.0158,atypical
+6055485,low-data,2,0.4828,10.7752,7.5594,0.8959,0.0,0.1468,0.9864,5.1421,35.1487,Fast starter / developing,0.1352,Fast starter / developing,0.0359,0.85,0.114,0.85,0.2777,confident
+6064655,low-data,1,1.0,9.918,6.3178,0.8805,0.0,0.129,0.9417,0.2138,15.4737,Efficient & consistent,0.0779,Fast starter / developing,0.1276,0.8568,0.0157,0.8568,0.2953,confident
+6069440,low-data,1,1.0,9.91,5.028,0.7973,0.0,0.2256,1.2587,13.7494,20.5493,Fast starter / developing,0.2647,Fast starter / developing,0.0,1.0,0.0,1.0,0.0281,atypical
+6125990,low-data,1,1.0,5.1184,5.0262,0.8697,0.0,0.2341,1.1538,14.9681,14.3,Fast starter / developing,0.2379,Fast starter / developing,0.0,0.9998,0.0002,0.9998,0.0141,atypical
+6242372,low-data,4,0.0424,9.5024,11.5892,0.7554,0.0,0.3689,1.1245,23.0819,9.3557,Fast starter / developing,0.137,Fast starter / developing,0.0,1.0,0.0,1.0,0.0018,atypical
+6272219,low-data,4,0.0395,5.2347,8.0676,0.9166,0.0,0.1161,1.1658,9.4461,4.7014,Fast starter / developing,0.2501,Fast starter / developing,0.0,0.8682,0.1317,0.8682,0.0176,atypical
+6286628,low-data,2,0.0805,3.2417,4.9896,0.9175,0.0,0.1436,1.1507,17.0324,2.853,Fast starter / developing,0.2296,Fast starter / developing,0.0,0.9851,0.0149,0.9851,0.0053,atypical
+6307695,low-data,1,1.0,5.637,4.3448,0.8335,0.0,0.2567,1.2669,10.714,8.5114,Fast starter / developing,0.2609,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.0158,atypical
+6479229,low-data,1,1.0,8.7161,4.1507,0.9186,0.0,0.3626,0.619,8.5874,10.4306,Fast starter / developing,0.118,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.0141,atypical
+6539051,low-data,2,0.0341,8.3467,5.8829,0.8235,0.0,0.2186,0.7855,14.5289,16.4363,Fast starter / developing,0.1558,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.0475,atypical
+6572322,low-data,5,0.2288,14.8094,7.5167,0.8879,0.0,0.0749,1.0072,4.4,4.9969,Efficient & consistent,0.0965,Efficient & consistent,0.9261,0.0348,0.039,0.9261,0.5764,confident
+6591189,low-data,7,0.2379,10.1329,6.1972,0.8738,0.1429,0.1732,0.9453,3.1454,9.9839,Fast starter / developing,0.0572,Interval-focused,0.0022,0.0098,0.988,0.988,0.1775,confident
+7099226,low-data,2,0.6087,20.4498,7.4353,0.8762,0.0,0.1199,1.0665,1.8621,6.4632,Efficient & consistent,0.0642,Fast starter / developing,0.1411,0.7447,0.1142,0.7447,0.0931,between profiles
+7122167,low-data,1,1.0,6.8623,7.6274,0.9146,0.0,0.1481,1.01,13.2071,12.6717,Fast starter / developing,0.2618,Fast starter / developing,0.0007,0.9536,0.0457,0.9536,0.0984,confident
+7123482,low-data,8,1.5135,16.7597,5.5736,0.8023,0.0,0.184,0.8817,2.9804,5.3245,Efficient & consistent,0.1648,Fast starter / developing,0.0003,0.9993,0.0004,0.9993,0.0351,atypical
+7231044,low-data,2,2.0,11.0794,6.9699,0.8547,0.0,0.0878,0.9928,-0.759,5.2591,Efficient & consistent,0.2599,Efficient & consistent,0.9737,0.0261,0.0002,0.9737,0.3919,confident
+7470676,low-data,5,0.7292,10.9591,7.6878,0.7946,0.0,0.0863,0.9592,7.5536,3.0091,Efficient & consistent,0.2721,Efficient & consistent,0.9519,0.0452,0.0029,0.9519,0.7487,confident
+7470845,low-data,3,0.0486,28.0525,4.4245,0.8157,0.0,0.3367,1.0697,-8.8616,24.0717,Fast starter / developing,0.0878,Fast starter / developing,0.0,1.0,0.0,1.0,0.0035,atypical
+7555928,low-data,3,0.2059,10.7619,7.2235,0.7878,0.0,0.115,0.9918,9.4145,5.7148,Fast starter / developing,0.2276,Fast starter / developing,0.4784,0.4998,0.0217,0.4998,0.6134,between profiles
+7629457,low-data,1,1.0,3.8195,5.7206,0.8542,0.0,0.0943,0.9286,11.9391,25.1493,Fast starter / developing,0.1757,Fast starter / developing,0.0001,0.9686,0.0313,0.9686,0.0369,atypical
+7748686,low-data,2,1.4,11.7901,5.127,0.8934,0.0,0.1374,1.054,7.1487,9.8456,Fast starter / developing,0.2657,Fast starter / developing,0.0064,0.924,0.0696,0.924,0.1054,confident
+7833767,low-data,5,5.0,16.1594,7.0672,0.8589,0.2,0.0589,0.9731,-2.1211,13.9693,Efficient & consistent,0.1424,Efficient & consistent,0.9699,0.0,0.0301,0.9699,0.0035,atypical
+7892240,low-data,2,2.0,6.3023,5.9082,0.8968,0.0,0.3028,0.7851,3.3091,5.141,Fast starter / developing,0.0352,Fast starter / developing,0.0,1.0,0.0,1.0,0.0035,atypical
+7898832,low-data,3,0.0577,9.5934,4.9004,0.7218,0.0,0.247,1.156,12.6275,3.7116,Fast starter / developing,0.2269,Fast starter / developing,0.0,1.0,0.0,1.0,0.0035,atypical
+7965241,low-data,7,0.5158,6.1501,5.3346,0.8114,0.0,0.2137,0.9272,-1.3392,9.4066,Fast starter / developing,0.1064,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.1107,confident
+7998342,low-data,1,1.0,6.3738,5.6534,0.9487,0.0,0.1517,1.0197,6.5741,6.3026,Fast starter / developing,0.3494,Fast starter / developing,0.001,0.8546,0.1444,0.8546,0.1652,confident
+8280412,low-data,5,1.8421,11.9743,8.251,0.9043,0.0,0.0906,0.9508,1.2828,6.6489,Efficient & consistent,0.3144,Efficient & consistent,0.9976,0.0023,0.0001,0.9976,0.4376,confident
+8299100,low-data,1,1.0,12.5888,5.9052,0.9525,1.0,0.1159,1.1459,13.0599,3.4891,Interval-focused,0.2374,Interval-focused,0.0,0.0,1.0,1.0,0.0035,atypical
+8366159,low-data,3,1.4,17.3869,8.2069,0.9193,0.0,0.0646,0.9856,5.3626,3.9507,Efficient & consistent,0.2618,Efficient & consistent,0.9957,0.0027,0.0016,0.9957,0.2355,confident
+8438734,low-data,7,0.7101,7.1876,5.1667,0.8705,0.5714,0.3128,1.0094,10.2704,17.3116,Interval-focused,0.2081,Interval-focused,0.0,0.0,1.0,1.0,0.0018,atypical
+8453120,low-data,6,0.28,9.665,6.5991,0.8456,0.0,0.1868,1.1286,2.634,16.1249,Fast starter / developing,0.3082,Fast starter / developing,0.0,0.9973,0.0027,0.9973,0.3023,confident
+8549297,low-data,2,1.0,10.8056,5.8989,0.8605,0.5,0.2095,0.8538,8.5877,2.1368,Interval-focused,0.2481,Interval-focused,0.0,0.0,1.0,1.0,0.0018,atypical
+8588224,low-data,5,2.3333,7.0993,5.0798,0.7869,0.0,0.2073,0.9893,5.7789,14.1761,Fast starter / developing,0.1475,Fast starter / developing,0.0,0.9999,0.0001,0.9999,0.0264,atypical
+8615989,low-data,2,1.4,3.9706,7.0719,0.9009,0.0,0.0597,0.9436,3.9497,10.0022,Fast starter / developing,0.003,Fast starter / developing,0.308,0.5424,0.1497,0.5424,0.0387,atypical
+8765371,low-data,5,0.1458,12.2883,6.753,0.8223,0.0,0.2655,0.9485,0.7123,16.9761,Fast starter / developing,0.0671,Fast starter / developing,0.0,1.0,0.0,1.0,0.1107,confident
+8899244,low-data,7,0.0583,8.7376,5.5291,0.8173,0.1429,0.1043,0.9927,2.3608,10.7467,Fast starter / developing,0.1998,Interval-focused,0.1309,0.0064,0.8626,0.8626,0.1951,confident
+8936532,low-data,1,1.0,8.1668,7.7659,0.9013,0.0,0.0691,0.9617,10.9907,10.1369,Fast starter / developing,0.0657,Efficient & consistent,0.532,0.3543,0.1137,0.532,0.1494,between profiles
+8974660,low-data,1,1.0,4.688,6.6223,0.9201,0.0,0.2535,0.9744,-21.7122,17.012,Fast starter / developing,0.0891,Fast starter / developing,0.0,1.0,0.0,1.0,0.0141,atypical
+9051351,low-data,5,0.0992,7.8805,5.9332,0.7751,0.0,0.1497,1.157,11.2716,11.9299,Fast starter / developing,0.3563,Fast starter / developing,0.0,0.9991,0.0009,0.9991,0.1178,confident
+9107441,low-data,1,1.0,4.7527,4.9428,0.7966,0.0,0.3386,1.0287,12.5953,7.6987,Fast starter / developing,0.2503,Fast starter / developing,0.0,1.0,0.0,1.0,0.0158,atypical
+9338715,low-data,9,0.0769,5.9681,5.1952,0.8162,0.2222,0.2134,0.9611,7.4475,5.3356,Fast starter / developing,0.0677,Interval-focused,0.0,0.0,1.0,1.0,0.0158,atypical
+9356728,low-data,1,1.0,6.1985,9.0497,0.8393,0.0,0.0811,1.0468,6.3427,10.9861,Fast starter / developing,0.0716,Fast starter / developing,0.404,0.4766,0.1194,0.4766,0.1054,between profiles
+9359950,low-data,1,1.0,7.8447,7.7273,0.9682,0.0,0.048,0.9547,3.026,19.0206,Efficient & consistent,0.1072,Efficient & consistent,0.699,0.2494,0.0517,0.699,0.123,between profiles
+9378990,low-data,4,0.2029,22.0554,8.6447,0.7811,0.0,0.1574,1.0897,10.3157,12.8458,Fast starter / developing,0.0694,Fast starter / developing,0.0002,0.9956,0.0042,0.9956,0.0228,atypical
+9481945,low-data,6,0.0741,10.0356,5.5903,0.8988,0.6667,0.1168,0.9376,-1.1266,16.717,Interval-focused,0.3838,Interval-focused,0.0,0.0,1.0,1.0,0.0053,atypical
+9571309,low-data,4,0.0883,9.9798,5.499,0.8993,0.25,0.0486,1.0175,5.1565,8.0725,Interval-focused,0.2416,Interval-focused,0.0,0.0,1.0,1.0,0.1494,confident
+9613679,low-data,5,0.9459,14.7864,6.6557,0.8871,0.6,0.0843,1.0817,10.1282,4.9371,Interval-focused,0.3185,Interval-focused,0.0,0.0,1.0,1.0,0.0176,atypical
+9656255,low-data,5,0.3097,5.11,5.7496,0.8637,0.0,0.1063,1.0535,10.9619,1.0418,Fast starter / developing,0.2642,Fast starter / developing,0.0,0.8878,0.1122,0.8878,0.0264,atypical
+9732499,low-data,9,0.84,8.5101,7.6663,0.8299,0.0,0.1457,1.0325,5.5781,8.6049,Fast starter / developing,0.3553,Fast starter / developing,0.0661,0.8719,0.062,0.8719,0.6678,confident
+9918949,low-data,1,1.0,6.3588,5.837,0.9181,0.0,0.0398,0.967,5.8367,1.9931,Fast starter / developing,0.0732,Fast starter / developing,0.0838,0.6464,0.2698,0.6464,0.0299,atypical
+9956787,low-data,2,0.0966,8.7798,5.7692,0.8568,0.5,0.1346,1.0303,7.4439,2.8272,Interval-focused,0.348,Interval-focused,0.0,0.0,1.0,1.0,0.0826,confident
+9959962,low-data,7,0.0896,13.2353,7.5731,0.8271,0.1429,0.0817,0.9806,3.7895,19.6451,Efficient & consistent,0.097,Efficient & consistent,0.67,0.001,0.329,0.67,0.2654,between profiles
+9991401,low-data,4,0.7,11.5082,6.0438,0.8974,0.5,0.1106,1.024,5.0945,10.2795,Interval-focused,0.5268,Interval-focused,0.0,0.0,1.0,1.0,0.1898,confident
+10099726,low-data,2,0.1186,30.5901,11.4701,0.8091,0.0,0.182,1.0279,3.6455,6.1266,Efficient & consistent,0.1295,Fast starter / developing,0.037,0.9442,0.0187,0.9442,0.0158,atypical
+10183747,low-data,1,1.0,27.5584,5.642,0.9015,0.0,0.2612,1.1328,-12.851,35.5815,Fast starter / developing,0.0667,Fast starter / developing,0.0,1.0,0.0,1.0,0.0018,atypical
+10198429,low-data,2,0.9333,6.5324,6.5778,0.8742,0.5,0.201,0.9879,10.4076,32.0946,Interval-focused,0.2768,Interval-focused,0.0,0.0,1.0,1.0,0.0141,atypical
+10503628,low-data,2,0.0725,13.761,6.9141,0.8346,0.0,0.3532,0.9812,3.4154,8.5063,Fast starter / developing,0.1279,Fast starter / developing,0.0,0.9997,0.0003,0.9997,0.1248,confident
+10562495,low-data,4,0.7778,3.8613,4.6957,0.825,0.0,0.1652,0.84,4.0862,5.2633,Fast starter / developing,0.0915,Fast starter / developing,0.0,0.9959,0.0041,0.9959,0.0387,atypical
+10726030,low-data,1,1.0,43.2752,7.8894,0.8494,0.0,0.0329,0.9851,4.8091,7.9925,Efficient & consistent,0.3788,Efficient & consistent,0.9838,0.0101,0.0061,0.9838,0.478,confident
+10808479,low-data,1,1.0,20.8511,6.9559,0.9101,0.0,0.0468,1.0172,8.6147,6.472,Efficient & consistent,0.0807,Efficient & consistent,0.6825,0.1512,0.1662,0.6825,0.0668,between profiles
+10982349,low-data,4,0.1783,4.4432,8.5718,0.8151,0.0,0.1158,0.8971,16.435,17.2845,Fast starter / developing,0.0779,Fast starter / developing,0.0003,0.9895,0.0103,0.9895,0.0228,atypical
+11394885,low-data,9,0.4701,6.0932,5.5289,0.9023,0.8889,0.1123,0.9856,7.0443,4.3982,Interval-focused,0.3975,Interval-focused,0.0,0.0,1.0,1.0,0.0475,atypical
+11917849,low-data,5,0.8974,9.8828,5.7227,0.8707,0.4,0.0953,0.9811,1.6251,7.9425,Interval-focused,0.5276,Interval-focused,0.0,0.0,1.0,1.0,0.1757,confident
+11954853,low-data,9,2.8636,10.0021,7.8419,0.8347,0.0,0.077,0.9479,5.6074,3.4671,Efficient & consistent,0.2836,Efficient & consistent,0.9973,0.0026,0.0001,0.9973,0.4236,confident
+12049619,low-data,5,0.5147,7.1974,4.733,0.9344,0.6,0.2505,1.2746,20.1945,12.3922,Interval-focused,0.1521,Interval-focused,0.0,0.0,1.0,1.0,0.0,atypical
+12420980,low-data,5,0.1346,8.0526,6.5206,0.7967,0.0,0.1929,0.957,10.455,4.2619,Fast starter / developing,0.2718,Fast starter / developing,0.0,0.9968,0.0032,0.9968,0.2953,confident
+12428041,low-data,2,0.1867,12.9975,8.979,0.9087,0.5,0.1275,0.8877,9.3954,12.7778,Interval-focused,0.3158,Interval-focused,0.0,0.0,1.0,1.0,0.0053,atypical
+12694193,low-data,2,2.0,5.9903,5.5521,0.9057,0.0,0.1674,0.9923,4.1923,6.8742,Fast starter / developing,0.1739,Fast starter / developing,0.0014,0.9801,0.0185,0.9801,0.0281,atypical
+12751232,low-data,2,0.0725,8.233,4.4566,0.8615,0.0,0.4373,1.41,20.4175,19.0099,Fast starter / developing,0.2331,Fast starter / developing,0.0,1.0,0.0,1.0,0.0123,atypical
+13088747,low-data,2,2.0,21.141,6.224,0.9218,0.0,0.0906,1.0993,7.9358,3.9456,Fast starter / developing,0.0326,Fast starter / developing,0.0236,0.9312,0.0452,0.9312,0.0035,atypical
+13099479,low-data,4,0.0824,14.2322,4.9958,0.8379,0.0,0.3033,1.1983,12.2664,2.0703,Fast starter / developing,0.212,Fast starter / developing,0.0,1.0,0.0,1.0,0.0035,atypical
+13305991,low-data,8,1.0,11.3092,8.1046,0.8669,0.0,0.2042,1.091,6.4816,1.8455,Fast starter / developing,0.1172,Fast starter / developing,0.0,0.996,0.004,0.996,0.0387,atypical
+13668730,low-data,8,0.2383,2.3724,6.2573,0.6957,0.0,0.3114,0.6643,5.515,9.029,Fast starter / developing,0.0807,Fast starter / developing,0.0,1.0,0.0,1.0,0.0053,atypical
+13681949,low-data,9,0.1975,15.3734,5.6567,0.8485,0.0,0.1469,0.8426,5.7075,0.3547,Efficient & consistent,0.0674,Fast starter / developing,0.0007,0.986,0.0133,0.986,0.0281,atypical
+13702299,low-data,2,0.1458,10.2712,6.1923,0.86,0.0,0.1318,0.9409,12.7749,15.3619,Fast starter / developing,0.2616,Fast starter / developing,0.0015,0.963,0.0355,0.963,0.2777,confident
+13705737,low-data,2,0.7,17.2667,6.2546,0.9445,1.0,0.0557,0.9896,5.7951,5.7278,Interval-focused,0.3983,Interval-focused,0.0,0.0,1.0,1.0,0.0387,atypical
+13779308,low-data,5,1.0606,7.053,5.6911,0.8706,0.0,0.0967,1.0242,3.3542,9.7607,Fast starter / developing,0.2957,Fast starter / developing,0.09,0.7652,0.1448,0.7652,0.3357,between profiles
+13831483,low-data,3,0.525,7.4183,5.2194,0.9062,0.0,0.1871,1.0482,11.1355,11.4623,Fast starter / developing,0.3356,Fast starter / developing,0.0,0.98,0.02,0.98,0.1054,confident
+13840816,low-data,5,0.6863,10.2957,5.8048,0.9275,0.0,0.0933,1.035,7.1607,9.0298,Fast starter / developing,0.3627,Fast starter / developing,0.1205,0.5499,0.3295,0.5499,0.3831,between profiles
+14039377,low-data,8,0.0897,15.3492,7.6234,0.8728,0.0,0.0712,0.9903,2.9825,8.5166,Efficient & consistent,0.1774,Efficient & consistent,0.9576,0.0259,0.0165,0.9576,0.6485,confident
+14052192,low-data,1,1.0,5.925,5.6913,0.9144,0.0,0.1288,1.0299,14.9342,16.1675,Fast starter / developing,0.2712,Fast starter / developing,0.0,0.9522,0.0478,0.9522,0.0475,atypical
+14122572,low-data,3,0.5385,15.2929,5.5607,0.9271,0.0,0.0737,1.0579,4.6264,9.673,Fast starter / developing,0.1615,Fast starter / developing,0.0898,0.5844,0.3258,0.5844,0.1178,between profiles

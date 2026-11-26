@@ -1,0 +1,4 @@
+gmm_profile,athletes,core,confident,mean_certainty,runs_per_week,distance_km,efficiency,rel_intensity,share_intensive,speed_cv,opening_pace_ratio,cardiac_drift_pct,climb_m_per_km
+Efficient & consistent,351,315,263,0.875,0.674,11.566,7.695,0.827,0.0,0.083,0.976,4.395,7.525
+Fast starter / developing,292,171,132,0.859,0.419,9.637,6.478,0.833,0.0,0.146,1.007,6.185,9.56
+Interval-focused,118,83,71,0.934,0.33,10.058,6.568,0.864,0.27,0.102,0.995,6.579,8.692

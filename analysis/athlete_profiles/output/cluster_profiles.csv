@@ -1,0 +1,5 @@
+cluster,profile,n_athletes,runs_per_week,distance_km,long_run_km,speed_kmh,efficiency,rel_intensity,share_intensive,speed_cv,opening_pace_ratio,cardiac_drift_pct,climb_m_per_km,share_recovery,workouts
+0,"durable, hilly, variable-pace",120,0.619,11.308,18.351,10.209,6.927,0.818,0.0,0.125,0.969,2.482,12.351,0.378,50.5
+1,"efficient, fast, long-distance",238,0.675,12.085,20.737,11.888,8.016,0.823,0.014,0.081,0.974,4.612,6.889,0.313,67.0
+2,"short-distance, high-drift, slow",176,0.36,9.039,13.658,9.871,6.508,0.836,0.0,0.107,1.008,7.102,7.999,0.314,30.0
+3,"interval-heavy, high-intensity, low-efficiency",35,0.434,9.934,13.352,10.64,6.55,0.867,0.35,0.094,0.99,5.394,8.891,0.014,36.0
