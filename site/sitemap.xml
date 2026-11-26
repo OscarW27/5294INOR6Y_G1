@@ -19,6 +19,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://oscarw27.github.io/5294INOR6Y_G1/privacy.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://oscarw27.github.io/5294INOR6Y_G1/settings.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://oscarw27.github.io/5294INOR6Y_G1/ontology.ttl</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>yearly</changefreq>
