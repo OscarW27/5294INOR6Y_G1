@@ -469,6 +469,23 @@ const cardIds = env => env.dom.byId["kpi-cards"].children.map(c => c.dataset.kpi
     assert.strictEqual(cardIds(env).length, 0);
   });
 
+  const navTo = section => {
+    const a = env.dom.all.find(e => e.tag === "a" && e.dataset.section === section);
+    env.dom.byId["main-nav"].listeners.click.forEach(f => f({ target: a, preventDefault() {} }));
+  };
+  navTo("history");
+  check("sidebar 'Run history' section: history shown, last run + KPIs hidden", () => {
+    assert.strictEqual(env.dom.byId["run-history"].hidden, false);
+    assert.strictEqual(env.dom.byId["kpi-panel"].hidden, true);
+    assert.strictEqual(env.dom.byId["random-run-summary"].hidden, true);
+  });
+  navTo("dashboard");
+  check("sidebar 'Dashboard' section: last run + KPIs back, history hidden", () => {
+    assert.strictEqual(env.dom.byId["run-history"].hidden, true);
+    assert.strictEqual(env.dom.byId["kpi-panel"].hidden, false);
+    assert.strictEqual(env.dom.byId["random-run-summary"].hidden, false);
+  });
+
   env.dom.byId["logout-link"].click();
   check("logout hides the KPI panel", () => assert.strictEqual(env.dom.byId["kpi-panel"].hidden, true));
 

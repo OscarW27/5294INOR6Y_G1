@@ -90,14 +90,24 @@ p  { margin: 0 0 var(--space-3); }
 .sidebar-toggle:focus-visible, .side-nav a:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 1px; }
 .sidebar-toggle svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 150ms ease; }
 .side-nav a .nav-label { white-space: nowrap; }
+.brand-block { display: flex; flex-direction: column; min-width: 0; }
+.brand-sub { font-size: var(--font-size-meta); color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand-sub:empty { display: none; }
+.persona-tabs[hidden] { display: none; }
+.side-nav a[hidden] { display: none; } /* display:flex would otherwise beat the hidden attribute */ /* display:inline-flex would otherwise beat the hidden attribute */
+.sidebar .mode-switch { display: flex; margin: calc(-1 * var(--space-2)) var(--space-2) var(--space-4); }
+.sidebar .mode-switch[hidden] { display: none; }
+.sidebar .mode-switch button { flex: 1; padding: var(--space-1) var(--space-2); font-size: var(--font-size-meta); }
 .side-nav--bottom { margin-top: auto; padding-top: var(--space-3); border-top: var(--border-width) solid var(--border-subtle); }
 
 html.sb-collapsed .shell > .sidebar { flex-basis: var(--sidebar-collapsed-width); padding-left: var(--space-2); padding-right: var(--space-2); overflow-x: hidden; }
 html.sb-collapsed .shell > .sidebar .sidebar-head { justify-content: center; padding-left: 0; }
 html.sb-collapsed .shell > .sidebar .sidebar-toggle svg { transform: scaleX(-1); }
 html.sb-collapsed .shell > .sidebar .side-nav a { justify-content: center; padding: var(--space-2) 0; }
+html.sb-collapsed .shell > .sidebar .mode-switch { display: none; } /* no room for the two labels */
 /* Hidden visually, still read out as the link name. */
 html.sb-collapsed .shell > .sidebar .brand,
+html.sb-collapsed .shell > .sidebar .brand-sub,
 html.sb-collapsed .shell > .sidebar .nav-label {
   position: absolute;
   width: 1px;
@@ -106,6 +116,29 @@ html.sb-collapsed .shell > .sidebar .nav-label {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* Logged out (dashboard login screen): no sidebar until a role is picked. */
+html.logged-out .shell > .sidebar { display: none; }
+/* Bottom sidebar section holds only Log out: hidden for a visitor who is not logged in (class set in <head>). */
+html.no-session .side-nav--bottom { display: none; }
+
+/* Privacy + Technical: flush in the bottom-right corner of every page, square white block, no border. */
+.corner-links {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-meta);
+  background: var(--surface-card);
+  border-radius: 0;
+}
+.corner-links a { color: var(--text-muted); }
+.corner-links a:hover { color: var(--text-primary); text-decoration: none; }
+.corner-links a[aria-current="page"] { color: var(--text-secondary); font-weight: 600; }
 
 /* Column layout so the footer sits at the bottom of short pages and sticks while scrolling long ones. */
 .shell-main { flex: 1; min-width: 0; display: flex; flex-direction: column; min-height: 100vh; }
