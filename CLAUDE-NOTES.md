@@ -53,7 +53,7 @@
 
 ## Sidebar and navigation
 
-- 2026-11-26 — Sidebar (all 7 sidebar pages): only Dashboard, Settings, Privacy (+ Log out on the dashboard) in the main nav. Technical sits in a bottom section (`.side-nav--bottom`, `margin-top: auto`) and is marked current on technical, design, ontology and sources. The Technical-only `.site-foot` footers were removed (the CSS rule is still there, unused). Design, Sources and both Ontology views (raw and `?viewer`) have a "Back to Technical" link (`.back-link`). Technical links to Sources.
+- 2026-11-26 — Sidebar (all 7 sidebar pages): only Dashboard, Settings, Privacy in the main nav. Technical sits in a bottom section, with Log out under it (dashboard page only) (`.side-nav--bottom`, `margin-top: auto`) and is marked current on technical, design, ontology and sources. The Technical-only `.site-foot` footers were removed (the CSS rule is still there, unused). Design, Sources and both Ontology views (raw and `?viewer`) have a "Back to Technical" link (`.back-link`). Technical links to Sources.
 - 2026-11-26 — Collapsible sidebar: the toggle button sits next to the brand. `site/sidebar.js` (loaded in `<head>` so the class is set before first paint) toggles `html.sb-collapsed`, which narrows the sidebar to `--sidebar-collapsed-width` (56px). The state is kept in localStorage `runtracker_sidebar_collapsed`. Link text is in `.nav-label` spans, visually hidden when collapsed but still read as the link name; collapsed links get a `title` tooltip. After toggling it fires a `resize` event so the KPI charts and the ontology viewer re-fit. Verified in headless Chrome: 240 → 56px, the state carries across pages, Technical stays bottom-left, no overflow, no exceptions.
 
 ## Commenting style
