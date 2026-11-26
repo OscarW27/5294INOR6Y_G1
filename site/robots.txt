@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oscarw27.github.io/5294INOR6Y_G1/sitemap.xml
