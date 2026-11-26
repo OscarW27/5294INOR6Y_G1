@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design system — RunTracker</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<script src="sidebar.js"></script>
+<style>
+  .st-section { margin-top: var(--space-7); }
+  .st-section > .meta-label { display: block; margin-bottom: var(--space-1); }
+  .st-section > h2 { margin-top: 0; }
+  .st-rule { border: none; border-top: var(--border-width) solid var(--border-subtle); margin: var(--space-6) 0 0; }
+
+  .st-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--space-3); }
+  .st-swatch {
+    border: var(--border-width) solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--surface-card);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  .st-swatch__chip { height: var(--space-7); border-bottom: var(--border-width) solid var(--border-subtle); }
+  .st-swatch__body { padding: var(--space-2) var(--space-3); }
+  .st-swatch__name { font-family: var(--font-mono); font-size: var(--font-size-meta); color: var(--text-primary); }
+  .st-swatch__value { font-family: var(--font-mono); font-size: var(--font-size-meta); color: var(--text-secondary); }
+  .st-swatch__usage { font-size: var(--font-size-meta); color: var(--text-muted); margin-top: var(--space-1); display: block; }
+
+  .st-type-row {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    gap: var(--space-4);
+    align-items: baseline;
+    padding: var(--space-3) 0;
+    border-bottom: var(--border-width) solid var(--border-subtle);
+  }
+  .st-telemetry {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    padding: var(--space-4);
+    background: var(--surface-card);
+    border: var(--border-width) solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+  }
+  .st-telemetry > div { min-width: 8rem; }
+  .st-telemetry .metric { font-size: var(--font-size-metric); line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; color: var(--text-primary); display: block; }
+  .st-telemetry .meta-label { display: block; margin-top: var(--space-1); }
+
+  .st-space-row { display: grid; grid-template-columns: 8rem auto auto; gap: var(--space-3); align-items: center; padding: var(--space-1) 0; }
+  .st-space-bar { height: var(--space-3); background: var(--green-600); border-radius: var(--radius-sm); }
+  .st-space-value { font-family: var(--font-mono); font-size: var(--font-size-meta); color: var(--text-secondary); }
+
+  .st-demo {
+    border: var(--border-width) solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--surface-page);
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+  .st-demo > .meta-label { display: block; margin-bottom: var(--space-2); }
+  .st-note { color: var(--text-muted); font-size: var(--font-size-meta); }
+
+  /* Button-state demos: simulated hover/active via the same tokens */
+  .st-btn-hover { background: var(--action-bg-hover) !important; }
+  .st-btn-active { background: var(--green-900) !important; box-shadow: inset 0 1px 2px rgba(13, 22, 38, 0.2); }
+  .st-sidebardemo { display: flex; border: var(--border-width) solid var(--border-subtle); border-radius: var(--radius-md); background: var(--surface-page); overflow: hidden; min-height: 16rem; }
+  .st-sidebardemo .sidebar { position: static; height: auto; flex: 0 0 12rem; border-right: var(--border-width) solid var(--border-subtle); }
+  .st-sidebardemo .st-sb-main { flex: 1; padding: var(--space-4); background: var(--surface-page); }
+
+  .st-spark { width: 100%; height: 8rem; display: block; }
+  .st-spark .st-spark-line { fill: none; stroke: var(--chart-trend); stroke-width: 2; stroke-linecap: round; }
+
+  .st-rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: var(--space-3); }
+  .st-guard {
+    background: var(--surface-card);
+    border: var(--border-width) solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-3) var(--space-4);
+    margin: 0;
+  }
+  .st-guard dt { font-weight: 600; color: var(--text-primary); }
+  .st-guard dd { margin: var(--space-1) 0 0; color: var(--text-secondary); font-size: var(--font-size-meta); }
+
+  .st-spec { width: 100%; border-collapse: collapse; margin-top: var(--space-3); }
+  .st-spec th { text-align: left; font-size: var(--font-size-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); border-bottom: var(--border-width) solid var(--border-subtle); padding: var(--space-2) var(--space-3); }
+  .st-spec td { border-bottom: var(--border-width) solid var(--border-subtle); padding: var(--space-2) var(--space-3); vertical-align: top; }
+  .st-spec td:first-child { font-family: var(--font-mono); font-size: var(--font-size-meta); }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <span class="brand">RunTracker</span>
+      <button type="button" class="sidebar-toggle" aria-label="Collapse sidebar" aria-expanded="true"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2.5" width="12" height="11" rx="1.5"/><path d="M6 2.5v11"/><path d="M10.5 6.5 9 8l1.5 1.5"/></svg></button>
+    </div>
+    <nav class="side-nav" aria-label="Site">
+      <a href="index.html"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg><span class="nav-label">Dashboard</span></a>
+      <a href="settings.html"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.2"/><path d="M8 2v2M8 12v2M2 8h2M12 8h2M3.8 3.8l1.4 1.4M10.8 10.8l1.4 1.4M12.2 3.8l-1.4 1.4M5.2 10.8l-1.4 1.4"/></svg><span class="nav-label">Settings</span></a>
+      <a href="privacy.html"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7"/></svg><span class="nav-label">Privacy</span></a>
+    </nav>
+  
+  <nav class="side-nav side-nav--bottom" aria-label="Technical">
+    <a href="technical.html" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4 2 8l4 4M10 4l4 4-4 4"/></svg><span class="nav-label">Technical</span></a>
+  </nav>
+</aside>
+
+  <div class="shell-main">
+  <main class="page">
+
+  <a class="back-link" href="technical.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>Back to Technical</a>
+  <h1>Design system</h1>
+  <p class="st-note">This page is the live source of truth: every rule below is implemented with the exact tokens and components the app imports (<code>css/tokens.css</code> + <code>css/components.css</code>). Style: Stripe Dashboard, adapted to a dark green primary brand color. Calm, precise, information-dense, light mode only.</p>
+
+  <section class="st-section" id="color-tokens">
+    <span class="meta-label">Guideline: color usage</span>
+    <h2>Color tokens</h2>
+    <p class="st-note">Chip backgrounds are set with <code>background: var(--name)</code>; the hex codes are read live from <code>getComputedStyle</code>. Raw hex values live only inside <code>css/tokens.css</code>.</p>
+    <div class="st-swatches" id="swatch-grid"></div>
+
+    <table class="st-spec">
+      <thead><tr><th>Group</th><th>Tokens</th><th>Rule</th></tr></thead>
+      <tbody>
+        <tr><td>Surfaces</td><td>--surface-page · --surface-card · --surface-subtle · --surface-inset</td><td>Page canvas and sidebar <strong>#F6F9FC</strong>; cards and tables <strong>#FFFFFF</strong>. Panels never use fills darker than <strong>--surface-inset</strong> to communicate.</td></tr>
+        <tr><td>Text hierarchy</td><td>--text-primary · --text-secondary · --text-muted · --text-inverted</td><td>Primary text <strong>#1A1F36</strong> — never pure black. Hierarchy by weight and tone, not hue.</td></tr>
+        <tr><td>Borders</td><td>--border-subtle · --border-default · --border-strong · --border-focus</td><td>Crisp 1px <strong>#E3E8EE</strong> hairlines carry structure.</td></tr>
+        <tr><td>Primary actions</td><td>--action-bg · --action-bg-hover · --action-fg · --action-soft-bg · --action-soft-text · --action-link</td><td>One dark green accent <strong>#0F5132</strong>, hover <strong>#0A3622</strong>.</td></tr>
+        <tr><td>Highlights</td><td>--accent-soft</td><td>Soft tint <strong>#E6F4EA</strong>: active nav pill, focus halos, subtle wells. Never used as a large fill.</td></tr>
+        <tr><td>Intensity zones</td><td>--zone-recovery-* · --zone-steady-* · --zone-intensive-*</td><td>Soft pastel fills with dark, high-contrast text. Reserved exclusively for training-intensity semantics.</td></tr>
+        <tr><td>Depth</td><td>--shadow-card · --shadow-pop · --shadow-btn</td><td>Whisper-thin, multi-layered shadows on primary cards, dropdowns/tooltips, and buttons. Structure otherwise comes from 1px borders.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="st-section" id="typography">
+    <span class="meta-label">Guideline: typography hierarchy, tabular numerals</span>
+    <h2>Typography and numbers</h2>
+
+    <div class="st-type-row"><span class="meta-label">display · --font-size-display</span><span style="font-size:var(--font-size-display);font-weight:600;letter-spacing:-0.02em;line-height:1.1">Steady week</span></div>
+    <div class="st-type-row"><span class="meta-label">title (h1) · --font-size-title</span><h1 style="margin:0">Training overview</h1></div>
+    <div class="st-type-row"><span class="meta-label">heading (h2) · --font-size-heading</span><h2 style="margin:0">Last 30 days</h2></div>
+    <div class="st-type-row"><span class="meta-label">subheading (h3) · --font-size-subheading</span><h3 style="margin:0">Heart-rate zones</h3></div>
+    <div class="st-type-row"><span class="meta-label">body · --font-size-body</span><p style="margin:0">Run history is sorted newest first and stays readable at a 1.55 line height.</p></div>
+    <div class="st-type-row"><span class="meta-label">table header · --font-size-meta</span><span class="meta-label" style="text-transform:none;letter-spacing:0">Table column headers: 12px, 500 weight, uppercase, muted</span></div>
+
+    <h3>Tabular telemetry readouts</h3>
+    <p class="st-note">Every metric, chart axis and table column uses <code>font-variant-numeric: tabular-nums</code> (<code>.metric</code> / <code>.tnum</code>) so digits align vertically when scanning.</p>
+    <div class="st-telemetry">
+      <div><span class="metric">152</span><span class="meta-label">avg bpm</span></div>
+      <div><span class="metric">5:24</span><span class="meta-label">pace · min/km</span></div>
+      <div><span class="metric">12.40</span><span class="meta-label">distance · km</span></div>
+      <div><span class="metric">214</span><span class="meta-label">elevation · m</span></div>
+      <div><span class="metric">1:38:12</span><span class="meta-label">duration · h:mm:ss</span></div>
+    </div>
+  </section>
+
+  <section class="st-section" id="spacing">
+    <span class="meta-label">Guideline: spacing scale, calm density</span>
+    <h2>Spacing and layout grid</h2>
+    <p class="st-note">4px base unit. Eight steps from <code>--space-1</code> to <code>--space-8</code>. Compact tables and dense KPI rows matter more than whitespace here; sections still separate by <code>--space-6</code> or more.</p>
+    <div id="space-scale"></div>
+  </section>
+
+  <section class="st-section" id="buttons">
+    <span class="meta-label">Guideline: buttons · 6px radius · shadow-btn · no gradients</span>
+    <h2>Button states</h2>
+    <div class="st-demo">
+      <p>
+        <button type="button" class="btn btn--primary">Primary rest</button>
+        <button type="button" class="btn btn--primary st-btn-hover">Primary hover</button>
+        <button type="button" class="btn btn--primary st-btn-active">Primary pressed</button>
+        <button type="button" class="btn btn--primary" disabled>Primary disabled</button>
+      </p>
+      <p>
+        <button type="button" class="btn">Default rest</button>
+        <button type="button" class="btn st-btn-hover" style="background:var(--surface-inset)">Default hover</button>
+        <button type="button" class="btn btn--ghost">Ghost</button>
+      </p>
+      <p class="st-note">Primary: <code>--action-bg</code> → hover <code>--action-bg-hover</code> (<code>#0A3622</code>), <code>--shadow-btn</code>, radius <code>--radius-sm</code> (6px). Ghost: white surface, 1px <code>--border-subtle</code>, no shadow. Focus is a 1px <code>--border-focus</code> outline plus a 3px <code>--accent-soft</code> halo on inputs.</p>
+    </div>
+  </section>
+
+  <section class="st-section" id="navigation">
+    <span class="meta-label">Guideline: fixed narrow sidebar · 240px · quiet links</span>
+    <h2>Sidebar and navigation</h2>
+    <div class="st-demo st-sidebardemo">
+      <aside class="sidebar">
+        <span class="brand">RunTracker</span>
+        <nav class="side-nav" aria-label="Sidebar demo">
+          <a href="#navigation" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg><span class="nav-label">Dashboard</span></a>
+          <a href="#navigation"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.2"/><path d="M8 2v2M8 12v2M2 8h2M12 8h2M3.8 3.8l1.4 1.4M10.8 10.8l1.4 1.4M12.2 3.8l-1.4 1.4M5.2 10.8l-1.4 1.4"/></svg><span class="nav-label">Settings</span></a>
+          <a href="#navigation"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7"/></svg><span class="nav-label">Privacy</span></a>
+        </nav>
+      </aside>
+      <div class="st-sb-main">
+        <span class="meta-label">Main column</span>
+        <p class="st-note" style="margin-top:var(--space-2)">Fixed 240px left sidebar on <code>--surface-page</code>, separated by a 1px hairline. Links are quiet 16px icon-and-text; the active item gets dark green text (<code>--action-bg</code>) on the <code>#E6F4EA</code> pill (<code>--accent-soft</code>); hover is a plain <code>--surface-inset</code> background. The old top header bar is retired.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="st-section" id="badges">
+    <span class="meta-label">Guideline: semantic badges · soft fills, dark text</span>
+    <h2>Semantic status badges</h2>
+    <div class="st-demo">
+      <p>
+        <span class="badge-intensity badge-intensity--recovery">Recovery</span>
+        <span class="badge-intensity badge-intensity--steady">Steady</span>
+        <span class="badge-intensity badge-intensity--intensive">Intensive</span>
+        <span class="badge" style="margin-left:var(--space-4)">FLAG</span>
+        <span class="st-note" style="margin-left:var(--space-2)">Muted green · amber · red pastels with 1px-matching fills; the FLAG tag reuses the red pair.</span>
+      </p>
+      <p class="st-note">Soft fill + dark high-contrast text, no heavy borders. A badge always means that intensity — never decorative.</p>
+    </div>
+  </section>
+
+  <section class="st-section" id="kpis">
+    <span class="meta-label">Guideline: KPI row · label above, figure below, delta beside</span>
+    <h2>KPI cards</h2>
+    <div class="st-demo">
+      <div class="kpi-cards" style="margin-top:0">
+        <div class="kpi-card">
+          <h4>Avg pace</h4>
+          <div class="kpi-stats">
+            <div class="kpi-stat"><b>5:24</b><span>min/km · last 30 runs</span></div>
+            <div class="kpi-stat"><b>4:58</b><span>best 5 km · this quarter</span></div>
+          </div>
+          <p class="kpi-sub"><em class="kpi-delta up" style="font-style:normal">−0:06</em> vs previous 30 runs</p>
+        </div>
+        <div class="kpi-card">
+          <h4>Time in heart-rate zones</h4>
+          <div class="kpi-stats">
+            <div class="kpi-stat"><b>62%</b><span>Recovery</span></div>
+            <div class="kpi-stat"><b>28%</b><span>Steady</span></div>
+            <div class="kpi-stat"><b>10%</b><span>Intensive</span></div>
+          </div>
+          <p class="kpi-sub">Zone share of total training time</p>
+          <div class="zonebar">
+            <i class="z-low" style="width:62%">62%</i>
+            <i class="z-mod" style="width:28%">28%</i>
+            <i class="z-high" style="width:10%"></i>
+          </div>
+        </div>
+        <div class="kpi-card kpi-card--placeholder">
+          <h4>Weekly elevation gain</h4>
+          <p style="margin:0">Placeholder card: dashed border, <code>--surface-subtle</code>, no shadow.</p>
+        </div>
+      </div>
+      <p class="st-note" style="margin-top:var(--space-3)">Cards are white with a 1px <code>--border-subtle</code> frame and <code>--shadow-card</code>. The label sits above, the large bold tabular figure below, and a small muted comparison delta under the group (<code>.kpi-delta</code>; green when favorable, red when not).</p>
+    </div>
+  </section>
+
+  <section class="st-section" id="tables">
+    <span class="meta-label">Guideline: data tables · compact · tabular · right-aligned numbers</span>
+    <h2>Data tables</h2>
+    <table class="data-table">
+      <thead><tr><th>Workout</th><th>Intensity</th><th class="num">Distance · km</th><th class="num">Avg HR · bpm</th><th class="num">Pace · min/km</th></tr></thead>
+      <tbody>
+        <tr class="data-row"><td>2024-03-16</td><td><span class="badge-intensity badge-intensity--recovery">Recovery</span></td><td class="num">13.84</td><td class="num">144</td><td class="num">5:36</td></tr>
+        <tr class="data-row"><td>2024-03-12</td><td><span class="badge-intensity badge-intensity--steady">Steady</span></td><td class="num">10.99</td><td class="num">150</td><td class="num">5:26</td></tr>
+        <tr class="data-row"><td>2024-03-09</td><td><span class="badge-intensity badge-intensity--intensive">Intensive</span></td><td class="num">8.20</td><td class="num">168</td><td class="num">4:48</td></tr>
+        <tr class="data-row"><td>2024-03-05</td><td><span class="badge-intensity badge-intensity--steady">Steady</span></td><td class="num">12.31</td><td class="num">149</td><td class="num">5:31</td></tr>
+      </tbody>
+    </table>
+    <p class="st-note">Compact row padding (<code>--space-2 × --space-3</code>), 12px muted uppercase headers at 500 weight, hairline row dividers, right-aligned numbers in <code>.num</code> columns with tabular numerals, and a faint <code>#F7FAFC</code> (<code>--surface-hover</code>) row hover. Hover this table to see it.</p>
+  </section>
+
+  <section class="st-section" id="charts">
+    <span class="meta-label">Guideline: charts · 2px green stroke · dashed gridlines · white tooltips</span>
+    <h2>Chart styling</h2>
+    <div class="st-demo">
+      <div class="chart-frame" style="margin:0">
+        <h4 class="chart-frame__title">Heart-rate trace — runner 897592</h4>
+        <svg class="st-spark" viewBox="0 0 600 120" role="img" aria-label="Sample heart-rate line chart">
+          <line class="grid-line" x1="0" y1="30" x2="600" y2="30"/>
+          <line class="grid-line" x1="0" y1="60" x2="600" y2="60"/>
+          <line class="grid-line" x1="0" y1="90" x2="600" y2="90"/>
+          <path class="st-spark-line" d="M0 84 C40 80, 60 62, 100 60 C150 58, 170 74, 210 72 C260 70, 280 34, 330 32 C370 31, 390 55, 430 54 C480 52, 520 66, 600 64"/>
+          <text class="axis-label" x="0" y="24">bpm</text>
+        </svg>
+        <p class="st-note" style="margin:var(--space-2) 0 0">Faint horizontal <strong>dashed</strong> gridlines (<code>--chart-grid</code>, <code>stroke-dasharray: 3 4</code>), a crisp 2px dark green series stroke (<code>--chart-trend</code>), minimal axis clutter with muted 12px labels, and clean white hover tooltips (<code>.chart-tip</code>: white surface, hairline border, <code>--shadow-pop</code>). Reference lines are dashed <code>--chart-reference</code>; the flag zone uses the reserved red pair.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="st-section" id="guardrails">
+    <span class="meta-label">Guideline: what stays out</span>
+    <h2>Visual guardrails</h2>
+    <div class="st-rows">
+      <dl class="st-guard"><dt>One accent, used sparingly</dt><dd>#0F5132 for primary actions, links, and the active nav state; #0A3622 on hover. No gradients, no glows.</dd></dl>
+      <dl class="st-guard"><dt>Structure from 1px lines</dt><dd>#E3E8EE hairlines everywhere; shadows only whisper-thin on primary cards, dropdowns, and buttons.</dd></dl>
+      <dl class="st-guard"><dt>Ink, not black</dt><dd>#1A1F36 primary text; #697386 secondary; #8792A2 muted metadata. Hierarchy from weight and tone.</dd></dl>
+      <dl class="st-guard"><dt>Numbers align, always</dt><dd>Tabular numerals on every metric, chart axis, and table column; numerals right-aligned, text left-aligned.</dd></dl>
+      <dl class="st-guard"><dt>Zone hues are semantic</dt><dd>Green/amber/red pastel badges only mean training intensity or status flags — never decoration.</dd></dl>
+      <dl class="st-guard"><dt>Light mode only, calm motion</dt><dd>No dark theme, glassmorphism, or decorative animation; 6px controls, 8px cards.</dd></dl>
+    </div>
+  </section>
+
+  <hr class="st-rule">
+  <p class="meta-label">Source of truth: this page · tokens: css/tokens.css · components: css/components.css</p>
+</main>
+
+  </div>
+</div>
+
+<script>
+// Swatches: background via var(--name), resolved value read live from CSS.
+var SEMANTIC_TOKENS = [
+  ["--surface-page", "Page canvas + sidebar #F6F9FC"],
+  ["--surface-card", "Card + table surface #FFFFFF"],
+  ["--surface-hover", "Data table row hover"],
+  ["--surface-inset", "Tracks, wells, hover fills"],
+  ["--text-primary", "Headings + body ink #1A1F36"],
+  ["--text-secondary", "Secondary text #697386"],
+  ["--text-muted", "Metadata, axis labels #8792A2"],
+  ["--text-inverted", "Text on dark fills"],
+  ["--border-subtle", "Hairlines + card borders #E3E8EE"],
+  ["--border-strong", "Hover / emphasized borders"],
+  ["--border-focus", "Keyboard focus outline"],
+  ["--action-bg", "Primary accent #0F5132"],
+  ["--action-bg-hover", "Accent hover #0A3622"],
+  ["--action-fg", "Text on primary accent"],
+  ["--action-soft-bg", "Active nav pill #E6F4EA"],
+  ["--action-soft-text", "Green text on tint"],
+  ["--action-link", "Link color"],
+  ["--accent", "Persona accent (recolorable)"],
+  ["--accent-soft", "Persona accent tint"],
+  ["--persona-beginner", "Persona: Beginner runner"],
+  ["--persona-advanced", "Persona: Advanced runner"],
+  ["--persona-coach", "Persona: Coach"],
+  ["--persona-medical", "Persona: Medical professional"],
+  ["--zone-recovery-bg", "Recovery zone: bars, good fills"],
+  ["--zone-recovery-soft", "Recovery badge fill"],
+  ["--zone-recovery-text", "Recovery badge text"],
+  ["--zone-steady-bg", "Steady zone: bars, warn fills"],
+  ["--zone-steady-soft", "Steady badge fill"],
+  ["--zone-steady-text", "Steady badge text"],
+  ["--zone-intensive-bg", "Intensive zone: bars, alerts"],
+  ["--zone-intensive-soft", "Intensive badge fill"],
+  ["--zone-intensive-text", "Intensive badge text"],
+  ["--chart-grid", "Dashed chart gridlines"],
+  ["--chart-trend", "Chart series stroke (2px green)"],
+  ["--chart-focus", "Latest-run dot"],
+  ["--chart-flag", "Flagged points"],
+  ["--status-neutral", "Muted bar fills (.bar-fill.mute)"]
+];
+
+(function renderSwatches() {
+  var grid = document.getElementById("swatch-grid");
+  SEMANTIC_TOKENS.forEach(function (t) {
+    var name = t[0], usage = t[1];
+    var card = document.createElement("div");
+    card.className = "st-swatch";
+    var chip = document.createElement("div");
+    chip.className = "st-swatch__chip";
+    chip.style.background = "var(" + name + ")";
+    chip.style.borderBottom = "var(--border-width) solid var(--border-subtle)";
+    var isDark = /^--(zone|persona)-(recovery|steady|intensive|beginner|advanced|coach|medical)-bg$/.test(name) ||
+      name === "--accent" || name === "--action-bg" || name === "--action-bg-hover";
+    if (isDark) chip.style.color = "var(--text-inverted)";
+    var body = document.createElement("div");
+    body.className = "st-swatch__body";
+    var nm = document.createElement("div"); nm.className = "st-swatch__name"; nm.textContent = name;
+    var val = document.createElement("div"); val.className = "st-swatch__value";
+    val.textContent = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    var use = document.createElement("span"); use.className = "st-swatch__usage"; use.textContent = usage;
+    body.appendChild(nm); body.appendChild(val); body.appendChild(use);
+    card.appendChild(chip); card.appendChild(body);
+    grid.appendChild(card);
+  });
+})();
+
+// Spacing scale visualization: each bar is exactly var(--space-N) wide.
+(function renderSpacing() {
+  var box = document.getElementById("space-scale");
+  ["--space-1","--space-2","--space-3","--space-4","--space-5","--space-6","--space-7","--space-8"].forEach(function (t) {
+    var row = document.createElement("div"); row.className = "st-space-row";
+    var label = document.createElement("span"); label.className = "st-space-value"; label.textContent = t;
+    var bar = document.createElement("div"); bar.className = "st-space-bar"; bar.style.width = "var(" + t + ")";
+    var px = document.createElement("span"); px.className = "st-space-value";
+    px.textContent = getComputedStyle(document.documentElement).getPropertyValue(t).trim();
+    row.appendChild(label); row.appendChild(bar); row.appendChild(px);
+    box.appendChild(row);
+  });
+})();
+</script>
+</body>
+</html>

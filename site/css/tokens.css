@@ -1,0 +1,149 @@
+:root {
+
+  /* Neutral ramp (calm, slightly cool) */
+  --ink-0: #ffffff;
+  --ink-25: #fbfdff;
+  --ink-50: #f6f9fc;   /* page canvas */
+  --ink-75: #f7fafc;   /* row hover */
+  --ink-100: #eef2f6;
+  --ink-200: #e3e8ee;  /* hairline borders */
+  --ink-300: #cdd4dd;
+  --ink-400: #8792a2;  /* muted metadata text */
+  --ink-500: #697386;  /* secondary text */
+  --ink-600: #4f566b;
+  --ink-700: #303540;
+  --ink-800: #1a1f36;  /* primary text (never pure black) */
+  --ink-900: #131722;
+
+  /* Brand greens */
+  --green-050: #e6f4ea;   /* soft accent tint: active nav, highlights */
+  --green-100: #d3ebdc;
+  --green-600: #0f5132;   /* primary accent */
+  --green-700: #0a3622;   /* hover state */
+  --green-900: #062b1a;   /* pressed state */
+
+  --amber-050: #fcf2d8;
+  --amber-500: #e2a33c;
+  --amber-600: #8a5a00;
+
+  --red-050: #fce8e8;
+  --red-600: #c63b3b;
+  --red-700: #a32b2b;
+
+  --blue-050: #e6effc;
+  --blue-600: #1f6feb;
+  --blue-700: #1a5ecb;
+
+  --orange-050: #fdeee0;
+  --orange-600: #c05621;
+
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --font-size-display: 2.5rem;
+  --font-size-title: 1.75rem;
+  --font-size-heading: 1.25rem;
+  --font-size-subheading: 1.0625rem;
+  --font-size-body: 0.9375rem;
+  --font-size-metric: 1.75rem;
+  --font-size-meta: 0.75rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --radius-sm: 6px;    /* buttons + inputs */
+  --radius-md: 8px;    /* cards + containers */
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  --border-width: 1px;
+
+  /* Whisper-thin, multi-layered shadows — primary cards, dropdowns, buttons only */
+  --shadow-card: 0 1px 1px rgba(13, 22, 38, 0.04), 0 2px 6px rgba(13, 22, 38, 0.04);
+  --shadow-pop: 0 2px 4px rgba(13, 22, 38, 0.06), 0 8px 24px rgba(13, 22, 38, 0.10);
+  --shadow-btn: 0 1px 2px rgba(13, 22, 38, 0.06);
+
+  /* Surfaces */
+  --surface-page: var(--ink-50);
+  --surface-card: var(--ink-0);
+  --surface-subtle: var(--ink-75);
+  --surface-hover: var(--ink-75);
+  --surface-inset: var(--ink-100);
+
+  /* Text hierarchy */
+  --text-primary: var(--ink-800);
+  --text-secondary: var(--ink-500);
+  --text-muted: var(--ink-400);
+  --text-inverted: var(--ink-0);
+
+  /* Borders */
+  --border-subtle: var(--ink-200);
+  --border-default: var(--ink-200);
+  --border-strong: #c1c9d2;
+  --border-focus: var(--green-600);
+
+  /* Primary actions */
+  --action-link: var(--green-600);
+  --action-bg: var(--green-600);
+  --action-bg-hover: var(--green-700);
+  --action-fg: var(--ink-0);
+  --action-soft-bg: var(--green-050);
+  --action-soft-text: var(--green-600);
+
+  /* Accent (persona pages recolor this pair only) */
+  --accent: var(--green-600);
+  --accent-soft: var(--green-050);
+
+  --persona-beginner: var(--green-600);
+  --persona-beginner-soft: var(--green-050);
+  --persona-advanced: var(--blue-600);
+  --persona-advanced-soft: var(--blue-050);
+  --persona-coach: var(--orange-600);
+  --persona-coach-soft: var(--orange-050);
+  --persona-medical: var(--red-600);
+  --persona-medical-soft: var(--red-050);
+
+  /* Training-intensity semantics (soft badge fills, dark high-contrast text) */
+  --zone-recovery-bg: #0e7a4e;
+  --zone-recovery-soft: var(--green-050);
+  --zone-recovery-text: var(--green-700);
+  --zone-steady-bg: var(--amber-500);
+  --zone-steady-soft: var(--amber-050);
+  --zone-steady-text: var(--amber-600);
+  --zone-intensive-bg: var(--red-600);
+  --zone-intensive-soft: var(--red-050);
+  --zone-intensive-text: var(--red-700);
+
+  --status-neutral: var(--ink-300);
+
+  /* Charts: 2px dark-green strokes, faint dashed gridlines */
+  --chart-grid: var(--ink-200);
+  --chart-axis: var(--ink-300);
+  --chart-reference: var(--ink-800);
+  --chart-trend: var(--green-600);
+  --chart-context: #a7b0bf;
+  --chart-focus: var(--green-600);
+  --chart-flag: var(--red-600);
+  --chart-flag-zone: var(--red-050);
+
+  /* Dialog backdrop */
+  --scrim: rgba(26, 31, 54, 0.4);
+
+  /* Fixed left navigation */
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 56px;
+
+  --page-max-width: 72rem;
+  --content-measure: 50rem;
+}
+
+#app[data-theme="Beginner runner"]         { --accent: var(--persona-beginner); --accent-soft: var(--persona-beginner-soft); }
+#app[data-theme="Advanced runner"]         { --accent: var(--persona-advanced); --accent-soft: var(--persona-advanced-soft); }
+#app[data-theme="Coach"]                   { --accent: var(--persona-coach);    --accent-soft: var(--persona-coach-soft); }
+#app[data-theme="Medical professional"]    { --accent: var(--persona-medical);  --accent-soft: var(--persona-medical-soft); }

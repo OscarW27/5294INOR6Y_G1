@@ -261,6 +261,45 @@ check("Visual data: stats/zones/bars match the KPI values", () => {
   assert.ok(e.slice(0, 4).every(c => c.collapse === 1 && c.stats.length >= 2));
 });
 
+check("Chart 4 data: weekly zone shares (minute-weighted) + zone source per ISO week", () => {
+  const wz = RS.weeklyZonesKpi(ctx.metrics);
+  assert.deepStrictEqual(wz.weeks.map(w => w.label.slice(5)), ["W12", "W13", "W14", "W15", "W16", "W17", "W18", "W19"]);
+  assert.deepStrictEqual(wz.weeks.map(w => w.runs), [1, 0, 1, 0, 2, 0, 1, 1]);
+  assert.deepStrictEqual(wz.weeks.map(w => w.source), ["estimate", "rest", "time-series", "rest", "estimate", "rest", "estimate", "estimate"]);
+  const inW = l => REAL.filter(r => isoLabel(r.date) === l);
+  wz.weeks.filter(w => w.runs).forEach(w => {
+    const rs = inW(w.label), tot = rs.reduce((a, r) => a + r.min, 0);
+    ["low", "mod", "high"].forEach(z => near(w[z], rs.reduce((a, r) => a + r.min * rawZones[r.id][z], 0) / tot, 0.003, w.label + " " + z));
+    near(w.low + w.mod + w.high, 1, 1e-9);
+  });
+  near(wz.target, 0.8, 1e-12);
+  const card = RS.kpiCards(ctx, "Expert").find(c => c.id === "training_intensity_distribution");
+  assert.ok(card.wide && card.weekZones.weeks.length === 8);
+});
+
+check("Chart 6 data: every run a point; latest 6 judged against the earlier-run line", () => {
+  const s = RS.strainKpi(ctx.metrics), sc = RS.strainScatter(ctx.metrics, s);
+  assert.strictEqual(sc.points.length, 13);
+  assert.strictEqual(sc.points.filter(p => p.group === "latest").length, 6);
+  assert.strictEqual(sc.points.filter(p => p.flag).length, s.flagged);
+  const fit = ols(REAL.slice(0, 7).map(r => r.spd), REAL.slice(0, 7).map(r => r.hr));
+  sc.points.forEach((p, i) => { near(p.expected, fit.a + fit.b * REAL[i].spd, 1e-9); near(p.resid, REAL[i].hr - p.expected, 1e-9); });
+  assert.deepStrictEqual(sc.points.filter(p => p.flag).map(p => p.date), ["2014-03-19"]);
+});
+
+check("Reasoning popups: every card has text + sources; every source key is in site/sources.bib once", () => {
+  const bib = fs.readFileSync(path.join(ROOT, "site/sources.bib"), "utf8");
+  const keys = [...bib.matchAll(/^@\w+\s*\{\s*([^,\s]+)\s*,/gm)].map(m => m[1]);
+  assert.strictEqual(new Set(keys.map(k => k.toLowerCase())).size, keys.length, "no duplicate bib keys (case-insensitive)");
+  Object.keys(RS.SOURCES).forEach(k => assert.ok(keys.includes(k), "bib has " + k));
+  ["Beginner", "Expert"].forEach(mode => RS.kpiCards(ctx, mode).forEach(c => {
+    assert.ok(c.reason && c.reason.why.length >= 1 && c.reason.sources.length >= 1, c.id + " has reasoning");
+    c.reason.sources.forEach(k => assert.ok(RS.SOURCES[k], c.id + " source " + k + " is known"));
+  }));
+  let depth = 0; for (const ch of bib.replace(/^%.*$/gm, "")) { if (ch === "{") depth++; else if (ch === "}") depth--; assert.ok(depth >= 0); }
+  assert.strictEqual(depth, 0, "balanced braces in sources.bib");
+});
+
 // ============================ Part B: dashboard script with DOM stub ============================
 class El {
   constructor(tag, attrs) {
@@ -281,6 +320,9 @@ class El {
   prepend(c) { this.children.unshift(c); }
   addEventListener(t, f) { (this.listeners[t] = this.listeners[t] || []).push(f); }
   focus() {}
+  setAttribute(k, v) { this.attrs[k] = String(v); if (k === "class") { this.className = String(v); this._cls = new Set(String(v).split(/\s+/).filter(Boolean)); } }
+  getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; }
+  removeAttribute(k) { delete this.attrs[k]; }
   closest(sel) {
     if (sel === "button[data-mode]") return this.tag === "button" && this.dataset.mode ? this : null;
     if (sel === "a[data-section]") return this.tag === "a" && this.dataset.section ? this : null;
@@ -301,6 +343,7 @@ function makeDom(html) {
   const doc = {
     getElementById: id => byId[id],
     createElement: t => new El(t),
+    createElementNS: (ns, t) => new El(t),
     createTextNode: s => { const e = new El("#text"); e._text = String(s); return e; },
     querySelectorAll: sel => {
       if (sel === ".role-card") return all.filter(e => e._cls.has("role-card"));
@@ -374,9 +417,42 @@ const cardIds = env => env.dom.byId["kpi-cards"].children.map(c => c.dataset.kpi
     bars.forEach(b => { assert.strictEqual(b.children.length, 3); near(b.children.reduce((a, s) => a + parseFloat(s.style.width), 0), 100, 1e-6); });
     assert.strictEqual(has(cards[1], "bar-row").length, 5);
     has(cards[2], "bar-fill").forEach(f => assert.ok(parseFloat(f.style.width) >= 0 && parseFloat(f.style.width) <= 100));
-    assert.strictEqual(findAll(cards[3], e => e.tag === "details").length, 1);
+    assert.strictEqual(findAll(cards[3], e => e.tag === "details" && e.className !== "chart-table").length, 1); // + the chart's own "Table view"
     assert.strictEqual(has(cards[3], "badge").length >= 1, true); // run 2014-03-19 is flagged
     assert.strictEqual(findAll(cards[3], e => e.tag === "li").some(li => /FLAG/.test(li.textContent)), true);
+  });
+
+  check("rendered charts: weekly zone columns + 80 % line, scatter with one dot per run, tooltips, table views", () => {
+    const cards = env.dom.byId["kpi-cards"].children, cls = (n, c) => findAll(n, e => (e.getAttribute && (e.getAttribute("class") || "").split(" ").indexOf(c) >= 0) || (e.className || "").split(" ").indexOf(c) >= 0);
+    const tid = cards[0], strain = cards[3];
+    assert.ok(/kpi-card--wide/.test(tid.className) && /kpi-card--wide/.test(strain.className));
+    assert.strictEqual(findAll(tid, e => e.tag === "svg").length, 1);
+    assert.strictEqual(cls(tid, "ref").length, 1, "one 80 % reference line");
+    assert.strictEqual(cls(tid, "hit").length, 5, "one hover target per active week");
+    assert.ok(cls(tid, "seg-low").length >= 5);
+    assert.strictEqual(cls(strain, "dot").filter(e => e.tag === "circle").length, 13, "one dot per run");
+    assert.strictEqual(cls(strain, "dot--flag").filter(e => e.tag === "circle").length, 1);
+    assert.strictEqual(cls(strain, "trend").length, 1);
+    const hit = cls(strain, "hit")[0];
+    hit.listeners.focus[0]();
+    const tip = cls(strain, "chart-tip")[0];
+    assert.strictEqual(tip.hidden, false); assert.ok(/HR \d+ bpm at/.test(tip.textContent));
+    hit.listeners.blur[0]();
+    assert.strictEqual(tip.hidden, true);
+    assert.strictEqual(findAll(tid, e => e.tag === "table").length, 1);
+    assert.strictEqual(findAll(strain, e => e.tag === "tr").length, 14, "header + 13 rows");
+  });
+
+  check("'Why this?' button on every card opens the reasoning dialog with sources", () => {
+    const cards = env.dom.byId["kpi-cards"].children;
+    cards.forEach(c => assert.strictEqual(findAll(c, e => e.className === "btn-why").length, 1, c.dataset.kpi));
+    findAll(cards[0], e => e.className === "btn-why")[0].click();
+    const dlg = env.dom.byId["why-dialog"], body = env.dom.byId["why-body"];
+    assert.strictEqual(dlg.getAttribute("open"), "");
+    assert.ok(/Seiler \(2010\)/.test(body.textContent) && /Kenneally/.test(body.textContent));
+    assert.ok(findAll(body, e => e.tag === "a").some(a => a.href === "sources.html#seiler2010"));
+    env.dom.byId["why-close"].click();
+    assert.strictEqual(dlg.getAttribute("open"), null);
   });
 
   clickMode(env, "Beginner");

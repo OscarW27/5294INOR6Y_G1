@@ -246,6 +246,7 @@
   var DRIFT_MIN_MINUTES = 20;
   var SESSIONS_SHOWN = 5;
   var COUPLING_SHOWN = 5;
+  var LOW_SHARE_TARGET = 0.80; // ~80 % low-intensity share of polarized/pyramidal training (Seiler 2010)
 
   function pad2k(n) { return n < 10 ? "0" + n : "" + n; }
   function plural(n, word) { return n + " " + word + (n === 1 ? "" : "s"); }
@@ -494,6 +495,29 @@
     };
   }
 
+  // Per ISO week (same 8-week window as KPI 5): minute-weighted zone shares and where the zones came from.
+  function weeklyZonesKpi(ms) {
+    var byWeek = {};
+    ms.forEach(function (m) {
+      var w = weekIndex(m.day), b = byWeek[w] || (byWeek[w] = { runs: 0, minutes: 0, low: 0, mod: 0, high: 0, seriesMin: 0 });
+      b.runs++; b.minutes += m.minutes;
+      b.low += m.zones.low * m.minutes; b.mod += m.zones.mod * m.minutes; b.high += m.zones.high * m.minutes;
+      if (m.zoneSource === "TimeSeriesZones") b.seriesMin += m.minutes;
+    });
+    var last = weekIndex(ms[ms.length - 1].day), weeks = [], tot = { minutes: 0, low: 0 };
+    for (var w = last - WEEKS_SHOWN + 1; w <= last; w++) {
+      var b = byWeek[w];
+      if (!b) { weeks.push({ label: weekLabel(w), runs: 0, minutes: 0, low: 0, mod: 0, high: 0, source: "rest" }); continue; }
+      tot.minutes += b.minutes; tot.low += b.low;
+      weeks.push({
+        label: weekLabel(w), runs: b.runs, minutes: b.minutes,
+        low: b.low / b.minutes, mod: b.mod / b.minutes, high: b.high / b.minutes,
+        source: b.seriesMin <= 0 ? "estimate" : b.seriesMin >= b.minutes ? "time-series" : "mixed"
+      });
+    }
+    return { weeks: weeks, target: LOW_SHARE_TARGET, lowShare: tot.minutes > 0 ? tot.low / tot.minutes : null };
+  }
+
   // ---- expert one-line run description (from triples) ----
   function buildExpertRunLine(triples) {
     var cls = String(obj(triples, "rdf:type")).replace("endo:", "");
@@ -564,9 +588,26 @@
       return { m: m, expected: expected, resid: resid, flag: resid >= STRAIN_FLAG_BPM };
     });
     return {
-      rows: rows, baselineRuns: base.length, usedAll: usedAll, model: fit ? "line" : "mean",
+      rows: rows, baselineRuns: base.length, usedAll: usedAll, model: fit ? "line" : "mean", fit: fit, baseHr: baseHr,
       meanResid: mean(rows.map(function (r) { return r.resid; })),
       flagged: rows.filter(function (r) { return r.flag; }).length
+    };
+  }
+
+  // Every run as a dot (HR vs speed) plus the expected-HR line of KPI 6; the latest runs are the ones judged.
+  function strainScatter(ms, s) {
+    var latest = {};
+    s.rows.forEach(function (r) { latest[r.m.id] = r; });
+    function expectedAt(speed) { return s.fit ? s.fit.a + s.fit.b * speed : s.baseHr; }
+    return {
+      model: s.model, fit: s.fit, baseHr: s.baseHr, flagBpm: STRAIN_FLAG_BPM,
+      points: ms.map(function (m) {
+        var r = latest[m.id], exp = r ? r.expected : expectedAt(m.speed);
+        return {
+          id: m.id, date: m.date, speed: m.speed, pace: m.pace, hr: m.hrMean, expected: exp, resid: m.hrMean - exp,
+          group: r ? "latest" : "earlier", flag: !!(r && r.flag)
+        };
+      })
     };
   }
 
@@ -643,7 +684,8 @@
         { value: pct(t.all.mod) + " %", label: "moderate" },
         { value: pct(t.all.high) + " %", label: "high" }
       ],
-      zones: zoneRows.map(function (r) { return { label: r.label, low: r.z.low, mod: r.z.mod, high: r.z.high }; })
+      zones: zoneRows.map(function (r) { return { label: r.label, low: r.z.low, mod: r.z.mod, high: r.z.high }; }),
+      weekZones: weeklyZonesKpi(ms), wide: true
     });
 
     var k = couplingKpi(ms);
@@ -716,7 +758,8 @@
           return { label: r.m.date.slice(5), value: Math.max(r.resid, 0), cls: r.flag ? "bad" : "good",
             text: signed(r.resid, 1) + " bpm" + (r.flag ? " flag" : "") };
         })
-      }
+      },
+      scatter: strainScatter(ms, s), wide: true
     });
 
     cards.push({
@@ -726,15 +769,112 @@
     return cards;
   }
 
+  // Reasoning popups: bib keys match site/sources.bib (the /sources page anchors on these keys).
+  var SOURCES = {
+    endomondo_hr_v2: { cite: "Riccardo (2026)", title: "Endomondo Heart Rate Prediction Dataset V2 (the data on this dashboard)", link: "https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2" },
+    Lee2014: { cite: "Lee et al. (2014)", title: "Leisure-time running reduces all-cause and cardiovascular mortality risk", link: "https://doi.org/10.1016/j.jacc.2014.04.058" },
+    who2024: { cite: "World Health Organization (2024)", title: "Nearly 1.8 billion adults at risk of disease from not doing enough physical activity", link: "https://www.who.int/news/item/26-06-2024-nearly-1.8-billion-adults-at-risk-of-disease-from-not-doing-enough-physical-activity/" },
+    strava2025: { cite: "Strava (2025)", title: "Year in Sport trend report 2025 (industry report)", link: "https://press.strava.com/articles/strava-releases-12th-annual-year-in-sport-trend-report-2025" },
+    Pereira2021: { cite: "Pereira et al. (2021)", title: "Systematic review of psychological and behavioral correlates of recreational running", link: "https://doi.org/10.3389/fpsyg.2021.624783" },
+    Rapp2016: { cite: "Rapp & Cena (2016)", title: "Personal informatics for everyday life: how users without prior self-tracking experience engage with personal data", link: "https://doi.org/10.1016/j.ijhcs.2016.05.006" },
+    karahanoglu2021: { cite: "Karahanoğlu et al. (2021)", title: "How are sports-trackers used by runners? Running-related data, personal goals, and self-tracking in running", link: "https://doi.org/10.3390/s21113687" },
+    janssen2020: { cite: "Janssen et al. (2020)", title: "Understanding different types of recreational runners and how they use running-related technology", link: "https://doi.org/10.3390/ijerph17072276" },
+    seiler2010: { cite: "Seiler (2010)", title: "What is best practice for training intensity and duration distribution in endurance athletes?", link: "https://doi.org/10.1123/ijspp.5.3.276" },
+    kenneally2018: { cite: "Kenneally et al. (2018)", title: "The effect of periodization and training intensity distribution on middle- and long-distance running performance: a systematic review", link: "https://doi.org/10.1123/ijspp.2017-0327" },
+    Bourdon2017: { cite: "Bourdon et al. (2017)", title: "Monitoring athlete training loads: consensus statement", link: "https://doi.org/10.1123/IJSPP.2017-0208" },
+    halson2014: { cite: "Halson (2014)", title: "Monitoring training load to understand fatigue in athletes", link: "https://doi.org/10.1007/s40279-014-0253-z" },
+    Seshadri2019: { cite: "Seshadri et al. (2019)", title: "Wearable sensors for monitoring the physiological and biochemical profile of the athlete", link: "https://doi.org/10.1038/s41746-019-0150-9" },
+    Bodin2003: { cite: "Bodin & Hartig (2003)", title: "Does the outdoor environment matter for psychological restoration gained through running?", link: "https://doi.org/10.1016/S1469-0292(01)00038-3" },
+    tegart2025: { cite: "Tegart et al. (2025)", title: "Runnability: a scoping review", link: "https://doi.org/10.3390/ijerph22010071" }
+  };
+
+  var CARD_REASONS = {
+    weekly_consistency_and_persistence: {
+      why: [
+        "For health, running regularly matters more than running far or fast. In a study of about 55,000 adults, Lee et al. (2014) found that runners had a lower risk of dying from any cause and from heart disease than non-runners, and that even small amounts (under 51 minutes a week, once or twice a week, at slow speeds) gave most of that benefit.",
+        "The WHO (2024) reports that nearly 1.8 billion adults do not move enough. For a beginner the first goal is to keep running every week, so this card counts weeks with a run and streaks, not speed. Strava's 2025 trend report (an industry source) describes the same move towards everyday movement.",
+        "People who are new to self-tracking lose interest when data is complex or feels unrelated to their daily life (Rapp & Cena, 2016), so this is one plain number per week. Pereira et al. (2021) review the psychological and behavioural factors linked to recreational running, which is why the beginner view is about the running habit and not about performance."
+      ],
+      caveat: "The health studies describe groups of people and cannot predict what will happen to one runner. A week here is a calendar week (Monday to Sunday) with at least one run.",
+      sources: ["Lee2014", "who2024", "strava2025", "Rapp2016", "Pereira2021", "endomondo_hr_v2"]
+    },
+    simple_session_summaries: {
+      why: [
+        "Runners mostly check their tracker right after a run, looking at distance, duration and pace, and use that to judge progress towards their own goals (Karahanoğlu et al., 2021).",
+        "Different types of recreational runners use running technology differently, and less performance-focused runners use fewer features (Janssen et al., 2020). So the beginner view shows only these three familiar numbers, written as sentences.",
+        "People without self-tracking experience need data in plain, meaningful terms (Rapp & Cena, 2016), so units and terms such as pace are explained in words."
+      ],
+      caveat: "Pace comes from the average speed of the run (60 ÷ km/h), so pauses and hills are averaged out.",
+      sources: ["karahanoglu2021", "janssen2020", "Rapp2016", "endomondo_hr_v2"]
+    },
+    training_intensity_distribution: {
+      why: [
+        "Seiler (2010) found that successful endurance athletes across sports do about 80 % of their training sessions at low intensity and the rest at high intensity. That is why the weekly chart draws a line at 80 % low.",
+        "A systematic review of middle- and long-distance runners (Kenneally et al., 2018) linked polarized and pyramidal training, both mostly low intensity, to better performance. Showing one column per week lets you see whether easy running dominates over time, not only on one run.",
+        "Heart rate from a wearable is a practical way to measure how hard a run was for your body outside the lab (Seshadri et al., 2019), so the zones are based on heart rate."
+      ],
+      caveat: "Zones are a share of the highest heart rate recorded for you (at least 170 bpm), not lab-tested thresholds, so they are rough. For runs without a heart-rate time series the zones are estimated from the run's average and spread; in our check that estimate was off by about 6 to 10 percentage points. Under each week the chart shows where its zones came from.",
+      sources: ["seiler2010", "kenneally2018", "Seshadri2019", "endomondo_hr_v2"]
+    },
+    internal_vs_external_load_coupling: {
+      why: [
+        "The consensus statement on monitoring training load (Bourdon et al., 2017) recommends tracking both external load (what you did: distance, speed) and internal load (how your body responded: heart rate), and looking at how the two relate.",
+        "Halson (2014) describes heart-rate responses to a given workload as one way to monitor fatigue. Beats per kilometre combines both: fewer beats for the same distance means the run cost your body less.",
+        "Wearable sensors make this heart-rate measure available on every run (Seshadri et al., 2019)."
+      ],
+      caveat: "Hills, heat and wind also raise heart rate, which is why ascent per kilometre is shown alongside. Correlations from a handful of runs are unstable.",
+      sources: ["Bourdon2017", "halson2014", "Seshadri2019", "endomondo_hr_v2"]
+    },
+    periodized_load_progression: {
+      why: [
+        "Training load is monitored to check that the training fits what an athlete can handle and to lower the risk of overtraining, illness and injury (Bourdon et al., 2017; Halson, 2014).",
+        "Comparing this week's load (acute) with the average of the last four weeks (chronic) shows sudden jumps. The weekly volume and intensity trends show whether training builds up step by step, as periodized plans do (Kenneally et al., 2018).",
+        "Load is minutes multiplied by a zone weight (1 low, 2 moderate, 3 high). This simple heart-rate score is our choice and needs no resting heart rate."
+      ],
+      caveat: "The 0.8 to 1.3 'balanced' band is a common rule of thumb, not a validated threshold for this data, and the acute:chronic ratio is debated in the literature. Rest weeks pull the ratio down.",
+      sources: ["Bourdon2017", "halson2014", "kenneally2018", "endomondo_hr_v2"]
+    },
+    physiological_strain_and_fatigue_indicators: {
+      why: [
+        "Halson (2014) lists heart-rate measures, including heart rate during a standard bout of exercise, among the tools for monitoring fatigue. A heart rate clearly higher than usual for the same speed can point to fatigue, illness or heat stress.",
+        "The scatter chart fits the heart rate you usually have at each speed from your earlier runs, then shows how far your latest runs sit above that line. Monitoring is most useful when an athlete is compared with their own normal values (Bourdon et al., 2017).",
+        "Wearable heart-rate sensors make this check possible on every run without lab tests (Seshadri et al., 2019)."
+      ],
+      caveat: "This is a training signal, not a medical diagnosis. Heat, hills, caffeine, poor sleep or a loose chest strap can also raise heart rate. The +5 bpm flag line is our choice, not a value from the literature.",
+      sources: ["halson2014", "Bourdon2017", "Seshadri2019", "endomondo_hr_v2"]
+    },
+    not_available_beginner: {
+      why: [
+        "Where and why you run matters too. Bodin & Hartig (2003) studied whether running in a park or in a city changes the psychological restoration runners get, and Tegart et al. (2025) review 'runnability': how the environment supports running.",
+        "Runners also differ in why they run (Janssen et al., 2020; Pereira et al., 2021), so goal tags such as 'casual' or 'race training' would make the other cards more personal."
+      ],
+      caveat: "The Endomondo data has no GPS route, environment or run tags, so this card stays empty instead of guessing.",
+      sources: ["Bodin2003", "tegart2025", "janssen2020", "Pereira2021", "endomondo_hr_v2"]
+    },
+    not_available_expert: {
+      why: [
+        "Comparing planned with completed training would show whether the load in the other charts was intended, which is part of monitoring the training process (Bourdon et al., 2017)."
+      ],
+      caveat: "This needs a training plan or session tags, which the Endomondo data does not have.",
+      sources: ["Bourdon2017", "endomondo_hr_v2"]
+    }
+  };
+
+  function cardsWithReasons(ctx, mode) {
+    return kpiCards(ctx, mode).map(function (c) { if (CARD_REASONS[c.id]) c.reason = CARD_REASONS[c.id]; return c; });
+  }
+
   var api = {
     // KPIs
     parseDay: parseDay, weekIndex: weekIndex, weekLabel: weekLabel, fmtPace: fmtPace,
     userRuns: userRuns, parseTimeseries: parseTimeseries, refHrMax: refHrMax,
     zonesFromSeries: zonesFromSeries, zonesFromSummary: zonesFromSummary, runMetrics: runMetrics,
     sessionTriples: sessionTriples, metricTriples: metricTriples, buildKpiContext: buildKpiContext,
-    consistencyKpi: consistencyKpi, buildSessionLine: buildSessionLine, tidKpi: tidKpi,
+    consistencyKpi: consistencyKpi, buildSessionLine: buildSessionLine, tidKpi: tidKpi, weeklyZonesKpi: weeklyZonesKpi,
+    strainScatter: strainScatter,
     couplingKpi: couplingKpi, periodizedKpi: periodizedKpi, strainKpi: strainKpi,
-    buildExpertRunLine: buildExpertRunLine, kpiCards: kpiCards,
+    buildExpertRunLine: buildExpertRunLine, kpiCards: cardsWithReasons,
+    SOURCES: SOURCES, CARD_REASONS: CARD_REASONS,
     parseCsv: parseCsv,
     rowToTriples: rowToTriples,
     setRunTypes: setRunTypes,
