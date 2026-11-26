@@ -1,6 +1,6 @@
 @prefix : <https://oscarw27.github.io/5294INOR6Y_G1/ontology#> .
 
-#Core onotology prefixes
+# Core ontology prefixes
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
@@ -28,7 +28,7 @@
     rdfs:seeAlso <https://huggingface.co/datasets/rricc22/endomondo-hr-prediction-v2> ;
     owl:imports <http://www.w3.org/ns/sosa/> .
 
-#Classes
+# Based on the raw dataset (no ML), it uses the paco controlled vocabulary for workout intensity
 :Athlete a owl:Class ;
     rdfs:subClassOf schema:Person ;
     rdfs:label "Athlete"@en ;
@@ -57,7 +57,8 @@
     rdfs:label "Intensive Run"@en ;
     rdfs:comment "A high-effort running session categorized as INTENSIVE."@en .
 
-# Run focus: per-run types from k-means clustering (ML-derived)
+# K-means classified workout type is only based on heart rate so this says something about effort
+# RunFocus says something about what the person tried to achieve in the run based on many variables (see script)
 :RunFocus a owl:Class ;
     rdfs:label "Run Focus"@en ;
     rdfs:comment "The type of a single run as assigned by k-means clustering (k=5) of run shapes: relative heart rate, relative speed, relative distance, number of speed surges, slow-time fraction, heart-rate range and climb per km, all relative to the athlete's own baseline (analysis/run_types in the dataset repository). Values are asserted from the clustering output (analysis/run_types/output/run_labels.csv), not derived from the summary metrics."@en .
@@ -82,7 +83,7 @@
     rdfs:label "Stop-and-go"@en ;
     rdfs:comment "Runs with the most surges (cluster mean 8.0), the highest slow-time fraction (0.21) and the lowest relative speed (3,913 of 39,459 labeled runs)."@en .
 
-# Athlete running patterns (derived, k-means clustering)
+# Same approach as RunFocus but then generalized over the athlete's entire run history intended for comparison.
 :RunningPattern a owl:Class ;
     rdfs:label "Running Pattern"@en ;
     rdfs:comment "An athlete-level running pattern found by k-means clustering of per-athlete aggregates (running frequency, typical distance and pace, speed-per-heartbeat efficiency, relative intensity, within-run speed variation, opening-pace ratio, cardiac drift, climb per km); see analysis/athlete_profiles/output in the dataset repository. A running pattern summarizes an athlete across all their workouts, unlike the workout-type classes above (recorded per session) and the per-run :RunFocus labels, which characterize a single session each."@en .
@@ -105,12 +106,12 @@
     rdfs:label "has running pattern"@en ;
     rdfs:comment "Links an athlete to the running pattern assigned by the k-means clustering. Athletes with fewer than ten recorded runs are left unassigned in the analysis (see analysis/athlete_profiles/output/final_labels.csv)."@en .
 
+# Sensor properties stored in the TelemetryPoint class coming from sosa
 :TelemetryPoint a owl:Class ;
     rdfs:subClassOf sosa:ObservationCollection ;
     rdfs:label "Telemetry Point"@en ;
     rdfs:comment "A single timestamped sample in a workout time series grouping heart rate, speed, and altitude readings."@en .
 
-# Sensor properties
 :HeartRate a sosa:ObservableProperty ;
     rdfs:label "Heart Rate"@en ;
     rdfs:comment "Instantaneous heart rate measured in beats per minute (BPM)."@en .
@@ -123,7 +124,7 @@
     rdfs:label "Altitude"@en ;
     rdfs:comment "Elevation above sea level measured in meters (m)."@en .
 
-#Object properties
+# Object properties between workouts and athletes/telemetry
 :performedBy a owl:ObjectProperty ;
     rdfs:subPropertyOf schema:agent ;
     rdfs:domain :RunningWorkout ;
